@@ -1,4 +1,8 @@
 #config-files
-> just random config-files
+> just random dotfiles & config-files
 
-currently holds csgo-config. not much else. :information_desk_person:
+:information_desk_person:
+
+#contains
+- autoexec.cfg: autoexec for cs:go
+- vleesbrood.zsh-theme: zsh-theme for oh-my-zsh terminal, extract into ```~/.oh-my-zsh/themes```
