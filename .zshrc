@@ -6,6 +6,8 @@ export ZSH=/Users/arnoschutijzer/.oh-my-zsh
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
 ZSH_THEME="vleesbrood"
+# ZSH_THEME="avit"
+# ZSH_THEME="avit-white"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -85,5 +87,13 @@ source $ZSH/oh-my-zsh.sh
 
 alias showf='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hidef='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
+alias a='atom .'
+alias ps='python -m SimpleHTTPServer'
+alias serve='npm run serve'
+nis() { echo "installing $*\n"; npm i --save "$*" }
+nu() { echo "uninstalling $*\n"; npm uninstall --save "$*"}
+nr() { echo "running $1\n"; npm run $1}
 #add z
 . `brew --prefix`/etc/profile.d/z.sh
+export NVM_DIR="/Users/arnoschutijzer/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
