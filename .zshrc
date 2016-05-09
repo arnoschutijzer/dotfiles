@@ -90,9 +90,15 @@ alias hidef='defaults write com.apple.finder AppleShowAllFiles NO; killall Finde
 alias a='atom .'
 alias ps='python -m SimpleHTTPServer'
 alias serve='npm run serve'
-nis() { echo "installing $*\n"; npm i --save "$*" }
-nu() { echo "uninstalling $*\n"; npm uninstall --save "$*"}
-nr() { echo "running $1\n"; npm run $1}
+i() { echo "installing $*\n"; npm install "$*"; }
+id() { echo "installing w/ devdep $*\n"; npm install --save-dev "$*"}
+is() { echo "installing w/ dep $*\n"; npm install --save "$*"}
+ud() { echo "uninstalling devdep $*\n"; npm uninstall --save-dev "$*"}
+us() { echo "uninstalling $*\n"; npm uninstall --save "$*"}
+r() { echo "running $*\n"; npm run $*}
+help() {
+  echo "i, id, is, ud, us, r";
+}
 #add z
 . `brew --prefix`/etc/profile.d/z.sh
 export NVM_DIR="/Users/arnoschutijzer/.nvm"
