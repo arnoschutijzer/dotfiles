@@ -90,6 +90,7 @@ alias hidef='defaults write com.apple.finder AppleShowAllFiles NO; killall Finde
 alias a='atom .'
 alias ps='python -m SimpleHTTPServer'
 alias serve='npm run serve'
+alias git='hub'
 i() { echo "installing $*\n"; npm install "$*"; }
 id() { echo "installing w/ devdep $*\n"; npm install --save-dev "$*"}
 is() { echo "installing w/ dep $*\n"; npm install --save "$*"}
@@ -97,7 +98,7 @@ ud() { echo "uninstalling devdep $*\n"; npm uninstall --save-dev "$*"}
 us() { echo "uninstalling $*\n"; npm uninstall --save "$*"}
 r() { echo "running $*\n"; npm run $*}
 help() {
-  echo "i, id, is, ud, us, r";
+  echo "i, id, is, u, r";
 }
 #add z
 . `brew --prefix`/etc/profile.d/z.sh
