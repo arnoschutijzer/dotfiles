@@ -20,7 +20,7 @@ ZSH_THEME="vleesbrood"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
+export UPDATE_ZSH_DAYS=1
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -55,7 +55,7 @@ plugins=(git brew npm gulp git-flow meteor)
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.cargo/bin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
 
 source $ZSH/oh-my-zsh.sh
@@ -88,19 +88,15 @@ source $ZSH/oh-my-zsh.sh
 alias showf='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
 alias hidef='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias a='atom .'
-alias ps='python -m SimpleHTTPServer'
-alias serve='npm run serve'
-alias git='hub'
-i() { echo "installing $*\n"; npm install "$*"; }
-id() { echo "installing w/ devdep $*\n"; npm install --save-dev "$*"}
-is() { echo "installing w/ dep $*\n"; npm install --save "$*"}
-ud() { echo "uninstalling devdep $*\n"; npm uninstall --save-dev "$*"}
-us() { echo "uninstalling $*\n"; npm uninstall --save "$*"}
+alias httpserver='python -m SimpleHTTPServer'
+i() { echo "installing... $*\n"; npm install "$*"}
 r() { echo "running $*\n"; npm run $*}
-help() {
-  echo "i, id, is, u, r";
-}
+gpf() { echo "pushing --force-with-lease"; git push --force-with-lease }
+tdeploy() { /Users/arnoschutijzer/ngrok $*; }
+nocors() { open -n -a /Applications/Google\ Chrome.app --args --user-data-dir="/tmp/someFolderName" --disable-web-security }
 #add z
 . `brew --prefix`/etc/profile.d/z.sh
 export NVM_DIR="/Users/arnoschutijzer/.nvm"
+export JAVA_HOME=$(/usr/libexec/java_home)
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+export PATH="/usr/local/sbin:$PATH"
