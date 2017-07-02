@@ -51,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew npm gulp git-flow meteor)
+plugins=(git brew npm git-flow)
 
 # User configuration
 
@@ -89,14 +89,39 @@ alias showf='defaults write com.apple.finder AppleShowAllFiles YES; killall Find
 alias hidef='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias a='atom .'
 alias httpserver='python -m SimpleHTTPServer'
+alias serve='npm run serve'
 i() { echo "installing... $*\n"; npm install "$*"}
+id() { echo "installing w/ devdep $*\n"; npm install --save-dev "$*"}
+is() { echo "installing w/ dep $*\n"; npm install --save "$*"}
+ud() { echo "uninstalling devdep $*\n"; npm uninstall --save-dev "$*"}
+us() { echo "uninstalling $*\n"; npm uninstall --save "$*"}
 r() { echo "running $*\n"; npm run $*}
 gpf() { echo "pushing --force-with-lease"; git push --force-with-lease }
 tdeploy() { /Users/arnoschutijzer/ngrok $*; }
 nocors() { open -n -a /Applications/Google\ Chrome.app --args --user-data-dir="/tmp/someFolderName" --disable-web-security }
+help() {
+  echo "i: npm install,\nid: npm install --save-dep,\nis: npm install --save,\nud: npm uninstall --save-dep,\nus: npm uninstall --save,\nr: npm run, \nhttpserver: python -m SimpleHttpServer";
+}
+function code {
+    if [[ $# = 0 ]]
+    then
+        open -a "Visual Studio Code"
+    else
+        local argPath="$1"
+        [[ $1 = /* ]] && argPath="$1" || argPath="$PWD/${1#./}"
+        open -a "Visual Studio Code" "$argPath"
+    fi
+}
 #add z
 . `brew --prefix`/etc/profile.d/z.sh
 export NVM_DIR="/Users/arnoschutijzer/.nvm"
 export JAVA_HOME=$(/usr/libexec/java_home)
 [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 export PATH="/usr/local/sbin:$PATH"
+
+# tabtab source for serverless package
+# uninstall by removing these lines or running `tabtab uninstall serverless`
+[[ -f /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
+# tabtab source for sls package
+# uninstall by removing these lines or running `tabtab uninstall sls`
+[[ -f /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
