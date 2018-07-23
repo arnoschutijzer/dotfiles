@@ -76,6 +76,11 @@ module.exports = {
     // for advanced config flags please refer to https://hyperterm.org/#cfg
   },
 
+  keymaps: {
+    "pane:next": "ctrl+right",
+    "pane:prev": "ctrl+left"
+  },
+
   // a list of plugins to fetch and install from npm
   // format: [@org/]project[#version]
   // examples:
@@ -86,9 +91,10 @@ module.exports = {
     'hypercwd',
     'hyperterm-tab-icons',
     // 'hyper-material-vibrancy',
-    'hyper-statusline',
-    'hyper-fileio',
-    'hyper-alt-click'
+    // 'hyper-statusline',
+    // 'hyper-fileio',
+    'hyper-alt-click',
+    'hyper-nord'
   ],
 
   // in development, you can create a directory under
