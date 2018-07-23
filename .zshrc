@@ -85,8 +85,6 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias showf='defaults write com.apple.finder AppleShowAllFiles YES; killall Finder /System/Library/CoreServices/Finder.app'
-alias hidef='defaults write com.apple.finder AppleShowAllFiles NO; killall Finder /System/Library/CoreServices/Finder.app'
 alias a='atom .'
 alias httpserver='python -m SimpleHTTPServer'
 alias clean_mod='find . -name node_modules -type d -exec rm -rf {} +'
@@ -110,8 +108,6 @@ help() {
   \nud: npm uninstall --save-dep,
   \nus: npm uninstall --save,
   \nr: npm run,
-  \nshowf: show dotfiles,
-  \nhidef: hide dotfiles,
   \na: open atom,
   \nhttpserver: python -m SimpleHttpServer,
   \nclean_mod: find <path> -name node_modules -type d exec trash {} +";
