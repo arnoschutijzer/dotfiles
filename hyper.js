@@ -18,7 +18,7 @@ module.exports = {
     // terminal background color
     backgroundColor:"rgba(0,0,0,0.5)",
     vibrancy:"",
-        
+
     // border color (window, tabs)
     borderColor: '#000',
 

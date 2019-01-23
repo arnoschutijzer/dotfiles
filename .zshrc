@@ -51,7 +51,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew npm git-flow nvm osx)
+plugins=(git brew npm git-flow nvm osx zsh-autosuggestions)
 
 # User configuration
 
@@ -88,29 +88,25 @@ source $ZSH/oh-my-zsh.sh
 alias a='atom .'
 alias httpserver='python -m SimpleHTTPServer'
 alias clean_mod='find . -name node_modules -type d -exec rm -rf {} +'
-i() { echo "installing... $*\n"; npm install $*}
-id() { echo "installing w/ devdep $*\n"; npm install --save-dev $*}
-r() { echo "running $*\n"; npm run $*}
-gpf() { echo "pushing --force-with-lease"; git push --force-with-lease $* }
-tdeploy() { /Users/arnoschutijzer/ngrok $*; }
-ytdl() {
+alias chrome_nocors='open -n -a /Applications/Google\ Chrome.app --args --user-data-dir="/tmp/someFolderName" --disable-web-security'
+
+function i() {
+    echo "installing... $*\n";
+    npm install $*;
+}
+function id() {
+    echo "installing w/ devdep $*\n";
+    npm install --save-dev $*;
+}
+function r() {
+    echo "running $*\n";
+    npm run $*;
+}
+function ytdl() {
   youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
   touch \$downloaded.txt;
   echo "$1" >> \$downloaded.txt;
   echo "successfully wrote to disk at $(pwd)";
-}
-nocors() { open -n -a /Applications/Google\ Chrome.app --args --user-data-dir="/tmp/someFolderName" --disable-web-security }
-help() {
-  echo "
-  i: npm install,
-  \nid: npm install --save-dep,
-  \nis: npm install --save,
-  \nud: npm uninstall --save-dep,
-  \nus: npm uninstall --save,
-  \nr: npm run,
-  \na: open atom,
-  \nhttpserver: python -m SimpleHttpServer,
-  \nclean_mod: find <path> -name node_modules -type d exec trash {} +";
 }
 function code {
     if [[ $# = 0 ]]
@@ -122,6 +118,7 @@ function code {
         open -a "Visual Studio Code" "$argPath"
     fi
 }
+
 #add z
 . `brew --prefix`/etc/profile.d/z.sh
 export NVM_DIR="/Users/arnoschutijzer/.nvm"

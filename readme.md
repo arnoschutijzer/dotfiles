@@ -1,5 +1,4 @@
-# config-files
-> just random dotfiles & config-files
+# dotfiles
 
 :information_desk_person:
 
@@ -9,7 +8,6 @@
 - npm-check
 - nodemon
 - yarn
-- grunt-cli
 ## atom
 - atom-ternjs
 - busy-signal
