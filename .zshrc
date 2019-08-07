@@ -1,13 +1,25 @@
-# Path to your oh-my-zsh installation.
-export ZSH=/Users/arnoschutijzer/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-ZSH_THEME="vleesbrood"
-# ZSH_THEME="avit"
-# ZSH_THEME="avit-white"
+# Path to your oh-my-zsh installation.
+export ZSH="/Users/arnoschutijzer/.oh-my-zsh"
+
+# Add applications to path
+export PATH=/Applications:$PATH
+# Add python to path
+export PATH=/Users/arnoschutijzer/Library/Python/2.7/bin:$PATH
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="gitster"
+
+# Set list of themes to load
+# Setting this variable when ZSH_THEME=random
+# cause zsh load theme from this variable instead of
+# looking in ~/.oh-my-zsh/themes/
+# An empty array have no effect
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -20,7 +32,7 @@ ZSH_THEME="vleesbrood"
 # DISABLE_AUTO_UPDATE="true"
 
 # Uncomment the following line to change how often to auto-update (in days).
-export UPDATE_ZSH_DAYS=1
+# export UPDATE_ZSH_DAYS=13
 
 # Uncomment the following line to disable colors in ls.
 # DISABLE_LS_COLORS="true"
@@ -29,7 +41,7 @@ export UPDATE_ZSH_DAYS=1
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -51,14 +63,18 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git brew npm git-flow nvm osx zsh-autosuggestions)
+plugins=(
+  git z osx ssh-agent
+)
+
+source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:$HOME/.cargo/bin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
+# activate autosuggestions, see https://github.com/zsh-users/zsh-autosuggestions/
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
-source $ZSH/oh-my-zsh.sh
+# export MANPATH="/usr/local/man:$MANPATH"
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -74,7 +90,7 @@ source $ZSH/oh-my-zsh.sh
 # export ARCHFLAGS="-arch x86_64"
 
 # ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
 
 # Set personal aliases, overriding those provided by oh-my-zsh libs,
 # plugins, and themes. Aliases can be placed here, though oh-my-zsh
@@ -85,29 +101,23 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-alias a='atom .'
-alias httpserver='python -m SimpleHTTPServer'
+# clean node_modules from the current directory down
 alias clean_mod='find . -name node_modules -type d -exec rm -rf {} +'
-alias chrome_nocors='open -n -a /Applications/Google\ Chrome.app --args --user-data-dir="/tmp/someFolderName" --disable-web-security'
+alias clean_pkg='find . -name package-lock.json -type f -exec rm {} +'
+alias wttr='curl wttr.in'
+alias ..='cd ..'
+alias dka='docker kill $(docker ps -q)'
+alias dup='docker-compose up -d'
+alias expose='ssh -R 80:localhost:8080 ssh.localhost.run'
+alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
 
-function i() {
-    echo "installing... $*\n";
-    npm install $*;
-}
-function id() {
-    echo "installing w/ devdep $*\n";
-    npm install --save-dev $*;
-}
-function r() {
+# start npm commands with r <command>
+function r {
     echo "running $*\n";
-    npm run $*;
+    npm run $*
 }
-function ytdl() {
-  youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
-  touch \$downloaded.txt;
-  echo "$1" >> \$downloaded.txt;
-  echo "successfully wrote to disk at $(pwd)";
-}
+
+# run vscode from anywhere in the terminal
 function code {
     if [[ $# = 0 ]]
     then
@@ -119,16 +129,21 @@ function code {
     fi
 }
 
-#add z
-. `brew --prefix`/etc/profile.d/z.sh
-export NVM_DIR="/Users/arnoschutijzer/.nvm"
-export JAVA_HOME=$(/usr/libexec/java_home)
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-export PATH="/usr/local/sbin:$PATH"
+function ytdl() {
+  youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
+  touch \$downloaded.txt;
+  echo "$1" >> \$downloaded.txt;
+  echo "successfully wrote to disk at $(pwd)";
+}
 
-# tabtab source for serverless package
-# uninstall by removing these lines or running `tabtab uninstall serverless`
-[[ -f /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh ]] && . /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/serverless.zsh
-# tabtab source for sls package
-# uninstall by removing these lines or running `tabtab uninstall sls`
-[[ -f /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh ]] && . /Users/arnoschutijzer/.nvm/versions/node/v7.9.0/lib/node_modules/serverless/node_modules/tabtab/.completions/sls.zsh
+# Environment variables
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+export UNSPLASH_API_KEY=x
+
+# Set libuv threadpool, change this if webpack hangs
+export UV_THREADPOOL_SIZE=1000
+
+export NODE_OPTIONS=--max_old_space_size=8192
