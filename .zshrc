@@ -64,15 +64,12 @@ ZSH_THEME="gitster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git z osx ssh-agent
+  git z osx ssh-agent zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
-
-# activate autosuggestions, see https://github.com/zsh-users/zsh-autosuggestions/
-source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
