@@ -114,18 +114,6 @@ function r {
     npm run $*
 }
 
-# run vscode from anywhere in the terminal
-function code {
-    if [[ $# = 0 ]]
-    then
-        open -a "Visual Studio Code"
-    else
-        local argPath="$1"
-        [[ $1 = /* ]] && argPath="$1" || argPath="$PWD/${1#./}"
-        open -a "Visual Studio Code" "$argPath"
-    fi
-}
-
 function ytdl() {
   youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
   touch \$downloaded.txt;
