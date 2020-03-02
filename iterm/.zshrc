@@ -6,8 +6,8 @@ export ZSH="/Users/arnoschutijzer/.oh-my-zsh"
 
 # Add applications to path
 export PATH=/Applications:$PATH
-# Add python to path
 export PATH=/Users/arnoschutijzer/Library/Python/2.7/bin:$PATH
+export PATH=/Users/arnoschutijzer/Library/Python/3.7/bin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -64,12 +64,15 @@ ZSH_THEME="gitster"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git z osx ssh-agent zsh-autosuggestions
+  git z osx ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# activate autosuggestions, see https://github.com/zsh-users/zsh-autosuggestions/
+source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -101,12 +104,18 @@ source $ZSH/oh-my-zsh.sh
 # clean node_modules from the current directory down
 alias clean_mod='find . -name node_modules -type d -exec rm -rf {} +'
 alias clean_pkg='find . -name package-lock.json -type f -exec rm {} +'
+alias clean_yarn='find . -name yarn.lock -type f -exec rm {} +'
+alias clean='clean_mod $$ clean_yarn && clean_pkg'
 alias wttr='curl wttr.in'
 alias ..='cd ..'
 alias dka='docker kill $(docker ps -q)'
 alias dup='docker-compose up -d'
 alias expose='ssh -R 80:localhost:8080 ssh.localhost.run'
 alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
+alias tf=terraform
+alias tg=terragrunt
+alias reset_code_commit="echo 'host=git-codecommit.eu-west-1.amazonaws.com\nprotocol=https' | git credential-osxkeychain erase"
+alias really_prune_branches="git branch --merged | grep -v "master" >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches && rm /tmp/merged-branches"
 
 # start npm commands with r <command>
 function r {
@@ -114,21 +123,43 @@ function r {
     npm run $*
 }
 
-function ytdl() {
-  youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
-  touch \$downloaded.txt;
-  echo "$1" >> \$downloaded.txt;
-  echo "successfully wrote to disk at $(pwd)";
-}
-
 # Environment variables
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export UNSPLASH_API_KEY=x
-
 # Set libuv threadpool, change this if webpack hangs
 export UV_THREADPOOL_SIZE=1000
 
 export NODE_OPTIONS=--max_old_space_size=8192
+
+export JAVA_HOME=$(/usr/libexec/java_home)
+
+function aws_login {
+    echo "Logging in using profile $AWS_PROFILE"
+    echo "enter token code"
+    read TOKEN_CODE
+
+    CREDENTIALS=$(aws sts get-session-token --serial-number $MFA_CONTAINERUSER_ARN --token-code $TOKEN_CODE)
+    export AWS_SECRET_ACCESS_KEY=$(echo $(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey'))
+    export AWS_SESSION_TOKEN=$(echo $(echo $CREDENTIALS | jq -r '.Credentials.SessionToken'))
+    export AWS_ACCESS_KEY_ID=$(echo $(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId'))
+    LOGIN=$(aws iam get-user)
+    AWS_USERNAME=$(echo $(echo $LOGIN | jq -r '.User.UserName'))
+    echo "logged in as $AWS_USERNAME"
+}
+
+function aws_logout {
+    echo "logging out of aws"
+    unset AWS_SECRET_ACCESS_KEY
+    unset AWS_SESSION_TOKEN
+    unset AWS_ACCESS_KEY_ID
+}
+
+function aws_login_ecr {
+    $(aws ecr get-login --profile $AWS_ROLE --registry-ids $AWS_REGISTRY_ID --no-include-email --region eu-west-1)
+}
+
+function aws_login_ecr_no_role {
+    $(aws ecr get-login --no-include-email --region eu-west-1)
+}
