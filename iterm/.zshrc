@@ -123,6 +123,21 @@ function r {
     npm run $*
 }
 
+function ff {
+    "/Applications/Firefox Nightly.app/Contents/MacOS/firefox" --url https://$*
+}
+
+function ffs {
+    "/Applications/Firefox Nightly.app/Contents/MacOS/firefox" --search $*
+}
+
+function ytdl() {
+  youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
+  touch \$downloaded.txt;
+  echo "$1" >> \$downloaded.txt;
+  echo "successfully wrote to disk at $(pwd)";
+}
+
 # Environment variables
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
