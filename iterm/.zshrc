@@ -6,8 +6,12 @@ export ZSH="/Users/arnoschutijzer/.oh-my-zsh"
 
 # Add applications to path
 export PATH=/Applications:$PATH
+# Add python to path
 export PATH=/Users/arnoschutijzer/Library/Python/2.7/bin:$PATH
+# Add python3
 export PATH=/Users/arnoschutijzer/Library/Python/3.7/bin:$PATH
+# add the custom bin folder
+export PATH=/Users/arnoschutijzer/bin:$PATH
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -114,7 +118,6 @@ alias expose='ssh -R 80:localhost:8080 ssh.localhost.run'
 alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
 alias tf=terraform
 alias tg=terragrunt
-alias reset_code_commit="echo 'host=git-codecommit.eu-west-1.amazonaws.com\nprotocol=https' | git credential-osxkeychain erase"
 alias really_prune_branches="git branch --merged | grep -v "master" >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches && rm /tmp/merged-branches"
 
 # start npm commands with r <command>
@@ -150,31 +153,7 @@ export NODE_OPTIONS=--max_old_space_size=8192
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-function aws_login {
-    echo "Logging in using profile $AWS_PROFILE"
-    echo "enter token code"
-    read TOKEN_CODE
+export UNSPLASH_API_KEY=xxxxx
+export UNBG_CACHE_PATH=/Users/arnoschutijzer/Pictures/unbg-cache
 
-    CREDENTIALS=$(aws sts get-session-token --serial-number $MFA_CONTAINERUSER_ARN --token-code $TOKEN_CODE)
-    export AWS_SECRET_ACCESS_KEY=$(echo $(echo $CREDENTIALS | jq -r '.Credentials.SecretAccessKey'))
-    export AWS_SESSION_TOKEN=$(echo $(echo $CREDENTIALS | jq -r '.Credentials.SessionToken'))
-    export AWS_ACCESS_KEY_ID=$(echo $(echo $CREDENTIALS | jq -r '.Credentials.AccessKeyId'))
-    LOGIN=$(aws iam get-user)
-    AWS_USERNAME=$(echo $(echo $LOGIN | jq -r '.User.UserName'))
-    echo "logged in as $AWS_USERNAME"
-}
-
-function aws_logout {
-    echo "logging out of aws"
-    unset AWS_SECRET_ACCESS_KEY
-    unset AWS_SESSION_TOKEN
-    unset AWS_ACCESS_KEY_ID
-}
-
-function aws_login_ecr {
-    $(aws ecr get-login --profile $AWS_ROLE --registry-ids $AWS_REGISTRY_ID --no-include-email --region eu-west-1)
-}
-
-function aws_login_ecr_no_role {
-    $(aws ecr get-login --no-include-email --region eu-west-1)
-}
+source $HOME/aws-scripts/bootstrap.sh
