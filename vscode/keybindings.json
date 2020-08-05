@@ -1,7 +1,0 @@
-// Place your key bindings in this file to override the defaultsauto[]
-[
-  {
-    "key": "alt+cmd+a",
-    "command": "workbench.action.toggleActivityBarVisibility"
-  }
-]
