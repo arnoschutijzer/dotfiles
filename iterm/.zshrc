@@ -17,6 +17,7 @@ export PATH=/Users/arnoschutijzer/bin:$PATH
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="gitster"
+eval "$(starship init zsh)"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -109,6 +110,7 @@ source /usr/local/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 alias clean_mod='find . -name node_modules -type d -exec rm -rf {} +'
 alias clean_pkg='find . -name package-lock.json -type f -exec rm {} +'
 alias clean_yarn='find . -name yarn.lock -type f -exec rm {} +'
+alias clean_tg='find . -name .terragrunt-cache -type d -exec rm -rf {} +'
 alias clean='clean_mod $$ clean_yarn && clean_pkg'
 alias wttr='curl wttr.in'
 alias ..='cd ..'
@@ -118,20 +120,14 @@ alias expose='ssh -R 80:localhost:8080 ssh.localhost.run'
 alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
 alias tf=terraform
 alias tg=terragrunt
+alias tfd=terraform-docs
 alias really_prune_branches="git branch --merged | grep -v "master" >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches && rm /tmp/merged-branches"
+alias awsv=aws-vault
 
 # start npm commands with r <command>
 function r {
     echo "running $*\n";
     npm run $*
-}
-
-function ff {
-    "/Applications/Firefox Nightly.app/Contents/MacOS/firefox" --url https://$*
-}
-
-function ffs {
-    "/Applications/Firefox Nightly.app/Contents/MacOS/firefox" --search $*
 }
 
 function ytdl() {
@@ -153,7 +149,9 @@ export NODE_OPTIONS=--max_old_space_size=8192
 
 export JAVA_HOME=$(/usr/libexec/java_home)
 
-export UNSPLASH_API_KEY=xxxxx
+export UNSPLASH_API_KEY=xxx
 export UNBG_CACHE_PATH=/Users/arnoschutijzer/Pictures/unbg-cache
+export TFE_TOKEN=xxx
 
-source $HOME/aws-scripts/bootstrap.sh
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"

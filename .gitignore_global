@@ -1,7 +1,6 @@
 *~
 .DS_Store
-.idea
 .vscode
-dist
+.idea
+.java-version
 package-lock.json
-yarn.lock
