@@ -30,5 +30,6 @@ zsh-autosuggestions
 aerial
 aws-vault
 dbeaver-community
+intellij-idea-ce
 jumpcut
 vagrant
