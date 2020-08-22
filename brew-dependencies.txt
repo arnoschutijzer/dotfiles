@@ -3,7 +3,6 @@ awscli
 cmake
 git-quick-stats
 go
-gobject-introspection
 graphite2
 htop
 icu4c
@@ -11,7 +10,6 @@ jasper
 jenv
 jq
 libav
-libtiff
 libtool
 maven
 mysql
