@@ -21,6 +21,7 @@ zsh-autosuggestions
 # brew casks
 aerial
 aws-vault
+corretto
 dbeaver-community
 intellij-idea-ce
 jumpcut
