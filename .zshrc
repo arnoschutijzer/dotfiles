@@ -147,11 +147,5 @@ export UV_THREADPOOL_SIZE=1000
 
 export NODE_OPTIONS=--max_old_space_size=8192
 
-export JAVA_HOME=$(/usr/libexec/java_home)
-
-export UNSPLASH_API_KEY=xxx
-export UNBG_CACHE_PATH=/Users/arnoschutijzer/Pictures/unbg-cache
-export TFE_TOKEN=xxx
-
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
