@@ -6,7 +6,6 @@ htop
 jenv
 jq
 maven
-mysql
 python@3.7
 starship
 terraform-docs
