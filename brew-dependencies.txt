@@ -1,5 +1,6 @@
 ansible
 awscli
+gh
 git-quick-stats
 go
 htop
