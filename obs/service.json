@@ -1,0 +1,9 @@
+{
+  "settings": {
+      "bwtest": false,
+      "key": "live_597089199_kVK5DVaNV8ozNsaZgq5qWUn0FmyiWz",
+      "server": "rtmp://live-ams03.twitch.tv/app",
+      "service": "Twitch"
+  },
+  "type": "rtmp_common"
+}
