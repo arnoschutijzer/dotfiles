@@ -7,7 +7,7 @@ htop
 jenv
 jq
 maven
-python@3.7
+python@3.8
 starship
 terraform-docs
 terraform_landscape
@@ -16,6 +16,7 @@ tflint
 the_silver_searcher
 tig
 wget
+yarn
 youtube-dl
 zsh-autosuggestions
 # brew casks
