@@ -8,6 +8,7 @@ jenv
 jq
 maven
 python@3.8
+remotemobprogramming/brew/mob
 starship
 terraform-docs
 terraform_landscape
@@ -24,6 +25,7 @@ aerial
 aws-vault
 corretto
 dbeaver-community
+figma
 intellij-idea-ce
 jumpcut
 vagrant
