@@ -26,6 +26,6 @@ aws-vault
 corretto
 dbeaver-community
 figma
-intellij-idea-ce
+intellij-idea-ce19
 jumpcut
 vagrant
