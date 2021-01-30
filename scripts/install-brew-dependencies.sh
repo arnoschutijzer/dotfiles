@@ -19,7 +19,7 @@ start_installing() {
   done <brew-dependencies.txt
 
   brew install $concatenated_deps
-  brew cask install $concatenated_casks
+  brew install $concatenated_casks --cask
 }
 
 brew upgrade
