@@ -3,6 +3,7 @@ awscli
 gh
 git-quick-stats
 go
+grep
 htop
 jenv
 jq
@@ -12,7 +13,7 @@ remotemobprogramming/brew/mob
 starship
 terraform-docs
 terraform_landscape
-terragrunt
+tfenv
 tflint
 the_silver_searcher
 tig
