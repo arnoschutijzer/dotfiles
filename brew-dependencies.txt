@@ -23,6 +23,7 @@ yarn
 youtube-dl
 zsh-autosuggestions
 # brew casks
+adoptopenjdk8
 aerial
 amethyst
 aws-vault
@@ -33,6 +34,7 @@ figma
 intellij-idea-ce
 iterm2
 jumpcut
+openvpn-connect
 slack
 spotify
 vagrant
