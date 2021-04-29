@@ -8,6 +8,7 @@ htop
 jenv
 jq
 maven
+nvm
 python@3.8
 remotemobprogramming/brew/mob
 starship
@@ -23,11 +24,16 @@ youtube-dl
 zsh-autosuggestions
 # brew casks
 aerial
+amethyst
 aws-vault
 corretto
 dbeaver-community
+docker
 figma
 intellij-idea-ce
 iterm2
 jumpcut
+slack
+spotify
 vagrant
+visual-studio-code
