@@ -28,5 +28,6 @@ corretto
 dbeaver-community
 figma
 intellij-idea-ce
+iterm2
 jumpcut
 vagrant
