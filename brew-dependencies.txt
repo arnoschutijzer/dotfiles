@@ -31,6 +31,7 @@ aws-vault
 corretto
 dbeaver-community
 docker
+drawio
 figma
 intellij-idea-ce
 iterm2
