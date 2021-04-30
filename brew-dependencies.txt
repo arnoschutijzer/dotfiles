@@ -37,6 +37,7 @@ figma
 intellij-idea-ce
 iterm2
 jumpcut
+microsoft-teams
 openvpn-connect
 slack
 spotify
