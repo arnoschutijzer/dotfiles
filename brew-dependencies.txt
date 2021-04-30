@@ -42,6 +42,5 @@ openvpn-connect
 slack
 spotify
 vagrant
-virtualbox
 visual-studio-code
 vlc
