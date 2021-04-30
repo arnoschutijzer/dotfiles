@@ -10,3 +10,5 @@ configure:
 upgrade:
 	brew upgrade
 	mas upgrade
+deps:
+	./get_brew_deps.sh

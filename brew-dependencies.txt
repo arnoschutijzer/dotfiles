@@ -43,3 +43,4 @@ slack
 spotify
 vagrant
 visual-studio-code
+vlc
