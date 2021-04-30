@@ -1,5 +1,6 @@
 ansible
 awscli
+docker
 gh
 git-quick-stats
 go
@@ -23,7 +24,6 @@ wget
 yarn
 youtube-dl
 zsh-autosuggestions
-# brew casks
 adoptopenjdk8
 aerial
 amethyst
