@@ -1,6 +1,5 @@
 *~
 .DS_Store
-.vscode
 .idea
 .java-version
 package-lock.json
