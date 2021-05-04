@@ -31,6 +31,7 @@ authy
 aws-vault
 corretto
 dbeaver-community
+discord
 docker
 drawio
 figma
