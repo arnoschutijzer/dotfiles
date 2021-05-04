@@ -38,6 +38,7 @@ intellij-idea-ce
 iterm2
 jumpcut
 microsoft-teams
+miro
 openvpn-connect
 slack
 spotify
