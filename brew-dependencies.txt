@@ -29,6 +29,7 @@ aerial
 amethyst
 authy
 aws-vault
+brave-browser
 corretto
 dbeaver-community
 discord
