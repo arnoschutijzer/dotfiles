@@ -42,6 +42,7 @@ jumpcut
 microsoft-teams
 miro
 openvpn-connect
+postman
 slack
 spotify
 vagrant
