@@ -12,6 +12,10 @@ export PATH=/Users/arnoschutijzer/Library/Python/2.7/bin:$PATH
 export PATH=/Users/arnoschutijzer/Library/Python/3.7/bin:$PATH
 # add the custom bin folder
 export PATH=/Users/arnoschutijzer/bin:$PATH
+# add golang
+export GOPATH="${HOME}/.go"
+export GOROOT="$(brew --prefix golang)/libexec"
+export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
