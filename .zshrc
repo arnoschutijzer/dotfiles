@@ -122,7 +122,7 @@ alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper
 alias tf=terraform
 alias tg=terragrunt
 alias tfd=terraform-docs
-alias really_prune_branches="git branch --merged | grep -v "master" >/tmp/merged-branches && vi /tmp/merged-branches && xargs git branch -d </tmp/merged-branches && rm /tmp/merged-branches"
+alias really_prune_branches="git fetch --all -p; git branch -vv | grep ": gone]" | awk '{ print $1 }' | xargs -n 1 git branch -D"
 alias awsv=aws-vault
 
 # start npm commands with r <command>
