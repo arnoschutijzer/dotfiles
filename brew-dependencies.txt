@@ -1,6 +1,7 @@
 ansible
 awscli
 docker
+ffmpeg
 gh
 git-quick-stats
 go
