@@ -131,6 +131,7 @@ function r {
     npm run $*
 }
 
+# usage: ytdl "hello world" https://youtube.url.here
 function ytdl() {
   youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
   touch downloaded.txt;
