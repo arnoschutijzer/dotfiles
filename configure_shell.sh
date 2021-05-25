@@ -8,3 +8,5 @@ ln -sf "$(pwd)"/gitster.zsh-theme ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/themes/gits
 git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions
 
 ln -sf "$(pwd)"/.zshrc ~/.zshrc
+
+ln -sf "$(pwd)"/.tflint.hcl ~/.tflint.hcl
