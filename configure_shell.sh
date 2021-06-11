@@ -10,3 +10,5 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ln -sf "$(pwd)"/.zshrc ~/.zshrc
 
 ln -sf "$(pwd)"/.tflint.hcl ~/.tflint.hcl
+
+ln -sf "$(pwd)"/.vimrc ~/.vimrc
