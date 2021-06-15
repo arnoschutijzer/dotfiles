@@ -112,7 +112,6 @@ alias clean_mod='find . -name node_modules -type d -exec rm -rf {} +'
 alias clean_pkg='find . -name package-lock.json -type f -exec rm {} +'
 alias clean_yarn='find . -name yarn.lock -type f -exec rm {} +'
 alias clean='clean_mod && clean_yarn && clean_pkg'
-alias wttr='curl wttr.in'
 alias dka='docker kill $(docker ps -q)'
 alias dup='docker-compose up -d'
 alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
@@ -120,6 +119,7 @@ alias tf=terraform
 alias tfd=terraform-docs
 alias really_prune_branches="git fetch --all -p; git branch -vv | grep ": gone]" | awk '{ print $1 }' | xargs -n 1 git branch -D"
 alias awsv=aws-vault
+alias ag=rg
 
 # start npm commands with r <command>
 function r {
