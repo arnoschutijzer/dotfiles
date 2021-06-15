@@ -20,7 +20,6 @@ terraform-docs
 terraform_landscape
 tfenv
 tflint
-the_silver_searcher
 tig
 wget
 yarn
