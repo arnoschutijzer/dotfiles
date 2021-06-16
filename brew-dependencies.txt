@@ -50,3 +50,4 @@ spotify
 vagrant
 visual-studio-code
 vlc
+wkhtmltopdf
