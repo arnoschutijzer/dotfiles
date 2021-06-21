@@ -28,7 +28,6 @@ zsh-autosuggestions
 adoptopenjdk11
 adoptopenjdk8
 aerial
-amethyst
 authy
 aws-vault
 brave-browser
@@ -45,6 +44,7 @@ microsoft-teams
 miro
 openvpn-connect
 postman
+shiftit
 slack
 spotify
 vagrant
