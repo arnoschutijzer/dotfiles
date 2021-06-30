@@ -51,3 +51,4 @@ vagrant
 visual-studio-code
 vlc
 wkhtmltopdf
+zoom
