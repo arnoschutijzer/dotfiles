@@ -22,7 +22,6 @@ tfenv
 tflint
 tig
 wget
-yarn
 youtube-dl
 zsh-autosuggestions
 adoptopenjdk11
