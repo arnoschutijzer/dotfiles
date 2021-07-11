@@ -117,7 +117,6 @@ alias dup='docker-compose up -d'
 alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
 alias tf=terraform
 alias tfd=terraform-docs
-alias really_prune_branches="git fetch --all -p; git branch -vv | grep ": gone]" | awk '{ print $1 }' | xargs -n 1 git branch -D"
 alias awsv=aws-vault
 alias ag=rg
 
