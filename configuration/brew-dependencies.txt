@@ -37,6 +37,7 @@ discord
 docker
 drawio
 figma
+google-chrome
 intellij-idea-ce
 iterm2
 jumpcut
