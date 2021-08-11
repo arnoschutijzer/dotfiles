@@ -1,5 +1,6 @@
 ansible
 awscli
+bridgecrewio/airiam/airiam
 docker
 ffmpeg
 gh
