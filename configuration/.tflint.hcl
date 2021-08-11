@@ -45,3 +45,10 @@ rule "terraform_unused_declarations" {
 rule "terraform_unused_required_providers" {
     enabled = true
 }
+
+plugin "aws" {
+    enabled = true
+    version = "0.5.0"
+    source  = "github.com/terraform-linters/tflint-ruleset-aws"
+}
+
