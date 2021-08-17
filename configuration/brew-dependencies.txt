@@ -4,6 +4,7 @@ bridgecrewio/airiam/airiam
 docker
 ffmpeg
 gh
+git
 git-quick-stats
 go
 grep
