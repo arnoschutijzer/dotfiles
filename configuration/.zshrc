@@ -108,9 +108,11 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # clean node_modules from the current directory down
-alias clean_mod='find . -name node_modules -type d -exec rm -rf {} +'
+alias clean_mod='find . -name node_modules -type d -exec rm -r {} +'
 alias clean_pkg='find . -name package-lock.json -type f -exec rm {} +'
 alias clean_yarn='find . -name yarn.lock -type f -exec rm {} +'
+alias clean_tf='find . -name .terraform -type d -exec rm -rf {} +'
+alias clean_tg='find . -name .terragrunt-cache -type d -exec rm -rf {} +'
 alias clean='clean_mod && clean_yarn && clean_pkg'
 alias dka='docker kill $(docker ps -q)'
 alias dup='docker-compose up -d'
