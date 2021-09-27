@@ -46,6 +46,7 @@ jumpcut
 microsoft-teams
 miro
 openvpn-connect
+poedit
 postman
 shiftit
 slack
