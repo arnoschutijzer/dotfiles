@@ -48,6 +48,7 @@ miro
 openvpn-connect
 poedit
 postman
+robo-3t
 shiftit
 slack
 spotify
