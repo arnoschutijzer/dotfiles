@@ -33,7 +33,6 @@ zsh-autosuggestions
 adoptopenjdk11
 adoptopenjdk14
 adoptopenjdk8
-aerial
 authy
 aws-vault
 brave-browser
