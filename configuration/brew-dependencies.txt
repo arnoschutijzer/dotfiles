@@ -1,4 +1,5 @@
 ansible
+aws-vault
 awscli
 bridgecrewio/airiam/airiam
 docker
@@ -13,6 +14,7 @@ jenv
 jq
 mas
 maven
+node
 nvm
 pulumi
 python@3.8
