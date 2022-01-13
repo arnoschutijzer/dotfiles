@@ -43,6 +43,7 @@ docker
 drawio
 figma
 google-chrome
+hiddenbar
 intellij-idea-ce
 iterm2
 jumpcut
