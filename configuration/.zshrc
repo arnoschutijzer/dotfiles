@@ -6,10 +6,7 @@ export ZSH="/Users/arnoschutijzer/.oh-my-zsh"
 
 # Add applications to path
 export PATH=/Applications:$PATH
-# Add python to path
-export PATH=/Users/arnoschutijzer/Library/Python/2.7/bin:$PATH
-# Add python3
-export PATH=/Users/arnoschutijzer/Library/Python/3.7/bin:$PATH
+export PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
 # add the custom bin folder
 export PATH=/Users/arnoschutijzer/bin:$PATH
 # add golang
