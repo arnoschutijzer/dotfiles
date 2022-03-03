@@ -142,9 +142,27 @@ function r {
 # usage: ytdl "hello world" https://youtube.url.here
 function ytdl() {
   youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
-  touch downloaded.txt;
-  echo "$1" >> downloaded.txt;
   echo "successfully wrote to disk at $(pwd)";
+}
+
+function set_protonmail() {
+  git config user.email "arno.schutijzer@protonmail.com" 
+
+  git filter-branch -f --env-filter '
+CORRECT_NAME="Arno Schutijzer"
+CORRECT_EMAIL="arno.schutijzer@protonmail.com"
+
+if [ "$GIT_COMMITTER_EMAIL" != "$CORRECT_EMAIL" ]
+then
+    export GIT_COMMITTER_NAME="$CORRECT_NAME"
+    export GIT_COMMITTER_EMAIL="$CORRECT_EMAIL"
+fi
+if [ "$GIT_AUTHOR_EMAIL" != "CORRECT_EMAIL" ]
+then
+    export GIT_AUTHOR_NAME="$CORRECT_NAME"
+    export GIT_AUTHOR_EMAIL="$CORRECT_EMAIL"
+fi
+' --tag-name-filter cat -- --branches --tags
 }
 
 # Environment variables
