@@ -12,9 +12,6 @@ disabled = true
 [git_branch]
 format = "on [$branch]($style) "
 
-[aws]
-disabled = true
-
 [java]
 disabled = true
 
