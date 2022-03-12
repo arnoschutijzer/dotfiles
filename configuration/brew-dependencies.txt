@@ -41,7 +41,6 @@ dbeaver-community
 discord
 docker
 drawio
-figma
 google-chrome
 intellij-idea-ce
 iterm2
