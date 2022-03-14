@@ -2,7 +2,7 @@
 
 gpg --full-generate-key
 
-gpg --list-secret-keys --keyid-format LONG
+echo "keys"
+echo "$(gpg --list-secret-keys --keyid-format LONG | awk '/sec/{print $2}' | cut -d'/' -f 2 | xargs -L1 gpg --armor --export)"
 
-echo "gpg --armor --export <id> | pbcopy"
-
+echo "use agpg to configure the correct keys per repository"
