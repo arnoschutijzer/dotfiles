@@ -13,6 +13,7 @@ export PATH=/Users/arnoschutijzer/bin:$PATH
 export GOPATH="${HOME}/.go"
 export GOROOT="$(brew --prefix golang)/libexec"
 export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
+export GPG_TTY=$(tty)
 
 export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
