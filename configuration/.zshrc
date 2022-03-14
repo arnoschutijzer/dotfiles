@@ -122,6 +122,16 @@ alias tfd=terraform-docs
 alias awsv=aws-vault
 alias ag=rg
 
+function agpg {
+  GPG_EMAIL=$(git config user.email)
+  GPG_KEY=$(gpg --list-secret-keys --keyid-format LONG $GPG_EMAIL | awk '/sec/{print $2}' | cut -d'/' -f 2)
+  git config user.signingkey $GPG_KEY
+  git config commit.gpgsign true
+  echo "$GPG_KEY has been added to the repository associated with $GPG_EMAIL"
+  unset GPG_EMAIL
+  unset GPG_KEY
+}
+
 function ghs {
   open "https://github.com/search?&q=$*"
 }
