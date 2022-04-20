@@ -18,7 +18,6 @@ maven
 node
 nvm
 pulumi
-python@3.8
 remotemobprogramming/brew/mob
 ripgrep
 starship
