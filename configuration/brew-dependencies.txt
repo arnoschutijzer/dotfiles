@@ -15,6 +15,7 @@ jenv
 jq
 mas
 maven
+nmap
 node
 nvm
 pulumi
