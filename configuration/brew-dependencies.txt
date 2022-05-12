@@ -15,6 +15,7 @@ jenv
 jq
 mas
 maven
+mysql@5.7
 nmap
 node
 nvm
