@@ -16,6 +16,7 @@ configure:
 upgrade:
 	brew upgrade --greedy && brew cleanup
 	mas upgrade
+	omz update
 
 .PHONY: deps
 deps:
