@@ -44,7 +44,6 @@ discord
 docker
 drawio
 font-caskaydia-cove-nerd-font
-font-fira-code-nerd-font
 google-chrome
 intellij-idea-ce
 iterm2
