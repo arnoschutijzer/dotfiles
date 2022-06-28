@@ -27,6 +27,7 @@ terraform-docs
 terraform_landscape
 tfenv
 tflint
+tfsec
 tig
 wget
 yarn
