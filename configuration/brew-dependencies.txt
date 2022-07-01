@@ -2,6 +2,7 @@ ansible
 aws-vault
 awscli
 bridgecrewio/airiam/airiam
+deno
 docker
 ffmpeg
 gh
