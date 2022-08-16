@@ -24,7 +24,6 @@ remotemobprogramming/brew/mob
 ripgrep
 starship
 terraform-docs
-terraform_landscape
 tfenv
 tflint
 tfsec
