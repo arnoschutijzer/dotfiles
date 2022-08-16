@@ -121,6 +121,7 @@ alias tf=terraform
 alias tfd=terraform-docs
 alias awsv=aws-vault
 alias ag=rg
+alias tflock='terraform providers lock -platform=linux_amd64'
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
