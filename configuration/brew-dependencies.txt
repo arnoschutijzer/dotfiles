@@ -33,13 +33,9 @@ wget
 yarn
 youtube-dl
 zsh-autosuggestions
-adoptopenjdk11
-adoptopenjdk14
-adoptopenjdk8
 authy
 aws-vault
 brave-browser
-corretto
 dbeaver-community
 discord
 docker
@@ -58,6 +54,8 @@ robo-3t
 shiftit
 slack
 spotify
+temurin11
+temurin8
 vagrant
 visual-studio-code
 vlc

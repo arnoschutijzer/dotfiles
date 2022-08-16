@@ -1,5 +1,6 @@
 brew tap beeftornado/rmtree
 brew tap bridgecrewio/airiam https://github.com/bridgecrewio/airiam
+brew tap homebrew/cask-versions
 
 while read p; do
   brew install "$p"
