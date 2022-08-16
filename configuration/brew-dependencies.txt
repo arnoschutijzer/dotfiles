@@ -1,5 +1,4 @@
 ansible
-aws-vault
 awscli
 bridgecrewio/airiam/airiam
 deno
