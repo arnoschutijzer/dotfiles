@@ -159,8 +159,10 @@ function ytdl() {
 
 function set_protonmail() {
   git config user.email "arno.schutijzer@protonmail.com" 
+}
 
-  git filter-branch -f --env-filter '
+function rewrite_commits() {
+    git filter-branch -f --env-filter '
 CORRECT_NAME="Arno Schutijzer"
 CORRECT_EMAIL="arno.schutijzer@protonmail.com"
 
