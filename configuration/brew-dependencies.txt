@@ -1,6 +1,7 @@
 ansible
 awscli
 bridgecrewio/airiam/airiam
+cmake
 deno
 docker
 ffmpeg
@@ -19,9 +20,11 @@ mysql@5.7
 nmap
 node
 nvm
-pulumi
+protobuf
+pulumi/tap/pulumi
 remotemobprogramming/brew/mob
 ripgrep
+rust
 starship
 terraform-docs
 tfenv
