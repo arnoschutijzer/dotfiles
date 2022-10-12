@@ -10,6 +10,7 @@ git
 git-quick-stats
 gnupg
 go
+graphviz
 grep
 htop
 jenv
@@ -46,6 +47,7 @@ font-caskaydia-cove-nerd-font
 google-chrome
 intellij-idea-ce
 iterm2
+jetbrains-toolbox
 jumpcut
 microsoft-teams
 miro
