@@ -3,7 +3,6 @@ awscli
 bridgecrewio/airiam/airiam
 cmake
 deno
-docker
 ffmpeg
 gh
 git
