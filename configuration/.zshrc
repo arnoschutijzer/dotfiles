@@ -191,3 +191,5 @@ export NODE_OPTIONS=--max_old_space_size=8192
 
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
+
+source /Users/arnoschutijzer/.docker/init-zsh.sh || true # Added by Docker Desktop
