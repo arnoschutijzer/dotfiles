@@ -1,10 +1,7 @@
-brew tap beeftornado/rmtree
-brew tap bridgecrewio/airiam https://github.com/bridgecrewio/airiam
-brew tap homebrew/cask-versions
+#!/bin/zsh
+cd configuration
 
-while read p; do
-  brew install "$p"
-done < "$(pwd)"/configuration/brew-dependencies.txt
+brew bundle
 
 jenv enable-plugin maven
 
