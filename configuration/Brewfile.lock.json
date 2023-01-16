@@ -14,16 +14,16 @@
         "revision": "cc9747cd3b28628b6d70789c7c6a97d675dd1ff1"
       },
       "homebrew/cask": {
-        "revision": "f3e0d77ab6da32207ef5686352ef012cffbe6f44"
+        "revision": "8e8f9ba35f8af8b6f1ae3588a40acecb62f5743d"
       },
       "homebrew/cask-fonts": {
-        "revision": "b2677160f4d588bf68bb55ee71744913f2de59f2"
+        "revision": "67fd625afece5890bafcbf14655b6b419922b84b"
       },
       "homebrew/cask-versions": {
-        "revision": "19a8b5098eb2cd0c80ea3b6aff29dfbde02e4588"
+        "revision": "069b3abc32c8348aa7675e39588171ff95140dc0"
       },
       "homebrew/core": {
-        "revision": "231dd730eba1431ab1e08f7e3084558c2f4952fc"
+        "revision": "51af3819deeeba86d39c649952e12b1427bc7e5c"
       },
       "pulumi/tap": {
         "revision": "70d08e86caeffa935689e2d5b00728e227765c33"
@@ -1595,6 +1595,12 @@
         "options": {
           "full_name": "wkhtmltopdf"
         }
+      },
+      "microsoft-remote-desktop": {
+        "version": "10.8.0",
+        "options": {
+          "full_name": "microsoft-remote-desktop"
+        }
       }
     },
     "mas": {
@@ -1653,7 +1659,7 @@
       "ventura": {
         "HOMEBREW_VERSION": "3.6.18-54-g3e25789",
         "HOMEBREW_PREFIX": "/opt/homebrew",
-        "Homebrew/homebrew-core": "231dd730eba1431ab1e08f7e3084558c2f4952fc",
+        "Homebrew/homebrew-core": "51af3819deeeba86d39c649952e12b1427bc7e5c",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
         "macOS": "13.1"
