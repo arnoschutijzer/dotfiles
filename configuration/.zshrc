@@ -123,6 +123,8 @@ alias awsv=aws-vault
 alias ag=rg
 alias tflock='terraform providers lock -platform=linux_amd64'
 alias sed=gsed
+alias i='idea .'
+alias c='code .'
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
