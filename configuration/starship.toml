@@ -11,6 +11,9 @@ disabled = true
 [git_branch]
 format = "on [$branch]($style) "
 
+[git_status]
+format = '([$all_status$ahead_behind]($style) )'
+
 [java]
 disabled = true
 
@@ -19,3 +22,6 @@ disabled = true
 
 [terraform]
 disabled = true
+
+[git_metrics]
+disabled = false
