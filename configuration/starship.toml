@@ -26,3 +26,6 @@ disabled = true
 
 [git_metrics]
 disabled = false
+
+[docker_context]
+disabled = true
