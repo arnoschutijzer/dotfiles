@@ -17,16 +17,16 @@
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "e0fb046916121f06c8b85a4f16c0c29c420ca54d"
+        "revision": "eb2e7f7fcbc0a78d551aa33d48fdd89793a20f9a"
       },
       "homebrew/cask-versions": {
-        "revision": "ca162e7c18ab391d62e71f7e5840ac78a33fa688"
+        "revision": "56f42790209697290de9a5b674cedd3e3919dd17"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
       },
       "pulumi/tap": {
-        "revision": "b05dfab7d4e14e609b4490233acf4fc0e9d8f6ac"
+        "revision": "134b8d6a6e45f972500b387a5e067fcee55378b0"
       },
       "remotemobprogramming/brew": {
         "revision": "fb63d05590cc31d49fe716fd3f73c5e584a0542b"
@@ -1395,7 +1395,7 @@
         }
       },
       "discord": {
-        "version": "0.0.272",
+        "version": "0.0.273",
         "options": {
           "full_name": "discord"
         }
@@ -1419,7 +1419,7 @@
         }
       },
       "google-chrome": {
-        "version": "110.0.5481.77",
+        "version": "110.0.5481.96",
         "options": {
           "full_name": "google-chrome"
         }
@@ -1548,7 +1548,7 @@
     "mas": {
       "Dashlane": {
         "id": "517914548",
-        "version": "6.2304.0"
+        "version": "6.2306.0"
       },
       "eID-Signer": {
         "id": "1407740667",
@@ -1599,12 +1599,12 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "3.6.21-89-ged79381",
+        "HOMEBREW_VERSION": "3.6.21-99-g2a417f1",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "15cc58f490ef218e460352ccd00ebf79f35b2491",
         "CLT": "14.2.0.0.1.1668646533",
         "Xcode": "14.2",
-        "macOS": "13.1"
+        "macOS": "13.2.1"
       }
     }
   }
