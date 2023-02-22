@@ -125,6 +125,8 @@ alias tflock='terraform providers lock -platform=linux_amd64'
 alias sed=gsed
 alias i='idea .'
 alias c='code .'
+# see https://github.com/OpenVPN/openvpn3/issues/139#issuecomment-1215125756
+alias vpn='sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/usr/sbin/ovpnagent'
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
