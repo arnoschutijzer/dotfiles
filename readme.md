@@ -6,8 +6,6 @@
 # install everything
 $ make
 
-# update brew dependencies
-$ make deps
 ```
 
 ## manual steps
