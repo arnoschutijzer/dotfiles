@@ -1503,7 +1503,7 @@
         }
       },
       "microsoft-teams": {
-        "version": "1.6.00.1159",
+        "version": "1.6.00.4464",
         "options": {
           "full_name": "microsoft-teams"
         }
@@ -1551,7 +1551,7 @@
         }
       },
       "spotify": {
-        "version": "1.2.6.863,e7902f05,167",
+        "version": "1.2.7.1277,2b3ce637,221",
         "options": {
           "full_name": "spotify"
         }
