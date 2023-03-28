@@ -158,7 +158,7 @@ function r {
 
 # usage: ytdl "hello world" https://youtube.url.here
 function ytdl() {
-  youtube-dl -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
+  yt-dlp -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
   echo "successfully wrote to disk at $(pwd)";
 }
 
