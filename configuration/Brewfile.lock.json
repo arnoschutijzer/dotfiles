@@ -10,17 +10,20 @@
           "clone_target": "https://github.com/bridgecrewio/airiam"
         }
       },
+      "hashicorp/tap": {
+        "revision": "78e2c167019b7363fed369bdad6749b767df5cf1"
+      },
       "homebrew/bundle": {
-        "revision": "8c64c35a34b127bdb79348158412381004c45e58"
+        "revision": "dbbb757e2257fe878418c1f0656b9e4cd3ce4762"
       },
       "homebrew/cask": {
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "50971cb65d8b9cf71c68ea86995742a03f13ad9e"
+        "revision": "cf255de56182c66d327c084ffdc81994f826c8fd"
       },
       "homebrew/cask-versions": {
-        "revision": "c31073b38348c407e5e90df3bac75eeb32e5df88"
+        "revision": "665f4efbc052df2b3a1965256af865829adb61e6"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -29,7 +32,7 @@
         "revision": "87171c0b593ee32666fcdd3183ad0c1aa50aa7b0"
       },
       "pulumi/tap": {
-        "revision": "186fb8fdbbc21b0cae65bc10acdd3947a4069d11"
+        "revision": "49132bbf80bbd455cf62bacd6f115585d20b2d8b"
       },
       "remotemobprogramming/brew": {
         "revision": "6ea8a4e37a632befc3b408b3504d3c171e431644"
@@ -1397,6 +1400,10 @@
           }
         }
       },
+      "hashicorp/tap/packer": {
+        "version": "1.8.6",
+        "bottle": false
+      },
       "pulumi/tap/pulumi": {
         "version": "3.59.1",
         "bottle": false
@@ -1468,7 +1475,7 @@
         }
       },
       "google-chrome": {
-        "version": "111.0.5563.110",
+        "version": "111.0.5563.146",
         "options": {
           "full_name": "google-chrome"
         }
@@ -1540,7 +1547,7 @@
         }
       },
       "slack": {
-        "version": "4.31.152",
+        "version": "4.31.155",
         "options": {
           "full_name": "slack"
         }
@@ -1619,7 +1626,7 @@
       },
       "Telegram": {
         "id": "747648890",
-        "version": "9.5.2"
+        "version": "9.5.3"
       },
       "The Unarchiver": {
         "id": "425424353",
@@ -1634,7 +1641,7 @@
   "system": {
     "macos": {
       "ventura": {
-        "HOMEBREW_VERSION": "4.0.9-102-g140d444",
+        "HOMEBREW_VERSION": "4.0.10-19-gf75c56a",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "14.2.0.0.1.1668646533",
