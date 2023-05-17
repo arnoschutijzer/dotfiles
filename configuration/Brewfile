@@ -12,6 +12,7 @@ tap "remotemobprogramming/brew"
 brew "python@3.11"
 brew "ansible"
 brew "awscli"
+brew "python@3.9"
 brew "deno"
 brew "ffmpeg"
 brew "gh"
@@ -76,6 +77,7 @@ cask "vagrant"
 cask "visual-studio-code"
 cask "vlc"
 cask "wkhtmltopdf"
+mas "Diffusers", id: 1666309574
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
 mas "iMovie", id: 408981434
