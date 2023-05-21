@@ -1458,6 +1458,12 @@
       }
     },
     "cask": {
+      "arc": {
+        "version": "0.104.0,38955",
+        "options": {
+          "full_name": "arc"
+        }
+      },
       "authy": {
         "version": "2.3.0",
         "options": {
