@@ -81,6 +81,7 @@ cask "vagrant"
 cask "visual-studio-code"
 cask "vlc"
 cask "wkhtmltopdf"
+mas "1Password 7", id: 1333542190
 mas "Diffusers", id: 1666309574
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
