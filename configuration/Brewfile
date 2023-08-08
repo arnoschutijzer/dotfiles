@@ -49,6 +49,7 @@ brew "hashicorp/tap/packer"
 brew "pulumi/tap/pulumi"
 brew "remotemobprogramming/brew/mob"
 brew "snyk/tap/snyk"
+cask "1password"
 cask "arc"
 cask "authy"
 cask "aws-vault"
@@ -81,7 +82,6 @@ cask "vagrant"
 cask "visual-studio-code"
 cask "vlc"
 cask "wkhtmltopdf"
-mas "1Password 7", id: 1333542190
 mas "Diffusers", id: 1666309574
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
@@ -104,5 +104,6 @@ vscode "golang.go"
 vscode "k--kato.intellij-idea-keybindings"
 vscode "ms-azuretools.vscode-docker"
 vscode "ms-vsliveshare.vsliveshare"
+vscode "numso.prettier-standard-vscode"
 vscode "Orta.vscode-jest"
 vscode "redhat.vscode-xml"
