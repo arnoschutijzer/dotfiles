@@ -5,7 +5,7 @@
         "revision": "1b50a216ea044f2cfffd258b9841f2dc2e54048e"
       },
       "hashicorp/tap": {
-        "revision": "898bebb82591b36ba8720ac28f1870c221390c1c"
+        "revision": "81fc49326e9b03e7294a6b22433f31f73112b456"
       },
       "homebrew/bundle": {
         "revision": "2b24ca760710ef2fe92c6d295dc2813cdb0b166a"
@@ -17,7 +17,7 @@
         "revision": "81bf750832ccb8bb6eda9372b6250603d1932b23"
       },
       "homebrew/cask-versions": {
-        "revision": "4603e235232aac3a6e8fbf5a563c9dfeb05e6362"
+        "revision": "287df445089fbeb380b77585dd3f9ed5bf785b04"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -26,7 +26,7 @@
         "revision": "581273076ef9c4803af027326d3cf7462e0317bf"
       },
       "pulumi/tap": {
-        "revision": "a05bc00f917ecdd496c0ac0d6deacd8c343a6610"
+        "revision": "e9820a8433397de22a5a3ea8bd74aaf9d1f214c4"
       },
       "remotemobprogramming/brew": {
         "revision": "a2044ac84da1cf0da17c122d1307dad187e2be7e"
@@ -1636,7 +1636,7 @@
         "bottle": false
       },
       "pulumi/tap/pulumi": {
-        "version": "3.86.0",
+        "version": "3.87.0",
         "bottle": false
       },
       "remotemobprogramming/brew/mob": {
@@ -1932,7 +1932,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.14-47-g7456789",
+        "HOMEBREW_VERSION": "4.1.14-52-g8f7e06a",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.0.0.0.1.1694021235",
