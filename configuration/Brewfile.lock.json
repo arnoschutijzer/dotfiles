@@ -1774,6 +1774,12 @@
           "full_name": "mysqlworkbench"
         }
       },
+      "obsidian": {
+        "version": "1.4.16",
+        "options": {
+          "full_name": "obsidian"
+        }
+      },
       "openvpn-connect": {
         "version": "3.4.6,4699",
         "options": {
