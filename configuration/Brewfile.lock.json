@@ -5,19 +5,19 @@
         "revision": "1b50a216ea044f2cfffd258b9841f2dc2e54048e"
       },
       "hashicorp/tap": {
-        "revision": "8a14b0437ce4ed3b45b25573aeb3671c797442c4"
+        "revision": "80733f313401c40e9caeecaee574127aad38ca64"
       },
       "homebrew/bundle": {
-        "revision": "743f2aad47601c1e162f0ff05219d5a0bb15e0ad"
+        "revision": "e4798d8075e1a793f065be3e5e1674ec09193d17"
       },
       "homebrew/cask": {
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "d6a5c37058565b55d91ed6fdf39620eed18fa3e0"
+        "revision": "6f04e418dc2bbb72fc438b25de315e0d48aff286"
       },
       "homebrew/cask-versions": {
-        "revision": "dc98730e5c1897821d807c02771c62ce251730e1"
+        "revision": "b286f4277a77b7a96a4466e20ab73db517eb7921"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -26,7 +26,7 @@
         "revision": "796f4cceab8665b8c87f6b0c456e33fe40848d80"
       },
       "pulumi/tap": {
-        "revision": "f3560eacd02770c3089ff47e3dbb29400e2101b8"
+        "revision": "9504d1408e68826afa5d4f98366e230b6eaeb058"
       },
       "remotemobprogramming/brew": {
         "revision": "a2044ac84da1cf0da17c122d1307dad187e2be7e"
@@ -1629,7 +1629,7 @@
         "bottle": false
       },
       "pulumi/tap/pulumi": {
-        "version": "3.97.0",
+        "version": "3.98.0",
         "bottle": false
       },
       "remotemobprogramming/brew/mob": {
@@ -1685,7 +1685,7 @@
         }
       },
       "discord": {
-        "version": "0.0.289",
+        "version": "0.0.290",
         "options": {
           "full_name": "discord"
         }
@@ -1703,7 +1703,7 @@
         }
       },
       "drawio": {
-        "version": "22.1.2",
+        "version": "22.1.11",
         "options": {
           "full_name": "drawio"
         }
@@ -1763,7 +1763,7 @@
         }
       },
       "miro": {
-        "version": "0.8.24",
+        "version": "0.8.26",
         "options": {
           "full_name": "miro"
         }
@@ -1931,7 +1931,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.1.25-79-g3431996",
+        "HOMEBREW_VERSION": "4.2.0-19-g23ce2d5",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
