@@ -20,3 +20,8 @@ upgrade:
 .PHONY: deps
 deps:
 	. ./get_brew_deps.sh
+
+.PHONY: cleanup
+cleanup:
+	. brew cleanup --prune=all
+
