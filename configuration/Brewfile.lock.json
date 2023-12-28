@@ -1887,6 +1887,7 @@
       }
     },
     "vscode": {
+      "amazonwebservices.aws-toolkit-vscode": null,
       "bierner.lit-html": null,
       "christian-kohler.npm-intellisense": null,
       "dbaeumer.vscode-eslint": null,
