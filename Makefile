@@ -23,5 +23,5 @@ deps:
 
 .PHONY: cleanup
 cleanup:
-	. brew cleanup --prune=all
+	brew cleanup --prune=all
 
