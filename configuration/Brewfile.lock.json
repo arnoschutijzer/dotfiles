@@ -14,10 +14,10 @@
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "d46f0e18ef8ddf956763949d5e34ddb2f78bd894"
+        "revision": "a194ac13f7024d994759d91d8e7ee2f5bdcf0865"
       },
       "homebrew/cask-versions": {
-        "revision": "b025ad40d3a434802b2702d8a3367ac52d5f32a0"
+        "revision": "12d65abfd84fb8970cdf9f1ed7bbd3c7503420ff"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -269,43 +269,43 @@
       "ffmpeg": {
         "version": "6.1.1_2",
         "bottle": {
-          "rebuild": 0,
+          "rebuild": 1,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sonoma": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:dd413014b8aea43b1387efa82174f5a6ac4846ff58ef9c5ae4b163ed7a3ae2bb",
-              "sha256": "dd413014b8aea43b1387efa82174f5a6ac4846ff58ef9c5ae4b163ed7a3ae2bb"
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:2c48104abe3cd1a93a70b3f348436b4ad13f049a627e42d600a3bcd45d36f029",
+              "sha256": "2c48104abe3cd1a93a70b3f348436b4ad13f049a627e42d600a3bcd45d36f029"
             },
             "arm64_ventura": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:5a4f03d4fc783d1fc6d3ab80075b677c72fb9b3b6edaf643db4dab9d090e7017",
-              "sha256": "5a4f03d4fc783d1fc6d3ab80075b677c72fb9b3b6edaf643db4dab9d090e7017"
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:814115d25949722c9700c8c1d523b4c58ca0b0dde9e1c0ae6bc5c4e561bd4ce3",
+              "sha256": "814115d25949722c9700c8c1d523b4c58ca0b0dde9e1c0ae6bc5c4e561bd4ce3"
             },
             "arm64_monterey": {
               "cellar": "/opt/homebrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:61559972856452f9adcc53120038da536f4d55da7a6c358a49f55fd040b2036a",
-              "sha256": "61559972856452f9adcc53120038da536f4d55da7a6c358a49f55fd040b2036a"
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:c4079a9865e580840dfad955a4325d2ab21e29de4b1deef37645b050ecf309c4",
+              "sha256": "c4079a9865e580840dfad955a4325d2ab21e29de4b1deef37645b050ecf309c4"
             },
             "sonoma": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:9421ae4f3c55a7730209cf4a2a5acd5328c83fe72e976cbcd0443457c9f45802",
-              "sha256": "9421ae4f3c55a7730209cf4a2a5acd5328c83fe72e976cbcd0443457c9f45802"
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:e23c18765ae9c6673ca26dc83341e78ececa83fc2ca5da72f895b2baf6c96037",
+              "sha256": "e23c18765ae9c6673ca26dc83341e78ececa83fc2ca5da72f895b2baf6c96037"
             },
             "ventura": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:2fec9a5c15081fcee7d858f882d1b73fd5701472435f21e495c6a1a9d1ca6c7f",
-              "sha256": "2fec9a5c15081fcee7d858f882d1b73fd5701472435f21e495c6a1a9d1ca6c7f"
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:35c3a1b8d312725a0e054f138f5a1486ea41a002c9fd15edf013ab57c57d2f73",
+              "sha256": "35c3a1b8d312725a0e054f138f5a1486ea41a002c9fd15edf013ab57c57d2f73"
             },
             "monterey": {
               "cellar": "/usr/local/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:0a0e96c862211e5617b1e4a2abd2174283595da324ab5833d4586b025a600d1f",
-              "sha256": "0a0e96c862211e5617b1e4a2abd2174283595da324ab5833d4586b025a600d1f"
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:4141e7c430de3a02692961f4a3f45b9be0b5c97304d0db6dd543f7b2d1f55112",
+              "sha256": "4141e7c430de3a02692961f4a3f45b9be0b5c97304d0db6dd543f7b2d1f55112"
             },
             "x86_64_linux": {
               "cellar": "/home/linuxbrew/.linuxbrew/Cellar",
-              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:732574f9e961218dfb0d6d0e239891b7c23940510a1332c336068c8065be4cb0",
-              "sha256": "732574f9e961218dfb0d6d0e239891b7c23940510a1332c336068c8065be4cb0"
+              "url": "https://ghcr.io/v2/homebrew/core/ffmpeg/blobs/sha256:56e53486dfc7036351897830f61cc15cc17135231330a51208c7761e21e7c40b",
+              "sha256": "56e53486dfc7036351897830f61cc15cc17135231330a51208c7761e21e7c40b"
             }
           }
         }
@@ -1644,7 +1644,7 @@
         }
       },
       "dbeaver-community": {
-        "version": "23.3.1",
+        "version": "23.3.2",
         "options": {
           "full_name": "dbeaver-community"
         }
@@ -1886,6 +1886,7 @@
       "esbenp.prettier-vscode": null,
       "GitHub.github-vscode-theme": null,
       "golang.go": null,
+      "hashicorp.terraform": null,
       "k--kato.intellij-idea-keybindings": null,
       "ms-azuretools.vscode-docker": null,
       "ms-vsliveshare.vsliveshare": null,
@@ -1897,7 +1898,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.2-25-g3821fab",
+        "HOMEBREW_VERSION": "4.2.2-29-gb3751bc",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
