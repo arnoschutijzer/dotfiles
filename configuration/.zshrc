@@ -126,6 +126,7 @@ alias sed=gsed
 alias idea='open -a "`ls -dt /Applications/IntelliJ\ IDEA*|head -1`"'
 alias i='idea .'
 alias c='code .'
+alias code=zed
 # see https://github.com/OpenVPN/openvpn3/issues/139#issuecomment-1215125756
 alias vpn='sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/usr/sbin/ovpnagent'
 

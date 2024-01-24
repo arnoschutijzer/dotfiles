@@ -5,7 +5,7 @@
         "revision": "1b50a216ea044f2cfffd258b9841f2dc2e54048e"
       },
       "hashicorp/tap": {
-        "revision": "962a0364c3e9e4628e1ea5deb8eac6b134b282b3"
+        "revision": "64b562c8a34471907d87d7a38212316e2e6d1ae0"
       },
       "homebrew/bundle": {
         "revision": "d44243fe191e962fce60cbf8e25b6f2e3c1248b3"
@@ -17,7 +17,7 @@
         "revision": "96121ef07559f3018e61144a69695841948e0a36"
       },
       "homebrew/cask-versions": {
-        "revision": "f676e5fb33dac118bb2707c4a26a0eeb0dc64546"
+        "revision": "d59e8670a74ac33b43be927a91c939f8936889e4"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -32,7 +32,7 @@
         "revision": "a2044ac84da1cf0da17c122d1307dad187e2be7e"
       },
       "snyk/tap": {
-        "revision": "970d047c44dc13cfc721ee24964180a00cabbaa0"
+        "revision": "5e63ce567b041943bcfe19221a6747f090e2d611"
       }
     },
     "brew": {
@@ -1582,13 +1582,13 @@
         "bottle": false
       },
       "snyk/tap/snyk": {
-        "version": "1.1272.0",
+        "version": "1.1274.0",
         "bottle": false
       }
     },
     "cask": {
       "1password": {
-        "version": "8.10.23",
+        "version": "8.10.24",
         "options": {
           "full_name": "1password"
         }
@@ -1666,7 +1666,7 @@
         }
       },
       "google-chrome": {
-        "version": "120.0.6099.234",
+        "version": "121.0.6167.85",
         "options": {
           "full_name": "google-chrome"
         }
@@ -1690,7 +1690,7 @@
         }
       },
       "microsoft-auto-update": {
-        "version": "4.66.23121017",
+        "version": "4.67.24011420",
         "options": {
           "full_name": "microsoft-auto-update"
         }
@@ -1808,6 +1808,12 @@
         "options": {
           "full_name": "wkhtmltopdf"
         }
+      },
+      "zed": {
+        "version": "0.118.1",
+        "options": {
+          "full_name": "zed"
+        }
       }
     },
     "mas": {
@@ -1879,7 +1885,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.5-32-g86e1c8a",
+        "HOMEBREW_VERSION": "4.2.5-46-ga42a7ea",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
