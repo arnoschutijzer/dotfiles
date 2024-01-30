@@ -125,8 +125,6 @@ alias tflock='terraform providers lock -platform=linux_amd64'
 alias sed=gsed
 alias idea='open -a "`ls -dt /Applications/IntelliJ\ IDEA*|head -1`"'
 alias i='idea .'
-alias c='code .'
-alias code=zed
 # see https://github.com/OpenVPN/openvpn3/issues/139#issuecomment-1215125756
 alias vpn='sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/usr/sbin/ovpnagent'
 
@@ -165,7 +163,7 @@ function ytdl() {
 }
 
 function set_protonmail() {
-  git config user.email "arno.schutijzer@protonmail.com" 
+  git config user.email "arno.schutijzer@protonmail.com"
 }
 
 function rewrite_commits() {
@@ -190,7 +188,7 @@ fi
 export NVM_DIR="$HOME/.nvm"
   [ -s "/opt/homebrew/opt/nvm/nvm.sh" ] && . "/opt/homebrew/opt/nvm/nvm.sh"  # This loads nvm
   [ -s "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm" ] && . "/opt/homebrew/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-  
+
 load-nvmrc() {
   local nvmrc_path
   nvmrc_path="$(nvm_find_nvmrc)"
