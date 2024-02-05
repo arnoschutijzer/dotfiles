@@ -959,6 +959,50 @@
           }
         }
       },
+      "ollama": {
+        "version": "0.1.23",
+        "bottle": {
+          "rebuild": 0,
+          "root_url": "https://ghcr.io/v2/homebrew/core",
+          "files": {
+            "arm64_sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ollama/blobs/sha256:c6c12265a722b2ed2b2838bfc257942a4c68b49b4398f5cf503dcc368a7738b5",
+              "sha256": "c6c12265a722b2ed2b2838bfc257942a4c68b49b4398f5cf503dcc368a7738b5"
+            },
+            "arm64_ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ollama/blobs/sha256:aec7bccd9e39be3d99528e94fcc6445e96e75e6bbd5eb125b75c7391b8f312d4",
+              "sha256": "aec7bccd9e39be3d99528e94fcc6445e96e75e6bbd5eb125b75c7391b8f312d4"
+            },
+            "arm64_monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ollama/blobs/sha256:a2d1325bd2fbbabf1fb9ddc67fb733ce60aaa203374e9845b9ef3893702b176f",
+              "sha256": "a2d1325bd2fbbabf1fb9ddc67fb733ce60aaa203374e9845b9ef3893702b176f"
+            },
+            "sonoma": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ollama/blobs/sha256:d7992ff532d7bb26921970f1fd82bc43eb3a4c6e00f44788e4e6ac4433bb6f7d",
+              "sha256": "d7992ff532d7bb26921970f1fd82bc43eb3a4c6e00f44788e4e6ac4433bb6f7d"
+            },
+            "ventura": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ollama/blobs/sha256:6ba0f1208d55b6f2820f1f1fa7100c3a518bd7718a309410603097cde15efb08",
+              "sha256": "6ba0f1208d55b6f2820f1f1fa7100c3a518bd7718a309410603097cde15efb08"
+            },
+            "monterey": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ollama/blobs/sha256:13c8a5711e684e157352dfc0d13e567f8aaba5760c6028505103d31679bcc096",
+              "sha256": "13c8a5711e684e157352dfc0d13e567f8aaba5760c6028505103d31679bcc096"
+            },
+            "x86_64_linux": {
+              "cellar": ":any_skip_relocation",
+              "url": "https://ghcr.io/v2/homebrew/core/ollama/blobs/sha256:a69c272a579eb4df8b8a36e95a9d67b48b532c9e25342cc62afed8907678146d",
+              "sha256": "a69c272a579eb4df8b8a36e95a9d67b48b532c9e25342cc62afed8907678146d"
+            }
+          }
+        }
+      },
       "pyenv": {
         "version": "2.3.35",
         "bottle": {
@@ -1809,7 +1853,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.6-119-gd947721",
+        "HOMEBREW_VERSION": "4.2.6-127-g6170b62",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
