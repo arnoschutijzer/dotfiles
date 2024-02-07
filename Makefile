@@ -11,6 +11,7 @@ configure:
 	. ./configure_git.sh
 	. ./configure_mac.sh
 	. ./configure_shell.sh
+	. ./install_fonts.sh
 
 .PHONY: upgrade
 upgrade:
@@ -24,4 +25,3 @@ deps:
 .PHONY: cleanup
 cleanup:
 	brew cleanup --prune=all
-
