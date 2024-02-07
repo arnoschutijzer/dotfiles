@@ -8,7 +8,7 @@
         "revision": "ed45ee9cfe4417632a73914b3afdb55310969de3"
       },
       "homebrew/bundle": {
-        "revision": "aa54974fcce3c4e55fdb88732b47dad9b1bacb0a"
+        "revision": "66ededca544a9851662967aacdaa3c9b1b5da709"
       },
       "homebrew/cask": {
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
@@ -17,7 +17,7 @@
         "revision": "289205374586d0476d3dee30cd87298fa368b864"
       },
       "homebrew/cask-versions": {
-        "revision": "72dda751e63d7460cef39bb5aabf0428feac5103"
+        "revision": "8cdb4dcdb621505d0e47255201cb7bd5ea06d873"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -32,7 +32,7 @@
         "revision": "485ec0f65e7a500bb4d4e317b7d9178da0ec5447"
       },
       "snyk/tap": {
-        "revision": "f5a14890abdaf7a7674235a9825719cf40ae1118"
+        "revision": "97e58da87d571da69724a1146ad86cb4f092e5a2"
       }
     },
     "brew": {
@@ -1606,7 +1606,7 @@
         "bottle": false
       },
       "snyk/tap/snyk": {
-        "version": "1.1277.0",
+        "version": "1.1278.0",
         "bottle": false
       }
     },
@@ -1684,7 +1684,7 @@
         }
       },
       "google-chrome": {
-        "version": "121.0.6167.139",
+        "version": "121.0.6167.160",
         "options": {
           "full_name": "google-chrome"
         }
@@ -1897,7 +1897,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.7-11-g35eca7a",
+        "HOMEBREW_VERSION": "4.2.7-53-g51ec419",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
