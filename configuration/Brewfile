@@ -89,10 +89,10 @@ cask "wkhtmltopdf"
 cask "zed"
 mas "Diffusers", id: 1666309574
 mas "eID-Signer", id: 1407740667
-mas "Harvest", id: 506189836
 mas "iMovie", id: 408981434
 mas "Keynote", id: 409183694
 mas "Microsoft Outlook", id: 985367838
+mas "Microsoft Remote Desktop", id: 1295203466
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Telegram", id: 747648890
