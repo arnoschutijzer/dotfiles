@@ -138,18 +138,6 @@ function agpg {
   unset GPG_KEY
 }
 
-function ghs {
-  open "https://github.com/search?&q=$*"
-}
-
-function open_site {
-  open https://$1
-}
-
-alias ci="open_site ci.skryv.com"
-alias github="open_site github.com"
-alias org_github="open_site github.com/skryv"
-
 # start npm commands with r <command>
 function r {
     echo "running $*\n";
