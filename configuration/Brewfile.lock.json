@@ -14,10 +14,10 @@
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "2708973cc6ff7d88c36aa461c7614d6d1e6b8044"
+        "revision": "c8a9ad8e349bcf1d7a7c30f1b178b746591aa160"
       },
       "homebrew/cask-versions": {
-        "revision": "daf0ac9fae85a77ed6b3e274f7f5d729c672feca"
+        "revision": "1cee64f095391bbe25c54f6fe89e4e12d1a771c9"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -1756,7 +1756,7 @@
         }
       },
       "postman": {
-        "version": "10.22.0",
+        "version": "10.23.0",
         "options": {
           "full_name": "postman"
         }
@@ -1897,12 +1897,12 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.7-133-g024eb64",
+        "HOMEBREW_VERSION": "4.2.8",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
         "Xcode": "15.2",
-        "macOS": "14.3"
+        "macOS": "14.3.1"
       }
     }
   }
