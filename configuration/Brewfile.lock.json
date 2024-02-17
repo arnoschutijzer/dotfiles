@@ -1761,6 +1761,12 @@
           "full_name": "postman"
         }
       },
+      "raycast": {
+        "version": "1.67.1",
+        "options": {
+          "full_name": "raycast"
+        }
+      },
       "robo-3t": {
         "version": "1.4.4,e6ac9ec",
         "options": {
