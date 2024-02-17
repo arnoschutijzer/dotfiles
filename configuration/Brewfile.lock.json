@@ -1701,12 +1701,6 @@
           "full_name": "iterm2"
         }
       },
-      "jumpcut": {
-        "version": "0.84",
-        "options": {
-          "full_name": "jumpcut"
-        }
-      },
       "microsoft-auto-update": {
         "version": "4.68.24021416",
         "options": {
@@ -1771,12 +1765,6 @@
         "version": "1.4.4,e6ac9ec",
         "options": {
           "full_name": "robo-3t"
-        }
-      },
-      "shiftit": {
-        "version": "1.6.6",
-        "options": {
-          "full_name": "shiftit"
         }
       },
       "slack": {
