@@ -14,16 +14,16 @@
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "3c9d137956343e190e0feb319613de9ab50cd8c0"
+        "revision": "16aa7909152e49d7016c8811d98cf70c83d46cb0"
       },
       "homebrew/cask-versions": {
-        "revision": "8df1d617bf93da5ac9545a010038154fa3e7e634"
+        "revision": "bf47a1b644ae190a0a1ceb3ea1a48e49b0fa523a"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
       },
       "isen-ng/dotnet-sdk-versions": {
-        "revision": "0791359d15d0d2d3d485c311efe7e60b96d46d8b"
+        "revision": "3a5c54378c80159085fd4031bc6cc442f68ad028"
       },
       "pulumi/tap": {
         "revision": "a7555c3e14e27a26bb00a873d0c1546c637b5f07"
@@ -1642,7 +1642,7 @@
         }
       },
       "dbeaver-community": {
-        "version": "23.3.4",
+        "version": "23.3.5",
         "options": {
           "full_name": "dbeaver-community"
         }
@@ -1714,7 +1714,7 @@
         }
       },
       "microsoft-remote-desktop": {
-        "version": "10.9.5",
+        "version": "10.9.6",
         "options": {
           "full_name": "microsoft-remote-desktop"
         }
@@ -1891,7 +1891,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.8-158-g5d3fae3",
+        "HOMEBREW_VERSION": "4.2.8-160-ge5fefd7",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
