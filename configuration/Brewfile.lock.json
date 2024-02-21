@@ -26,7 +26,7 @@
         "revision": "28616c4474c6cb9fc3fcdfee60b57f6dd260935b"
       },
       "pulumi/tap": {
-        "revision": "a7555c3e14e27a26bb00a873d0c1546c637b5f07"
+        "revision": "8ecda221b0174181add6291d073cdd8af164c19d"
       },
       "remotemobprogramming/brew": {
         "revision": "485ec0f65e7a500bb4d4e317b7d9178da0ec5447"
@@ -1762,7 +1762,7 @@
         }
       },
       "raycast": {
-        "version": "1.67.1",
+        "version": "1.68.0",
         "options": {
           "full_name": "raycast"
         }
