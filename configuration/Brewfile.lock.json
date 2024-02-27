@@ -5,19 +5,19 @@
         "revision": "1b50a216ea044f2cfffd258b9841f2dc2e54048e"
       },
       "hashicorp/tap": {
-        "revision": "1b377ce7373908f4100b177ff54229b1d41da78e"
+        "revision": "5c99d9078258577992e556e0aa84f9c92dda1328"
       },
       "homebrew/bundle": {
-        "revision": "9d77d7001e805498d4c6c3001c13124f605eed24"
+        "revision": "77f5526b935e5eb6714f905032616882ec7c1747"
       },
       "homebrew/cask": {
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "ad27d786cde117b31c0d79aa260759703af1fa61"
+        "revision": "0de8c6fe4a0acabfb3a0bdbaad9210fcbbc10a2f"
       },
       "homebrew/cask-versions": {
-        "revision": "c9fb6d9ddfa17b2f903aa12f9d5edf9cd2617dee"
+        "revision": "39dd84393c7c4c74ecad640cde6f0e8b38207f4d"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -1654,7 +1654,7 @@
         }
       },
       "docker": {
-        "version": "4.27.2,137060",
+        "version": "4.28.0,139021",
         "options": {
           "full_name": "docker"
         }
@@ -1891,7 +1891,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.9-118-gc6d9592",
+        "HOMEBREW_VERSION": "4.2.10-9-g7848bd3",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
