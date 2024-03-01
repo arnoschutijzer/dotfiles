@@ -128,6 +128,7 @@ alias i='idea .'
 # see https://github.com/OpenVPN/openvpn3/issues/139#issuecomment-1215125756
 alias vpn='sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/usr/sbin/ovpnagent'
 alias openssl1='/opt/homebrew/Cellar/openssl@1.1/1.1.1w/bin/openssl'
+alias ga.='ga .'
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
