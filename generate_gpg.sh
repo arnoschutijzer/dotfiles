@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 gpg --full-generate-key
 

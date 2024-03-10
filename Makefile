@@ -9,10 +9,11 @@ apps:
 
 .PHONY: configure
 configure:
-	. ./configure_git.sh
 	. ./configure_mac.sh
-	. ./configure_shell.sh
+	. ./configure_git.sh
 	. ./install_fonts.sh
+	. ./configure_shell.sh
+	. ./configure_tools.sh
 
 .PHONY: upgrade
 upgrade:
