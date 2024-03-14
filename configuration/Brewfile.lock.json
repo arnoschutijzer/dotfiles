@@ -1618,7 +1618,7 @@
         "bottle": false
       },
       "pulumi/tap/pulumi": {
-        "version": "3.109.0",
+        "version": "3.110.0",
         "bottle": false
       },
       "remotemobprogramming/brew/mob": {
@@ -1626,7 +1626,7 @@
         "bottle": false
       },
       "snyk/tap/snyk": {
-        "version": "1.1283.0",
+        "version": "1.1283.1",
         "bottle": false
       }
     },
