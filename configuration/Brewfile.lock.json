@@ -5,34 +5,34 @@
         "revision": "1b50a216ea044f2cfffd258b9841f2dc2e54048e"
       },
       "hashicorp/tap": {
-        "revision": "1ee747ddb032bc66f2a65d7176ed2ab8924cd226"
+        "revision": "403a28546e01323f71a29d04683dca91edbc7245"
       },
       "homebrew/bundle": {
-        "revision": "bb1c80baa7fac67bbffe81a2862c75a5dc7ea4a7"
+        "revision": "d4d7fd2135323340eb1c1a16af798f2ffeb19ae4"
       },
       "homebrew/cask": {
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
       },
       "homebrew/cask-fonts": {
-        "revision": "2ffb58600554a5984a3d06439418a7c494a482fb"
+        "revision": "2f33ec6dbf42a51304deb26a1693987912412f32"
       },
       "homebrew/cask-versions": {
-        "revision": "1528ddecd41b64176e8c733084368ae3bf5f3e37"
+        "revision": "6a76d441a6dd04f4cc5ddadd1cfe1c9b729528a1"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
       },
       "isen-ng/dotnet-sdk-versions": {
-        "revision": "c25684d7e6d5cf75feb6c25427d3cc7c819f8b11"
+        "revision": "8282f7859b5f61d15f417e854086b683c6310e91"
       },
       "pulumi/tap": {
-        "revision": "b8f2562d3a021c37dbed53f3a5d307b2e58f1794"
+        "revision": "b46f53d458bb45543e543326951ab2d802ce4719"
       },
       "remotemobprogramming/brew": {
         "revision": "485ec0f65e7a500bb4d4e317b7d9178da0ec5447"
       },
       "snyk/tap": {
-        "revision": "488c8c6d6eb3426f1343e182870614fa567a3ba5"
+        "revision": "0f5ff6e4bc80c6ae8e9a71bb8312b432fd8e3c2f"
       }
     },
     "brew": {
@@ -428,20 +428,6 @@
               "cellar": ":any_skip_relocation",
               "url": "https://ghcr.io/v2/homebrew/core/git-lfs/blobs/sha256:80391a7442b2c4a592f8c66ab24e07537559b3a4f420a85c60661c1182ddf197",
               "sha256": "80391a7442b2c4a592f8c66ab24e07537559b3a4f420a85c60661c1182ddf197"
-            }
-          }
-        }
-      },
-      "git-quick-stats": {
-        "version": "2.5.4",
-        "bottle": {
-          "rebuild": 0,
-          "root_url": "https://ghcr.io/v2/homebrew/core",
-          "files": {
-            "all": {
-              "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/git-quick-stats/blobs/sha256:37868602524aa395c84d6c0214b8af85b7773d97037d3532432629c32c1a5f62",
-              "sha256": "37868602524aa395c84d6c0214b8af85b7773d97037d3532432629c32c1a5f62"
             }
           }
         }
@@ -1676,7 +1662,7 @@
         }
       },
       "brave-browser": {
-        "version": "1.63.169.0",
+        "version": "1.63.174.0",
         "options": {
           "full_name": "brave-browser"
         }
@@ -1796,13 +1782,13 @@
         }
       },
       "postman": {
-        "version": "10.24.0",
+        "version": "10.24.3",
         "options": {
           "full_name": "postman"
         }
       },
       "raycast": {
-        "version": "1.69.2",
+        "version": "1.69.3",
         "options": {
           "full_name": "raycast"
         }
@@ -1868,7 +1854,7 @@
         }
       },
       "zed": {
-        "version": "0.125.4",
+        "version": "0.126.2",
         "options": {
           "full_name": "zed"
         }
@@ -1935,7 +1921,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.12-29-g58b84c3",
+        "HOMEBREW_VERSION": "4.2.12-51-g5012e2d",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.1.0.0.1.1700200546",
