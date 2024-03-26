@@ -1,0 +1,23 @@
+# This is Git's per-user configuration file.
+[core]
+	excludesfile = ~/.gitignore_global
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
+[commit]
+	gpgsign = true
+[branch]
+	autosetuprebase = always
+[alias]
+	praise = blame
+[filter "lfs"]
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+
+[includeIf "gitdir:~/development"]
+    path = ~/.gitconfig-personal
+[includeIf "gitdir:~/development/skryv/"]
+    path = ~/.gitconfig-work
