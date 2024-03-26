@@ -12,7 +12,7 @@ prompt_gpg () {
     SIGNINGKEY=$(gpg --list-sigs "$EMAIL" | awk '/sig/ && NR > 1 {print $2}' | tail -n +2 | tr -d '\n')
 }
 
-PERSONAL_CONFIG=.gitconfig-personal
+PERSONAL_CONFIG=~/.gitconfig-personal
 
 if [ -f "$PERSONAL_CONFIG" ]; then
     echo "$PERSONAL_CONFIG exists. Not touching it."
@@ -29,7 +29,7 @@ else
 EOF
 fi
 
-WORK_CONFIG=.gitconfig-work
+WORK_CONFIG=~/.gitconfig-work
 
 if [ -f "$WORK_CONFIG" ]; then
     echo "$WORK_CONFIG exists. Not touching it."
