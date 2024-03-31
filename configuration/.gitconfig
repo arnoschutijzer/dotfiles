@@ -17,7 +17,7 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 
-[includeIf "gitdir:~/development"]
+[includeIf "gitdir:~/development/"]
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/development/skryv/"]
     path = ~/.gitconfig-work
