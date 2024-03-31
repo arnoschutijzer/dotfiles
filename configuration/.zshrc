@@ -216,3 +216,5 @@ source /Users/arnoschutijzer/.docker/init-zsh.sh || true # Added by Docker Deskt
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+eval "$(conda "shell.$(basename "${SHELL}")" hook)"

@@ -1785,6 +1785,12 @@
           "full_name": "microsoft-teams"
         }
       },
+      "miniconda": {
+        "version": "py312_24.1.2-0",
+        "options": {
+          "full_name": "miniconda"
+        }
+      },
       "miro": {
         "version": "0.8.48",
         "options": {
