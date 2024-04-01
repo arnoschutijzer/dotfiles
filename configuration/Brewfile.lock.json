@@ -8,7 +8,7 @@
         "revision": "c26ac66e225573e961c0dc63e8cf8ade472dcd3b"
       },
       "homebrew/bundle": {
-        "revision": "77f4db8c286591fafaf81e1d86f2583c3b47fc90"
+        "revision": "e6af4878b9f279ef5e4f517d01fc79829374f49e"
       },
       "homebrew/cask": {
         "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
@@ -17,7 +17,7 @@
         "revision": "85b613ffa4af82d440b41e2745402bac2ef5aafa"
       },
       "homebrew/cask-versions": {
-        "revision": "9fa9bcfb6153f3e188065576a6645062e649c094"
+        "revision": "8e2beec445ff20d9f9fc4598848bf648781e8bd0"
       },
       "homebrew/core": {
         "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
@@ -1488,7 +1488,7 @@
         }
       },
       "tig": {
-        "version": "2.5.8_1",
+        "version": "2.5.9",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
@@ -1804,7 +1804,7 @@
         }
       },
       "obsidian": {
-        "version": "1.5.11",
+        "version": "1.5.12",
         "options": {
           "full_name": "obsidian"
         }
@@ -1852,7 +1852,7 @@
         }
       },
       "telegram": {
-        "version": "10.9.1,260779",
+        "version": "10.10,261674",
         "options": {
           "full_name": "telegram"
         }
@@ -1966,12 +1966,12 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.15-75-g221fde4",
+        "HOMEBREW_VERSION": "4.2.16-2-g6ab9704",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
         "Xcode": "15.3",
-        "macOS": "14.4"
+        "macOS": "14.4.1"
       }
     }
   }
