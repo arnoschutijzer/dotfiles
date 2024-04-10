@@ -5,25 +5,25 @@
         "revision": "1b50a216ea044f2cfffd258b9841f2dc2e54048e"
       },
       "hashicorp/tap": {
-        "revision": "a2d035ca6c25417c0bac087c3766b2936502ba72"
+        "revision": "8a49cb39caac44fafc49c91812db9b50dcf9ee6c"
       },
       "homebrew/bundle": {
-        "revision": "0376dd6111035567c966171332f5099aa7d1632b"
+        "revision": "f46a1db7ef9f2e017f6b01b7737e2af275270cfc"
       },
       "homebrew/cask": {
-        "revision": "520ca43ba797d38eb8b8d76cc97965bd49fac677"
+        "revision": "f897198698add4eb4e79a12f4d2c32596abe2f3c"
       },
       "homebrew/cask-fonts": {
-        "revision": "120847cb1d159b7dedc0137897f8702a96dbc134"
+        "revision": "bfd4e57d9ab408e94442d6ab01646235e854590f"
       },
       "homebrew/cask-versions": {
-        "revision": "d8500dbf6657620f92db884b58a9168407a4440f"
+        "revision": "c2bfe9f04c8d484708b92f97ba76bc9373ebee80"
       },
       "homebrew/core": {
-        "revision": "15cc58f490ef218e460352ccd00ebf79f35b2491"
+        "revision": "9dace34d7a6a3682937a74c2b48e05924c87b9f1"
       },
       "isen-ng/dotnet-sdk-versions": {
-        "revision": "e85763bc739c88d92bc1e894978e791c6832d382"
+        "revision": "8e82a76318e607cc53b20ade06525c05bd56e4ad"
       },
       "pulumi/tap": {
         "revision": "d63351c1eca70e30e90d40e7ed6d0a37ddd8c14c"
@@ -32,7 +32,7 @@
         "revision": "485ec0f65e7a500bb4d4e317b7d9178da0ec5447"
       },
       "snyk/tap": {
-        "revision": "a8486425490b68a844980c75154c1b9728d35c67"
+        "revision": "46401354c70173ec5faba0f60557ff026e7ace87"
       }
     },
     "brew": {
@@ -1704,7 +1704,7 @@
         "bottle": false
       },
       "snyk/tap/snyk": {
-        "version": "1.1287.0",
+        "version": "1.1288.0",
         "bottle": false
       }
     },
@@ -1752,7 +1752,7 @@
         }
       },
       "discord": {
-        "version": "0.0.299",
+        "version": "0.0.300",
         "options": {
           "full_name": "discord"
         }
@@ -1890,7 +1890,7 @@
         }
       },
       "spotify": {
-        "version": "1.2.34.783,923721d9,4676",
+        "version": "1.2.35.663,b699649e,5769",
         "options": {
           "full_name": "spotify"
         }
@@ -2012,7 +2012,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.2.17-25-ga21c71f",
+        "HOMEBREW_VERSION": "4.2.17-40-gef1c54e",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
