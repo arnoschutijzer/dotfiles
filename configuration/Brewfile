@@ -104,6 +104,7 @@ mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
 mas "Xcode", id: 497799835
 vscode "a-h.templ"
+vscode "amazonwebservices.amazon-q-vscode"
 vscode "amazonwebservices.aws-toolkit-vscode"
 vscode "bierner.lit-html"
 vscode "biomejs.biome"
