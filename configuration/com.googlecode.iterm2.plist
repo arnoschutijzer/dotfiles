@@ -4,6 +4,8 @@
 <dict>
 	<key>AlternateMouseScroll</key>
 	<true/>
+	<key>ClickToSelectCommand</key>
+	<false/>
 	<key>Custom Color Presets</key>
 	<dict>
 		<key>Broadcast</key>
@@ -219,6 +221,12 @@
 	</dict>
 	<key>Default Bookmark Guid</key>
 	<string>2066A53F-83F5-4249-A2B5-C0887588A380</string>
+	<key>DetectPasswordInput</key>
+	<true/>
+	<key>EnableDivisionView</key>
+	<false/>
+	<key>EnableProxyIcon</key>
+	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>Hotkey</key>
@@ -993,6 +1001,8 @@
 			<string>GeistMonoNFM-Regular 20</string>
 			<key>Option Key Sends</key>
 			<integer>0</integer>
+			<key>Place Prompt at First Column</key>
+			<true/>
 			<key>Prompt Before Closing 2</key>
 			<false/>
 			<key>Right Option Key Sends</key>
@@ -1025,6 +1035,8 @@
 			<false/>
 			<key>Shortcut</key>
 			<string></string>
+			<key>Show Mark Indicators</key>
+			<false/>
 			<key>Silence Bell</key>
 			<false/>
 			<key>Sync Title</key>
@@ -1108,6 +1120,8 @@
 	<integer>4</integer>
 	<key>VisualIndicatorForEsc</key>
 	<false/>
+	<key>WindowNumber</key>
+	<true/>
 	<key>WorkAroundBigSurBug</key>
 	<true/>
 	<key>findMode_iTerm</key>
