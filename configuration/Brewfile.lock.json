@@ -2023,6 +2023,18 @@
           "full_name": "postman"
         }
       },
+      "proton-mail": {
+        "version": "1.0.3",
+        "options": {
+          "full_name": "proton-mail"
+        }
+      },
+      "proton-pass": {
+        "version": "1.17.5",
+        "options": {
+          "full_name": "proton-pass"
+        }
+      },
       "raycast": {
         "version": "1.76.0",
         "options": {
