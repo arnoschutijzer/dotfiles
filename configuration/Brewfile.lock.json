@@ -5,10 +5,10 @@
         "revision": "f55820c60bd35b2a19f6371aba7aa93bdbf017a9"
       },
       "hashicorp/tap": {
-        "revision": "0e3e1fc26ceeffa49bb998c5d08f70e7ea5ba73c"
+        "revision": "88c77a2041fb61deb9dd0f45a18f91272778c05d"
       },
       "homebrew/bundle": {
-        "revision": "4ea7e7f90ad015670b7a73745ec488a373c1c393"
+        "revision": "4882b6c492f314eb2b88d9cc6406f0e4bd84b0b3"
       },
       "homebrew/cask": {
         "revision": "f897198698add4eb4e79a12f4d2c32596abe2f3c"
@@ -23,7 +23,7 @@
         "revision": "9dace34d7a6a3682937a74c2b48e05924c87b9f1"
       },
       "isen-ng/dotnet-sdk-versions": {
-        "revision": "bfb047a92f6413079548206501259cdfc552db29"
+        "revision": "bfbaec930be60fef4dfa2cf2d6819da8faac6e5c"
       },
       "pulumi/tap": {
         "revision": "488c15654fb7580684a05df50eb1a0733e6221f0"
@@ -81,45 +81,45 @@
         }
       },
       "awscli": {
-        "version": "2.16.4",
+        "version": "2.16.5",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sonoma": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:6093d72df0142f9f296a84bb34a831df9ff9795d85e8ad1a45f2682ea8d1b04a",
-              "sha256": "6093d72df0142f9f296a84bb34a831df9ff9795d85e8ad1a45f2682ea8d1b04a"
+              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:3429854e6b2e35637c4d247b64ce82128b6a18641351db40af1c36da6bb7f7ed",
+              "sha256": "3429854e6b2e35637c4d247b64ce82128b6a18641351db40af1c36da6bb7f7ed"
             },
             "arm64_ventura": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:744f88b17473b153da15e045cc9f6fd0116076d3b1a5480139673b10f5dce1bb",
-              "sha256": "744f88b17473b153da15e045cc9f6fd0116076d3b1a5480139673b10f5dce1bb"
+              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:eafdd38575da7428fc14645131e50cb6c068a4c5a593e14abc4718401e91680c",
+              "sha256": "eafdd38575da7428fc14645131e50cb6c068a4c5a593e14abc4718401e91680c"
             },
             "arm64_monterey": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:85e767074b1dba929406f8ff96112a08f93065375843334a51c4cee44f71062e",
-              "sha256": "85e767074b1dba929406f8ff96112a08f93065375843334a51c4cee44f71062e"
+              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:7ab6ebb9f859240e763ecf694fe5df34b4b0f38a3005909331230ab2743e0aa3",
+              "sha256": "7ab6ebb9f859240e763ecf694fe5df34b4b0f38a3005909331230ab2743e0aa3"
             },
             "sonoma": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:f19e9f05755ba36dacd3533863f8397b2c7faf26bf03d5ab28bee5ed0a681623",
-              "sha256": "f19e9f05755ba36dacd3533863f8397b2c7faf26bf03d5ab28bee5ed0a681623"
+              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:cdaf08a8f0899e1f87982eab37a676c22d1b703df1d1d5ccfb06462958dba1d6",
+              "sha256": "cdaf08a8f0899e1f87982eab37a676c22d1b703df1d1d5ccfb06462958dba1d6"
             },
             "ventura": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:de56227dfda9f99dbbaa94c1872d59c27e19412a0e766fbf539ee1a99d9d434e",
-              "sha256": "de56227dfda9f99dbbaa94c1872d59c27e19412a0e766fbf539ee1a99d9d434e"
+              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:69c4e686c41c5f9348bc36743bcd65831400fb6a07c77da8e60429eb5238f062",
+              "sha256": "69c4e686c41c5f9348bc36743bcd65831400fb6a07c77da8e60429eb5238f062"
             },
             "monterey": {
               "cellar": ":any",
-              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:5e46aebc448f663c88ca0d26f99ea7ef6779d37719831fed34af5e4bb59839fc",
-              "sha256": "5e46aebc448f663c88ca0d26f99ea7ef6779d37719831fed34af5e4bb59839fc"
+              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:9485608d62e4e540123a18641a4c152fc6dd776c4729032f34b4212492c3b4b3",
+              "sha256": "9485608d62e4e540123a18641a4c152fc6dd776c4729032f34b4212492c3b4b3"
             },
             "x86_64_linux": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:fb6850122e95fd4f8b2f7c1ae8f3938d14f7427538a6f7d08a9953ffef4a94fb",
-              "sha256": "fb6850122e95fd4f8b2f7c1ae8f3938d14f7427538a6f7d08a9953ffef4a94fb"
+              "url": "https://ghcr.io/v2/homebrew/core/awscli/blobs/sha256:31ec946e1294f5be334882aec7b7aa5b17f2e6b6739c483e9ef7169626ce36a0",
+              "sha256": "31ec946e1294f5be334882aec7b7aa5b17f2e6b6739c483e9ef7169626ce36a0"
             }
           }
         }
@@ -1862,7 +1862,7 @@
     },
     "cask": {
       "1password": {
-        "version": "8.10.33",
+        "version": "8.10.34",
         "options": {
           "full_name": "1password"
         }
@@ -1904,7 +1904,7 @@
         }
       },
       "discord": {
-        "version": "0.0.306",
+        "version": "0.0.307",
         "options": {
           "full_name": "discord"
         }
@@ -1922,7 +1922,7 @@
         }
       },
       "drawio": {
-        "version": "24.5.1",
+        "version": "24.5.3",
         "options": {
           "full_name": "drawio"
         }
@@ -1946,7 +1946,7 @@
         }
       },
       "intellij-idea-ce": {
-        "version": "2024.1.2,241.17011.79",
+        "version": "2024.1.3,241.17890.1",
         "options": {
           "full_name": "intellij-idea-ce"
         }
@@ -2018,7 +2018,7 @@
         }
       },
       "postman": {
-        "version": "11.1.14",
+        "version": "11.2.0",
         "options": {
           "full_name": "postman"
         }
@@ -2119,7 +2119,7 @@
       },
       "Keynote": {
         "id": "409183694",
-        "version": "14.0"
+        "version": "14.1"
       },
       "Microsoft Remote Desktop": {
         "id": "1295203466",
@@ -2127,11 +2127,11 @@
       },
       "Numbers": {
         "id": "409203825",
-        "version": "14.0"
+        "version": "14.1"
       },
       "Pages": {
         "id": "409201541",
-        "version": "14.0"
+        "version": "14.1"
       },
       "The Unarchiver": {
         "id": "425424353",
@@ -2177,7 +2177,7 @@
   "system": {
     "macos": {
       "sonoma": {
-        "HOMEBREW_VERSION": "4.3.4-12-gf063808",
+        "HOMEBREW_VERSION": "4.3.5-32-g7865cc5",
         "HOMEBREW_PREFIX": "/opt/homebrew",
         "Homebrew/homebrew-core": "api",
         "CLT": "15.3.0.0.1.1708646388",
