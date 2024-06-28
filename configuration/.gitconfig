@@ -11,6 +11,7 @@
 	autosetuprebase = always
 [alias]
 	praise = blame
+	fixup = commit --amend --no-edit
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
