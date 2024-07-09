@@ -4,7 +4,6 @@ all: apps configure
 .PHONY: apps
 apps:
 	. ./install_brew_deps.sh
-	. ./install_appstore_apps.sh
 	. ./install_go_deps.sh
 
 .PHONY: configure
