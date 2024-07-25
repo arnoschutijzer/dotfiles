@@ -212,9 +212,6 @@ export NODE_OPTIONS=--max_old_space_size=8192
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-source /Users/arnoschutijzer/.docker/init-zsh.sh || true # Added by Docker Desktop
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
-
-eval "$(conda "shell.$(basename "${SHELL}")" hook)"
