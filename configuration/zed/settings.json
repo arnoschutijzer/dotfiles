@@ -7,6 +7,9 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "project_panel": {
+    "dock": "right"
+  },
   "vim_mode": false,
   "theme": "Rosé Pine Moon",
   "base_keymap": "JetBrains",
