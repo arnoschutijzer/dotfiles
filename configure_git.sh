@@ -1,6 +1,7 @@
 #!/bin/zsh
 
 ln -sf "$(pwd)"/configuration/.gitignore_global ~
+ln -sf "$(pwd)"/configuration/.gitconfig ~
 
 git config --global core.excludesfile ~/.gitignore_global
 
