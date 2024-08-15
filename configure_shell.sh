@@ -10,5 +10,6 @@ git clone https://github.com/zsh-users/zsh-autosuggestions ${ZSH_CUSTOM:-~/.oh-m
 ln -sf "$(pwd)"/configuration/starship.toml ~/.starship.toml
 
 ln -sf "$(pwd)"/configuration/.zshrc ~/.zshrc
+ln -sf "$(pwd)"/configuration/.zprofile ~/.zprofile
 
 ln -sf "$(pwd)"/configuration/.vimrc ~/.vimrc
