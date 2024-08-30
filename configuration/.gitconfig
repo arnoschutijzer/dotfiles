@@ -17,7 +17,8 @@
 	required = true
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
-
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
 [includeIf "gitdir:~/"]
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/development/skryv/"]
