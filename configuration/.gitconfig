@@ -22,3 +22,5 @@
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/development/skryv/"]
     path = ~/.gitconfig-work
+[url "ssh://git@github.com/"]
+    insteadOf = https://github.com/
