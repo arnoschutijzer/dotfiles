@@ -73,7 +73,7 @@ eval "$(starship init zsh)"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(
-  git z macos ssh-agent zsh-autosuggestions
+  git z macos ssh-agent zsh-autosuggestions terraform
 )
 
 source $ZSH/oh-my-zsh.sh
@@ -117,7 +117,6 @@ alias clean='clean_mod && clean_yarn && clean_pkg'
 alias dka='docker kill $(docker ps -q)'
 alias dup='docker compose up -d'
 alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
-alias tf=terraform
 alias tfd=terraform-docs
 alias awsv=aws-vault
 alias ag=rg
