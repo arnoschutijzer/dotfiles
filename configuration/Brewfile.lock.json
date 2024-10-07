@@ -14,7 +14,7 @@
         "revision": "eb8ff2efce9c9af74789c9c97d37e76d4250eb8d"
       },
       "pulumi/tap": {
-        "revision": "e18bae901de7a9c148e1a281685da28cf4ae3dfc"
+        "revision": "a2d91e09288c2ce0cbda898ef05a88469bac8dbd"
       },
       "remotemobprogramming/brew": {
         "revision": "09c30002ad74101924a808a056c5be72c77d0b0f"
@@ -1378,40 +1378,40 @@
         }
       },
       "tenv": {
-        "version": "3.2.3",
+        "version": "3.2.4",
         "bottle": {
           "rebuild": 0,
           "root_url": "https://ghcr.io/v2/homebrew/core",
           "files": {
             "arm64_sequoia": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:e6b6980f2c7e023a57014c9c4723865c6d33a459d5d3fb4ad7a0ac7494a84e23",
-              "sha256": "e6b6980f2c7e023a57014c9c4723865c6d33a459d5d3fb4ad7a0ac7494a84e23"
+              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:2dee75af08491ff73f024862d3dd012a3db5d5acaa072a30267dd200fc43a5bf",
+              "sha256": "2dee75af08491ff73f024862d3dd012a3db5d5acaa072a30267dd200fc43a5bf"
             },
             "arm64_sonoma": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:e6b6980f2c7e023a57014c9c4723865c6d33a459d5d3fb4ad7a0ac7494a84e23",
-              "sha256": "e6b6980f2c7e023a57014c9c4723865c6d33a459d5d3fb4ad7a0ac7494a84e23"
+              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:2dee75af08491ff73f024862d3dd012a3db5d5acaa072a30267dd200fc43a5bf",
+              "sha256": "2dee75af08491ff73f024862d3dd012a3db5d5acaa072a30267dd200fc43a5bf"
             },
             "arm64_ventura": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:e6b6980f2c7e023a57014c9c4723865c6d33a459d5d3fb4ad7a0ac7494a84e23",
-              "sha256": "e6b6980f2c7e023a57014c9c4723865c6d33a459d5d3fb4ad7a0ac7494a84e23"
+              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:2dee75af08491ff73f024862d3dd012a3db5d5acaa072a30267dd200fc43a5bf",
+              "sha256": "2dee75af08491ff73f024862d3dd012a3db5d5acaa072a30267dd200fc43a5bf"
             },
             "sonoma": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:85536c6f8bec21e0984e0291e4c9bd2d5443284da650b62a530a2b590f2d20b4",
-              "sha256": "85536c6f8bec21e0984e0291e4c9bd2d5443284da650b62a530a2b590f2d20b4"
+              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:d57c944b5cfa3e1aa2dac868c6a498d9fc482dbee865fbe643c8d44c729d2e93",
+              "sha256": "d57c944b5cfa3e1aa2dac868c6a498d9fc482dbee865fbe643c8d44c729d2e93"
             },
             "ventura": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:85536c6f8bec21e0984e0291e4c9bd2d5443284da650b62a530a2b590f2d20b4",
-              "sha256": "85536c6f8bec21e0984e0291e4c9bd2d5443284da650b62a530a2b590f2d20b4"
+              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:d57c944b5cfa3e1aa2dac868c6a498d9fc482dbee865fbe643c8d44c729d2e93",
+              "sha256": "d57c944b5cfa3e1aa2dac868c6a498d9fc482dbee865fbe643c8d44c729d2e93"
             },
             "x86_64_linux": {
               "cellar": ":any_skip_relocation",
-              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:3ba2f469ac566d80214896dee69dbbce69376117579318cefe2ed1df5510230c",
-              "sha256": "3ba2f469ac566d80214896dee69dbbce69376117579318cefe2ed1df5510230c"
+              "url": "https://ghcr.io/v2/homebrew/core/tenv/blobs/sha256:5ea3b826c848ce94ac558dc2c063570df8fca9784fe2a1db60096dbefd1d0d43",
+              "sha256": "5ea3b826c848ce94ac558dc2c063570df8fca9784fe2a1db60096dbefd1d0d43"
             }
           }
         }
@@ -1743,7 +1743,7 @@
         }
       },
       "dbeaver-community": {
-        "version": "24.2.1",
+        "version": "24.2.2",
         "options": {
           "full_name": "dbeaver-community"
         }
@@ -2026,7 +2026,7 @@
         "Homebrew/homebrew-core": "api",
         "CLT": "16.0.0.0.1.1724870825",
         "Xcode": "16.0",
-        "macOS": "15.0"
+        "macOS": "15.0.1"
       }
     }
   }
