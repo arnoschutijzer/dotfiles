@@ -8,7 +8,7 @@
         "revision": "f7356f26320bac0f63496c6fb5c498b83e452a25"
       },
       "homebrew/bundle": {
-        "revision": "c9c3f604262d59ef9aa549c4d1bf3a5af9d60131"
+        "revision": "2de432e11bb93741a5d588cdf2d5d5428796827b"
       },
       "isen-ng/dotnet-sdk-versions": {
         "revision": "c8be2069a3816afb9eb5ebd38565bafe210b3ba9"
@@ -1720,7 +1720,7 @@
         }
       },
       "google-chrome": {
-        "version": "130.0.6723.92",
+        "version": "130.0.6723.117",
         "options": {
           "full_name": "google-chrome"
         }
@@ -1774,7 +1774,7 @@
         }
       },
       "obsidian": {
-        "version": "1.7.4",
+        "version": "1.7.5",
         "options": {
           "full_name": "obsidian"
         }
@@ -1828,7 +1828,7 @@
         }
       },
       "telegram": {
-        "version": "11.3,269137",
+        "version": "11.3.1,269213",
         "options": {
           "full_name": "telegram"
         }
