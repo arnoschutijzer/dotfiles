@@ -6,7 +6,7 @@ rm ./zed-mono.zip
 rm -rf ~/Library/Fonts/zed-mono
 mv zed-mono ~/Library/Fonts
 
-wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/GeistMono.zip -O geist-mono.zip
+wget https://github.com/ryanoasis/nerd-fonts/releases/download/v3.3.0/GeistMono.zip -O geist-mono.zip
 unzip ./geist-mono.zip -d geist-mono
 rm ./geist-mono.zip
 rm -rf ~/Library/Fonts/geist-mono
