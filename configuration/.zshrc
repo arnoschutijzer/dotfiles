@@ -122,7 +122,7 @@ alias awsv=aws-vault
 alias ag=rg
 alias tflock='terraform providers lock -platform=linux_amd64'
 alias sed=gsed
-alias idea='open -a "`ls -dt /Applications/IntelliJ\ IDEA*|head -1`"'
+alias idea='open -na "IntelliJ IDEA CE.app" --args "$@"'
 alias i='idea .'
 # see https://github.com/OpenVPN/openvpn3/issues/139#issuecomment-1215125756
 alias vpn='sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/usr/sbin/ovpnagent'
