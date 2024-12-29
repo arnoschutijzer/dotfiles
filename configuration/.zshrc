@@ -129,6 +129,7 @@ alias vpn='sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/us
 alias openssl1='/opt/homebrew/Cellar/openssl@1.1/1.1.1w/bin/openssl'
 alias ga.='ga .'
 alias venv='python3 -m venv .venv && source .venv/bin/activate'
+alias ls=eza
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
