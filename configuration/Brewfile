@@ -96,9 +96,9 @@ mas "Microsoft Excel", id: 462058435
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "The Unarchiver", id: 425424353
+mas "WhatsApp", id: 310633997
 mas "Windows App", id: 1295203466
 mas "Xcode", id: 497799835
-mas "‎WhatsApp", id: 310633997
 vscode "4ops.terraform"
 vscode "a-h.templ"
 vscode "amazonwebservices.amazon-q-vscode"
