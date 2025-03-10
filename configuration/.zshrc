@@ -149,7 +149,7 @@ function r {
 
 # usage: ytdl "hello world" https://youtube.url.here
 function ytdl() {
-  yt-dlp -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2;
+  yt-dlp -x --audio-format=mp3 --no-playlist -o "$1.%(ext)s" $2 --cookies-from-browser firefox --cookies ~/Downloads/cookies.txt;
   echo "successfully wrote to disk at $(pwd)";
 }
 
