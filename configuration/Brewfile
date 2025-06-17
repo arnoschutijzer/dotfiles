@@ -91,7 +91,7 @@ cask "temurin@8"
 cask "visual-studio-code"
 cask "vlc"
 cask "wkhtmltopdf"
-cask "zed"
+cask "zed@preview"
 cask "zen"
 mas "eID-Signer", id: 1407740667
 mas "GarageBand", id: 682658836
