@@ -92,7 +92,6 @@ cask "visual-studio-code"
 cask "vlc"
 cask "wkhtmltopdf"
 cask "zed@preview"
-cask "zen"
 mas "eID-Signer", id: 1407740667
 mas "GarageBand", id: 682658836
 mas "iMovie", id: 408981434
