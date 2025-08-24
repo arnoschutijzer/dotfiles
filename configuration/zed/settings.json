@@ -78,5 +78,19 @@
       "provider": "openai",
       "model": "gpt-4-turbo-preview"
     }
+  },
+  "auto_install_extensions": {
+    "biome": true,
+    "dockerfile": true,
+    "git-firefly": true,
+    "groovy": true,
+    "html": true,
+    "java": true,
+    "make": true,
+    "scss": true,
+    "templ": true,
+    "terraform": true,
+    "toml": true,
+    "xml": true
   }
 }
