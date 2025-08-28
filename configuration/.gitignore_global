@@ -3,3 +3,7 @@
 .idea
 .java-version
 .venv
+
+# zed jdtls
+.factorypath
+.project
