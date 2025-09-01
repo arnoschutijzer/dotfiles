@@ -7,3 +7,5 @@
 # zed jdtls
 .factorypath
 .project
+.settings
+.classpath

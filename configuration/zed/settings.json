@@ -17,6 +17,56 @@
       "settings": {
         "require_config_file": true
       }
+    },
+    // See https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
+    "jdtls": {
+      "initialization_options": {
+        "settings": {
+          "java": {
+            "errors": {
+              "incompleteClasspath": {
+                "severity": "warning"
+              }
+            },
+            "configuration": {
+              "updateBuildConfiguration": "interactive"
+            },
+            "trace": {
+              "server": "verbose"
+            },
+            "import": {
+              "maven": {
+                "enabled": true
+              }
+            },
+            "jdt": {
+              "ls": {
+                "lombokSupport": {
+                  "enabled": true // Set this to true to enable lombok support
+                }
+              }
+            },
+            "maven": {
+              "downloadSources": true
+            },
+            "referencesCodeLens": {
+              "enabled": true
+            },
+            "signatureHelp": {
+              "enabled": true
+            },
+            "implementationsCodeLens": {
+              "enabled": true
+            },
+            "format": {
+              "enabled": false
+            },
+            "saveActions": {
+              "organizeImports": false
+            }
+          }
+        }
+      }
     }
   },
   "notification_panel": {
