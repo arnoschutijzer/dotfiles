@@ -1,4 +1,3 @@
-tap "beeftornado/rmtree"
 tap "hashicorp/tap"
 tap "homebrew/bundle"
 tap "isen-ng/dotnet-sdk-versions"
