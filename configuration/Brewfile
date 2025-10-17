@@ -21,6 +21,7 @@ brew "grep"
 brew "huggingface-cli"
 brew "jdtls"
 brew "jenv"
+brew "jfrog-cli"
 brew "jq"
 brew "mas"
 brew "maven"
@@ -103,3 +104,9 @@ mas "The Unarchiver", id: 425424353
 mas "WhatsApp", id: 310633997
 mas "Windows App", id: 1295203466
 mas "Xcode", id: 497799835
+go "github.com/go-delve/delve/cmd/dlv"
+go "golang.org/x/tools/gopls"
+go "github.com/magefile/mage"
+go "github.com/projectdiscovery/nuclei/v3/cmd/nuclei"
+go "github.com/playwright-community/playwright-go/cmd/playwright"
+go "honnef.co/go/tools/cmd/staticcheck"
