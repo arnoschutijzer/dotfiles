@@ -2,6 +2,8 @@
 [core]
 	excludesfile = /Users/arnoschutijzer/.gitignore_global
 	pager = delta
+[push]
+	autoSetupRemote = true
 [pull]
 	ff = only
 [init]
