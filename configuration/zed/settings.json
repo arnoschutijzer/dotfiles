@@ -82,7 +82,7 @@
     "dock": "right"
   },
   "vim_mode": false,
-  "theme": "Ayu Mirage",
+  "theme": "Alabaster Dark",
   "base_keymap": "JetBrains",
   "ui_font_size": 16,
   "buffer_font_size": 16,
