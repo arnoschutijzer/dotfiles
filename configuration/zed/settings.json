@@ -9,14 +9,14 @@
 {
   "language_models": {
     "openai": {
-      "api_url": "http://localhost:11434/v1"
-    }
+      "api_url": "http://localhost:11434/v1",
+    },
   },
   "lsp": {
     "biome": {
       "settings": {
-        "require_config_file": true
-      }
+        "require_config_file": true,
+      },
     },
     // See https://github.com/eclipse-jdtls/eclipse.jdt.ls/wiki/Running-the-JAVA-LS-server-from-the-command-line#initialize-request
     "jdtls": {
@@ -25,64 +25,65 @@
           "java": {
             "errors": {
               "incompleteClasspath": {
-                "severity": "warning"
-              }
+                "severity": "warning",
+              },
             },
             "configuration": {
-              "updateBuildConfiguration": "interactive"
+              "updateBuildConfiguration": "interactive",
             },
             "trace": {
-              "server": "verbose"
+              "server": "verbose",
             },
             "import": {
               "maven": {
-                "enabled": true
-              }
+                "enabled": true,
+              },
             },
             "jdt": {
               "ls": {
                 "lombokSupport": {
-                  "enabled": true // Set this to true to enable lombok support
-                }
-              }
+                  "enabled": true, // Set this to true to enable lombok support
+                },
+              },
             },
             "maven": {
-              "downloadSources": true
+              "downloadSources": true,
             },
             "referencesCodeLens": {
-              "enabled": true
+              "enabled": true,
             },
             "signatureHelp": {
-              "enabled": true
+              "enabled": true,
             },
             "implementationsCodeLens": {
-              "enabled": true
+              "enabled": true,
             },
             "format": {
-              "enabled": false
+              "enabled": false,
             },
             "saveActions": {
-              "organizeImports": false
-            }
-          }
-        }
-      }
-    }
+              "organizeImports": false,
+            },
+          },
+        },
+      },
+    },
   },
   "notification_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "collaboration_panel": {
-    "dock": "right"
-  },
-  "chat_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "project_panel": {
-    "dock": "right"
+    "dock": "right",
   },
   "vim_mode": false,
-  "theme": "Alabaster Dark",
+  "theme": {
+    "mode": "system",
+    "light": "Alabaster BG",
+    "dark": "Alabaster Dark",
+  },
   "base_keymap": "JetBrains",
   "ui_font_size": 16,
   "buffer_font_size": 16,
@@ -91,20 +92,20 @@
       "formatter": {
         "external": {
           "command": "terraform",
-          "arguments": ["fmt", "-"]
-        }
-      }
+          "arguments": ["fmt", "-"],
+        },
+      },
     },
     "JSON": {},
     "JavaScript": {},
     "TypeScript": {},
-    "TSX": {}
+    "TSX": {},
   },
   "agent": {
     "default_model": {
       "provider": "openai",
-      "model": "gpt-4-turbo-preview"
-    }
+      "model": "gpt-4-turbo-preview",
+    },
   },
   "auto_install_extensions": {
     "biome": true,
@@ -118,6 +119,6 @@
     "templ": true,
     "terraform": true,
     "toml": true,
-    "xml": true
-  }
+    "xml": true,
+  },
 }
