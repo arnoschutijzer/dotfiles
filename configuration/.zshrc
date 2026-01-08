@@ -9,10 +9,6 @@ export PATH=/Applications:$PATH
 export PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
 # add the custom bin folder
 export PATH=/Users/arnoschutijzer/bin:$PATH
-# add golang
-export GOPATH="${HOME}/.go"
-export GOROOT="$(brew --prefix golang)/libexec"
-export PATH="$PATH:${GOPATH}/bin:${GOROOT}/bin"
 export GPG_TTY=$(tty)
 
 export STARSHIP_CONFIG=~/.starship.toml
@@ -217,3 +213,8 @@ eval "$(jenv init -)"
 export PYENV_ROOT="$HOME/.pyenv"
 [[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init -)"
+
+export GOPATH="${HOME}/.go"
+export GOENV_ROOT="$HOME/.goenv"
+export PATH="$PATH:${GOPATH}/bin:${GOENVROOT}/bin"
+eval "$(goenv init -)"
