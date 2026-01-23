@@ -7,12 +7,33 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "context_servers": {
+    "mcp-server-sonarqube": {
+      "enabled": true,
+      "settings": {}
+    }
+  },
   "language_models": {
     "openai": {
       "api_url": "http://localhost:11434/v1",
     },
   },
   "lsp": {
+    "vtsls": {
+      "settings": {
+        "typescript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        },
+        "javascript": {
+          "updateImportsOnFileMove": {
+            "enabled": "always"
+          }
+        }
+      },
+      "enable_lsp_tasks": true
+    },
     "biome": {
       "settings": {
         "require_config_file": true,
