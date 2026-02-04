@@ -97,7 +97,7 @@
     "dock": "right",
   },
   "project_panel": {
-    "dock": "right",
+    "dock": "left",
   },
   "vim_mode": false,
   "theme": {
