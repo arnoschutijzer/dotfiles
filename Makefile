@@ -27,6 +27,8 @@ configure:
 upgrade:
 	brew upgrade --greedy && brew cleanup
 	mas upgrade
+	# clear uvx cache so the next Claude Code session pulls the latest Serena from git
+	uv cache clean serena
 
 ## deps: export apps to a file
 .PHONY: deps
