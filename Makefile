@@ -11,7 +11,6 @@ help:
 .PHONY: apps
 apps:
 	. ./install_brew_deps.sh
-	. ./install_go_deps.sh
 
 ## configure: configure git, fonts, shell, tools, mac settings...
 .PHONY: configure
