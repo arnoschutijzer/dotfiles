@@ -13,3 +13,5 @@ ln -sf "$(pwd)"/configuration/.zshrc ~/.zshrc
 ln -sf "$(pwd)"/configuration/.zprofile ~/.zprofile
 
 ln -sf "$(pwd)"/configuration/.vimrc ~/.vimrc
+
+touch ~/.secrets

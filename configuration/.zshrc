@@ -218,3 +218,5 @@ export GOPATH="${HOME}/.go"
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$PATH:${GOPATH}/bin:${GOENVROOT}/bin"
 eval "$(goenv init -)"
+
+[[ -f ~/dotfiles/.secrets ]] && source ~/dotfiles/.secrets
