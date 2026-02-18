@@ -11,4 +11,8 @@
 .classpath
 .zed
 .serena
+
 .claude
+!.claude/
+!.claude/skills/
+!.claude/skills/**
