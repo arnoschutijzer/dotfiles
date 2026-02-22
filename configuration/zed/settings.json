@@ -7,11 +7,19 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent_servers": {
+    "claude": {
+      "default_config_options": {
+        "mode": "acceptEdits",
+        "model": "opus",
+      },
+    },
+  },
   "context_servers": {
     "mcp-server-sonarqube": {
       "enabled": true,
-      "settings": {}
-    }
+      "settings": {},
+    },
   },
   "language_models": {
     "openai": {
@@ -23,16 +31,16 @@
       "settings": {
         "typescript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
+            "enabled": "always",
+          },
         },
         "javascript": {
           "updateImportsOnFileMove": {
-            "enabled": "always"
-          }
-        }
+            "enabled": "always",
+          },
+        },
       },
-      "enable_lsp_tasks": true
+      "enable_lsp_tasks": true,
     },
     "biome": {
       "settings": {
