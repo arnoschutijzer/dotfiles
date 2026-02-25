@@ -1,3 +1,3 @@
 #!/usr/bin/env bash
 
-ln -sfn "$(pwd)"/.claude/skills ~/.claude/skills
+ln -sfn "$(pwd)"/configuration/.claude/skills ~/.claude/skills
