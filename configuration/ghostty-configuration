@@ -1,2 +1,7 @@
 keybind = cmd+backspace=esc:w
 font-size = 20
+macos-non-native-fullscreen = true
+macos-titlebar-style = transparent
+window-save-state = never
+macos-auto-secure-input = true
+macos-secure-input-indication = true
