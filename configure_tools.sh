@@ -27,3 +27,5 @@ if [ -f "$CLAUDE_JSON" ]; then
 else
   echo "~/.claude.json not found, skipping Serena MCP setup (run Claude Code once first)"
 fi
+
+ln -sf "$(pwd)"/configuration/.claude/settings.json ~/.claude/settings.json
