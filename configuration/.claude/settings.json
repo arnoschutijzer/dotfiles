@@ -1,5 +1,4 @@
 {
-  "model": "opus",
   "permissions": {
     "deny": [
       "Read(.env)",
@@ -8,10 +7,9 @@
       "Bash(git push -f*)"
     ]
   },
+  "model": "opus",
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
-    "terraform-code-generation@hashicorp": true,
-    "terraform-module-generation@hashicorp": true,
     "github@claude-plugins-official": true
   }
 }
