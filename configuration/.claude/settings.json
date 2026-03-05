@@ -1,5 +1,31 @@
 {
   "permissions": {
+    "allow": [
+      "mcp__serena__check_onboarding_performed",
+      "mcp__serena__list_memories",
+      "mcp__serena__list_dir",
+      "mcp__serena__get_symbols_overview",
+      "mcp__acp__Write",
+      "mcp__acp__Edit",
+      "mcp__serena__search_for_pattern",
+      "mcp__acp__Bash",
+      "mcp__serena__find_symbol",
+      "mcp__serena__replace_symbol_body",
+      "mcp__serena__insert_after_symbol",
+      "mcp__serena__insert_before_symbol",
+      "mcp__serena__find_file",
+      "mcp__Snyk__snyk_code_scan",
+      "mcp__serena__onboarding",
+      "mcp__serena__find_referencing_symbols",
+      "WebFetch(domain:github.com)",
+      "Bash(go get:*)",
+      "Bash(go vet:*)",
+      "Bash(go test:*)",
+      "Bash(go build:*)",
+      "mcp__serena__read_memory",
+      "Bash(go mod tidy)",
+      "Bash(go mod graph)"
+    ],
     "deny": [
       "Read(.env)",
       "Read(.env.*)",
