@@ -8,12 +8,13 @@
 // from the command palette or from `Zed` application menu.
 {
   "agent_servers": {
-    "claude": {
+    "claude-acp": {
+      "type": "registry",
       "default_config_options": {
         "mode": "acceptEdits",
-        "model": "opus",
-      },
-    },
+        "model": "opus"
+      }
+    }
   },
   "context_servers": {
     "mcp-server-sonarqube": {
