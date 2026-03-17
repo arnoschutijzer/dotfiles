@@ -24,7 +24,8 @@
       "Bash(go build:*)",
       "mcp__serena__read_memory",
       "Bash(go mod tidy)",
-      "Bash(go mod graph)"
+      "Bash(go mod graph)",
+      "Bash(find*)"
     ],
     "deny": [
       "Read(.env)",
@@ -33,9 +34,10 @@
       "Bash(git push -f*)"
     ]
   },
-  "model": "opus",
+  "model": "opus[1m]",
   "enabledPlugins": {
     "code-review@claude-plugins-official": true,
     "github@claude-plugins-official": true
-  }
+  },
+  "effortLevel": "high"
 }
