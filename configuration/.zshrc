@@ -1,7 +1,6 @@
 export ZSH="/Users/arnoschutijzer/.oh-my-zsh"
 
 export PATH=/Applications:$PATH
-export PATH=/opt/homebrew/opt/python/libexec/bin:$PATH
 export PATH=/Users/arnoschutijzer/bin:$PATH
 export GPG_TTY=$(tty)
 
@@ -16,29 +15,17 @@ source $ZSH/oh-my-zsh.sh
 
 # Aliases
 alias clean_mod='find . -name node_modules -type d -exec rm -r {} +'
-alias clean_pkg='find . -name package-lock.json -type f -exec rm {} +'
-alias clean_yarn='find . -name yarn.lock -type f -exec rm {} +'
-alias clean_tf='find . -name .terraform -type d -exec rm -rf {} +'
-alias clean_tg='find . -name .terragrunt-cache -type d -exec rm -rf {} +'
-alias clean='clean_mod && clean_yarn && clean_pkg'
 alias dka='docker kill $(docker ps -q)'
 alias dup='docker compose up -d'
 alias flushdns='sudo killall -HUP mDNSResponder;sudo killall mDNSResponderHelper'
-alias tfd=terraform-docs
 alias awsv=aws-vault
 alias ag=rg
-alias tflock='terraform providers lock -platform=linux_amd64'
 alias sed=gsed
 alias idea='open -na "IntelliJ IDEA CE.app" --args "$@"'
 alias i='idea .'
-# see https://github.com/OpenVPN/openvpn3/issues/139#issuecomment-1215125756
-alias vpn='sudo /Library/Frameworks/OpenVPNConnect.framework/Versions/Current/usr/sbin/ovpnagent'
 alias openssl1='/opt/homebrew/Cellar/openssl@1.1/1.1.1w/bin/openssl'
 alias ga.='ga .'
-alias venv='python3 -m venv .venv && source .venv/bin/activate'
 alias ls=eza
-alias repo='npm login --registry=https://repo.skryv.com/api/npm/npm/ --auth-type=web --scope=@skryv'
-alias arti='npm login --registry=https://artifactory.skryv.com/artifactory/api/npm/npm/ --auth-type=web --scope=@skryv'
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
@@ -83,11 +70,6 @@ then
 fi
 ' --tag-name-filter cat -- --branches --tags
 }
-
-# Set libuv threadpool, change this if webpack hangs
-export UV_THREADPOOL_SIZE=1000
-
-export NODE_OPTIONS=--max_old_space_size=8192
 
 export GOPATH="${HOME}/.go"
 export PATH="$PATH:${GOPATH}/bin"
