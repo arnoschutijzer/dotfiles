@@ -8,10 +8,11 @@ export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
 
 plugins=(
-  git z ssh-agent zsh-autosuggestions
+  git z ssh-agent
 )
 
 source $ZSH/oh-my-zsh.sh
+source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
 # Aliases
 alias clean_mod='find . -name node_modules -type d -exec rm -r {} +'
