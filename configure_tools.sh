@@ -11,6 +11,10 @@ echo "plugin_cache_dir   = \"$CACHE_PATH\"" > ~/.terraformrc
 
 mkdir -p $CACHE_PATH
 
+# Serena: symlink global config
+mkdir -p ~/.serena
+ln -sf "$(pwd)"/configuration/.serena/serena_config.yml ~/.serena/serena_config.yml
+
 # Claude Code: ensure Serena MCP server is configured
 CLAUDE_JSON="$HOME/.claude.json"
 if [ -f "$CLAUDE_JSON" ]; then
