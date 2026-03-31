@@ -11,13 +11,6 @@ echo "plugin_cache_dir   = \"$CACHE_PATH\"" > ~/.terraformrc
 
 mkdir -p $CACHE_PATH
 
-# mise settings
-mise settings unset idiomatic_version_file_enable_tools
-mise settings add idiomatic_version_file_enable_tools node
-mise settings add idiomatic_version_file_enable_tools terraform
-mise settings add idiomatic_version_file_enable_tools java
-mise settings set auto_install true
-
 # Claude Code: ensure Serena MCP server is configured
 CLAUDE_JSON="$HOME/.claude.json"
 if [ -f "$CLAUDE_JSON" ]; then
