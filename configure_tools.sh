@@ -11,10 +11,6 @@ echo "plugin_cache_dir   = \"$CACHE_PATH\"" > ~/.terraformrc
 
 mkdir -p $CACHE_PATH
 
-# Serena: symlink global config
-mkdir -p ~/.serena
-ln -sf "$(pwd)"/configuration/.serena/serena_config.yml ~/.serena/serena_config.yml
-
 # Claude Code: ensure Serena MCP server is configured
 CLAUDE_JSON="$HOME/.claude.json"
 if [ -f "$CLAUDE_JSON" ]; then
@@ -23,7 +19,7 @@ if [ -f "$CLAUDE_JSON" ]; then
     jq '.mcpServers.serena = {
       "type": "stdio",
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context=claude-code", "--project-from-cwd"],
+      "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context=claude-code", "--project-from-cwd", "--enable-web-dashboard", "False"],
       "env": {}
     }' "$CLAUDE_JSON" > "$CLAUDE_JSON.tmp" && mv "$CLAUDE_JSON.tmp" "$CLAUDE_JSON"
     echo "Added Serena MCP server to Claude Code config"
