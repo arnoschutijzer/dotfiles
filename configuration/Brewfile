@@ -70,7 +70,6 @@ cask "telegram"
 cask "thebrowsercompany-dia"
 cask "visual-studio-code"
 cask "vlc"
-cask "wkhtmltopdf"
 cask "zed@preview"
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
