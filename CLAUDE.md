@@ -10,8 +10,8 @@ A macOS dotfiles repository that manages system configuration, applications, dev
 
 ```bash
 make              # Full setup: installs apps + configures everything
-make apps         # Install all Homebrew packages, casks, MAS apps, Go tools, VSCode extensions
-make configure    # Run all configuration scripts (mac defaults, git, shell, fonts, tools)
+make apps         # Install all Homebrew packages, casks, MAS apps, VSCode extensions
+make configure    # Run all configuration scripts (mac defaults, git, shell, fonts, tools, mise)
 make upgrade      # brew upgrade --greedy && brew cleanup; mas upgrade
 make deps         # Export current brew state to configuration/Brewfile
 make cleanup      # brew cleanup --prune=all
@@ -30,11 +30,12 @@ make cleanup      # brew cleanup --prune=all
    - `configure_git.sh` — symlinks `.gitconfig` and `.gitignore_global`, inits Git LFS
    - `install_fonts.sh` — downloads Zed Mono and Geist Mono Nerd Font
    - `configure_shell.sh` — installs oh-my-zsh, symlinks `.zshrc`, `.zprofile`, `.vimrc`, `starship.toml`, ghostty config
-   - `configure_tools.sh` — symlinks `.tflint.hcl`, creates `.terraformrc`, symlinks zed settings
+   - `configure_tools.sh` — symlinks `.tflint.hcl`, creates `.terraformrc`, symlinks zed settings, configures Claude Code MCP servers
+   - `configure_mise.sh` — configures mise settings and installs global tool versions (node, java, maven, terraform)
 
 ### Brewfile
 
-`configuration/Brewfile` manages all dependencies in one file: taps, brew formulae, casks, MAS apps, VSCode extensions, and Go tools (via `go` entries). When adding dependencies, add them here — not in separate install scripts.
+`configuration/Brewfile` manages all dependencies in one file: taps, brew formulae, casks, MAS apps, and VSCode extensions. When adding dependencies, add them here — not in separate install scripts.
 
 ### Git Identity
 
@@ -46,11 +47,15 @@ These identity files are generated interactively by `generate_git_config.sh` and
 
 ### Shell
 
-Zsh with oh-my-zsh and Starship prompt. Plugins: git, z, macos, ssh-agent, zsh-autosuggestions, terraform. PATH additions include homebrew python, `~/bin`, and GPG agent setup for commit signing.
+Zsh with oh-my-zsh and Starship prompt. Plugins: git, z, ssh-agent. zsh-autosuggestions is sourced directly from Homebrew. PATH additions include `~/bin` and GPG agent setup for commit signing.
+
+### Tool Versions
+
+[mise](https://mise.jdx.dev/) manages runtime versions for Node, Java, Maven, Terraform, and Go. It replaces nvm, jenv, pyenv, goenv, and tenv. Global tool versions and mise settings are configured by `configure_mise.sh`. Python is managed by uv.
 
 ## Conventions
 
 - All configuration files live in `configuration/` and are symlinked to their destinations by the configure scripts.
 - Scripts are sourced (`. ./script.sh`) from the Makefile, not executed as subprocesses.
 - Scripts should be non-destructive: check for existing files/configs before overwriting.
-- Homebrew is the single source of truth for all installable dependencies, including Go tools.
+- Homebrew is the single source of truth for all installable system dependencies. Runtime versions (Node, Java, Go, Terraform) are managed by mise.
