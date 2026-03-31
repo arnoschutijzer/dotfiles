@@ -11,4 +11,5 @@ mise settings set auto_install true
 mise use --global node@22
 mise use --global java@17
 mise use --global maven@3
-mise use --global terraform@1.14.8
+mise use --global terraform@1.14
+mise use --global go@1.26
