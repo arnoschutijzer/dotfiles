@@ -183,10 +183,6 @@ eval "$(fnm env --use-on-cd --shell zsh)"
 export PATH="$HOME/.jenv/bin:$PATH"
 eval "$(jenv init -)"
 
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-
 export GOPATH="${HOME}/.go"
 export GOENV_ROOT="$HOME/.goenv"
 export PATH="$PATH:${GOPATH}/bin:${GOENVROOT}/bin"
