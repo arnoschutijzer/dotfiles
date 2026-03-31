@@ -1,0 +1,10 @@
+[settings]
+auto_install = true
+idiomatic_version_file_enable_tools = ["node", "terraform", "java"]
+
+[tools]
+go = "1.26"
+java = "17"
+maven = "3"
+node = "22"
+terraform = "1.14.8"
