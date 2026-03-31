@@ -12,7 +12,7 @@ echo "plugin_cache_dir   = \"$CACHE_PATH\"" > ~/.terraformrc
 mkdir -p $CACHE_PATH
 
 # mise settings
-mise settings set idiomatic_version_file_enable_tools node
+mise settings set idiomatic_version_file_enable_tools '["node", "terraform"]'
 mise settings set auto_install true
 
 # Claude Code: ensure Serena MCP server is configured
