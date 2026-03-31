@@ -13,3 +13,4 @@ $ make
 1. Install Visual Studio Code command into PATH
 1. Import Raycast settings
 1. Install Zed CLI into PATH
+1. Turn off all menu bar items in Settings -> Menu Bar -> Allow in the Menu Bar
