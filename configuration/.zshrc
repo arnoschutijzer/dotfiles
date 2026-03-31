@@ -89,14 +89,8 @@ export UV_THREADPOOL_SIZE=1000
 
 export NODE_OPTIONS=--max_old_space_size=8192
 
-eval "$(fnm env --use-on-cd --shell zsh)"
-
-export PATH="$HOME/.jenv/bin:$PATH"
-eval "$(jenv init -)"
-
 export GOPATH="${HOME}/.go"
-export GOENV_ROOT="$HOME/.goenv"
-export PATH="$PATH:${GOPATH}/bin:${GOENVROOT}/bin"
-eval "$(goenv init -)"
+export PATH="$PATH:${GOPATH}/bin"
+eval "$(mise activate zsh)"
 
 [[ -f ~/dotfiles/.secrets ]] && source ~/dotfiles/.secrets
