@@ -8,7 +8,7 @@ export STARSHIP_CONFIG=~/.starship.toml
 eval "$(starship init zsh)"
 
 plugins=(
-  git z macos ssh-agent zsh-autosuggestions
+  git z ssh-agent zsh-autosuggestions
 )
 
 source $ZSH/oh-my-zsh.sh
