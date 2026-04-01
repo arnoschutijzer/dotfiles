@@ -19,7 +19,7 @@ if [ -f "$CLAUDE_JSON" ]; then
     jq '.mcpServers.serena = {
       "type": "stdio",
       "command": "uvx",
-      "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context=claude-code", "--project-from-cwd"],
+      "args": ["--from", "git+https://github.com/oraios/serena", "serena", "start-mcp-server", "--context=claude-code", "--project-from-cwd", "--enable-web-dashboard", "False"],
       "env": {}
     }' "$CLAUDE_JSON" > "$CLAUDE_JSON.tmp" && mv "$CLAUDE_JSON.tmp" "$CLAUDE_JSON"
     echo "Added Serena MCP server to Claude Code config"
