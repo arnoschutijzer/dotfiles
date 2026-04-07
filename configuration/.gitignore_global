@@ -15,3 +15,5 @@
 .claude/*
 !.claude/skills
 !.claude/agents
+
+mise.toml
