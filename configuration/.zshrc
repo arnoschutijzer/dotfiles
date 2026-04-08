@@ -27,6 +27,7 @@ alias i='idea .'
 alias openssl1='/opt/homebrew/Cellar/openssl@1.1/1.1.1w/bin/openssl'
 alias ga.='ga .'
 alias ls=eza
+alias tf=terraform
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
