@@ -55,7 +55,9 @@
     "github@claude-plugins-official": true,
     "superpowers@claude-plugins-official": false,
     "context7@claude-plugins-official": true,
-    "skryv-skills@skryv-plugins": true
+    "skryv-skills@skryv-plugins": true,
+    "terraform-code-generation@hashicorp": true,
+    "terraform-module-generation@hashicorp": true
   },
   "extraKnownMarketplaces": {
     "skryv-plugins": {
