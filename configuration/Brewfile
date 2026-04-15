@@ -48,7 +48,6 @@ cask "google-chrome"
 cask "intellij-idea-ce"
 cask "microsoft-auto-update"
 cask "microsoft-outlook"
-cask "microsoft-remote-desktop"
 cask "microsoft-teams"
 cask "obsidian"
 cask "poedit"
@@ -65,6 +64,7 @@ cask "telegram"
 cask "thebrowsercompany-dia"
 cask "visual-studio-code"
 cask "vlc"
+cask "windows-app"
 cask "zed@preview"
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
@@ -75,7 +75,6 @@ mas "Pages", id: 361309726
 mas "The Unarchiver", id: 425424353
 mas "uBlock Origin Lite", id: 6745342698
 mas "WhatsApp", id: 310633997
-mas "Windows App", id: 1295203466
 mas "Xcode", id: 497799835
 vscode "4ops.terraform"
 vscode "a-h.templ"
