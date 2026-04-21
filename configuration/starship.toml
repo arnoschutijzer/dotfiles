@@ -30,3 +30,6 @@ disabled = false
 
 [docker_context]
 disabled = true
+
+[maven]
+disabled = true
