@@ -26,3 +26,4 @@ else
 fi
 
 ln -sf "$(pwd)"/configuration/.claude/settings.json ~/.claude/settings.json
+ln -sf "$(pwd)"/configuration/.claude/CLAUDE.md ~/.claude/CLAUDE.md

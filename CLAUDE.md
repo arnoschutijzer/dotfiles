@@ -30,7 +30,7 @@ make cleanup      # brew cleanup --prune=all
    - `configure_git.sh` — symlinks `.gitconfig` and `.gitignore_global`, inits Git LFS
    - `install_fonts.sh` — downloads Zed Mono and Geist Mono Nerd Font
    - `configure_shell.sh` — installs oh-my-zsh, symlinks `.zshrc`, `.zprofile`, `.vimrc`, `starship.toml`, ghostty config
-   - `configure_tools.sh` — symlinks `.tflint.hcl`, creates `.terraformrc`, symlinks zed settings, configures Claude Code MCP servers
+   - `configure_tools.sh` — symlinks `.tflint.hcl`, creates `.terraformrc`, symlinks zed settings, symlinks Claude Code `settings.json` and `CLAUDE.md`, configures Claude Code MCP servers
    - `configure_mise.sh` — configures mise settings and installs global tool versions (node, java, maven, terraform)
 
 ### Brewfile
