@@ -7,6 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "icon_theme": {
+    "mode": "system",
+    "light": "Zed (Default)",
+    "dark": "Zed (Default)"
+  },
   "cli_default_open_behavior": "existing_window",
   "outline_panel": {
     "dock": "right"
@@ -118,8 +123,8 @@
   "vim_mode": false,
   "theme": {
     "mode": "system",
-    "light": "Alabaster BG",
-    "dark": "Alabaster Dark",
+    "light": "GitHub Light",
+    "dark": "GitHub Dark",
   },
   "base_keymap": "JetBrains",
   "ui_font_size": 16,
