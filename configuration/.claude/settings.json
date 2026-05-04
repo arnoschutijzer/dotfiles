@@ -47,7 +47,8 @@
       "Read(.env.*)",
       "Bash(git push --force*)",
       "Bash(git push -f*)"
-    ]
+    ],
+    "defaultMode": "auto"
   },
   "model": "opus[1m]",
   "enabledPlugins": {
@@ -69,5 +70,6 @@
     }
   },
   "effortLevel": "high",
-  "theme": "dark-ansi"
+  "theme": "dark-ansi",
+  "skipAutoPermissionPrompt": true
 }
