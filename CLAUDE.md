@@ -8,30 +8,13 @@ A macOS dotfiles repository that manages system configuration, applications, dev
 
 ## Commands
 
-```bash
-make              # Full setup: installs apps + configures everything
-make apps         # Install all Homebrew packages, casks, MAS apps, VSCode extensions
-make configure    # Run all configuration scripts (mac defaults, git, shell, fonts, tools, mise)
-make upgrade      # brew upgrade --greedy && brew cleanup; mas upgrade
-make deps         # Export current brew state to configuration/Brewfile
-make cleanup      # brew cleanup --prune=all
-```
+`make` runs the full setup. `make help` lists the rest of the targets.
 
 ## Architecture
 
 ### Orchestration
 
-`Makefile` is the entry point. `make all` runs two phases in order:
-
-1. **`apps`** — runs `install_brew_deps.sh`, which does `brew bundle` from `configuration/Brewfile` and adds login items (Ghostty, Raycast, Slack)
-2. **`configure`** — runs these scripts in sequence:
-   - `configure_mac.sh` — macOS system defaults (Finder, Dock, keyboard)
-   - `generate_git_config.sh` — interactive prompt to create `~/.gitconfig-personal` and `~/.gitconfig-work`
-   - `configure_git.sh` — symlinks `.gitconfig` and `.gitignore_global`, inits Git LFS
-   - `install_fonts.sh` — downloads Zed Mono and Geist Mono Nerd Font
-   - `configure_shell.sh` — installs oh-my-zsh, symlinks `.zshrc`, `.zprofile`, `.vimrc`, `starship.toml`, ghostty config
-   - `configure_tools.sh` — symlinks `.tflint.hcl`, creates `.terraformrc`, symlinks zed settings, symlinks Claude Code `settings.json` and `CLAUDE.md`, configures Claude Code MCP servers
-   - `configure_mise.sh` — configures mise settings and installs global tool versions (node, java, maven, terraform)
+`Makefile` is the entry point. `make all` runs two phases: **`apps`** (install) then **`configure`** (symlink dotfiles, apply system settings). Read the Makefile for what each phase actually runs.
 
 ### Brewfile
 
