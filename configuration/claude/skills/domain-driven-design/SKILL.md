@@ -20,8 +20,6 @@ For hexagonal architecture (ports and adapters), load the `hexagonal-architectur
 | `error-modeling.md`   | Deciding between result types and exceptions, error propagation                          |
 | `testing-by-layer.md` | Writing tests for DDD code, property-based testing for invariants                        |
 
-For authoritative sources, see `../REFERENCES.md`.
-
 ---
 
 ## When to Use DDD
@@ -446,14 +444,7 @@ Test by calling use cases with driven ports replaced by in-memory **fakes** (not
 
 Domain unit tests **complement** use case tests for complex pure business rules. They don't replace them.
 
-| Priority         | Boundary                       | What it proves                              |
-| ---------------- | ------------------------------ | ------------------------------------------- |
-| **Primary**      | Use case (faked driven ports)  | Feature works end-to-end within the hexagon |
-| **Complement**   | Domain pure functions directly | Complex business rules in isolation         |
-| **Secondary**    | Driven adapters (real DB/MSW)  | Adapter translates correctly                |
-| **Verification** | E2E (full stack)               | User experience works                       |
-
-For detailed testing guidance, see `resources/testing-by-layer.md`. For a complete worked example showing one feature through every layer with tests, see the hexagonal-architecture skill's `resources/worked-example.md`.
+For the generic testing pyramid (unit / integration / E2E), see the `tdd` skill. For the hex-arch-specific test boundary strategy (use case with fakes as primary, driven adapters with real DB, etc.), see the `hexagonal-architecture` skill. For DDD-specific testing patterns and property-based tests for invariants, see `resources/testing-by-layer.md`. For a complete worked example showing one feature through every layer with tests, see the hexagonal-architecture skill's `resources/worked-example.md`.
 
 ### Test Factories Use Domain Language
 
@@ -513,25 +504,3 @@ Not every project needs aggregates, domain events, or bounded contexts. Start wi
 ### Resisting Model Evolution
 
 Treating the initial model as sacred — refusing to rename types, split aggregates, or restructure bounded contexts as understanding deepens. The model should evolve continuously. If a refactoring reveals that "Occasion" should really be "GiftEvent" and "SavingsGoal", do it. The glossary changes, the types change, the tests guide the migration. Evans calls these "breakthroughs" — moments where the model fundamentally improves because the team learned something new about the domain.
-
----
-
-## Checklist
-
-- [ ] Glossary file exists and is up to date
-- [ ] All types use glossary terms
-- [ ] All functions use glossary verbs and nouns
-- [ ] All test descriptions use domain language
-- [ ] Value objects are immutable and identity-less
-- [ ] Entities are always valid (invariants enforced on construction and transitions)
-- [ ] Entities have branded IDs; primitive value objects use branded types
-- [ ] Aggregate roots enforce all invariants
-- [ ] Other aggregates referenced by ID, not embedded
-- [ ] Cross-aggregate logic in domain services, not crammed into one entity
-- [ ] Repository interfaces defined in domain layer
-- [ ] Discriminated unions have exhaustive switch handling
-- [ ] Expected business outcomes use result types, not exceptions
-- [ ] Domain logic has zero infrastructure dependencies
-- [ ] Presentation logic is NOT in domain/ (even if pure)
-- [ ] Tests organized by domain concept, not implementation file
-- [ ] Each layer has behavioral tests at the appropriate level
