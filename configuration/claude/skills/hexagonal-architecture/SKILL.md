@@ -19,8 +19,6 @@ For domain modeling (entities, value objects, aggregates, ubiquitous language), 
 | `cross-cutting-concerns.md` | Placing auth, logging, transactions, or error formatting                    |
 | `incremental-adoption.md`   | Introducing hex arch into an existing codebase                              |
 
-For authoritative sources, see `../REFERENCES.md`.
-
 ---
 
 ## Core Concept
