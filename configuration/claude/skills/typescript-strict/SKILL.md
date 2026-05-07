@@ -1,6 +1,6 @@
 ---
 name: typescript-strict
-description: TypeScript strict mode patterns including schema-first development, branded types, type vs interface guidance, and tsconfig strict flags. Use when writing TypeScript code, defining types or schemas, or reviewing type safety. For immutability and pure function patterns, see the functional skill.
+description: TypeScript strict mode patterns including schema-first development, branded types, type vs interface guidance, and tsconfig strict flags. Use when writing TypeScript code, defining types or schemas, or reviewing type safety.
 ---
 
 # TypeScript Strict Mode
@@ -113,15 +113,10 @@ The `noUnusedParameters` rule can reveal architectural problems:
 
 ---
 
-## Immutability, Pure Functions, and Composition
+## Immutability
 
-For detailed patterns on immutability (`readonly`, `ReadonlyArray`), pure functions, composition, Result types, array methods, and factory functions, see the `functional` skill. These are the canonical patterns used across the codebase.
-
-Key TypeScript-specific notes:
-
-- Use `readonly` on all `type` properties and `ReadonlyArray<T>` for arrays
-- The compiler enforces immutability when `readonly` is used — leverage this
-- Factory functions (not classes) for object creation, supporting dependency injection
+- Use `readonly` on all `type` properties and `ReadonlyArray<T>` for arrays. The compiler enforces it — leverage this.
+- Factory functions (not classes) for object creation, supporting dependency injection.
 
 ---
 
@@ -160,7 +155,7 @@ type Result<T, E> = { success: true; data: T } | { success: false; error: E };
 
 // ✅ CORRECT - Interface, no validation
 interface UserService {
-  createUser(user: User): void;
+  createUser(user: User): Promise<void>;
 }
 ```
 
@@ -187,17 +182,3 @@ const userId = "user-123" as UserId;
 const amount = 100 as PaymentAmount;
 processPayment(userId, amount); // OK
 ```
-
----
-
-## Summary Checklist
-
-When writing TypeScript code, verify:
-
-- [ ] No `any` types - using `unknown` where type is truly unknown
-- [ ] No type assertions without justification
-- [ ] Using `type` for data structures with `readonly`
-- [ ] Using `interface` for behavior contracts
-- [ ] Schemas defined once, not duplicated
-- [ ] Strict mode enabled with all checks passing
-- [ ] For immutability, pure functions, composition: see `functional` skill
