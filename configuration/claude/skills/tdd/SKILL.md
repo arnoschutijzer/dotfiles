@@ -9,7 +9,7 @@ Every line of production code is written in response to a failing test. No excep
 
 The reason isn't dogma — it's that tests written after the code test what you wrote, not what you wanted. They drift toward implementation, miss edge cases, and provide no design pressure. Test-first inverts that.
 
-## The cycle: red-green-refactor-mutate
+## The cycle: red-green-refactor
 
 ### Red — write a failing test
 
@@ -29,14 +29,6 @@ The reason isn't dogma — it's that tests written after the code test what you 
 - Refactor in small steps. After each step, run the tests. They must stay green.
 - Not every green bar needs a refactor. Most don't. Refactoring without a reason is just churn.
 - If a refactor breaks tests, revert. The refactor was wrong, or the tests were too tightly coupled to the old structure.
-
-### Mutate — verify the tests bite
-
-Red-green-refactor proves behavior works *now*. Mutation testing proves the tests will catch regressions *later*.
-
-- Run mutation testing on the changed code. Surviving mutants reveal tests that pass without genuinely exercising the behavior.
-- Fix or add tests until the mutants die.
-- Cadence: every commit if the runner is fast; otherwise per-feature or before the PR. Don't let it become a once-a-quarter event — the value is catching weak tests while they're fresh.
 
 ## Commit discipline
 
@@ -107,5 +99,4 @@ Before considering a change complete:
 - [ ] Each commit changes one behavior.
 - [ ] All tests pass.
 - [ ] Refactor opportunities have been assessed (and either taken in their own commit or consciously deferred).
-- [ ] Mutation testing run on the changed code; no surviving mutants.
 - [ ] Commit messages follow conventional commits.
