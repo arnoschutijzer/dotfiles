@@ -53,7 +53,7 @@ For features with more than ~3 increments, the plan is worth writing down rather
 
 > "This breaks down into N increments — want me to capture them in a plan file before we start?"
 
-If yes, ask where to put it (sensible defaults: `PLAN.md` at the project root, or `docs/plans/<feature>.md`). Keep the plan as a flat checklist of increments with a one-line description each. Update it as you go. Delete it when the feature ships — the plan is a working document, not an artifact.
+If yes, write it to `docs/plans/<feature>.md`. Keep the plan as a flat checklist of increments with a one-line description each. Update it as you go. Delete it when the feature ships — the plan is a working document, not an artifact.
 
 For ≤3 increments, skip the file. Hold the list in conversation.
 

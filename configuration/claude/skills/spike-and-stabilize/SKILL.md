@@ -19,7 +19,7 @@ You should spike when at least one of these is true:
 - A library is unfamiliar and the docs are thin.
 - The problem domain is new to you and the right abstractions aren't obvious.
 
-If you can describe the end-to-end shape, you don't need a spike. Use `walking-skeleton` instead.
+The spike vs. walking-skeleton decision lives in `starting-a-feature`. Load that first if you haven't.
 
 ## Process
 

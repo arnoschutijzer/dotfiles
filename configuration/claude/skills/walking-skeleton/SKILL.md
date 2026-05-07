@@ -15,7 +15,7 @@ The point: you discover wiring problems, missing dependencies, and integration a
 - Bootstrapping a new project, service, or functional area.
 - Adding a new path through an existing system (new endpoint, new job, new screen).
 
-If the shape is unclear, use `spike-and-stabilize` instead.
+The walking-skeleton vs. spike decision lives in `starting-a-feature`. Load that first if you haven't.
 
 ## What it looks like
 
