@@ -159,7 +159,7 @@ const createMoney = (amount: number, currency: Currency): Money => {
 // bypassed the schema.
 ```
 
-For value objects crossing trust boundaries (API input, form data), use Zod schemas. For domain-internal value objects, plain types + factory functions suffice. See the `typescript-strict` skill for schema-first patterns.
+For value objects crossing trust boundaries (API input, form data), use Zod schemas. For domain-internal value objects, plain types + factory functions suffice.
 
 **Zod-to-branded-type bridging** — parse raw input into branded domain types at trust boundaries:
 
