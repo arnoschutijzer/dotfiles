@@ -23,6 +23,7 @@ brew "mas"
 brew "mise"
 brew "nmap"
 brew "openssl@1.1"
+brew "pi-coding-agent"
 brew "ripgrep"
 brew "starship"
 brew "terraform-docs"
@@ -66,7 +67,7 @@ cask "thebrowsercompany-dia"
 cask "visual-studio-code"
 cask "vlc"
 cask "windows-app"
-cask "zed@preview"
+cask "zed"
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
 mas "Keynote", id: 361285480
