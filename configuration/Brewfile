@@ -41,7 +41,6 @@ cask "chatgpt"
 cask "claude"
 cask "claude-code"
 cask "dbeaver-community"
-cask "discord"
 cask "docker-desktop"
 cask "drawio"
 cask "font-caskaydia-cove-nerd-font"
@@ -67,7 +66,6 @@ cask "thebrowsercompany-dia"
 cask "visual-studio-code"
 cask "vlc"
 cask "windows-app"
-cask "zed"
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
 mas "Keynote", id: 361285480
