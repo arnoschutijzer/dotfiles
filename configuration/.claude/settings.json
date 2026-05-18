@@ -57,7 +57,7 @@
     "superpowers@claude-plugins-official": false,
     "context7@claude-plugins-official": true,
     "skryv-skills@skryv-plugins": true,
-    "terraform-code-generation@hashicorp": true,
+    "terraform-code-generation@hashicorp": false,
     "terraform-module-generation@hashicorp": false,
     "jdtls-lsp@claude-plugins-official": true
   },
