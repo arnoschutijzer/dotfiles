@@ -15,6 +15,7 @@
 [alias]
 	praise = blame
 	fixup = commit --amend --no-edit
+	prune-gone = !git fetch -p && git branch -vv | awk '/: gone]/{print $1}' | xargs -r git branch -D
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
