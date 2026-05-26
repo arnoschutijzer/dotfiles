@@ -1,4 +1,9 @@
 # This is Git's per-user configuration file.
+# Fallback identity for tools (e.g. Xcode) that don't evaluate includeIf.
+# The includeIf blocks below override this for matching directories.
+[user]
+	name = Arno Schutijzer
+	email = arno.schutijzer@protonmail.com
 [core]
 	excludesfile = /Users/arnoschutijzer/.gitignore_global
 	pager = delta
