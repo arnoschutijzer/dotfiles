@@ -1,5 +1,5 @@
 .PHONY: all
-all: apps configure
+all: base setup
 
 ## help: print this help message
 .PHONY: help
@@ -7,22 +7,30 @@ help:
 	@echo 'Usage:'
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
 
-## apps: install apps
-.PHONY: apps
-apps:
-	. ./install_brew_deps.sh
-	. ./install_go_deps.sh
+## base: install homebrew + mise (the foundation)
+.PHONY: base
+base:
+	. ./setup_homebrew.sh
+	. ./configure_mise.sh
 
-## configure: configure git, fonts, shell, tools, mac settings...
-.PHONY: configure
-configure:
+## setup: per-tool install + configure
+.PHONY: setup
+setup:
+	. ./install_go_deps.sh
+	. ./configure_tools.sh
 	. ./configure_mac.sh
 	. ./generate_git_config.sh
 	. ./configure_git.sh
-	. ./install_fonts.sh
 	. ./configure_shell.sh
-	. ./configure_tools.sh
-	. ./configure_mise.sh
+	. ./install_fonts.sh
+
+## apps: DEPRECATED alias for base (removed in the contract step)
+.PHONY: apps
+apps: base
+
+## configure: DEPRECATED alias for setup (removed in the contract step)
+.PHONY: configure
+configure: setup
 
 ## upgrade: upgrade installed apps
 .PHONY: upgrade
