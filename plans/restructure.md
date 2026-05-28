@@ -1,6 +1,28 @@
 # Plan: Restructure into layered, per-tool setup scripts
 
-**Branch**: chore/restructure-setup-scripts **Status**: Active
+**Branch**: restructure (pushed to origin) **Status**: Active — paused after Step 5
+
+## Progress
+
+| Step | Status | Commit | Summary |
+|---|---|---|---|
+| 1 — login items dedup | ✅ done | `24545ac` | guard `add_login_item` so re-runs don't duplicate |
+| 2 — oh-my-zsh idempotent | ✅ done | `d6a2a3b` | `[ ! -d ~/.oh-my-zsh ]` guard + `--unattended KEEP_ZSHRC=yes RUNZSH=no` |
+| 3 — base/setup + aliases | ✅ done | `eb9f972` | Makefile restructured; `install_brew_deps.sh` → `setup_homebrew.sh`; `apps`/`configure` kept as deprecated aliases |
+| 4 — setup_mise rename | ✅ done | `4a2076a` | `configure_mise.sh` → `setup_mise.sh` (now in `base`) |
+| 5 — setup_macos extraction | ✅ done | `96b7ee0` | `configure_mac.sh` → `setup_macos.sh`; login items moved out of `setup_homebrew.sh` |
+| **6 — Git (next)** | ⏭ next | — | merge `generate_git_config.sh` + `configure_git.sh` → `setup_git.sh` |
+| 7–13 | pending | — | Shell, Editors, Terraform, Claude, Go, Fonts, Docs |
+| 14–19 | pending | — | Phase 3 — `.zshrc` fragment split |
+| 20 | pending | — | Contract — remove `apps`/`configure` aliases |
+
+**HEAD**: `96b7ee0` on `restructure` (= `origin/restructure`). Phase 1 (idempotency)
+complete; Phase 2 (restructure) underway — `base`/`setup` + aliases stood up,
+two scripts migrated, seven old `install_*`/`configure_*`/`generate_*` scripts
+still to migrate. `make`, `make apps`, `make configure` all still run a full
+provision via the alias mechanism.
+
+**To resume**: re-open this file, jump to Step 6 below, and continue.
 
 ## Goal
 
@@ -145,7 +167,7 @@ Fix the two non-idempotent operations on the **current** scripts, before any
 relocation. Each step's "test" is **run the operation twice and assert the
 second run is a no-op**.
 
-### Step 1: Dedupe login items in `install_brew_deps.sh`
+### Step 1: Dedupe login items in `install_brew_deps.sh` — ✅ done
 
 **Change**: Replace the three unconditional `make login item at end` calls with a
 guard that reads existing login-item names once and adds only those absent (app
@@ -154,7 +176,7 @@ names: `Ghostty`, `Raycast`, `Slack`). **Verify**: run the block twice;
 item'` lists each app exactly once. **Done when**: a second run adds no
 duplicates.
 
-### Step 2: Make oh-my-zsh install idempotent in `configure_shell.sh`
+### Step 2: Make oh-my-zsh install idempotent in `configure_shell.sh` — ✅ done
 
 **Change**: Guard the installer on `[ ! -d ~/.oh-my-zsh ]` and run it with
 `--unattended` plus `KEEP_ZSHRC=yes RUNZSH=no`, so it never prompts and never
@@ -173,7 +195,7 @@ identical to its origin.** Each step is one commit that leaves a **full**
 old scripts; each later step swaps exactly one old call for its new `setup_*.sh`.
 `configure_tools.sh` is drained across steps 8–10 and deleted only once empty.
 
-### Step 3: Base — Homebrew + new target structure
+### Step 3: Base — Homebrew + new target structure — ✅ done
 
 **Change**: Create `setup_homebrew.sh` = the full body of `install_brew_deps.sh`
 (`brew bundle` + the Phase-1-hardened login-item block, which transits here until
@@ -185,7 +207,7 @@ all run a complete provision. **Verify**: `zsh -n`; `make -n all apps configure
 base setup` all parse; `brew bundle` + login lines unchanged. **Done when**:
 `install_brew_deps.sh` gone; old targets still work as aliases.
 
-### Step 4: Base — mise (elevated to base layer)
+### Step 4: Base — mise (elevated to base layer) — ✅ done
 
 **Change**: Rename `configure_mise.sh` → `setup_mise.sh` (content identical) and
 add it to the `base` target **after** `setup_homebrew.sh`, so the
@@ -194,7 +216,7 @@ Makefile. **Verify**: `zsh -n`; `make -n base`; `mise install` + symlink
 unchanged. **Done when**: `configure_mise.sh` gone, `base` runs homebrew then
 mise.
 
-### Step 5: macOS
+### Step 5: macOS — ✅ done
 
 **Change**: Create `setup_macos.sh` = `configure_mac.sh` body + the hardened
 login-item block moved out of `setup_homebrew.sh` (where it transited since step
