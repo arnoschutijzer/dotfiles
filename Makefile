@@ -11,7 +11,7 @@ help:
 .PHONY: base
 base:
 	. ./setup_homebrew.sh
-	. ./configure_mise.sh
+	. ./setup_mise.sh
 
 ## setup: per-tool install + configure
 .PHONY: setup
