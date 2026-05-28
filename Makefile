@@ -18,7 +18,7 @@ base:
 setup:
 	. ./install_go_deps.sh
 	. ./configure_tools.sh
-	. ./configure_mac.sh
+	. ./setup_macos.sh
 	. ./generate_git_config.sh
 	. ./configure_git.sh
 	. ./configure_shell.sh
