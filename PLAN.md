@@ -17,30 +17,30 @@ chosen by lifespan, and the skill recommends it while the human decides the plac
 
 ## Test list (acceptance checklist — each verifiable by reading)
 
-- [ ] 1. Frontmatter valid & craft-style: `name: documentation` + a `description` naming the
+- [x] 1. Frontmatter valid & craft-style: `name: documentation` + a `description` naming the
       triggers (README, recording a decision, docstring/public-API, deciding where a fact
       lives). No `disable-model-invocation`.
-- [ ] 2. States the spine up front.
-- [ ] 3. "Earn it" section: a durable doc is justified only when it carries knowledge
+- [x] 2. States the spine up front.
+- [x] 3. "Earn it" section: a durable doc is justified only when it carries knowledge
       code/tests/commits can't (why, rejected alternatives, how-to-use); restating the code is
       drift-prone duplication that misleads. YAGNI for prose.
-- [ ] 4. "One fact, one home" section: one fact wants one home chosen by lifespan; the skill
+- [x] 4. "One fact, one home" section: one fact wants one home chosen by lifespan; the skill
       recommends, the human places. No fixed paths or assumed layout; adapt to repo
       conventions; surface the choice when unclear; never relocate docs silently.
-- [ ] 5. Names the durable homes concretely, one stance each: README (orient a newcomer, not a
+- [x] 5. Names the durable homes concretely, one stance each: README (orient a newcomer, not a
       mirror of the code); decision record (durable why + alternatives rejected and why);
       docstring/public-API (the contract at the boundary, not a restatement of the signature).
-- [ ] 6. Defers down explicitly: comments -> global `CLAUDE.md`; commit messages ->
+- [x] 6. Defers down explicitly: comments -> global `CLAUDE.md`; commit messages ->
       `readable-code`. Not its territory.
-- [ ] 7. Extends `readable-code`: picks up the why too long-lived for a commit and routes it to
+- [x] 7. Extends `readable-code`: picks up the why too long-lived for a commit and routes it to
       a decision record.
-- [ ] 8. The `deliver` handoff: a decision that must outlive the branch is flagged for
+- [x] 8. The `deliver` handoff: a decision that must outlive the branch is flagged for
       graduation out of `PLAN.md` into a durable decision record before merge; the human
       decides where it lands.
-- [ ] 9. Light `observability` tie: one line — runbook/operational docs pair with that skill.
-- [ ] 10. "When in doubt" closer in house style: a doc earns its place if a reader would ask
+- [x] 9. Light `observability` tie: one line — runbook/operational docs pair with that skill.
+- [x] 10. "When in doubt" closer in house style: a doc earns its place if a reader would ask
       the question it answers and the code can't; if it only restates the code, delete it.
-- [ ] 11. Voice & length consistent with peers: terse, principle-driven, cross-refs in
+- [x] 11. Voice & length consistent with peers: terse, principle-driven, cross-refs in
       backticks, comparable length, no marker comments.
 
 ## Decision log
