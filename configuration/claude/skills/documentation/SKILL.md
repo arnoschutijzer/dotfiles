@@ -10,7 +10,7 @@ the code can't, and give each fact exactly one home, chosen by how long it must 
 code. A doc that restates the code drifts from it and then misleads, which raises a reader's
 cognitive overhead instead of lowering it.
 
-## Earn it
+## When to write a doc
 
 A durable doc is justified only when it carries knowledge the code, the tests, and the commits
 can't:
@@ -24,7 +24,7 @@ Anything the code already states is duplication. It drifts the moment the code c
 stale doc is worse than none — it sends a reader down the wrong path with confidence. This is
 YAGNI for prose: write the doc when a reader will ask the question, not in case they might.
 
-## One fact, one home
+## Where each fact goes
 
 Each fact wants exactly one home, chosen by how long it must survive:
 
@@ -39,7 +39,7 @@ on the repository's conventions. This skill **recommends** the home by lifespan;
 makes the move. Adapt to what the repo already does, surface the choice when it is unclear, and
 never relocate a doc silently.
 
-## The durable homes
+## README, decision record, docstring
 
 - **README** — orient a newcomer: what this is, why it exists, how to run it. Not a mirror of
   the code; the moment it narrates the implementation it starts to rot.
@@ -51,7 +51,7 @@ never relocate a doc silently.
   failure modes a caller must handle. Not a restatement of the signature, which the reader can
   already see.
 
-## Ties
+## Other skills
 
 - Code comments are governed by the global `CLAUDE.md` instructions, and commit messages by the
   `readable-code` skill. This skill defers both and does not restate their rules.
@@ -62,7 +62,7 @@ never relocate a doc silently.
 - Operational and runbook docs pair with the `observability` skill: the telemetry shows what
   broke, the runbook says what to do about it.
 
-## When in doubt
+## Keep it or delete it
 
 A doc earns its place if a reader would ask the question it answers and the code can't answer
 it. If it only restates the code, delete it — the deletion lowers cognitive overhead more than
