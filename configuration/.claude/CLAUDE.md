@@ -39,6 +39,7 @@ Readability — flat control flow, pure functions, immutability, error handling 
 
 - YAGNI by default. Push back when a choice is a one-way door (hard to reverse later) — those deserve a real conversation up front.
 - Rule of three before extracting an abstraction.
+- Narrowest contract that current usage requires. Don't widen a type, signature, or interface beyond what today's callers need.
 
 **Comments**
 

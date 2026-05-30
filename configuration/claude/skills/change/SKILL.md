@@ -27,7 +27,11 @@ Then check for two cases that sit outside those questions:
 - **New behavior, isolated.** Run the `deliver` ritual. Fresh tests, TDD.
 - **New behavior or a fix on existing code.** Run the `deliver` ritual, and verify against
   the existing suite as well. Where the touched code has no tests, write them first. For a bug
-  fix, write the failing test as its own commit on the branch, so a teammate can check it out
+  fix, find the root cause before the fix: the failing test must reproduce the underlying
+  cause, not a surface symptom, and the fix must address that cause rather than mask it (no
+  null-guard over an NPE whose real source is a shape mismatch). When the cause is unclear,
+  fan out a few subagents to investigate competing hypotheses in parallel before committing to
+  one. Write that failing test as its own commit on the branch, so a teammate can check it out
   and watch it go red, then fix in the next commit. Surface a feature toggle when the
   integration is risky or hard to reverse, and pair it with a removal trigger.
 - **Behavior preserved (refactor, behavior-keeping migration).** Lean on the existing suite as
