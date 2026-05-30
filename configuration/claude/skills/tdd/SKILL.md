@@ -45,6 +45,12 @@ Some conditions are hard stops. Halt rather than push through:
 - The smallest correct step is unclear and every option adds speculative scope: stop rather
   than guess.
 
+## Commits
+
+- One commit per green bar; one behaviour per commit.
+
+How to write the message lives in the `readable-code` skill.
+
 ## Done
 
 A change is done when its behavior has a test, the full suite is green, and you have shown

@@ -49,4 +49,3 @@ Readability — flat control flow, pure functions, immutability, error handling 
 ## Commit attribution
 
 - Never sign off with `Co-Authored-By:` — no Claude attribution, no AI attribution, no co-author trailers of any kind. Exception: if the repository explicitly requires AI attribution (e.g. via `CONTRIBUTING.md`, a commit template, or pre-commit hook), follow the repo's rules.
-- Conventional Commits format and commit-granularity rules live in the `tdd` skill.

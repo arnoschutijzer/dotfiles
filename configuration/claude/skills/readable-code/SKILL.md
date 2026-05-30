@@ -1,6 +1,6 @@
 ---
 name: readable-code
-description: Readability through functional style: pure functions, immutability, flat control flow, and observability at the edges. Use this on every piece of code you write or change, including new features, bug fixes, and refactors, and whenever choosing a branching style, designing data or value types, deciding where a function belongs, or deciding whether to extract one, in any language. Apply during the green and refactor steps of every change.
+description: Readability through functional style: pure functions, immutability, flat control flow, observability at the edges, and clear commit messages. Use this on every piece of code you write or change, including new features, bug fixes, and refactors, and whenever choosing a branching style, designing data or value types, deciding where a function belongs, or deciding whether to extract one, or writing a commit message, in any language. Apply during the green and refactor steps of every change.
 ---
 
 # Readable code
@@ -62,6 +62,16 @@ governs where a piece belongs, and these habits govern how it reads once it is t
 - Keep secrets and personal data out of logs.
 
 What to instrument, how to alert, and metrics and traces live in the `observability` skill.
+
+## Commit messages
+
+A commit message is read far more often than it is written, so the same effort-for-the-reader
+rule applies.
+
+- Conventional Commits format.
+- Keep it short: a terse heading, with any detail in the body. Be critical of what earns a
+  place — add a body only for a *why* the heading and the diff can't convey, not to narrate
+  the change.
 
 ## When in doubt
 
