@@ -27,3 +27,8 @@ fi
 
 ln -sf "$(pwd)"/configuration/.claude/settings.json ~/.claude/settings.json
 ln -sf "$(pwd)"/configuration/.claude/CLAUDE.md ~/.claude/CLAUDE.md
+
+mkdir -p ~/.claude/skills
+for skill_path in "$(pwd)"/configuration/claude/skills/*/; do
+  ln -sfn "${skill_path%/}" ~/.claude/skills/"$(basename "$skill_path")"
+done
