@@ -44,6 +44,7 @@ Readability — flat control flow, pure functions, immutability, error handling 
 
 - The commit message carries the *why* by default.
 - Code comments only when an implementation choice is non-obvious and wouldn't survive in a commit message (e.g. an unusual approach in a new feature, an esoteric performance fix). Reference the commit hash if more context is needed.
+- No marker comments — a comment whose job is to label a region of related code (`// --- validation ---`). If a section needs a heading to group it, it wants its own file; split it out.
 
 ## Commit attribution
 
