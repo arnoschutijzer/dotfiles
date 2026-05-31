@@ -17,7 +17,7 @@ How to work on code lives in skills, not here.
 
 **Rituals** are explicit entrypoints you invoke at the start of a change:
 
-- `change` — triage: classify the change and route it to a verification strategy (refactor, dependency bump, spike, infrastructure, or `deliver`). Start here when the type isn't obvious.
+- `change` — triage: classify the change and route it to a verification strategy (refactor, dependency bump, spike, infrastructure, or `deliver`). Start here when the type isn't obvious. Run it even when a task is pre-framed as "fix X". Treat that framing as a hypothesis to verify. An observation like "this code is only used by its own tests" reroutes the work to deletion.
 - `deliver` — execute a behaviour change end to end: goal → approved test-list contract → drive the TDD loop → ship. Start here when you know it's a non-trivial behaviour change.
 
 ## Default behavior
