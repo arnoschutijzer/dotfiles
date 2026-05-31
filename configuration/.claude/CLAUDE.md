@@ -8,7 +8,7 @@ This wins over terseness. No clever one-liners, no dense chained expressions, no
 
 How to work on code lives in skills, not here.
 
-**Craft skills** apply to every change and load on their own triggers — you don't invoke them:
+**Craft skills** apply to every change:
 
 - `tdd` — red-green-refactor; a failing test before any production code.
 - `hexagonal-architecture` — framework-free domain, adapters at the edges, boundaries enforced by tests.
