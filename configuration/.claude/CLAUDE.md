@@ -8,17 +8,14 @@ This wins over terseness. No clever one-liners, no dense chained expressions, no
 
 How to work on code lives in skills, not here.
 
+**Invoke the craft skills through the Skill tool.** At the start of any task that writes, changes, or fixes code, including one-line fixes, call the Skill tool for `tdd` and any other applicable craft skill (`readable-code`, `hexagonal-architecture`, `observability`) before the first Edit or Write. Recalling the discipline from memory does not count; the skill must be invoked. If you are about to Edit or Write code and have not invoked `tdd`, invoke it first.
+
 **Craft skills** apply to every change:
 
 - `tdd` — red-green-refactor; a failing test before any production code.
 - `hexagonal-architecture` — framework-free domain, adapters at the edges, boundaries enforced by tests.
 - `readable-code` — functional style: pure functions, immutability, flat control flow.
 - `observability` — metrics, traces, and logs; symptom-based alerting and SLOs; on anything that runs in production.
-
-**Rituals** are explicit entrypoints you invoke at the start of a change:
-
-- `change` — triage: classify the change and route it to a verification strategy (refactor, dependency bump, spike, infrastructure, or `deliver`). Start here when the type isn't obvious. Run it even when a task is pre-framed as "fix X". Treat that framing as a hypothesis to verify. An observation like "this code is only used by its own tests" reroutes the work to deletion.
-- `deliver` — execute a behaviour change end to end: goal → approved test-list contract → drive the TDD loop → ship. Start here when you know it's a non-trivial behaviour change.
 
 ## Default behavior
 
