@@ -30,5 +30,7 @@ ln -sf "$(pwd)"/configuration/.claude/CLAUDE.md ~/.claude/CLAUDE.md
 
 mkdir -p ~/.claude/skills
 for skill_path in "$(pwd)"/configuration/claude/skills/*/; do
-  ln -sfn "${skill_path%/}" ~/.claude/skills/"$(basename "$skill_path")"
+  skill_name="$(basename "$skill_path")"
+  rm -rf ~/.claude/skills/"$skill_name"
+  cp -R "${skill_path%/}" ~/.claude/skills/"$skill_name"
 done
