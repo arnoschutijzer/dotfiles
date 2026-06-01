@@ -26,6 +26,18 @@ governs where a piece belongs, and these habits govern how it reads once it is t
   "who changed this?" defects.
 - Allow mutation in a small, deliberate, local scope once a measurement justifies it.
 
+## Value types
+
+- Push a constraint into the type so an illegal value cannot be constructed. A non-empty set,
+  a positive amount, an id of a fixed shape: wrap it in a small value type whose initializer is
+  the only way to build one, and have that initializer reject bad input (throw a named error,
+  or return an explicit result; see Error handling).
+- The payoff is that validation happens once, at construction, so downstream code receives a
+  value it can trust instead of re-checking at every call site.
+- Keep the invariant in the domain type, not in a caller or a UI form. A form check holds only
+  while that form is the sole way in; the type holds for every caller, including tests and
+  later code.
+
 ## Flat control flow
 
 - Flatten branching with guard clauses and early returns. Handle the exceptional case first
