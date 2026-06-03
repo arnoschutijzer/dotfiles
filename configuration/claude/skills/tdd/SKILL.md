@@ -25,6 +25,10 @@ Repeat, one behavior per cycle.
 - Test through the domain's ports, so tests stay free of framework detail and the domain
   stays unit-testable (see the `hexagonal-architecture` skill).
 - Assert an observable outcome, leaving implementation detail free to change.
+- Test your own logic. A test that stays green after your code is deleted is exercising the
+  framework (a SwiftData fetch, a SwiftUI `Color`), so drop it.
+- Make tests independent of ambient state: inject the clock, the calendar, and randomness, so
+  a result never depends on the machine's date or locale.
 
 ## Minimal by default
 

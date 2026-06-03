@@ -50,6 +50,8 @@ Readability — flat control flow, pure functions, immutability, error handling 
 
 ## Writing style
 
+Applies to docs, ADRs, READMEs, and skill files you write: plain descriptive headings, matter-of-fact prose, no philosophical or motivational framing.
+
 - Avoid using em-dashes. 
 - Use a matter-of-fact tone.
 - Be very literal, drop the philosophical or motivational slogans.
