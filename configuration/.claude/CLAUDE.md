@@ -19,7 +19,7 @@ How to work on code lives in skills, not here.
 
 ## Default behavior
 
-- Make reasonable assumptions on reversible work and proceed. Ask before one-way doors (destructive operations, shared-state changes, choices that are hard to undo later).
+- Make reasonable assumptions on reversible work and proceed. Ask before one-way doors (destructive operations, shared-state changes including shared modules and anything that ripples across environments, choices that are hard to undo later).
 
 ## Scratch files and experiments
 
@@ -37,6 +37,7 @@ Readability — flat control flow, pure functions, immutability, error handling 
 - YAGNI by default. Push back when a choice is a one-way door (hard to reverse later) — those deserve a real conversation up front.
 - Rule of three before extracting an abstraction.
 - Narrowest contract that current usage requires. Don't widen a type, signature, or interface beyond what today's callers need.
+- Minimal blast radius. Make the smallest change that satisfies the literal request. Don't edit shared modules, consolidate or move files, or fold in adjacent refactors unless asked. When a broader change looks warranted, name it and propose it separately before widening.
 
 **Comments**
 
