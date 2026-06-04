@@ -5,19 +5,19 @@ description: Evolve a database schema or the shape of persisted data without bre
 
 # Database change management
 
-Change the schema in small, backward-compatible steps, each one releasable on its own, so a
-deploy and its migration never have to happen atomically.
+Change the schema in small, backward-compatible steps, each one releasable on its own, so each
+deploy and its migration can run as separate, independent steps.
 
-## Why it needs its own discipline
+## Compatibility during rollout
 
-A deploy is not atomic with its migration. Old and new application versions run at the same
-time during a rollout, against the same database. A schema change that only the new code
+A deploy and its migration run at separate times. Old and new application versions run at the
+same time during a rollout, against the same database. A schema change that only the new code
 understands breaks the old code still serving traffic. Every schema change is a compatibility
 problem first.
 
 ## Expand-contract
 
-Evolve through parallel change, never a single breaking step:
+Evolve through parallel change. Each step stays backward-compatible:
 
 1. **Expand.** Add the new structure additively (a nullable column, a new table, a new index).
    Old code ignores it; new code can start writing it. Backward-compatible, so it ships and
@@ -28,19 +28,18 @@ Evolve through parallel change, never a single breaking step:
    deploy.
 
 Each step is a separate, backward-compatible deploy. Rollback is staying on the prior step,
-not reversing a destructive change under fire. This is the persistence-layer form of the
+which is already deployed and backward-compatible. This is the persistence-layer form of the
 feature toggle in `deliver`: the schema ships ahead of the code that depends on it.
 
 ## Migrations as artifacts
 
 - Versioned, ordered, and checked into version control alongside the code that needs them.
-- Run by a migration tool (the stack's Flyway, Liquibase, Alembic, or equivalent), never by
-  hand against an environment.
+- Applied by a migration tool (the stack's Flyway, Liquibase, Alembic, or equivalent), which
+  owns running them against every environment.
 - Forward-only and immutable once applied or shipped. A mistake in a released migration is
-  corrected by a new migration, never by editing the old one.
+  corrected by adding a new migration; the released one stays as it was applied.
 - One concern per migration. Keep DDL (structure) and DML (data) in separate migrations and
-  separate commits, so a slow backfill never blocks a fast schema change and each reverts on
-  its own.
+  separate commits, so the data move and the structure change deploy and revert independently.
 
 ## Hazardous operations
 
@@ -86,9 +85,9 @@ A schema change routes through `change` like any other and is driven under `tdd`
 ## When to stop
 
 - The change cannot be made backward-compatible in one step: stop and decompose it into expand,
-  migrate, and contract deploys rather than shipping a breaking migration.
-- A backfill would lock a production table: stop and rebatch it as an online migration rather
-  than running it in the deploy.
+  migrate, and contract deploys.
+- A backfill would lock a production table: stop and rebatch it as an online migration that runs
+  outside the deploy.
 - A step's rollback is destructive (it would drop a column new code already wrote to): stop,
   because that signals the steps are ordered wrong.
 
