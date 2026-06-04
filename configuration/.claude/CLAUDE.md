@@ -45,6 +45,13 @@ Readability — flat control flow, pure functions, immutability, error handling 
 - Code comments only when an implementation choice is non-obvious and wouldn't survive in a commit message (e.g. an unusual approach in a new feature, an esoteric performance fix). Reference the commit hash if more context is needed.
 - No marker comments — a comment whose job is to label a region of related code (`// --- validation ---`). If a section needs a heading to group it, it wants its own file; split it out.
 
+## Git
+
+- Rewriting a local feature branch that has not been merged and that no one else is working on is fine: `rebase` and `commit --amend` are normal here.
+- Leave force-pushes to the human. After rewriting local history, say the branch needs a force-push and let the user run it. When you mention the command, prefer `--force-with-lease` over `--force`.
+- Never suggest rewriting `main` or `master`, or any destructive action against it: history rewrites, hard resets, force-pushes, and force deletions are off the table on those branches. If one seems needed, surface the situation and stop.
+- Ask first before actions that discard work or rewrite other shared history: hard resets and `git clean` that drop committed or uncommitted work, branch or tag deletions, and rewriting any branch others track. Describe the situation and let the user decide.
+
 ## Commit attribution
 
 - Never sign off with `Co-Authored-By:` — no Claude attribution, no AI attribution, no co-author trailers of any kind. Exception: if the repository explicitly requires AI attribution (e.g. via `CONTRIBUTING.md`, a commit template, or pre-commit hook), follow the repo's rules.
