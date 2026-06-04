@@ -26,8 +26,9 @@ Then check for two cases that sit outside those questions:
 
 - **New behavior, isolated.** Run the `deliver` ritual. Fresh tests, TDD.
 - **New behavior on existing code.** Run the `deliver` ritual, and verify against the existing
-  suite as well. Where the touched code has no tests, write them first. Surface a feature
-  toggle when the integration is risky or hard to reverse, and pair it with a removal trigger.
+  suite as well. Where the touched code has no tests, write them first. Consider an opt-in
+  toggle when the integration is risky or hard to reverse, paired with a named removal
+  trigger.
 - **A bug fix.** Run the `debug` skill: reproduce, prove the root cause, capture it in a
   failing test, then fix and verify against the existing suite.
 - **Behavior preserved (refactor, behavior-keeping migration).** Lean on the existing suite as

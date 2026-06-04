@@ -10,6 +10,13 @@ argument-hint: [goal]
 Run this at the start of any non-trivial change. It produces the contract, then drives the
 test-driven loop from the `tdd` skill to done.
 
+Rollout safety is a Clarify question. For new behavior that is risky or hard to reverse,
+raise an opt-in toggle as an option and let the user decide; pair it with a named removal
+trigger (a usage signal, a date, or a metric threshold). If a toggle lands on the plan, its
+on-state and off-state tests belong in the test list, and the toggle and trigger are
+recorded in `PLAN.md`. Rollback is then a config flip, and the toggle gets stripped under a
+follow-up cycle once the trigger fires.
+
 ## 0. Resume check
 
 Look for a plan file on the branch (`PLAN.md` at the repo root). If one exists, this is a
