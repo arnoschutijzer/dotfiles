@@ -10,10 +10,15 @@ deploy and its migration can run as separate, independent steps.
 
 ## Compatibility during rollout
 
-A deploy and its migration run at separate times. Old and new application versions run at the
-same time during a rollout, against the same database. A schema change that only the new code
-understands breaks the old code still serving traffic. Every schema change is a compatibility
-problem first.
+A deploy and its migration run at separate times. When the rollout runs old and new
+application versions at the same time against the same database, a schema change that only the
+new code understands breaks the old code still serving traffic. Under that deploy model every
+schema change is a compatibility problem first, and the expand-contract steps below apply.
+
+Confirm the deploy model before applying them. When the deploy guarantees no version overlap,
+such as a maintenance window or a single instance taken down and replaced, the migration and
+its code ship together and the compatibility steps collapse to a direct change. Default to
+assuming overlap, since rolling deploys are the common case.
 
 ## Expand-contract
 
@@ -55,12 +60,17 @@ Some single statements lock a table or break compatibility. Decompose each into 
 - **Drop a column or table.** Only after confirming no deployed code path references it. This
   is the contract step, gated on the expand having fully rolled out.
 
+Which statements lock, and the safe online form of each, depend on the store. See the `mysql`
+or `postgres` skill for the locking behavior of the store in use.
+
 ## Backfills
 
 - A large backfill runs in batches, outside the deploy's critical path, as its own online data
   migration. A single unbatched UPDATE over a large table locks it.
 - Make the backfill idempotent and resumable, so a failure partway through restarts without
   double-applying.
+- Emit progress while it runs: rows processed, batches remaining, and error rate, so a stall
+  or a double-apply is visible before the backfill finishes (see the `observability` skill).
 - Treat the backfill as a data change with its own verification, separate from the DDL that
   made room for it.
 
