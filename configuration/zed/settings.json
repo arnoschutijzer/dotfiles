@@ -112,9 +112,6 @@
       },
     },
   },
-  "notification_panel": {
-    "dock": "right",
-  },
   "collaboration_panel": {
     "dock": "right",
   },
