@@ -29,8 +29,8 @@ ln -sf "$(pwd)"/configuration/.claude/settings.json ~/.claude/settings.json
 ln -sf "$(pwd)"/configuration/.claude/CLAUDE.md ~/.claude/CLAUDE.md
 
 mkdir -p ~/.claude/skills
-for skill_path in "$(pwd)"/configuration/claude/skills/*/; do
+for skill_path in "$(pwd)"/configuration/.claude/skills/*/; do
   skill_name="$(basename "$skill_path")"
   rm -rf ~/.claude/skills/"$skill_name"
-  cp -R "${skill_path%/}" ~/.claude/skills/"$skill_name"
+  ln -sf "${skill_path%/}" ~/.claude/skills/"$skill_name"
 done
