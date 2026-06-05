@@ -25,6 +25,9 @@ A framework-free domain is unit-testable in isolation, so it pairs directly with
 skill: domain behavior gets fast tests through its ports, with no container, database, or
 network in the loop.
 
+Tests that exercise the ports from outside, acceptance tests through the inbound port and
+contract tests at the outbound ports, live in the `testing` skill.
+
 ## Boundaries as tests
 
 A boundary violation, the domain reaching for a framework, is a hazardous state. Encode it

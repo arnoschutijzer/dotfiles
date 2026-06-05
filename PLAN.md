@@ -29,7 +29,7 @@ configuration/.claude/skills/testing/
 4. [x] `testing/test-data.md` — builders/factories, deterministic fixtures,
    anonymized data.
 5. [x] `testing/property-based.md` — generated inputs, invariants, shrinking.
-6. [ ] Back-references — one-line pointer from `tdd/SKILL.md` and
+6. [x] Back-references — one-line pointer from `tdd/SKILL.md` and
    `hexagonal-architecture/SKILL.md` to the `testing` skill.
 
 ## Verification gate
