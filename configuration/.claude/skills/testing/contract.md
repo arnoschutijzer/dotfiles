@@ -10,12 +10,11 @@ contract. The provider runs the contract against itself and fails its own build 
 honoring it. The need flows from consumer to provider, so the provider learns what its callers
 actually depend on.
 
-## At the port
+## Where the contract lives
 
-The contract describes an outbound port of the consumer and an inbound port of the provider, the
-seam the `hexagonal-architecture` skill draws. Test each adapter against the contract. The
-contract covers the shape of the exchange; the business logic behind it stays in the domain's
-unit tests under `tdd`.
+The contract describes an outbound port of the consumer and an inbound port of the provider. Test
+each adapter against the contract. The contract covers the shape of the exchange; the business
+logic behind it stays in the domain's unit tests.
 
 ## What it replaces
 
@@ -23,10 +22,9 @@ A full end-to-end runs both services together and breaks for reasons unrelated t
 contract lets each side test in isolation against the shared agreement, so the suites stay fast
 and a breaking change surfaces in the provider's build before it reaches production.
 
-## Evolve the contract safely
+## Evolving the contract
 
-A provider cannot break a contract a consumer still depends on. Evolve it the same
-expand-then-contract way the `database-change-management` skill evolves a schema: add the new
-shape additively, migrate the consumers onto it, then remove the old shape once nothing depends
-on it. Keep the contract in version control, shared or published, so both builds verify the same
-artifact.
+A provider cannot break a contract a consumer still depends on. Evolve it through
+expand-then-contract: add the new shape additively, migrate the consumers onto it, then remove
+the old shape once nothing depends on it. Keep the contract in version control, shared or
+published, so both builds verify the same artifact.

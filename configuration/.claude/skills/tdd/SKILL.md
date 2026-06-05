@@ -30,9 +30,9 @@ Repeat, one behavior per cycle.
 - Make tests independent of ambient state: inject the clock, the calendar, and randomness, so
   a result never depends on the machine's date or locale.
 
-Strategies that sit around this unit loop, acceptance tests through real adapters, contract
-tests at the ports, test data builders, and property-based testing over generated inputs, live
-in the `testing` skill.
+Broader testing strategies live in the `testing` skill: acceptance tests through real adapters,
+contract tests at the ports, test data builders, and property-based testing over generated
+inputs.
 
 ## Minimal by default
 

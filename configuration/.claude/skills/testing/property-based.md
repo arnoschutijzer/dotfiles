@@ -3,11 +3,10 @@
 Instead of asserting one example, state a property that holds for every valid input, generate many
 inputs, and let the framework search for a counterexample.
 
-## Still red-green
+## Part of the unit loop
 
-A failing property is a failing test. It drops into the `tdd` cycle like any example test: red,
-green, refactor. Reach for it when a behavior has an invariant that example tests would only sample
-at a few points.
+A failing property is a failing test: red, green, refactor, like any example test. Reach for it
+when a behavior has an invariant that example tests would only sample at a few points.
 
 ## Kinds of property
 
@@ -18,11 +17,11 @@ at a few points.
 - **Model-based**: the implementation agrees with a simpler reference implementation on every
   input.
 
-## Generate through value types
+## Generating inputs
 
-Generate inputs through the domain's value types (see `readable-code`), so every generated value is
-valid by construction. The property then exercises the behavior itself, and constructor validation
-keeps its own test.
+Generate inputs through the domain's value types, so every generated value is valid by
+construction. The property then exercises the behavior itself, and constructor validation keeps
+its own test.
 
 ## Shrinking
 
@@ -30,12 +29,11 @@ On failure the framework shrinks the input to the minimal case that still fails.
 is the bug report. Pin it as an example test once fixed, so the specific regression stays covered
 after the property moves on.
 
-## Keep it reproducible
+## Reproducibility
 
 Seed the generator and record the seed on failure, so a counterexample reproduces on the next run.
-This is the same determinism rule the `tdd` skill and `test-data.md` state.
 
-## Where it fits
+## Relation to example tests
 
-Use it alongside example tests. Examples document the intended cases; properties cover the space
-between them.
+Use property-based tests alongside example tests. Examples document the intended cases; properties
+cover the inputs between them.
