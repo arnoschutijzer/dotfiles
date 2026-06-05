@@ -21,14 +21,14 @@ configuration/.claude/skills/testing/
 
 ## Test list
 
-1. [ ] `testing/SKILL.md` — strategy map; anchors to `tdd` and
+1. [x] `testing/SKILL.md` — strategy map; anchors to `tdd` and
    `hexagonal-architecture`; routes to the four detail files.
-2. [ ] `testing/acceptance.md` — outside-in through the inbound port, real
+2. [x] `testing/acceptance.md` — outside-in through the inbound port, real
    adapters, the double loop.
-3. [ ] `testing/contract.md` — consumer-driven contracts at the outbound ports.
-4. [ ] `testing/test-data.md` — builders/factories, deterministic fixtures,
+3. [x] `testing/contract.md` — consumer-driven contracts at the outbound ports.
+4. [x] `testing/test-data.md` — builders/factories, deterministic fixtures,
    anonymized data.
-5. [ ] `testing/property-based.md` — generated inputs, invariants, shrinking.
+5. [x] `testing/property-based.md` — generated inputs, invariants, shrinking.
 6. [ ] Back-references — one-line pointer from `tdd/SKILL.md` and
    `hexagonal-architecture/SKILL.md` to the `testing` skill.
 
