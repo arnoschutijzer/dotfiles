@@ -26,7 +26,7 @@ How to work on code lives in skills, not here.
 - Use the `/tmp/` root directory.
 - Delete them once the experiment is done and findings are captured.
 - Don't leave `test_foo.py`, `debug.js`, `experiment.sh`, etc. lying around in the project root.
-- For deliberate exploration of an unknown, classify it as a spike via `change`: time-boxed, kept off the trunk, and rebuilt under TDD once you have the answer.
+- For deliberate exploration of an unknown, classify it as a spike via `triage`: time-boxed, kept off the trunk, and rebuilt under TDD once you have the answer.
 
 ## Code-level rules
 

@@ -1,6 +1,6 @@
 ---
 name: debug
-description: Drive a bug fix from a reported failure to a proven root cause, capture that cause in a failing test, then fix and verify under TDD. Use when behavior is wrong and the cause is not yet known. Reached from the `change` router for the bug-fix route, or invoked directly.
+description: Drive a bug fix from a reported failure to a proven root cause, capture that cause in a failing test, then fix and verify under TDD. Use when behavior is wrong and the cause is not yet known. Reached from the `triage` router for the bug-fix route, or invoked directly.
 disable-model-invocation: true
 argument-hint: [the failure]
 ---
@@ -55,7 +55,7 @@ scatter guards across call sites to suppress the symptom.
 - No reproduction after a genuine attempt: stop and gather more evidence (more logging, the
   actual failing input) rather than guessing at a fix.
 - The cause will not resolve to a proven hypothesis: stop rather than patch a guess.
-- The fix grows into real new behavior: route back through `change` to the `deliver` ritual.
+- The fix grows into real new behavior: route back through `triage` to the `deliver` ritual.
 
 ## Done
 

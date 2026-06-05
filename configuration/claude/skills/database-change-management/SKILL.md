@@ -82,7 +82,7 @@ concern; the domain speaks in values, and the adapter maps them to and from the 
 
 ## Verification
 
-A schema change routes through `change` like any other and is driven under `tdd`:
+A schema change routes through `triage` like any other and is driven under `tdd`:
 
 - The migration applies cleanly against a representative copy of the schema, from the current
   version forward, with no manual step.

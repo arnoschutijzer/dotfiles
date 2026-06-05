@@ -1,11 +1,11 @@
 ---
-name: change
+name: triage
 description: Classify a change request and route it to the right verification strategy — refactor, dependency bump, spike, infrastructure, the `deliver` ritual for new behavior, or the `debug` skill for a bug fix. Triage that picks the path before any code; it does not execute. Use at the start of a change when the type or verification approach isn't already obvious.
 disable-model-invocation: true
 argument-hint: [what you want to change]
 ---
 
-# Make a change
+# Triage a change
 
 Classify the change ($ARGUMENTS), state the route, then proceed. The classification picks the
 verification strategy before any code is written.
