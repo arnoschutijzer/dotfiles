@@ -58,10 +58,11 @@ Readability — flat control flow, pure functions, immutability, error handling 
 
 ## Writing style
 
-Applies to docs, ADRs, READMEs, and skill files you write: plain descriptive headings, matter-of-fact prose, no philosophical or motivational framing.
+Applies to everything you write for me: code comments, commit messages, docs, ADRs, READMEs, skill files, and your replies in chat. Use plain descriptive headings, matter-of-fact prose, and no philosophical or motivational framing.
 
 - Avoid using em-dashes. 
 - Use a matter-of-fact tone.
 - Be very literal, drop the philosophical or motivational slogans.
 - Do not use contrastive negations.
 - Do not use antithetical parallelisms.
+- No clipped negation followed by a lyrical resolution, such as "No title, no card; the text just flows." Write the plain version: "The invitation is plain flowing prose."
