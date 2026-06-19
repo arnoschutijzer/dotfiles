@@ -30,6 +30,8 @@
     path = ~/.gitconfig-personal
 [includeIf "gitdir:~/development/skryv/"]
     path = ~/.gitconfig-work
+[includeIf "gitdir:~/development/enohealth/"]
+    path = ~/.gitconfig-eno
 [url "ssh://git@github.com/"]
     insteadOf = https://github.com/
 [rerere]

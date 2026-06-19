@@ -47,3 +47,22 @@ else
         signingkey = $SIGNINGKEY
 EOF
 fi
+
+ENO_CONFIG=~/.gitconfig-eno
+
+if [ -f "$ENO_CONFIG" ]; then
+    echo "$ENO_CONFIG exists. Not touching it."
+else
+    echo "$ENO_CONFIG does not exist."
+    if test -z "$NAME"; then
+        prompt_name
+    fi
+    prompt_mail "eno"
+    prompt_gpg
+    cat > $ENO_CONFIG << EOF
+[user]
+        name = $NAME
+        email = $EMAIL
+        signingkey = $SIGNINGKEY
+EOF
+fi
