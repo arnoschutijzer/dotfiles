@@ -26,6 +26,10 @@ no evidence the bug is understood and no proof it is gone.
   there. The first guess that points outward is usually wrong; prove it.
 - Separate symptom from cause. A null-guard over an NPE whose real source is a shape mismatch
   hides the symptom and leaves the bug in place.
+- Check that the code is still reachable before designing a fix. Grep for callers, confirm the
+  feature is still configured, scan recent commits that touched it. If the code is unreachable
+  or the feature it implemented was abandoned, the change is a deletion. If reachability is
+  unclear, surface that and stop rather than patch on faith.
 - When the cause is unclear, fan out a few subagents on competing hypotheses in parallel, then
   commit to the one the evidence supports.
 
