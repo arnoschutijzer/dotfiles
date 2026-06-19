@@ -19,6 +19,19 @@ Structure code as a framework-free domain surrounded by adapters, with ports bet
 
 Dependencies point inward. The domain stays unaware of any adapter.
 
+## Invariants live in the domain
+
+The domain expresses its rules as types. A value object validates in its constructor and cannot exist in an invalid state; an `Email`, `Quantity`, or `NonEmptyList<T>` typed at compile time is valid by construction. Downstream code that takes the type already knows the rule holds, so it carries no guard.
+
+Push each invariant as far up this stack as the language allows:
+
+1. The type itself makes the bad case unrepresentable.
+2. A constructor on a value object throws on invalid input.
+3. A runtime guard at a call site.
+4. A check in the adapter (form validation, request schema).
+
+Layer one is the strongest because it removes the check from every consumer downstream. Reach for a lower layer only when the language cannot express the rule structurally. A guard duplicated across call sites, or a validation rule repeated in each inbound adapter, is the symptom of an invariant that should have been a type.
+
 ## Why it pays off
 
 A framework-free domain is unit-testable in isolation, so it pairs directly with the `tdd`
