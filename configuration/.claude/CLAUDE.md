@@ -8,6 +8,8 @@ This wins over terseness. No clever one-liners, no dense chained expressions, no
 
 How to work on code lives in skills, not here.
 
+**Enter non-trivial work through a ritual.** Before the first Edit on any change beyond a trivial one-liner, run `triage` to classify and route the change, or run `deliver` directly when the goal is known new behavior. The ritual clarifies intent and gets the test-list contract approved before any code is written. The craft skills below then govern how that code is written.
+
 **Invoke the craft skills through the Skill tool.** At the start of any task that writes, changes, or fixes code, including one-line fixes, call the Skill tool for `tdd` and any other applicable craft skill (`readable-code`, `hexagonal-architecture`, `observability`) before the first Edit or Write. Recalling the discipline from memory does not count; the skill must be invoked. If you are about to Edit or Write code and have not invoked `tdd`, invoke it first.
 
 **Craft skills** apply to every change:
