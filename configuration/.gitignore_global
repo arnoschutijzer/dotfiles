@@ -4,6 +4,9 @@
 .java-version
 .venv
 
+# deliver ritual's local in-flight surface
+PLAN.md
+
 # zed jdtls
 .factorypath
 .project
