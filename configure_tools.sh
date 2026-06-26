@@ -24,13 +24,3 @@ if [ -f "$CLAUDE_JSON" ]; then
 else
   echo "~/.claude.json not found, skipping Serena MCP setup (run Claude Code once first)"
 fi
-
-ln -sf "$(pwd)"/configuration/.claude/settings.json ~/.claude/settings.json
-ln -sf "$(pwd)"/configuration/.claude/CLAUDE.md ~/.claude/CLAUDE.md
-
-mkdir -p ~/.claude/skills
-for skill_path in "$(pwd)"/configuration/.claude/skills/*/; do
-  skill_name="$(basename "$skill_path")"
-  rm -rf ~/.claude/skills/"$skill_name"
-  ln -sf "${skill_path%/}" ~/.claude/skills/"$skill_name"
-done
