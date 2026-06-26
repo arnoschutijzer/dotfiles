@@ -1,72 +1,141 @@
-tap "hashicorp/tap"
-tap "pulumi/tap"
-tap "snyk/tap"
-tap "terraform-linters/tap"
+tap "hashicorp/tap", trusted: true
+tap "pulumi/tap", trusted: true
+tap "snyk/tap", trusted: true
+tap "terraform-linters/tap", trusted: true
+# Official Amazon AWS command-line interface
 brew "awscli"
+# Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
+# CLI tool for analyzing Claude Code usage from local JSONL files
+brew "ccusage"
+# Modern, maintained replacement for ls
 brew "eza"
+# Play, record, convert, and stream select audio and video codecs
 brew "ffmpeg"
+# Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
 brew "gh"
+# Distributed revision control system
 brew "git"
+# Syntax-highlighting pager for git and diff output
 brew "git-delta"
+# Git extension for versioning large files
 brew "git-lfs"
+# GNU implementation of the famous stream editor
 brew "gnu-sed"
+# GNU Privacy Guard (OpenPGP)
 brew "gnupg"
+# GNU grep, egrep and fgrep
 brew "grep"
+# Client library for huggingface.co hub
 brew "hf"
+# Java language specific implementation of the Language Server Protocol
 brew "jdtls"
+# Command-line interface for JFrog products
 brew "jfrog-cli"
+# Lightweight and flexible command-line JSON processor
 brew "jq"
+# LLM inference in C/C++
 brew "llama.cpp"
+# Mac App Store command-line interface
 brew "mas"
+# Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Port scanning utility for large networks
 brew "nmap"
+# Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
+# AI agent toolkit
 brew "pi-coding-agent"
+# Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Cross-shell prompt for astronauts
 brew "starship"
+# Tool to generate documentation from Terraform modules
 brew "terraform-docs"
+# Static analysis security scanner for your terraform code
 brew "tfsec"
+# Text interface for Git repositories
 brew "tig"
+# Extremely fast Python package installer and resolver, written in Rust
 brew "uv"
+# Internet file retriever
 brew "wget"
+# Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Find & fix known vulnerabilities in open-source dependencies
 brew "snyk/tap/snyk"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Command-line interface for 1Password
 cask "1password-cli"
+# Securely stores and accesses AWS credentials in a development environment
 cask "aws-vault-binary"
+# OpenAI's official ChatGPT desktop app
 cask "chatgpt"
+# Anthropic's official Claude AI desktop app
 cask "claude"
+# Terminal-based AI coding assistant
 cask "claude-code"
+# OpenAI's Codex desktop app for managing coding agents
+cask "codex-app"
+# Universal database tool and SQL client
 cask "dbeaver-community"
+# App to build and share containerised applications and microservices
 cask "docker-desktop"
+# Online diagram software
 cask "drawio"
 cask "font-caskaydia-cove-nerd-font"
+# Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
+# Web browser
 cask "google-chrome"
+# IDE for Java development - community edition
 cask "intellij-idea-ce"
+# Provides updates to various Microsoft products
 cask "microsoft-auto-update"
+# Email client
 cask "microsoft-outlook"
+# Meet, chat, call, and collaborate in just one place
 cask "microsoft-teams"
+# Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
+# Translation editor
 cask "poedit"
+# Collaboration platform for API development
 cask "postman"
+# Client for Proton Drive
 cask "proton-drive"
+# Client for Proton Mail and Proton Calendar
 cask "proton-mail"
+# Desktop client for Proton Pass
 cask "proton-pass"
+# VPN client focusing on security
 cask "protonvpn"
+# All-in-one bookmark manager
 cask "raindropio"
+# Control your tools with a few keystrokes
 cask "raycast"
+# Plugin for AWS CLI to start and end sessions that connect to managed instances
 cask "session-manager-plugin"
+# Team communication and collaboration software
 cask "slack"
+# Music streaming service
 cask "spotify"
+# Messaging app with a focus on speed and security
 cask "telegram"
+# Pluggable Terraform linter
 cask "terraform-linters/tap/tflint"
+# Web browser
 cask "thebrowsercompany-dia"
+# Open-source code editor
 cask "visual-studio-code"
+# Multimedia player
 cask "vlc"
+# Connect to Windows
 cask "windows-app"
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
@@ -114,3 +183,4 @@ vscode "ryanolsonx.sandcastle-theme"
 vscode "solidhelium.zed-theme"
 vscode "yoavbls.pretty-ts-errors"
 vscode "yzane.markdown-pdf"
+npm "corepack"
