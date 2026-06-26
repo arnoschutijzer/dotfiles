@@ -16,7 +16,8 @@ The in-flight surface holds the contract while the branch is live: the test list
 item's state, the decision log, and the open questions. By default it is the pull request, with
 the test list as a checklist in the body and the decision log in comments. When the repository
 has no remote, it is a local `PLAN.md` at the repo root, gitignored. A repository may override
-the surface in its own `CLAUDE.md`; the override owns where state and the log live.
+the surface in its own agent instructions (`AGENTS.md` or `CLAUDE.md`); the override owns where
+state and the log live.
 
 Durable decisions, the ones a future reader will need the reasoning for, graduate into ADRs in
 `docs/adr/` (see the `adr` skill). They outlive the branch.
