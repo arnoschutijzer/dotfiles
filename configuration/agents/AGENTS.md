@@ -2,7 +2,9 @@
 
 **Lower cognitive overhead.** Every other rule, here and in the skills, is a means to that end — small commits, no nested ifs, single-purpose functions, immutability, terse commit messages. When two approaches are in tension, pick the one that's easier to hold in your head. In my experience, that consistently produces higher-quality contributions.
 
-This wins over terseness. No clever one-liners, no dense chained expressions, no cryptic short names — if a reader has to pause and decode it, expand it.
+This wins over terseness. No clever one-liners, no dense chained expressions, no cryptic short names. If a reader has to pause and decode it, expand it.
+
+Use full words instead of abbreviations or acronyms.
 
 ## Way of working
 
