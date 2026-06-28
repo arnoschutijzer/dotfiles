@@ -56,7 +56,8 @@
     "context7@claude-plugins-official": true,
     "skryv-skills@skryv-plugins": true,
     "jdtls-lsp@claude-plugins-official": true,
-    "swift-lsp@claude-plugins-official": true
+    "swift-lsp@claude-plugins-official": true,
+    "gopls-lsp@claude-plugins-official": true
   },
   "extraKnownMarketplaces": {
     "skryv-plugins": {
@@ -67,7 +68,7 @@
     }
   },
   "effortLevel": "xhigh",
+  "tui": "fullscreen",
   "theme": "dark-ansi",
-  "skipAutoPermissionPrompt": true,
-  "tui": "fullscreen"
+  "skipAutoPermissionPrompt": true
 }
