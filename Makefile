@@ -28,7 +28,7 @@ configure:
 ## upgrade: upgrade installed apps
 .PHONY: upgrade
 upgrade:
-	brew upgrade --greedy && brew cleanup
+	brew upgrade --greedy --yes && brew cleanup
 	mas upgrade
 	make cleanup
 
