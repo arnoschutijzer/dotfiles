@@ -29,7 +29,7 @@ configure:
 .PHONY: upgrade
 upgrade:
 	brew upgrade --greedy --yes && brew cleanup
-	mas upgrade
+	sudo mas upgrade
 	make cleanup
 
 ## deps: export apps to a file
