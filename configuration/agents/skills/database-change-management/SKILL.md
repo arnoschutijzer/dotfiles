@@ -1,6 +1,6 @@
 ---
 name: database-change-management
-description: Evolve a database schema or the shape of persisted data without breaking a running system: expand-contract migrations, backward-compatible steps, versioned forward-only migration files, online backfills, all driven and verified under TDD. Use whenever a change adds, alters, renames, or removes a column, table, index, or constraint, changes a stored data shape, or backfills existing rows, in any language or store.
+description: "Evolve a database schema or the shape of persisted data without breaking a running system: expand-contract migrations, backward-compatible steps, versioned forward-only migration files, online backfills, all driven and verified under TDD. Use whenever a change adds, alters, renames, or removes a column, table, index, or constraint, changes a stored data shape, or backfills existing rows, in any language or store."
 ---
 
 # Database change management

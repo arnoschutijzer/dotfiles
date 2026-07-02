@@ -1,6 +1,6 @@
 ---
 name: readable-code
-description: Readability through functional style: pure functions, immutability, flat control flow, observability at the edges, and clear commit messages. Use this on every piece of code you write or change, including new features, bug fixes, and refactors, and whenever choosing a branching style, designing data or value types, deciding where a function belongs, or deciding whether to extract one, or writing a commit message, in any language. Apply during the green and refactor steps of every change.
+description: "Readability through functional style: pure functions, immutability, flat control flow, observability at the edges, and clear commit messages. Use this on every piece of code you write or change, including new features, bug fixes, and refactors, and whenever choosing a branching style, designing data or value types, deciding where a function belongs, or deciding whether to extract one, or writing a commit message, in any language. Apply during the green and refactor steps of every change."
 ---
 
 # Readable code

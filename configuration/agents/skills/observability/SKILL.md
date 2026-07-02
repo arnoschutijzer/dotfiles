@@ -1,6 +1,6 @@
 ---
 name: observability
-description: Observability and operability: the three pillars (metrics, traces, logs), what to instrument, correlation across boundaries, symptom-based alerting, and SLOs. Use this whenever designing or extending a service, adding an endpoint or integration, deciding what to measure or trace, setting up alerting, dashboards, or health checks, or diagnosing a production incident, in any language. Apply on any change that runs in production, since this is how you measure change-failure-rate and time-to-restore.
+description: "Observability and operability: the three pillars (metrics, traces, logs), what to instrument, correlation across boundaries, symptom-based alerting, and SLOs. Use this whenever designing or extending a service, adding an endpoint or integration, deciding what to measure or trace, setting up alerting, dashboards, or health checks, or diagnosing a production incident, in any language. Apply on any change that runs in production, since this is how you measure change-failure-rate and time-to-restore."
 ---
 
 # Observability

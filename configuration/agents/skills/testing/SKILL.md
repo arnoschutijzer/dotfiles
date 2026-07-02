@@ -1,6 +1,6 @@
 ---
 name: testing
-description: Testing strategies around the unit loop and where each fits: acceptance tests driven from outside through real adapters, consumer-driven contract tests at the ports, test data builders and deterministic fixtures, and property-based testing over generated inputs. Use this when deciding how to test a change beyond a single unit test, covering a feature end to end, a service boundary, the data a test needs, or an invariant over many inputs. Routes to a detail file per strategy. Complements the `tdd` skill, which owns the red-green-refactor unit loop.
+description: "Testing strategies around the unit loop and where each fits: acceptance tests driven from outside through real adapters, consumer-driven contract tests at the ports, test data builders and deterministic fixtures, and property-based testing over generated inputs. Use this when deciding how to test a change beyond a single unit test, covering a feature end to end, a service boundary, the data a test needs, or an invariant over many inputs. Routes to a detail file per strategy. Complements the `tdd` skill, which owns the red-green-refactor unit loop."
 ---
 
 # Testing strategies

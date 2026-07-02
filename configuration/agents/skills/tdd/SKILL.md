@@ -1,6 +1,6 @@
 ---
 name: tdd
-description: Test-driven development discipline: red, green, refactor; one behavior per test; smallest code that passes. Use this whenever writing, changing, or fixing production code in any language, including quick fixes and small changes, to ensure a failing test exists before implementation and the code stays minimal. Apply on every code change, not only on new features.
+description: "Test-driven development discipline: red, green, refactor; one behavior per test; smallest code that passes. Use this whenever writing, changing, or fixing production code in any language, including quick fixes and small changes, to ensure a failing test exists before implementation and the code stays minimal. Apply on every code change, not only on new features."
 ---
 
 # Test-driven development
