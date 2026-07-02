@@ -44,7 +44,9 @@ With no in-flight surface yet, start fresh below.
 
 ## 1. Clarify
 
-Interview the user relentlessly about every aspect of the change ($ARGUMENTS) until you reach a
+Restate the change ($ARGUMENTS) in your own words first, and call out any term whose meaning
+drives the design. A restated interpretation lets the user catch a misread while it is still
+cheap to correct. Then interview the user relentlessly about every aspect until you reach a
 shared understanding. Walk down each branch of the design tree, resolving the dependencies
 between decisions one at a time. Ask one question at a time, and give your recommended answer
 with each. When a question can be answered by exploring the codebase, explore it.

@@ -7,8 +7,10 @@ argument-hint: [what you want to change]
 
 # Triage a change
 
-Classify the change ($ARGUMENTS), state the route, then proceed. The classification picks the
-verification strategy before any code is written.
+Restate the change ($ARGUMENTS) as you understood it, classify it, and state the route. The
+restatement catches a misread before any code is written, and the classification picks the
+verification strategy. Stop for confirmation when a load-bearing term is genuinely ambiguous or
+the change is a one-way door; otherwise state your reading and proceed.
 
 ## Classify
 
