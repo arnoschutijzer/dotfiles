@@ -7,9 +7,10 @@ measurements a gate.
 
 ## Where it sits
 
-A performance test is slow and broad. It runs the whole system under load, so it stays out of the
-fast unit suite that runs on every save. Run it on its own schedule, or on the changes that touch
-a performance-sensitive path, as a separate gate from the unit and acceptance suites.
+A performance test is slow and broad, so it stays out of the fast unit suite that runs on every
+save. A baseline comparison still belongs in a pull request: run it as a gate on the change, so a
+regression is caught before merge. Reserve the long-running tests, such as a multi-hour soak or a
+full-scale load run, for their own schedule.
 
 ## Baseline
 

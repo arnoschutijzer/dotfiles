@@ -8,7 +8,7 @@ description: "Performance testing: whether the system meets its performance obje
 Performance testing measures whether the system meets its performance objectives under realistic
 conditions: the latency a caller sees, the throughput it sustains, and how it behaves as load
 rises. It sits off the unit pyramid. It exercises the whole running system under load, so it runs
-against a deployed system, slow and broad, on its own schedule.
+against a deployed system, slow and broad.
 
 ## Kinds of test
 

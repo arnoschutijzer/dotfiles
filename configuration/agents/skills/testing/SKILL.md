@@ -20,8 +20,8 @@ The strategies sit on a pyramid, against the boundary between the domain and its
   port. They pin the interaction without a full end-to-end. See `contract.md`.
 
 **Performance tests** sit off this pyramid. They are a non-functional gate that runs the whole
-system under load on its own schedule. See `performance.md` for gating one against a baseline, and
-the `performance` skill for the kinds of test and what to measure.
+system under load. See `performance.md` for gating one against a baseline, and the `performance`
+skill for the kinds of test and what to measure.
 
 Two strategies are techniques used inside tests at every level of the pyramid:
 
