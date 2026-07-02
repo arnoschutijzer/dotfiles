@@ -50,6 +50,8 @@ brew "nmap"
 brew "openssl@1.1"
 # AI agent toolkit
 brew "pi-coding-agent"
+# Develop and deploy code with zero configuration
+brew "railway"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Cross-shell prompt for astronauts
