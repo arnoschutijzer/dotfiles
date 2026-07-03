@@ -2,8 +2,6 @@
 
 export ZSH="/Users/arnoschutijzer/.oh-my-zsh"
 
-export PATH=/Applications:$PATH
-export PATH=/Users/arnoschutijzer/bin:$PATH
 export GPG_TTY=$(tty)
 
 export STARSHIP_CONFIG=~/.starship.toml
@@ -70,8 +68,3 @@ fi
 ' --tag-name-filter cat -- --branches --tags
 }
 
-export GOPATH="${HOME}/.go"
-export PATH="$PATH:${GOPATH}/bin"
-eval "$(mise activate zsh)"
-
-[[ -f ~/dotfiles/.secrets ]] && source ~/dotfiles/.secrets
