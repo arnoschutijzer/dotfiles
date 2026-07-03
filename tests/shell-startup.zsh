@@ -6,6 +6,8 @@
 emulate -L zsh
 set -u
 
+local repo="${0:A:h:h}"  # this script lives in <repo>/tests
+
 typeset -i failures=0
 
 pass() { print -r -- "PASS: $1" }
@@ -69,9 +71,23 @@ test_interactive_shell_loads_aliases_and_functions() {
   fi
 }
 
+test_configure_shell_wires_zshenv() {
+  local target
+  target=$(readlink "$HOME/.zshenv" 2>/dev/null)
+  local linked=0 scripted=0
+  [[ -L "$HOME/.zshenv" && "$target" == *"configuration/.zshenv" ]] && linked=1
+  grep -q 'configuration/.zshenv ~/.zshenv' "$repo/configure_shell.sh" && scripted=1
+  if (( linked && scripted )); then
+    pass "configure_shell.sh symlinks .zshenv and ~/.zshenv is in place"
+  else
+    fail "zshenv wiring incomplete (linked=$linked scripted=$scripted)"
+  fi
+}
+
 test_bare_resolves_toolchain
 test_guard_skips_cosmetics_when_non_interactive
 test_login_shell_preserves_path_order
 test_interactive_shell_loads_aliases_and_functions
+test_configure_shell_wires_zshenv
 
 exit $(( failures > 0 ))
