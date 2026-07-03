@@ -17,6 +17,9 @@ bare() { env -i HOME="$HOME" TERM=xterm zsh -c "$1" 2>/dev/null }
 # A login interactive shell: what a terminal gets, after macOS path_helper.
 login_inter() { env -i HOME="$HOME" TERM=xterm zsh -lic "$1" 2>/dev/null }
 
+# An interactive shell: cosmetics from .zshrc should load here.
+inter() { env -i HOME="$HOME" TERM=xterm zsh -ic "$1" 2>/dev/null }
+
 test_bare_resolves_toolchain() {
   local probe missing
   probe='for t in mise node eza; do command -v $t >/dev/null || print missing-cmd:$t; done; case :$PATH: in (*:$HOME/bin:*) ;; (*) print missing-path:bin ;; esac'
@@ -56,8 +59,19 @@ test_login_shell_preserves_path_order() {
   fi
 }
 
+test_interactive_shell_loads_aliases_and_functions() {
+  local result
+  result=$(inter 'print -r -- alias-ls:${aliases[ls]:-none}; (( $+functions[agpg] )) && print fn-agpg:ok || print fn-agpg:none')
+  if [[ "$result" == *"alias-ls:eza"* && "$result" == *"fn-agpg:ok"* ]]; then
+    pass "interactive shell still loads aliases (ls) and functions (agpg)"
+  else
+    fail "interactive cosmetics missing: ${result//$'\n'/, }"
+  fi
+}
+
 test_bare_resolves_toolchain
 test_guard_skips_cosmetics_when_non_interactive
 test_login_shell_preserves_path_order
+test_interactive_shell_loads_aliases_and_functions
 
 exit $(( failures > 0 ))
