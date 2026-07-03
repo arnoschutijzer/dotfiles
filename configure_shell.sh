@@ -7,6 +7,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 
 ln -sf "$(pwd)"/configuration/starship.toml ~/.starship.toml
 
+ln -sf "$(pwd)"/configuration/.zshenv ~/.zshenv
 ln -sf "$(pwd)"/configuration/.zshrc ~/.zshrc
 ln -sf "$(pwd)"/configuration/.zprofile ~/.zprofile
 
