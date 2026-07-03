@@ -25,6 +25,17 @@ test_bare_resolves_toolchain() {
   fi
 }
 
+test_guard_skips_cosmetics_when_non_interactive() {
+  local result
+  result=$(bare 'source ~/.zshrc >/dev/null 2>&1; print -r -- ${aliases[ls]:-GUARD_RETURNED_EARLY}')
+  if [[ "$result" == "GUARD_RETURNED_EARLY" ]]; then
+    pass "sourcing .zshrc in a non-interactive shell returns before defining cosmetics"
+  else
+    fail "non-interactive .zshrc did not guard; alias ls resolved to '$result'"
+  fi
+}
+
 test_bare_resolves_toolchain
+test_guard_skips_cosmetics_when_non_interactive
 
 exit $(( failures > 0 ))
