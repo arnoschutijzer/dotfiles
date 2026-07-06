@@ -56,6 +56,8 @@ With the plan agreed, turn it into an ordered **test list**:
 - Ordered most-central and simplest first; edge cases, failure paths, and integration last.
 - Each item vertical: one input to one output, end to end, so the trunk stays releasable after every cycle.
 - Each item asserts one behavior, so the list length is the batch count.
+- An item with no testable unit (a CI workflow line, a deploy manifest) lists its strongest
+  check as its test: a dry run, a plan, a schema validation, a smoke check.
 
 ## 3. Approve and persist
 
