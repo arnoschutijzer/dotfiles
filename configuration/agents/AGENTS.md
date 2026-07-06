@@ -41,7 +41,7 @@ Readability — flat control flow, pure functions, immutability, error handling 
 - YAGNI by default. Push back when a choice is a one-way door (hard to reverse later) — those deserve a real conversation up front.
 - Rule of three before extracting an abstraction.
 - Narrowest contract that current usage requires. Don't widen a type, signature, or interface beyond what today's callers need.
-- Minimal blast radius. Make the smallest change that satisfies the literal request. Don't edit shared modules, consolidate or move files, or fold in adjacent refactors unless asked. When a broader change looks warranted, name it and propose it separately before widening.
+- Minimal blast radius. Make the smallest change that satisfies the literal request. Don't edit shared modules, consolidate or move files, or fold in adjacent refactors unless asked. When a broader change looks warranted, name it and propose it separately before widening. Don't add unrequested artifacts: planning files, configuration entries, output files, or content beyond the request. Offer them in chat.
 
 **Comments**
 
