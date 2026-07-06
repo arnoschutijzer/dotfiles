@@ -33,8 +33,8 @@ Evolve through parallel change. Each step stays backward-compatible:
    deploy.
 
 Each step is a separate, backward-compatible deploy. Rollback is staying on the prior step,
-which is already deployed and backward-compatible. This is the persistence-layer form of the
-feature toggle in `deliver`: the schema ships ahead of the code that depends on it.
+which is already deployed and backward-compatible. This is the persistence-layer form of an
+opt-in feature toggle: the schema ships ahead of the code that depends on it.
 
 ## Migrations as artifacts
 
@@ -82,7 +82,7 @@ concern; the domain speaks in values, and the adapter maps them to and from the 
 
 ## Verification
 
-A schema change routes through `triage` like any other and is driven under `tdd`:
+A schema change is driven under `tdd` like any other:
 
 - The migration applies cleanly against a representative copy of the schema, from the current
   version forward, with no manual step.
