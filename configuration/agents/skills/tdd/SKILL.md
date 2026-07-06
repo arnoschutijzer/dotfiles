@@ -48,14 +48,14 @@ Some conditions are hard stops. Halt rather than push through:
 - Green won't come after a genuine attempt: stop and correct the design, rather than grinding
   on or forcing the bar.
 - Never weaken or delete a test to make the bar go green, least of all an architecture or
-  boundary test (see the `hexagonal-architecture` skill). The test is the safety net, not the
-  obstacle; if green demands gutting it, stop.
+  boundary test (see the `hexagonal-architecture` skill). The test is the safety net; if green
+  demands gutting it, stop.
 - The smallest correct step is unclear and every option adds speculative scope: stop rather
   than guess.
 
 ## Commits
 
-- One commit per green bar; one behaviour per commit.
+- One commit per green bar; one behavior per commit.
 
 How to write the message lives in the `readable-code` skill.
 

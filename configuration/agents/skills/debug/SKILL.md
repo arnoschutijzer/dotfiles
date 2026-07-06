@@ -7,8 +7,8 @@ argument-hint: [the failure]
 # Debug a failure
 
 Run this when behavior is wrong and the cause is not yet known ($ARGUMENTS). It drives
-diagnosis to a proven root cause, then the `tdd` loop to a verified fix. The `deliver` ritual
-turns a known goal into behavior; this turns an unknown failure into a cause.
+diagnosis to a proven root cause, then the `tdd` loop to a verified fix. Where the goal is
+already known, the `deliver` ritual applies instead.
 
 ## 1. Reproduce
 
@@ -38,14 +38,15 @@ earlier tests. Flakiness is a hypothesis that needs the same proof as any other 
 
 ## 3. Capture the cause in a failing test
 
-Write one test that reproduces the underlying cause, not the surface symptom. Run it, confirm
+Write one test that reproduces the underlying cause; the surface symptom is the wrong target.
+Run it, confirm
 it fails for the reason your hypothesis predicts. A failure for the wrong reason means the
 test, or the hypothesis, is wrong. Commit that failing test on its own, so a teammate can
 check it out and watch it go red.
 
 ## 4. Fix
 
-Smallest correct change that makes the test pass — the green and refactor steps of the `tdd`
+Smallest correct change that makes the test pass: the green and refactor steps of the `tdd`
 skill, written to read per the `readable-code` skill. Fix the cause where it lives. Don't
 scatter guards across call sites to suppress the symptom.
 
