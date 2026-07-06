@@ -75,7 +75,8 @@ The pull request is how state survives a session boundary. Treat it as part of t
 ## 4. Drive
 
 Work the list top to bottom, one item per cycle. Each cycle follows the `tdd` skill: red,
-green, refactor, then run the repository's verification.
+green, refactor, then run the repository's verification and commit the green bar. One commit
+per green bar, per the `tdd` skill.
 
 After the first green cycle a commit exists on the branch: open the draft pull request with
 `gh pr create --draft --assignee @me` and write the contract into its body (the goal, the test
