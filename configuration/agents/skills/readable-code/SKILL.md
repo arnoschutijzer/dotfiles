@@ -82,8 +82,8 @@ rule applies.
 
 - Conventional Commits format.
 - Keep it short: a terse heading, with any detail in the body. Be critical of what earns a
-  place — add a body only for a *why* the heading and the diff can't convey, not to narrate
-  the change.
+  place: add a body only for a *why* the heading and the diff can't convey. A body that
+  narrates the change repeats the diff.
 
 ## When in doubt
 

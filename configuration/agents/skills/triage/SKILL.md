@@ -44,5 +44,5 @@ Then check for two cases that sit outside those questions:
 
 ## Proceed
 
-Execute the routed strategy — `deliver` runs the full TDD contract; the other routes verify as
+Execute the routed strategy: `deliver` runs the full TDD contract; the other routes verify as
 named above. If the work turns out to be a different kind than classified, re-run this router.
