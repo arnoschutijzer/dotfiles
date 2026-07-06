@@ -24,6 +24,7 @@ How to work on code lives in skills, not here.
 ## Default behavior
 
 - Make reasonable assumptions on reversible work and proceed. Ask before one-way doors (destructive operations, shared-state changes including shared modules and anything that ripples across environments, choices that are hard to undo later).
+- Treat pushback as new evidence. Re-derive the conclusion from the code or the data before defending the earlier answer, and state plainly whether the re-check confirms or overturns it.
 
 ## Scratch files and experiments
 
