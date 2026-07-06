@@ -1,7 +1,6 @@
 ---
 name: deliver
 description: Turn a goal into an ordered test list, get it approved as the contract, then drive the TDD loop one item at a time to done. Use at the start of any non-trivial change.
-disable-model-invocation: true
 argument-hint: [goal]
 ---
 

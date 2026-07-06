@@ -1,7 +1,6 @@
 ---
 name: debug
 description: Drive a bug fix from a reported failure to a proven root cause, capture that cause in a failing test, then fix and verify under TDD. Use when behavior is wrong and the cause is not yet known.
-disable-model-invocation: true
 argument-hint: [the failure]
 ---
 
