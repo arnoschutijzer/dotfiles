@@ -13,6 +13,12 @@ Keep a shared builder for the common valid case. Build an unusual case inline at
 reader sees the variation without chasing a helper. Apply the rule of three before extracting a
 new shared builder.
 
+## Realistic samples
+
+When the repository carries realistic samples (recorded responses, documented payloads, schema
+examples), build fixtures from those. Invent a value only when no sample exists, and run
+anything production-derived through the anonymization rule below.
+
 ## Deterministic fixtures
 
 A test must not depend on ambient state. Inject the clock, seed randomness, and fix the locale and
