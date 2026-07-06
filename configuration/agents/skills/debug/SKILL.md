@@ -16,6 +16,10 @@ Get a reliable, on-demand reproduction before touching production code. A failin
 you can drive it from one; a documented manual repro you can re-run otherwise. No repro means
 no evidence the bug is understood and no proof it is gone.
 
+When CI reports the failure and a local run stays green, treat CI as the evidence source.
+Fetch the CI logs and reproduce the CI conditions: environment, test order, the state left by
+earlier tests. Flakiness is a hypothesis that needs the same proof as any other root cause.
+
 ## 2. Find the root cause
 
 - Form a hypothesis about the cause and prove it from evidence before editing production code.
