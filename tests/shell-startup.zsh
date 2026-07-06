@@ -71,6 +71,16 @@ test_interactive_shell_loads_aliases_and_functions() {
   fi
 }
 
+test_login_shell_sets_up_environment_once() {
+  local count
+  count=$(login_inter 'print -r -- ${#${(M)fpath:#/opt/homebrew/share/zsh/site-functions}}')
+  if [[ "$count" == 1 ]]; then
+    pass "login shell sets up brew/mise once (no duplicate completion dir in fpath)"
+  else
+    fail "login shell duplicated environment setup; brew site-functions in fpath x$count"
+  fi
+}
+
 test_configure_shell_wires_zshenv() {
   local target
   target=$(readlink "$HOME/.zshenv" 2>/dev/null)
@@ -88,6 +98,7 @@ test_bare_resolves_toolchain
 test_guard_skips_cosmetics_when_non_interactive
 test_login_shell_preserves_path_order
 test_interactive_shell_loads_aliases_and_functions
+test_login_shell_sets_up_environment_once
 test_configure_shell_wires_zshenv
 
 exit $(( failures > 0 ))
