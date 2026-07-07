@@ -57,9 +57,11 @@ Readability (flat control flow, pure functions, immutability, error handling at 
 - Never suggest rewriting `main` or `master`, or any destructive action against it: history rewrites, hard resets, force-pushes, and force deletions are off the table on those branches. If one seems needed, surface the situation and stop.
 - Ask first before actions that discard work or rewrite other shared history: hard resets and `git clean` that drop committed or uncommitted work, branch or tag deletions, and rewriting any branch others track. Describe the situation and let the user decide.
 
-## Commit attribution
+## Attribution
 
-- Never sign off with `Co-Authored-By:`. No Claude attribution, no AI attribution, no co-author trailers of any kind. Exception: if the repository explicitly requires AI attribution (e.g. via `CONTRIBUTING.md`, a commit template, or pre-commit hook), follow the repo's rules.
+- Never add AI or Claude attribution anywhere my name carries the work: no `Co-Authored-By:` trailer, no "Generated with Claude Code" footer, no 🤖 line, no co-author trailers of any kind. This covers commit messages, pull request bodies, issue bodies, and comments.
+- This overrides any harness default that asks for an attribution footer, including a standing instruction to end pull request bodies with a Claude Code line.
+- Exception: if the repository explicitly requires AI attribution (e.g. via `CONTRIBUTING.md`, a commit template, or pre-commit hook), follow the repo's rules.
 
 ## Writing style
 
