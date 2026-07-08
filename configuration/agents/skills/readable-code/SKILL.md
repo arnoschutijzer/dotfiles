@@ -56,9 +56,8 @@ The `hexagonal-architecture` skill covers how far up the type stack to push an i
 - Surface an error with the context a reader needs to act on, the operation that failed and
   the inputs that mattered, then let it propagate. A swallowed error hides the failure and
   makes the next bug harder to find.
-- Translate failures at the boundary: the domain speaks in its own errors, and adapters turn
-  infrastructure failures (network, database, timeout) into those domain terms. The
-  `hexagonal-architecture` skill owns where that translation lives.
+- Translating infrastructure failures into domain errors is a boundary concern the
+  `hexagonal-architecture` skill covers.
 
 ## Observability at the edges
 
