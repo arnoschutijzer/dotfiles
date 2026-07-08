@@ -68,6 +68,8 @@ Readability (flat control flow, pure functions, immutability, error handling at 
 Applies to everything you write for me: code comments, commit messages, docs, ADRs, READMEs, skill files, and your replies in chat. Use plain descriptive headings, matter-of-fact prose, and no philosophical or motivational framing.
 
 - Avoid using em-dashes.
+- Avoid using a negation-affirmation pair (e.g. "Nothing upgrades silently. Each bump is a reviewed, applied change.")
+- Avoid using statements like "where it lives".
 - Use a matter-of-fact tone.
 - Be very literal, drop the philosophical or motivational slogans.
 - Do not use contrastive negations.

@@ -19,6 +19,28 @@ Structure code as a framework-free domain surrounded by adapters, with ports bet
 
 Dependencies point inward. The domain stays unaware of any adapter.
 
+## Use cases are the domain's features
+
+Between the inbound adapter and the rest of the domain sits a thin layer of **use cases**, one
+per driver-facing operation the system offers (list projects, place an order, resolve owners).
+A use case is a feature of the domain, framework-free like everything else there: it imports no
+web, no CLI, no `io.Writer`, and no logger. It composes the domain packages, applies the rules,
+and returns a structured result.
+
+An inbound adapter calls a use case through an inbound port and does three jobs around it: it
+reads and validates its own input, invokes the use case, and presents the result. Formatting
+(JSON, a table, an HTTP status) and telemetry (logging, metrics) stay in the adapter. The use
+case hands back values, and the adapter decides what to render and what to record. The same use
+case then backs several adapters, a CLI and an HTTP handler, with no change to it.
+
+Progress that happens while a use case runs flows through ports. The use case takes optional
+callback seams (a `Start`, a `Report`, a stream writer) and the adapter wires logging or live
+output into them, so the use case reports progress while staying unaware of who listens.
+
+The boundary test guards the use-case layer as domain: it imports no adapter, no framework, and
+no logger. A use case that reaches for one of those is the same hazardous state as a domain
+package reaching for a framework.
+
 ## Invariants live in the domain
 
 The domain expresses its rules as types. A value object validates in its constructor and cannot exist in an invalid state; an `Email`, `Quantity`, or `NonEmptyList<T>` typed at compile time is valid by construction. Downstream code that takes the type already knows the rule holds, so it carries no guard.
