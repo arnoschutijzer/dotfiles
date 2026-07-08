@@ -47,7 +47,7 @@ check it out and watch it go red.
 ## 4. Fix
 
 Smallest correct change that makes the test pass: the green and refactor steps of the `tdd`
-skill, written to read per the `readable-code` skill. Fix the cause where it lives. Don't
+skill, written to read per the `readable-code` skill. Fix the cause at its source. Don't
 scatter guards across call sites to suppress the symptom.
 
 ## 5. Verify and widen the net
