@@ -74,7 +74,7 @@ or `postgres` skill for the locking behavior of the store in use.
 - Treat the backfill as a data change with its own verification, separate from the DDL that
   made room for it.
 
-## Where it lives
+## Persistence is an outbound adapter
 
 Persistence is an outbound adapter (see `hexagonal-architecture`). The schema and its
 migrations live at that edge, and the domain stays unaware of them. A migration is an adapter

@@ -10,7 +10,7 @@ contract. The provider runs the contract against itself and fails its own build 
 honoring it. The need flows from consumer to provider, so the provider learns what its callers
 actually depend on.
 
-## Where the contract lives
+## The ports it covers
 
 The contract describes an outbound port of the consumer and an inbound port of the provider. Test
 each adapter against the contract. The contract covers the shape of the exchange; the business
