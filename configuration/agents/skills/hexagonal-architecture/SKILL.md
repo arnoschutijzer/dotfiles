@@ -15,7 +15,8 @@ Structure code as a framework-free domain surrounded by adapters, with ports bet
   Inbound ports describe what the domain offers; outbound ports describe what the domain needs.
 - **Adapters**: sit at the edges and depend inward. Inbound adapters (HTTP, CLI, message
   consumers) call inbound ports. Outbound adapters (persistence, external services) implement
-  outbound ports.
+  outbound ports, and translate infrastructure failures (network, database, timeout) into the
+  domain's own errors, so the domain speaks in its own terms.
 
 Dependencies point inward. The domain stays unaware of any adapter.
 
