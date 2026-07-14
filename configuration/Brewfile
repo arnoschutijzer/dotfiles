@@ -44,12 +44,16 @@ brew "llama.cpp"
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Task runner and repo management tool for the web ecosystem, written in Rust
+brew "moon"
 # Port scanning utility for large networks
 brew "nmap"
 # Cryptography and SSL/TLS Toolkit
 brew "openssl@1.1"
 # AI agent toolkit
 brew "pi-coding-agent"
+# Pluggable multi-language version manager
+brew "proto"
 # Develop and deploy code with zero configuration
 brew "railway"
 # Search tool like grep and The Silver Searcher
@@ -139,6 +143,7 @@ cask "visual-studio-code"
 cask "vlc"
 # Connect to Windows
 cask "windows-app"
+mas "Defguard", id: 6754601166
 mas "eID-Signer", id: 1407740667
 mas "Harvest", id: 506189836
 mas "Keynote", id: 361285480
