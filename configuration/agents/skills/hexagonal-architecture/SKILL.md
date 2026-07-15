@@ -20,6 +20,13 @@ Structure code as a framework-free domain surrounded by adapters, with ports bet
 
 Dependencies point inward. The domain stays unaware of any adapter.
 
+Organize by vertical slice: one package per user-facing operation, each holding its use case and
+the narrow ports it consumes. Declare each port in the code that consumes it, and let each slice
+restate the narrow interface it needs; two slices that need the same shape each declare their own.
+A single adapter satisfies several slices' interfaces at once (structurally, in a language like
+Go), so nothing is shared between slices and no layer sits above them. Keep role-based names and
+skip a `Port`-style suffix where the language has an interface-naming idiom (Go's `-er`).
+
 ## Use cases are the domain's features
 
 Between the inbound adapter and the rest of the domain sits a thin layer of **use cases**, one
