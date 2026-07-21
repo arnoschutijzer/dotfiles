@@ -29,23 +29,28 @@ implements them, reviewed in the same pull request, and never deleted.
 
 ## Format
 
-Keep it short. Five sections:
+Keep it short. Four sections:
 
 - **Title**: `NNNN. The decision in a few words.`
-- **Status**: `proposed`, `accepted`, or `superseded by NNNN`.
 - **Context**: the forces at play and the constraints that made this a decision worth recording.
 - **Decision**: what was chosen, stated plainly.
 - **Consequences**: what becomes easier, what becomes harder, what is now ruled out.
 
+A live ADR carries no status line. Once superseded it gains a pointer directly under the title,
+described below.
+
 ## Immutable and superseded
 
-An accepted ADR is a historical record. Do not rewrite its decision when circumstances change.
-Write a new ADR that supersedes it, set the new one's status to `accepted`, and set the old
-one's status to `superseded by NNNN`. The chain of records is the history of how the decision
-evolved.
+An ADR is a historical record. Do not rewrite its decision when circumstances change. Write a
+new ADR that supersedes it, and add a pointer line directly under the old ADR's title:
+
+`Superseded by [NNNN](NNNN-short-title.md).`
+
+The new ADR states in its context that it supersedes the old one. The chain of pointers is the
+history of how the decision evolved.
 
 ## Lifecycle
 
-A new ADR enters as `proposed` in the pull request that introduces the decision. The review is
-where the team weighs it. It becomes `accepted` when that PR merges. A later reversal supersedes
-it rather than editing it.
+An ADR is committed in the pull request that introduces the decision. The review weighs the
+decision. Merging the PR accepts it, and the file needs no further edit. A later reversal
+supersedes the ADR with a new one rather than editing it.
