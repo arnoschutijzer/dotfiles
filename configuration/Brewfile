@@ -52,6 +52,8 @@ brew "nmap"
 brew "openssl@1.1"
 # AI agent toolkit
 brew "pi-coding-agent"
+# Fast, disk space efficient package manager
+brew "pnpm"
 # Pluggable multi-language version manager
 brew "proto"
 # Develop and deploy code with zero configuration
@@ -86,8 +88,8 @@ cask "chatgpt"
 cask "claude"
 # Terminal-based AI coding assistant
 cask "claude-code"
-# OpenAI's Codex desktop app for managing coding agents
-cask "codex-app"
+# OpenAI's coding agent that runs in your terminal
+cask "codex"
 # Universal database tool and SQL client
 cask "dbeaver-community"
 # App to build and share containerised applications and microservices
@@ -135,8 +137,6 @@ cask "spotify"
 cask "telegram"
 # Pluggable Terraform linter
 cask "terraform-linters/tap/tflint"
-# Web browser
-cask "thebrowsercompany-dia"
 # Open-source code editor
 cask "visual-studio-code"
 # Multimedia player
