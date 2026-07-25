@@ -1,6 +1,6 @@
 ---
 name: triage
-description: "Classify a change request and route it to the right verification strategy: refactor, dependency bump, spike, infrastructure, the `deliver` ritual for new behavior, or the `debug` skill for a bug fix. Triage that picks the path before any code; it does not execute. Use at the start of a change when the type or verification approach isn't already obvious."
+description: "Classify a change request and route it to the right verification strategy: refactor, dependency bump, spike, infrastructure, documentation, the `deliver` ritual for new behavior, or the `debug` skill for a bug fix. Triage that picks the path before any code; it does not execute. Use at the start of a change when the type or verification approach isn't already obvious."
 argument-hint: [what you want to change]
 ---
 
@@ -18,10 +18,11 @@ Answer two questions:
 - Does the change alter observable behavior?
 - Does it touch existing code or integrations?
 
-Then check for two cases that sit outside those questions:
+Then check for three cases that sit outside those questions:
 
 - A spike: throwaway exploration to answer a question.
 - An infrastructure or config change: Terraform, CI, deploy manifests.
+- Documentation: prose that explains the system rather than code that changes its behavior.
 
 ## Route
 
@@ -41,6 +42,9 @@ Then check for two cases that sit outside those questions:
   the answer. TDD is suspended here by design.
 - **Infrastructure or config.** Verify through plan, dry-run, and a smoke check, since a unit
   suite does not apply.
+- **Documentation.** Run the `document` skill: conform to the repository's existing doc
+  structure. No test list and no TDD, since there is no production code. A decision surfaced
+  while documenting that clears the ADR bar graduates to an ADR (see the `adr` skill).
 
 ## Proceed
 
