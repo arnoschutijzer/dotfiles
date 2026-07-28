@@ -6,66 +6,43 @@ argument-hint: [the failure]
 
 # Debug a failure
 
-Run this when behavior is wrong and the cause is not yet known ($ARGUMENTS). It drives
-diagnosis to a proven root cause, then the `tdd` loop to a verified fix. Where the goal is
-already known, the `deliver` ritual applies instead.
+Restate the failure ($ARGUMENTS) in one sentence. If the goal is already known, run `deliver`
+instead.
 
 ## 1. Reproduce
 
-Get a reliable, on-demand reproduction before touching production code. A failing test where
-you can drive it from one; a documented manual repro you can re-run otherwise. No repro means
-no evidence the bug is understood and no proof it is gone.
-
-When CI reports the failure and a local run stays green, treat CI as the evidence source.
-Fetch the CI logs and reproduce the CI conditions: environment, test order, the state left by
-earlier tests. Flakiness is a hypothesis that needs the same proof as any other root cause.
+Get a reliable, on-demand reproduction before touching production code. Prefer a failing test; use a
+documented, re-runnable manual reproduction when no test can drive it. When the failure appears only
+in CI, treat the CI run as the evidence: fetch its logs and reproduce its conditions, including
+environment, test order, and state left by earlier tests. Prove flakiness from evidence before
+accepting it as the cause.
 
 ## 2. Find the root cause
 
-- Form a hypothesis about the cause and prove it from evidence before editing production code.
-  Evidence is logs, traces, a decompiled artifact, a bisect, or a minimal repro narrowed by
-  elimination. Production telemetry is the evidence trail (see the `observability` skill).
-- Do not blame the environment, the configuration, or a dependency before the evidence points
-  there. The first guess that points outward is usually wrong; prove it.
-- Separate symptom from cause. A null-guard over an NPE whose real source is a shape mismatch
-  hides the symptom and leaves the bug in place.
-- Check that the code is still reachable before designing a fix. Grep for callers, confirm the
-  feature is still configured, scan recent commits that touched it. If the code is unreachable
-  or the feature it implemented was abandoned, the change is a deletion. If reachability is
-  unclear, surface that and stop rather than patch on faith.
-- When the cause is unclear, fan out a few subagents on competing hypotheses in parallel, then
-  commit to the one the evidence supports.
+- Form a hypothesis and prove it from evidence before editing production code: logs, traces, a
+  bisect, a minimal reproduction narrowed by elimination, or production telemetry.
+- Blame the environment, the configuration, or a dependency only when the evidence points there.
+- Fix the cause, not the symptom. A null check over a null-pointer exception whose real source is a
+  shape mismatch leaves the bug in place.
+- Check reachability first: grep for callers, confirm the feature is still configured, scan recent
+  commits. Unreachable code or an abandoned feature makes the change a deletion. If reachability is
+  unclear, say so and stop.
+- When logs, a bisect, and a minimal reproduction have not settled the cause, run competing
+  hypotheses in parallel across subagents, then take the one the evidence supports.
 
 ## 3. Capture the cause in a failing test
 
-Write one test that reproduces the underlying cause; the surface symptom is the wrong target.
-Run it, confirm
-it fails for the reason your hypothesis predicts. A failure for the wrong reason means the
-test, or the hypothesis, is wrong. Commit that failing test on its own, so a teammate can
-check it out and watch it go red.
+Write one test that reproduces the cause. Confirm it fails for the reason the hypothesis predicts; a
+failure for another reason means the test or the hypothesis is wrong. Commit that test on its own,
+red.
 
-## 4. Fix
+## 4. Fix and verify
 
-Smallest correct change that makes the test pass: the green and refactor steps of the `tdd`
-skill, written to read per the `readable-code` skill. Fix the cause at its source. Don't
-scatter guards across call sites to suppress the symptom.
-
-## 5. Verify and widen the net
-
-- The reproducing test passes and the full suite stays green.
-- Ask whether the same cause exists elsewhere. When the bug was one instance of a class of
-  mistake, search for its siblings and pin them too.
-- Surface a feature toggle when the fix is risky or hard to reverse, paired with a removal
-  trigger.
+- The reproducing test passes and the full suite passes.
+- Check whether the same cause exists elsewhere; name the instances and propose a separate change.
 
 ## When to stop
 
-- No reproduction after a genuine attempt: stop and gather more evidence (more logging, the
-  actual failing input) rather than guessing at a fix.
-- The cause will not resolve to a proven hypothesis: stop rather than patch a guess.
-- The fix grows into real new behavior: route back through `triage` to the `deliver` ritual.
-
-## Done
-
-The cause is proven, its reproducing test was committed red then green, the full suite is
-green, and the change kept a minimal blast radius.
+- No reproduction after a genuine attempt: gather more evidence (logging, the actual failing input).
+- The evidence does not prove a hypothesis.
+- The fix grows into new behavior: run `triage`, then `deliver`.
