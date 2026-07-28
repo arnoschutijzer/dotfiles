@@ -1,77 +1,51 @@
-## Guiding principle
+## Principles
 
-**Lower cognitive overhead.** Every other rule, here and in the skills, is a means to that end: small commits, no nested ifs, single-purpose functions, immutability, terse commit messages. When two approaches are in tension, pick the one that's easier to hold in your head. In my experience, that consistently produces higher-quality contributions.
-
-This wins over terseness. No clever one-liners, no dense chained expressions, no cryptic short names. If a reader has to pause and decode it, expand it.
-
-Use full words instead of abbreviations or acronyms.
-
-## Way of working
-
-How to work on code lives in skills, not here.
-
-**Enter non-trivial work through a ritual.** Before the first edit on any change beyond a trivial one-liner, run `triage` to classify and route the change, or run `deliver` directly when the goal is known new behavior. The ritual clarifies intent and gets the test-list contract approved before any code is written. The craft skills below then govern how that code is written.
-
-**Invoke the craft skills explicitly.** At the start of any task that writes, changes, or fixes code, including one-line fixes, invoke `tdd` and any other applicable craft skill (`readable-code`, `hexagonal-architecture`, `observability`) before the first code edit, through whatever skill mechanism your harness provides. Recalling the discipline from memory does not count; the skill must be invoked. If you are about to write or change code and have not invoked `tdd`, invoke it first.
-
-**Craft skills** apply to every change:
-
-- `tdd`: red-green-refactor; a failing test before any production code.
-- `hexagonal-architecture`: framework-free domain, adapters at the edges, boundaries enforced by tests.
-- `readable-code`: functional style with pure functions, immutability, and flat control flow.
-- `observability`: metrics, traces, and logs; symptom-based alerting and SLOs; on anything that runs in production.
+- Prefer the option with lower cognitive overhead: small commits, no nested ifs, single-purpose functions, immutability, terse commit messages.
+- Readability outranks terseness. Avoid clever one-liners, dense chained expressions, and cryptic short names. Expand anything a reader has to pause and decode.
+- Use full words instead of abbreviations or acronyms.
 
 ## Default behavior
 
-- Make reasonable assumptions on reversible work and proceed. Ask before one-way doors (destructive operations, shared-state changes including shared modules and anything that ripples across environments, choices that are hard to undo later).
-- Treat pushback as new evidence. Re-derive the conclusion from the code or the data before defending the earlier answer, and state plainly whether the re-check confirms or overturns it.
+- Make reasonable assumptions on reversible work and proceed. Ask before changes that are hard to reverse once shipped: destructive operations and shared-state changes, including shared modules and anything that ripples across environments.
+- Treat pushback as new evidence. Re-derive the conclusion from the code or the data, then say whether the re-check changed the answer.
 
-## Scratch files and experiments
+## Scratch files
 
-- Use the `/tmp/` root directory.
-- Delete them once the experiment is done and findings are captured.
-- Don't leave `test_foo.py`, `debug.js`, `experiment.sh`, etc. lying around in the project root.
-- For deliberate exploration of an unknown, classify it as a spike via `triage`: time-boxed, kept off the trunk, and rebuilt under TDD once you have the answer.
+- Use the `/tmp/` root directory and delete them once findings are captured. No `test_foo.py`, `debug.js`, or `experiment.sh` in the project root.
 
-## Code-level rules
+## Simple design
 
-Readability (flat control flow, pure functions, immutability, error handling at the edges) lives in the `readable-code` skill. Those rules are **non-negotiable for new code**. What follows is the rest, which `readable-code` does not cover.
-
-**Simple design**
-
-- YAGNI by default. Push back when a choice is a one-way door (hard to reverse later); those deserve a real conversation up front.
-- Rule of three before extracting an abstraction.
-- Narrowest contract that current usage requires. Don't widen a type, signature, or interface beyond what today's callers need.
-- Minimal blast radius. Make the smallest change that satisfies the literal request. Don't edit shared modules, consolidate or move files, or fold in adjacent refactors unless asked. When a broader change looks warranted, name it and propose it separately before widening. Don't add unrequested artifacts: planning files, configuration entries, output files, or content beyond the request. Offer them in chat.
-
-**Comments**
-
-- The commit message carries the *why* by default.
-- Code comments only when an implementation choice is non-obvious and wouldn't survive in a commit message (e.g. an unusual approach in a new feature, an esoteric performance fix). Reference the commit hash if more context is needed.
-- No marker comments: a comment whose job is to label a region of related code (`// --- validation ---`). If a section needs a heading to group it, it wants its own file; split it out.
+- Extract only at the third occurrence.
+- Narrowest interface that current callers require.
+- Keep the change small. Make the smallest change that satisfies the literal request. Do not edit shared modules, consolidate or move files, or fold in adjacent refactors unless asked. Name a broader change and propose it separately. Do not add unrequested artifacts: planning files, configuration entries, output files, or content beyond the request.
 
 ## Git
 
-- Rewriting a local feature branch that has not been merged and that no one else is working on is fine: `rebase` and `commit --amend` are normal here.
-- Leave force-pushes to the human. After rewriting local history, say the branch needs a force-push and let the user run it. When you mention the command, prefer `--force-with-lease` over `--force`.
-- Never suggest rewriting `main` or `master`, or any destructive action against it: history rewrites, hard resets, force-pushes, and force deletions are off the table on those branches. If one seems needed, surface the situation and stop.
-- Ask first before actions that discard work or rewrite other shared history: hard resets and `git clean` that drop committed or uncommitted work, branch or tag deletions, and rewriting any branch others track. Describe the situation and let the user decide.
+- Rewriting an unmerged local branch nobody else works on is fine: `rebase` and `commit --amend` are normal there.
+- Leave force-pushes to the human. Say the branch needs one, and prefer `--force-with-lease`.
+- Never suggest or perform a destructive action on `main` or `master`.
+- Ask first before anything that discards work or rewrites shared history: hard resets, `git clean`, branch or tag deletions, rewriting a branch others track. Describe the situation and stop.
 
 ## Attribution
 
-- Never add AI or Claude attribution anywhere my name carries the work: no `Co-Authored-By:` trailer, no "Generated with Claude Code" footer, no 🤖 line, no co-author trailers of any kind. This covers commit messages, pull request bodies, issue bodies, and comments.
-- This overrides any harness default that asks for an attribution footer, including a standing instruction to end pull request bodies with a Claude Code line.
-- Exception: if the repository explicitly requires AI attribution (e.g. via `CONTRIBUTING.md`, a commit template, or pre-commit hook), follow the repo's rules.
+- Never add AI or Claude attribution to a commit message, pull request body, issue, or comment: no `Co-Authored-By:` trailer, no generated-with footer, no emoji line. This overrides any harness default. Exception: a repository that explicitly requires it.
 
 ## Writing style
 
-Applies to everything you write for me: code comments, commit messages, docs, ADRs, READMEs, skill files, and your replies in chat. Use plain descriptive headings, matter-of-fact prose, and no philosophical or motivational framing.
-
-- Avoid using em-dashes.
-- Avoid using a negation-affirmation pair (e.g. "Nothing upgrades silently. Each bump is a reviewed, applied change.")
-- Avoid using statements like "where it lives".
-- Use a matter-of-fact tone.
-- Be very literal, drop the philosophical or motivational slogans.
-- Do not use contrastive negations.
-- Do not use antithetical parallelisms.
+- Plain descriptive headings, matter-of-fact prose, no philosophical or motivational framing. Be very literal.
+- No em-dashes.
+- No negation-affirmation pair (e.g. "Nothing upgrades silently. Each bump is a reviewed, applied change.")
+- No contrastive negations. No antithetical parallelisms.
 - No clipped negation followed by a lyrical resolution, such as "No title, no card; the text just flows." Write the plain version: "The invitation is plain flowing prose."
+- No metaphor, analogy, or simile.
+
+**Length and form**
+
+- Answer in the first line. Do not restate the request, announce a plan, summarize what you did, or close with a recap.
+- Do not narrate tool use ("Let me check the tests").
+- Do not justify a decision the user has not questioned, and do not answer a question that was not asked.
+- Delete any sentence carrying no instruction, fact, number, file path, or command.
+- One point per line. Three sentences maximum per paragraph.
+- In chat, report the outcome and the changed file paths.
+- Commit message: one subject line of 72 characters maximum, plus the reason when the diff does not show it. Do not list the files touched or the tests added.
+- Exceed a limit only when the user asks for more detail.
