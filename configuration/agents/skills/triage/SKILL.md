@@ -1,48 +1,33 @@
 ---
 name: triage
-description: "Classify a change request and route it to the right verification strategy: refactor, dependency bump, spike, infrastructure, the `deliver` ritual for new behavior, or the `debug` skill for a bug fix. Triage that picks the path before any code; it does not execute. Use at the start of a change when the type or verification approach isn't already obvious."
+description: "Classify a change and route it: refactor, dependency bump, spike, infrastructure, `deliver` for new behavior, or `debug` for a bug fix. Use at the start of a change when the type or verification approach is not obvious."
 argument-hint: [what you want to change]
 ---
 
 # Triage a change
 
-Restate the change ($ARGUMENTS) as you understood it, classify it, and state the route. The
-restatement catches a misread before any code is written, and the classification picks the
-verification strategy. Stop for confirmation when a load-bearing term is genuinely ambiguous or
-the change is a one-way door; otherwise state your reading and proceed.
+Restate the change ($ARGUMENTS) in one sentence, then name the class and the route. Skip `triage` on
+a small change. Stop for confirmation when a term whose meaning drives the design is genuinely
+ambiguous, or when the change is hard to reverse once shipped.
 
 ## Classify
 
-Answer two questions:
-
-- Does the change alter observable behavior?
-- Does it touch existing code or integrations?
-
-Then check for two cases that sit outside those questions:
-
-- A spike: throwaway exploration to answer a question.
-- An infrastructure or config change: Terraform, CI, deploy manifests.
+Does the change alter observable behavior? Does it touch existing code or integrations? Then check
+two cases outside those questions: a spike (throwaway exploration to answer a question), and an
+infrastructure or config change (Terraform, CI, deploy manifests).
 
 ## Route
 
-- **New behavior, isolated.** Run the `deliver` ritual. Fresh tests, TDD.
-- **New behavior on existing code.** Run the `deliver` ritual, and verify against the existing
-  suite as well. Where the touched code has no tests, write them first. Consider an opt-in
-  toggle when the integration is risky or hard to reverse, paired with a named removal
-  trigger.
-- **A bug fix.** Run the `debug` skill: reproduce, prove the root cause, capture it in a
-  failing test, then fix and verify against the existing suite.
-- **Behavior preserved (refactor, behavior-keeping migration).** Lean on the existing suite as
-  the safety net. Where coverage is thin, add characterization tests that pin current behavior
-  first, then change under green.
-- **Dependency bump.** Run the full regression suite, isolated in its own commit. A major bump
-  that forces code changes routes back to the new-behavior path with its own failing tests.
-- **Spike.** Time-box it, keep it off the trunk, and rebuild through this router once you have
-  the answer. TDD is suspended here by design.
-- **Infrastructure or config.** Verify through plan, dry-run, and a smoke check, since a unit
-  suite does not apply.
+- **New behavior, isolated or on existing code.** Run `deliver`.
+- **A bug fix.** Run `debug`.
+- **Behavior preserved (refactor, behavior-keeping migration).** Verify against the existing suite.
+  Where coverage is thin on the behavior the change can break, add tests that assert the current
+  behavior first.
+- **Dependency bump.** Full regression suite, in its own commit. A major bump that forces code
+  changes routes to the new-behavior path with its own failing tests.
+- **Spike.** Time-box it, keep it off the main branch, and rebuild it through `triage` once you have
+  the answer. TDD does not apply during a spike.
+- **Infrastructure or config.** Verify through plan, dry-run, and one run of the deployed path that
+  proves it responds.
 
-## Proceed
-
-Execute the routed strategy: `deliver` runs the full TDD contract; the other routes verify as
-named above. If the work turns out to be a different kind than classified, re-run this router.
+If the work turns out to be a different kind than classified, classify again.
