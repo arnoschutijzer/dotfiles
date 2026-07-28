@@ -1,100 +1,91 @@
 ---
 name: deliver
-description: Turn a goal into an ordered test list, get it approved as the contract, then drive the TDD loop one item at a time to done. Use at the start of any non-trivial change.
+description: Learn the functional domain, turn a goal into an ordered test list, get the list approved, then drive the TDD loop one item at a time to done. Use at the start of any non-trivial change.
 argument-hint: [goal]
 ---
 
 # Deliver a change
 
-Run this at the start of any non-trivial change. It produces the contract, then drives the
-test-driven loop from the `tdd` skill to done.
-
-## In-flight surface
-
-The in-flight surface holds the contract while the branch is live: the test list with each
-item's state, the decision log, and the open questions. It is the pull request: the test list
-is a checklist in the PR body, and the decision log and open questions live in the body or in
-comments. A repository may override the surface in its own agent instructions (`AGENTS.md` or
-`CLAUDE.md`); the override owns where state and the log live.
-
-Durable decisions, the ones a future reader will need the reasoning for, graduate into ADRs in
-`docs/adr/` (see the `adr` skill). They outlive the branch.
-
-Rollout safety is a Clarify question. For new behavior that is risky or hard to reverse,
-raise an opt-in toggle as an option and let the user decide; pair it with a named removal
-trigger (a usage signal, a date, or a metric threshold). If a toggle lands on the plan, its
-on-state and off-state tests belong in the test list, and the toggle and trigger are
-recorded on the in-flight surface. Rollback is then a config flip, and the toggle gets stripped under a
-follow-up cycle once the trigger fires.
+Do not run `deliver` on a small change: write the failing test, make it pass, commit. Return here
+once the change outgrows one.
 
 ## 0. Resume check
 
-Look for an open pull request for this branch. If one exists, this is a resume:
-
-1. Read it: the goal, the test list with each item's state, the decision log, the open questions.
-2. Run the repository's verification to confirm the real state of the code.
-3. Reconcile. If verification matches the plan, continue at the first pending item. If they
-   diverge (the plan marks an item done but its test is red, or passing work is unrecorded),
-   stop and surface the divergence rather than guessing.
-
-With no open pull request yet, start fresh below.
+Look for an open pull request for this branch. With one open, read its goal, test list, decisions,
+and open questions, then run the repository's verification command. Continue at the first pending
+item when verification matches the list. When they diverge, stop and report the divergence.
 
 ## 1. Clarify
 
-Restate the change ($ARGUMENTS) in your own words first, and call out any term whose meaning
-drives the design. A restated interpretation lets the user catch a misread while it is still
-cheap to correct. Then interview the user relentlessly about every aspect until you reach a
-shared understanding. Walk down each branch of the design tree, resolving the dependencies
-between decisions one at a time. Ask one question at a time, and give your recommended answer
-with each. When a question can be answered by exploring the codebase, explore it.
+- Restate the change ($ARGUMENTS) in at most two sentences and list any term whose meaning drives
+  the design.
+- Interview the user relentlessly, one question at a time, each with your recommended answer. Wait
+  for the answer before asking the next one; several at once is bewildering.
+- Walk down the decision tree, settling each dependency before the decision that rests on it.
+- Look up every fact yourself, in the code, the filesystem, or the tools. Put every decision to the
+  user and wait for it.
+- Do not start work until the user confirms you have reached a shared understanding.
 
-## 2. Enumerate
+## 2. Learn the functional domain
 
-With the plan agreed, turn it into an ordered **test list**:
+A test list is only as good as your grasp of the domain it describes. Before enumerating:
+
+- Read the code, the documentation, and the existing tests covering this area. Name what already
+  exists, so the list adds behavior instead of repeating it.
+- Take the domain's vocabulary from the user, use those words in the test names, and sharpen a fuzzy
+  or overloaded term into one canonical name: "you said account, do you mean the Customer or the
+  User?"
+- Check each claim against the code and surface any contradiction: "the code cancels a whole order,
+  you said partial cancellation is possible, which is right?"
+- Ask for rules, not implementation: what makes an input invalid, what happens at each boundary,
+  which combinations cannot occur, what the system does when a rule is broken.
+- Invent concrete scenarios that probe the edge of a relationship and force the user to be precise
+  about where one concept ends and the next begins.
+- Ask for a concrete example of every rule, and for the cases that have gone wrong before. Each
+  example becomes an item on the test list.
+- Keep drilling until you can state the behavior back in the domain's own words and the user
+  confirms it. A rule with no example, or an example no rule explains, is an open question.
+
+Where the repository already has a `CONTEXT.md`, record a resolved term there as you settle it, as a
+glossary entry with no implementation detail. Where it does not, do not create one.
+
+## 3. Enumerate
+
+Turn the agreed plan into an ordered test list:
 
 - One line per behavior, phrased as a test name.
-- Ordered most-central and simplest first; edge cases, failure paths, and integration last.
-- Each item vertical: one input to one output, end to end, so the trunk stays releasable after every cycle.
-- Each item asserts one behavior, so the list length is the batch count.
-- An item with no testable unit (a CI workflow line, a deploy manifest) lists its strongest
-  check as its test: a dry run, a plan, a schema validation, a smoke check.
+- Most-central and simplest first; edge cases, failure paths, and integration last.
+- Each item vertical: one input to one output, end to end, asserting one behavior.
+- An item with no testable unit (a CI workflow line, a deploy manifest) lists its strongest check: a
+  dry run, a plan, a schema validation, one run of the deployed path that proves it responds.
 
-## 3. Approve and persist
+## 4. Approve
 
-Present the list and halt. The approved list is the contract. Hold here until the human approves it.
+Present the list and stop until the user approves it. Write no code before approval. On approval,
+create the branch and push it.
 
-On approval, create the branch for the change and push it. The pull request that holds the
-contract is opened after the first green cycle, once a commit exists to open it against (see
-step 4). Until then, keep the approved contract ready to write into the PR body:
+## 5. Work the list
 
-- The goal.
-- The ordered test list, each item marked pending or done.
-- A decision log: the choices made during Clarify and their reasons. Append-only.
-- Open questions: anything that triggered a stop and awaits an answer.
+Work top to bottom, one item per cycle. Each cycle follows `tdd`: red, green, refactor, then run the
+repository's verification command and commit.
 
-The pull request is how state survives a session boundary. Treat it as part of the work.
+After the first green cycle, open the draft pull request with `gh pr create --draft --assignee @me`.
+Its body carries four sections and nothing else:
 
-## 4. Drive
+- Goal: one line.
+- Test list: a checklist, `- [ ]` pending and `- [x]` done, one line per item.
+- Decisions: one line each with its reason, added only, never edited. Omit when there are none.
+- Open questions: one line each while open. Delete the entry once answered.
 
-Work the list top to bottom, one item per cycle. Each cycle follows the `tdd` skill: red,
-green, refactor, then run the repository's verification and commit the green bar. One commit
-per green bar, per the `tdd` skill.
+Every body line is a bullet or a checkbox. No background section, no approach summary, no progress
+narrative, no closing paragraph.
 
-After the first green cycle a commit exists on the branch: open the draft pull request with
-`gh pr create --draft --assignee @me` and write the contract into its body (the goal, the test
-list as a checklist, the decision log, the open questions).
+After each green cycle, tick the item and add a decision line only when a decision was made. Do not
+describe the cycle. Append scope-refining tests and keep going. On a scope-expanding behavior, stop
+and bring the proposed items back for approval. Flag any decision that meets the `adr` criteria.
 
-After each green cycle, update the pull request: mark the item done and record any decision
-or learning. Append scope-refining tests to the list and keep going. On a scope-expanding
-behavior, stop and bring the proposed items back for approval. Flag any decision that clears the
-ADR bar (see the `adr` skill) as you record it.
+## 6. Hand off
 
-## 5. Hand off
-
-List empty and verification green:
-
-- Graduate the flagged decisions into `docs/adr/` as ADRs (see the `adr` skill), committed on
-  the branch so they merge to trunk.
-- Hand to CI, the release gate.
-- The pull request's checklist and log stay on the PR; they are never committed, so trunk
-  carries only the code and its ADRs once the work ships.
+With the list empty and the verification command passing, let CI run. Leave the checklist and the
+decisions on the pull request; never commit them. Where the repository already has `docs/adr/`,
+offer an ADR for each flagged decision (see `adr`).
