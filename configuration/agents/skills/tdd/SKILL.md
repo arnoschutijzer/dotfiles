@@ -1,65 +1,40 @@
 ---
 name: tdd
-description: "Test-driven development discipline: red, green, refactor; one behavior per test; smallest code that passes. Use this whenever writing, changing, or fixing production code in any language, including quick fixes and small changes, to ensure a failing test exists before implementation and the code stays minimal. Apply on every code change, not only on new features."
+description: "Test-driven development: red, green, refactor; one behavior per test; the smallest code that passes. Use on every code change in any language, including quick fixes, small changes, bug fixes, and new features."
 ---
 
 # Test-driven development
 
-Write a failing test before any production code. This holds for every change, including
-small fixes.
+Write a failing test before any production code, on every change, including small fixes. A change
+with no behavior to assert (a comment, a log level, a rename, a formatting pass, a config value)
+has no test to write; run the suite and commit.
 
 ## The cycle
 
-1. **Red**: write one test for one behavior. Run it. Confirm it fails, and fails for the
-   reason you expect. A failure for the wrong reason means the test itself is broken.
-2. **Green**: write the smallest code that makes the test pass. Resist solving anything the
-   current test does not demand.
-3. **Refactor**: with the suite green, improve names, remove duplication, clarify structure.
-   Hold behavior fixed here; the green suite is your safety net.
+1. **Red**: write one test for one behavior. Run it. Confirm it fails for the reason you expect. If
+   it fails for another reason, fix the test first.
+2. **Green**: write the smallest code that makes the test pass.
+3. **Refactor**: with the suite passing, improve names, remove duplication, clarify structure. Hold
+   behavior fixed.
 
-Repeat, one behavior per cycle.
+Repeat, one behavior per cycle. One commit per passing suite.
 
 ## Writing tests
 
 - One behavior per test. The test name states the behavior.
-- Test through the domain's ports, so tests stay free of framework detail and the domain
-  stays unit-testable (see the `hexagonal-architecture` skill).
-- Assert an observable outcome, leaving implementation detail free to change.
-- Test your own logic. A test that stays green after your code is deleted is exercising the
-  framework (a SwiftData fetch, a SwiftUI `Color`), so drop it.
-- Make tests independent of ambient state: inject the clock, the calendar, and randomness, so
-  a result never depends on the machine's date or locale.
+- Assert an observable outcome, not an implementation detail.
+- Delete a test that still passes when your production code is deleted. It exercises the framework.
+- Inject the clock, the calendar, randomness, and the locale.
+- Invoke `testing` when the change crosses one of these: a feature end to end, a service boundary,
+  shared test data, an invariant over many inputs.
 
-When a change needs more than the unit loop (a feature end to end, a service boundary, the
-data a test needs, an invariant over many inputs), invoke the `testing` skill and follow the
-detail file for the strategy in play.
+## Minimal implementation
 
-## Minimal by default
-
-- Build what the current test requires. Add generality when a later test demands it (YAGNI).
-- Prefer the smallest clear change. Correct the design over patching the surface.
-- Make it work, then right, then fast, in that order. Optimize once a test or a measurement
-  asks for it.
+- Build what the current test requires. Add generality when a later test demands it.
+- When the smallest correct change is a design change, propose it before widening the diff.
 
 ## When to stop
 
-Some conditions are hard stops. Halt rather than push through:
-
-- Green won't come after a genuine attempt: stop and correct the design, rather than grinding
-  on or forcing the bar.
-- Never weaken or delete a test to make the bar go green, least of all an architecture or
-  boundary test (see the `hexagonal-architecture` skill). The test is the safety net; if green
-  demands gutting it, stop.
-- The smallest correct step is unclear and every option adds speculative scope: stop rather
-  than guess.
-
-## Commits
-
-- One commit per green bar; one behavior per commit.
-
-How to write the message lives in the `readable-code` skill.
-
-## Done
-
-A change is done when its behavior has a test, the full suite is green, and you have shown
-the real verification output.
+- Stop, report, and correct the design when the suite will not pass after a genuine attempt.
+- Stop and ask when the smallest correct step is unclear and every option adds speculative scope.
+- Never weaken or delete a test to make the suite pass, including an architecture test.
