@@ -32,7 +32,7 @@
 
 ## Writing style
 
-- Plain descriptive headings, matter-of-fact prose, no philosophical or motivational framing. Be very literal.
+- Keep sentences and explanations short and matter-of-fact. For example: "Superseded by 0030" instead of "The grammar this argument rests on was replaced in 0030."
 - No em-dashes.
 - No negation-affirmation pair (e.g. "Nothing upgrades silently. Each bump is a reviewed, applied change.")
 - No contrastive negations. No antithetical parallelisms.
