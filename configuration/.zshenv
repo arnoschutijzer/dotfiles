@@ -15,8 +15,6 @@ path=($path "$GOPATH/bin")
 # mise-managed runtimes (node, java, maven, terraform, go)
 eval "$(mise activate zsh)"
 
-[[ -f ~/dotfiles/.secrets ]] && source ~/dotfiles/.secrets
-
 # Snapshot the built PATH so a login shell can restore this order after macOS
 # path_helper reorders it, without re-running the brew/mise setup above (.zprofile).
 DOTFILES_PATH=$PATH
