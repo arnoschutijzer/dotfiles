@@ -61,16 +61,9 @@
     "swift-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
   },
-  "extraKnownMarketplaces": {
-    "skryv-plugins": {
-      "source": {
-        "source": "directory",
-        "path": "/Users/arnoschutijzer/development/skryv/claude-marketplace"
-      }
-    }
-  },
   "effortLevel": "xhigh",
   "tui": "fullscreen",
   "theme": "dark-ansi",
-  "skipAutoPermissionPrompt": true
+  "skipAutoPermissionPrompt": true,
+  "agentPushNotifEnabled": true
 }

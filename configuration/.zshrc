@@ -1,6 +1,6 @@
 [[ -o interactive ]] || return  # cosmetics below are for interactive shells only
 
-export ZSH="/Users/arnoschutijzer/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 export GPG_TTY=$(tty)
 

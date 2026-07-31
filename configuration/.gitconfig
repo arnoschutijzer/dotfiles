@@ -5,7 +5,7 @@
 	name = Arno Schutijzer
 	email = arno.schutijzer@protonmail.com
 [core]
-	excludesfile = /Users/arnoschutijzer/.gitignore_global
+	excludesfile = ~/.gitignore_global
 	pager = delta
 [push]
 	autoSetupRemote = true

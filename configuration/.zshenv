@@ -22,4 +22,4 @@ eval "$(mise activate zsh)"
 DOTFILES_PATH=$PATH
 
 # uv
-export PATH="/Users/arnoschutijzer/.local/bin:$PATH"
+export PATH="$HOME/.local/bin:$PATH"
