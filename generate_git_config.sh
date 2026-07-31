@@ -4,65 +4,46 @@ prompt_name () {
     echo "Enter your name:"
     read NAME
 }
+
 prompt_mail () {
     echo "Enter your $1 e-mail address you want to sign commits with:"
     read EMAIL
 }
-prompt_gpg () {
-    SIGNINGKEY=$(gpg --list-sigs "$EMAIL" | awk '/sig/ && NR > 1 {print $2}' | tail -n +2 | tr -d '\n')
+
+# The secret key is the one that can sign. A public-only key yields an id here
+# that git then fails on at commit time.
+signing_key_for () {
+    gpg --list-secret-keys --keyid-format=long "$1" 2>/dev/null \
+        | awk '/sec/{print $2}' | cut -d'/' -f2
 }
 
-PERSONAL_CONFIG=~/.gitconfig-personal
+for IDENTITY in personal work eno; do
+    CONFIG=~/.gitconfig-$IDENTITY
 
-if [ -f "$PERSONAL_CONFIG" ]; then
-    echo "$PERSONAL_CONFIG exists. Not touching it."
-else
-    echo "$PERSONAL_CONFIG does not exist."
-    prompt_name
-    prompt_mail "personal"
-    prompt_gpg
-    cat > $PERSONAL_CONFIG << EOF
-[user]
-        name = $NAME
-        email = $EMAIL
-        signingkey = $SIGNINGKEY
-EOF
-fi
+    if [ -f "$CONFIG" ]; then
+        echo "$CONFIG exists. Not touching it."
+        continue
+    fi
 
-WORK_CONFIG=~/.gitconfig-work
-
-if [ -f "$WORK_CONFIG" ]; then
-    echo "$WORK_CONFIG exists. Not touching it."
-else
-    echo "$WORK_CONFIG does not exist."
     if test -z "$NAME"; then
         prompt_name
     fi
-    prompt_mail "work"
-    prompt_gpg
-    cat > $WORK_CONFIG << EOF
-[user]
-        name = $NAME
-        email = $EMAIL
-        signingkey = $SIGNINGKEY
-EOF
-fi
+    prompt_mail "$IDENTITY"
 
-ENO_CONFIG=~/.gitconfig-eno
+    SIGNINGKEY=$(signing_key_for "$EMAIL")
 
-if [ -f "$ENO_CONFIG" ]; then
-    echo "$ENO_CONFIG exists. Not touching it."
-else
-    echo "$ENO_CONFIG does not exist."
-    if test -z "$NAME"; then
-        prompt_name
+    # .gitconfig sets commit.gpgsign, so an empty signingkey breaks every commit.
+    if [ -z "$SIGNINGKEY" ]; then
+        echo "No GPG secret key for $EMAIL. Import it and rerun."
+        echo "Skipped $CONFIG."
+        continue
     fi
-    prompt_mail "eno"
-    prompt_gpg
-    cat > $ENO_CONFIG << EOF
+
+    cat > "$CONFIG" << EOF
 [user]
         name = $NAME
         email = $EMAIL
         signingkey = $SIGNINGKEY
 EOF
-fi
+    echo "Wrote $CONFIG with signing key $SIGNINGKEY."
+done
