@@ -24,3 +24,23 @@ if [ -f "$CLAUDE_JSON" ]; then
 else
   echo "~/.claude.json not found, skipping Serena MCP setup (run Claude Code once first)"
 fi
+
+# Claude Code: ensure the AWS MCP server is configured.
+# Managed remote server, reached over SigV4 with the local credential chain (aws login).
+# The endpoint region hosts the server; AWS_REGION metadata sets the region operations run in.
+if [ -f "$CLAUDE_JSON" ]; then
+  jq '.mcpServers["aws-mcp"] = {
+    "type": "stdio",
+    "command": "uvx",
+    "args": [
+      "mcp-proxy-for-aws@1.6.4",
+      "https://aws-mcp.eu-central-1.api.aws/mcp",
+      "--metadata", "AWS_REGION=eu-west-1",
+      "--read-only"
+    ],
+    "env": {}
+  }' "$CLAUDE_JSON" > "$CLAUDE_JSON.tmp" && mv "$CLAUDE_JSON.tmp" "$CLAUDE_JSON"
+  echo "Added AWS MCP server to Claude Code config"
+else
+  echo "~/.claude.json not found, skipping AWS MCP setup (run Claude Code once first)"
+fi
