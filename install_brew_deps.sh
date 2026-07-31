@@ -1,9 +1,9 @@
 #!/bin/zsh
 
-# Bootstrap Homebrew on a fresh machine. Its installer pulls in the Xcode
-# Command Line Tools that the formulae below build against.
-if ! command -v brew > /dev/null 2>&1; then
-  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Homebrew arrives in the bootstrap phase, which must run first.
+if ! command -v /opt/homebrew/bin/brew > /dev/null 2>&1; then
+  echo "Homebrew is missing. Run: make bootstrap"
+  exit 1
 fi
 
 # Put brew on PATH for this script. Make runs it before the shell config is linked.

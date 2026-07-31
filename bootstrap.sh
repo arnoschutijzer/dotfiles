@@ -1,9 +1,21 @@
 #!/bin/zsh
-# Credentials the configure phase depends on. Runs after apps, so brew has
-# already provided pass-cli, gpg and gh. Signing keys must exist in the keyring
-# before generate_git_config.sh reads them.
+# Everything a bare machine needs before the other phases can run: Homebrew,
+# the handful of tools that carry credentials, and the credentials themselves.
+# The full Brewfile is deliberately not installed here, so a key import does not
+# wait on casks and App Store downloads.
+
+# 1. Homebrew. Its installer also pulls in the Xcode Command Line Tools.
+if ! command -v brew > /dev/null 2>&1; then
+    echo "Installing Homebrew."
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
+
+# 2. The tools this script itself needs. gnupg holds the signing keys, pass-cli
+# reads them out of the vault, gh authenticates the clones. The Brewfile installs
+# these too, so `make apps` later is a no-op for them.
+brew install --quiet gnupg gh proton-pass-cli
 
 PASS_VAULT=Personal
 SSH_KEY="$HOME/.ssh/github_rsa"
@@ -16,7 +28,7 @@ missing_gpg_keys () {
     ! gpg --list-secret-keys --with-colons 2>/dev/null | grep -q '^sec:'
 }
 
-# Only demand a vault session when something is actually absent, so a
+# 3. Vault session. Only demanded when something is actually absent, so a
 # configured machine reruns make without logging in again.
 if missing_ssh_key || missing_gpg_keys; then
     if ! pass-cli info > /dev/null 2>&1; then
@@ -25,8 +37,8 @@ if missing_ssh_key || missing_gpg_keys; then
     fi
 fi
 
-# GPG signing keys, one vault item per identity, discovered by title so no
-# addresses live in this repo.
+# 4. GPG signing keys, one vault item per identity, discovered by title so no
+# addresses live in this repo. generate_git_config.sh reads them in configure.
 pass-cli item list --vault-name "$PASS_VAULT" 2>/dev/null \
     | sed -n 's/^- \[[^]]*\]: \(.*\) (state=Active)$/\1/p' \
     | grep ' GPG key$' \
@@ -48,7 +60,7 @@ pass-cli item list --vault-name "$PASS_VAULT" 2>/dev/null \
         fi
     done
 
-# SSH key. .gitconfig rewrites https github remotes to ssh, so clones need this.
+# 5. SSH key. .gitconfig rewrites https github remotes to ssh, so clones need it.
 if [ -f "$SSH_KEY" ]; then
     chmod 600 "$SSH_KEY"
     echo "$SSH_KEY exists. Not touching it."
@@ -60,7 +72,7 @@ else
     echo "Wrote $SSH_KEY from Proton Pass."
 fi
 
-# gh drives the repo clones and pull requests but nothing below depends on it.
+# 6. gh drives clones and pull requests. Nothing below depends on it, so warn only.
 if gh auth status > /dev/null 2>&1; then
     echo "GitHub CLI already authenticated."
 else

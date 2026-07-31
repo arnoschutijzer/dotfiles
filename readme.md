@@ -7,11 +7,18 @@
 $ make
 ```
 
-`make` runs three phases in order: `apps` installs Homebrew and everything in
-the Brewfile, `bootstrap` pulls the GPG signing keys and the GitHub SSH key out
-of Proton Pass, `configure` symlinks the dotfiles. The signing keys must reach
-the keyring before `generate_git_config.sh` writes the git identities, which is
-why bootstrap sits in the middle.
+`make` runs three phases in order.
+
+1. `bootstrap` installs Homebrew, then `gnupg`, `gh` and `proton-pass-cli`, then
+   pulls the GPG signing keys and the GitHub SSH key out of Proton Pass
+1. `apps` installs the full Brewfile and the mise runtimes
+1. `configure` symlinks the dotfiles and applies the macOS settings
+
+The order is load bearing. Nothing runs without Homebrew, `proton-pass-cli` has
+to exist before the keys can be read, and the signing keys have to reach the
+keyring before `generate_git_config.sh` writes the git identities. Bootstrap
+installs only the three formulae it needs, so importing a key does not wait on
+casks and App Store downloads.
 
 ## on a new machine
 

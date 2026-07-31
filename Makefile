@@ -1,5 +1,5 @@
 .PHONY: all
-all: apps bootstrap configure
+all: bootstrap apps configure
 	@echo
 	@echo "Done. Reload the shell to pick up the new config: exec zsh -l"
 
@@ -9,17 +9,17 @@ help:
 	@echo 'Usage:'
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
 
+## bootstrap: install homebrew, then the gpg and ssh keys from proton pass
+.PHONY: bootstrap
+bootstrap:
+	. ./bootstrap.sh
+
 ## apps: install apps and runtimes
 .PHONY: apps
 apps:
 	. ./install_brew_deps.sh
 	. ./configure_mise.sh
 	. ./install_go_deps.sh
-
-## bootstrap: import signing and ssh keys from proton pass, check github auth
-.PHONY: bootstrap
-bootstrap:
-	. ./bootstrap.sh
 
 ## configure: configure git, fonts, shell, tools, mac settings...
 .PHONY: configure
