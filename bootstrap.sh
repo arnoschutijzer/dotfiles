@@ -12,7 +12,22 @@ fi
 
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
-# 2. The tools this script itself needs. gnupg holds the signing keys, pass-cli
+# 2. Xcode. The command line tools carry git and the compilers the formulae build
+# against. They refuse to run until the license is accepted, which blocks git
+# itself, so this has to clear before anything else in the phase.
+if ! xcode-select -p > /dev/null 2>&1; then
+    echo "Installing the Xcode Command Line Tools. Finish the installer, then rerun make."
+    xcode-select --install
+    exit 1
+fi
+
+# Matching on the message keeps sudo out of the way on a machine that has only
+# the command line tools, where xcodebuild is absent for an unrelated reason.
+if xcodebuild -version 2>&1 | grep -qi license; then
+    sudo xcodebuild -license accept
+fi
+
+# 3. The tools this script itself needs. gnupg holds the signing keys, pass-cli
 # reads them out of the vault, gh authenticates the clones. The Brewfile installs
 # these too, so `make apps` later is a no-op for them.
 brew install --quiet gnupg gh proton-pass-cli
@@ -28,7 +43,7 @@ missing_gpg_keys () {
     ! gpg --list-secret-keys --with-colons 2>/dev/null | grep -q '^sec:'
 }
 
-# 3. Vault session. Only demanded when something is actually absent, so a
+# 4. Vault session. Only demanded when something is actually absent, so a
 # configured machine reruns make without logging in again.
 if missing_ssh_key || missing_gpg_keys; then
     if ! pass-cli info > /dev/null 2>&1; then
@@ -37,7 +52,7 @@ if missing_ssh_key || missing_gpg_keys; then
     fi
 fi
 
-# 4. GPG signing keys, one vault item per identity, discovered by title so no
+# 5. GPG signing keys, one vault item per identity, discovered by title so no
 # addresses live in this repo. generate_git_config.sh reads them in configure.
 pass-cli item list --vault-name "$PASS_VAULT" 2>/dev/null \
     | sed -n 's/^- \[[^]]*\]: \(.*\) (state=Active)$/\1/p' \
@@ -60,7 +75,7 @@ pass-cli item list --vault-name "$PASS_VAULT" 2>/dev/null \
         fi
     done
 
-# 5. SSH key. .gitconfig rewrites https github remotes to ssh, so clones need it.
+# 6. SSH key. .gitconfig rewrites https github remotes to ssh, so clones need it.
 if [ -f "$SSH_KEY" ]; then
     chmod 600 "$SSH_KEY"
     echo "$SSH_KEY exists. Not touching it."
@@ -72,7 +87,7 @@ else
     echo "Wrote $SSH_KEY from Proton Pass."
 fi
 
-# 6. gh drives clones and pull requests. Nothing below depends on it, so warn only.
+# 7. gh drives clones and pull requests. Nothing below depends on it, so warn only.
 if gh auth status > /dev/null 2>&1; then
     echo "GitHub CLI already authenticated."
 else

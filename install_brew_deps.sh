@@ -13,12 +13,6 @@ cd configuration
 
 brew bundle
 
-# Xcode arrives from the mas entries above with its license unaccepted, which
-# makes every xcodebuild call fail until someone agrees to it.
-if [ -d /Applications/Xcode.app ] && ! xcodebuild -version > /dev/null 2>&1; then
-  sudo xcodebuild -license accept
-fi
-
 # assuming these are all installed by this point...
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Ghostty.app", hidden:true}'
 osascript -e 'tell application "System Events" to make login item at end with properties {path:"/Applications/Raycast.app", hidden:true}'
