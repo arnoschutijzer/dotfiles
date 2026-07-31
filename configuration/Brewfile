@@ -82,6 +82,8 @@ cask "dbeaver-community"
 cask "docker-desktop"
 # Online diagram software
 cask "drawio"
+# Web browser
+cask "firefox@developer-edition"
 cask "font-caskaydia-cove-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
