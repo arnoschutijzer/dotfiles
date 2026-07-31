@@ -7,10 +7,11 @@ help:
 	@echo 'Usage:'
 	@sed -n 's/^##//p' ${MAKEFILE_LIST} | column -t -s ':' |  sed -e 's/^/ /'
 
-## apps: install apps
+## apps: install apps and runtimes
 .PHONY: apps
 apps:
 	. ./install_brew_deps.sh
+	. ./configure_mise.sh
 	. ./install_go_deps.sh
 
 ## configure: configure git, fonts, shell, tools, mac settings...
@@ -23,7 +24,6 @@ configure:
 	. ./configure_shell.sh
 	. ./configure_tools.sh
 	. ./configure_agents.sh
-	. ./configure_mise.sh
 
 ## upgrade: upgrade installed apps
 .PHONY: upgrade
