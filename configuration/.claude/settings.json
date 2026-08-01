@@ -14,10 +14,6 @@
       "mcp__serena__replace_symbol_body",
       "mcp__serena__insert_after_symbol",
       "mcp__serena__insert_before_symbol",
-      "mcp__acp__Write",
-      "mcp__acp__Edit",
-      "mcp__acp__Bash",
-      "mcp__Snyk__snyk_code_scan",
       "Bash(find*)",
       "Bash(go get:*)",
       "Bash(go vet:*)",
@@ -56,7 +52,6 @@
   "enabledPlugins": {
     "github@claude-plugins-official": true,
     "context7@claude-plugins-official": true,
-    "skryv-skills@skryv-plugins": true,
     "jdtls-lsp@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true

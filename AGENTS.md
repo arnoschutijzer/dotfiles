@@ -28,10 +28,6 @@ A macOS dotfiles repository that manages system configuration, applications, dev
 
 These identity files are generated interactively by `generate_git_config.sh` and are **not** tracked in the repo.
 
-### Shell
-
-Zsh with oh-my-zsh and Starship prompt. Plugins: git, z, ssh-agent. zsh-autosuggestions is sourced directly from Homebrew. PATH additions include `~/bin` and GPG agent setup for commit signing.
-
 ### Tool Versions
 
 [mise](https://mise.jdx.dev/) manages runtime versions for Node, Java, Maven, Terraform, and Go. It replaces nvm, jenv, pyenv, goenv, and tenv. Global tool versions and mise settings are configured by `configure_mise.sh`. Python is managed by uv.
