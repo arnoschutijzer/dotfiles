@@ -53,4 +53,5 @@
 - One point per line. Three sentences maximum per paragraph.
 - In chat, report the outcome and the changed file paths.
 - Commit message: one subject line of 72 characters maximum, plus the reason when the diff does not show it. Do not list the files touched or the tests added.
+- Commit subject follows Conventional Commits: `type(scope): description`, with the scope optional. Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`. Write the description in lowercase, imperative mood, without a trailing period.
 - Exceed a limit only when the user asks for more detail.
