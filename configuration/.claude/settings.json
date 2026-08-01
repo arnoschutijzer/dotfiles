@@ -55,7 +55,7 @@
     "swift-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true
   },
-  "effortLevel": "xhigh",
+  "effortLevel": "high",
   "tui": "fullscreen",
   "theme": "dark-ansi",
   "agentPushNotifEnabled": true,
