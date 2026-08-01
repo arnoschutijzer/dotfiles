@@ -91,12 +91,6 @@ cask "font-caskaydia-cove-nerd-font"
 cask "ghostty"
 # Web browser
 cask "google-chrome"
-# IDE for Java development - community edition
-cask "intellij-idea-ce"
-# Provides updates to various Microsoft products
-cask "microsoft-auto-update"
-# Email client
-cask "microsoft-outlook"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Collaboration platform for API development
