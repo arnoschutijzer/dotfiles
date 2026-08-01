@@ -5,7 +5,9 @@
 # wait on casks and App Store downloads.
 
 # 1. Homebrew. Its installer also pulls in the Xcode Command Line Tools.
-if ! command -v brew > /dev/null 2>&1; then
+# Test the binary, not PATH. Make runs this before the shell config is linked,
+# so an installed brew is not yet on PATH and command -v would reinstall it.
+if ! /opt/homebrew/bin/brew --version > /dev/null 2>&1; then
     echo "Installing Homebrew."
     /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 fi
