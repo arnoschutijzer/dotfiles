@@ -35,12 +35,14 @@
 - Write like an engineering book. One fact per sentence, subject-verb-object, present tense.
 - Keep sentences and explanations short and matter-of-fact. For example: "Superseded by 0030" instead of "The grammar this argument rests on was replaced in 0030."
 - State a fact once. Do not restate one clause three ways, as in "openSession opens a conversation on blackwall, or resumes the one the id names, and reports its id and how many turns it holds."
+- State the conclusion, not the reasoning path. Do not narrate a sequence of short sentences ("X happened. Then Y. So Z."). Do not add a sentence justifying a claim the context already implies.
 - No em-dashes.
 - No negation-affirmation pair (e.g. "Nothing upgrades silently. Each bump is a reviewed, applied change.")
 - No contrastive negations. No antithetical parallelisms.
 - No clipped negation followed by a lyrical resolution, such as "No title, no card; the text just flows." Write the plain version: "The invitation is plain flowing prose."
 - No metaphor, analogy, or simile. Name a dependency plainly: "Depends on ADR 0014" instead of "Rests on ADR 0014, which holds the conversation."
 - No reassurance and no aphorism, such as "Leaving it does not end the session: blackwall keeps it, so an interrupt is as safe as typing exit."
+- Comment only on what a function does, not on unrelated design context or usage tips elsewhere in the codebase. Keep function comments to one line unless the logic is non-obvious.
 
 **Length and form**
 
