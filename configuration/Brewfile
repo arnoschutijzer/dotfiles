@@ -80,6 +80,8 @@ cask "claude-code"
 cask "codex"
 # Universal database tool and SQL client
 cask "dbeaver-community"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerised applications and microservices
 cask "docker-desktop"
 # Online diagram software
