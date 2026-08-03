@@ -25,6 +25,7 @@
 - Leave force-pushes to the human. Say the branch needs one, and prefer `--force-with-lease`.
 - Never suggest or perform a destructive action on `main` or `master`.
 - Ask first before anything that discards work or rewrites shared history: hard resets, `git clean`, branch or tag deletions, rewriting a branch others track. Describe the situation and stop.
+- Commit subject follows Conventional Commits: `type(scope): description`, with the scope optional. Write the description in lowercase, imperative mood, without a trailing period.
 
 ## Attribution
 
@@ -32,26 +33,8 @@
 
 ## Writing style
 
-- Write like an engineering book. One fact per sentence, subject-verb-object, present tense.
-- Keep sentences and explanations short and matter-of-fact. For example: "Superseded by 0030" instead of "The grammar this argument rests on was replaced in 0030."
-- State a fact once. Do not restate one clause three ways, as in "openSession opens a conversation on blackwall, or resumes the one the id names, and reports its id and how many turns it holds."
-- State the conclusion, not the reasoning path. Do not narrate a sequence of short sentences ("X happened. Then Y. So Z."). Do not add a sentence justifying a claim the context already implies.
-- No em-dashes.
-- No negation-affirmation pair (e.g. "Nothing upgrades silently. Each bump is a reviewed, applied change.")
-- No contrastive negations. No antithetical parallelisms.
-- No clipped negation followed by a lyrical resolution, such as "No title, no card; the text just flows." Write the plain version: "The invitation is plain flowing prose."
-- No metaphor, analogy, or simile. Name a dependency plainly: "Depends on ADR 0014" instead of "Rests on ADR 0014, which holds the conversation."
-- No reassurance and no aphorism, such as "Leaving it does not end the session: blackwall keeps it, so an interrupt is as safe as typing exit."
-- Comment only on what a function does, not on unrelated design context or usage tips elsewhere in the codebase. Keep function comments to one line unless the logic is non-obvious.
-
-**Length and form**
-
-- Answer in the first line. Do not restate the request, announce a plan, summarize what you did, or close with a recap.
-- Do not narrate tool use ("Let me check the tests").
-- Do not justify a decision the user has not questioned, and do not answer a question that was not asked.
-- Delete any sentence carrying no instruction, fact, number, file path, or command.
-- One point per line. Three sentences maximum per paragraph.
-- In chat, report the outcome and the changed file paths.
-- Commit message: one subject line of 72 characters maximum, plus the reason when the diff does not show it. Do not list the files touched or the tests added.
-- Commit subject follows Conventional Commits: `type(scope): description`, with the scope optional. Types: `feat`, `fix`, `docs`, `refactor`, `test`, `chore`. Write the description in lowercase, imperative mood, without a trailing period.
-- Exceed a limit only when the user asks for more detail.
+- Avoid em-dashes.
+- Do not use contrastive negations.
+- Do not use antithetical parallelisms.
+- No prose, no metaphors, no analogies, no figurative language. Instead of "what it does", say "Features" and list the features the codebase has.
+- Headings are noun phrases naming their subject. No verb clauses, no questions, no pronouns.
