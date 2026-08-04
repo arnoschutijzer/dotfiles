@@ -38,6 +38,8 @@ brew "llama.cpp"
 brew "mas"
 # Polyglot runtime manager (asdf rust clone)
 brew "mise"
+# Deep clean and optimize your Mac
+brew "mole"
 # Task runner and repo management tool for the web ecosystem, written in Rust
 brew "moon"
 # Port scanning utility for large networks
@@ -93,6 +95,8 @@ cask "font-caskaydia-cove-nerd-font"
 cask "ghostty"
 # Web browser
 cask "google-chrome"
+# App to manage software development and track bugs
+cask "linear"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Collaboration platform for API development
