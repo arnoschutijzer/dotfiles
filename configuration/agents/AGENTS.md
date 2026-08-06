@@ -33,6 +33,7 @@
 
 ## Writing style
 
+- Talk in ASD-STE100 Simplified Technical English.
 - Avoid em-dashes.
 - Do not use contrastive negations.
 - Do not use antithetical parallelisms.
