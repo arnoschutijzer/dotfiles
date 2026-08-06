@@ -1,4 +1,3 @@
-tap "hashicorp/tap", trusted: true
 tap "pulumi/tap", trusted: true
 tap "snyk/tap", trusted: true
 tap "terraform-linters/tap", trusted: true
@@ -46,6 +45,8 @@ brew "moon"
 brew "nmap"
 # Fast, disk space efficient package manager
 brew "pnpm"
+# Object-relational database system
+brew "postgresql@18", link: true
 # Pluggable multi-language version manager
 brew "proto"
 # Command-line interface for Proton Pass
@@ -97,6 +98,8 @@ cask "ghostty"
 cask "google-chrome"
 # App to manage software development and track bugs
 cask "linear"
+# Support for Logitech G gear
+cask "logitech-g-hub"
 # Knowledge base that works on top of a local folder of plain text Markdown files
 cask "obsidian"
 # Collaboration platform for API development
