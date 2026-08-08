@@ -17,10 +17,7 @@ xcode_license_unaccepted () {
 # long install. Asking here beats a prompt surfacing halfway through a phase.
 if brew_missing || xcode_license_unaccepted; then
     echo "Installing Homebrew and accepting the Xcode license both need sudo."
-    if ! sudo -v; then
-        echo "sudo declined. Nothing else in this phase can run."
-        exit 1
-    fi
+    . ./sudo_keepalive.sh
 fi
 
 # 2. Homebrew. Its installer also pulls in the Xcode Command Line Tools.

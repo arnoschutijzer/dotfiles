@@ -9,6 +9,13 @@ fi
 # Put brew on PATH for this script. Make runs it before the shell config is linked.
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
+# Cask installers with a pkg payload call sudo on their own, long after the
+# bundle starts. Only ask when the bundle has work to do, so a configured
+# machine reruns make without a password.
+if ! brew bundle check --file=configuration/Brewfile > /dev/null 2>&1; then
+    . ./sudo_keepalive.sh
+fi
+
 cd configuration
 
 brew bundle
