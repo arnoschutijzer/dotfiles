@@ -1,3 +1,4 @@
+tap "openai/tools", trusted: true
 tap "pulumi/tap", trusted: true
 tap "snyk/tap", trusted: true
 tap "terraform-linters/tap", trusted: true
@@ -69,6 +70,8 @@ brew "uv"
 brew "wget"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# Run macOS and Linux VMs on Apple Hardware
+brew "openai/tools/tart", trusted: true
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Command-line interface for 1Password
