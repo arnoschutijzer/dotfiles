@@ -43,6 +43,11 @@ upgrade:
 deps:
 	. ./get_brew_deps.sh
 
+## vm: boot a throwaway macos vm with this working tree in it and open a shell
+.PHONY: vm
+vm:
+	OPEN_SHELL=1 ./tests/makefile-in-vm.zsh
+
 ## cleanup: clean up leftover caches
 .PHONY: cleanup
 cleanup:

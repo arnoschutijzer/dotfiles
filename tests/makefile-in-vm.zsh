@@ -5,11 +5,17 @@
 # image, deleted again when the run ends.
 #
 # Usage:  tests/makefile-in-vm.zsh [target ...]      (default: bootstrap apps configure)
-# Env:    TART_IMAGE, TART_VM, KEEP_VM=1, BOOT_TIMEOUT
+# Env:    TART_IMAGE, TART_VM, KEEP_VM=1, OPEN_SHELL=1, BOOT_TIMEOUT,
+#         TARGET_TIMEOUT, DISK_SIZE
 #
-# The phases that need credentials stop on their own: bootstrap wants a Proton
-# Pass session, install_brew_deps.sh wants a Mac App Store account. A failure
-# there is the expected result on an unattended run, not a broken script.
+# OPEN_SHELL=1 opens a login shell in the VM instead of running the phases, and
+# is what `make vm` uses. Name targets as well to get both, the phases first and
+# the shell after. The VM goes away when the shell exits, unless KEEP_VM=1.
+#
+# bootstrap stops on its own, because it wants a Proton Pass session the VM does
+# not have. That is the expected result of an unattended run, not a broken
+# script. The Mac App Store entries are skipped instead: mas waits for a signed
+# in account and never returns, and a hang tells nobody anything.
 
 emulate -L zsh
 set -u
@@ -21,7 +27,9 @@ local vm="${TART_VM:-dotfiles-test-$$}"
 local guest_user=admin
 local guest_password=admin
 local boot_timeout="${BOOT_TIMEOUT:-300}"
+local target_timeout="${TARGET_TIMEOUT:-5400}"
 local keep_vm="${KEEP_VM:-0}"
+local open_shell="${OPEN_SHELL:-0}"
 # The base image holds 50 GB, of which the Brewfile fills the last 400 MB and
 # then casks start to fail. 120 GB leaves room. The clone is copy on write, so
 # the host only pays for what the run writes.
@@ -29,7 +37,7 @@ local disk_size="${DISK_SIZE:-120}"
 
 local -a targets
 targets=("$@")
-(( $# )) || targets=(bootstrap apps configure)
+(( $# || open_shell )) || targets=(bootstrap apps configure)
 
 local work_dir="$(mktemp -d /tmp/dotfiles-vm-test.XXXXXX)"
 local key="$work_dir/id_ed25519"
@@ -158,14 +166,39 @@ copy_repo() {
     | guest "rm -rf ~/dotfiles && mkdir -p ~/dotfiles && tar -x -f - -C ~/dotfiles"
 }
 
+# brew bundle skips a Mac App Store entry whose id is in this list. The ids come
+# from the Brewfile itself, so an entry added later is skipped too.
+mas_skip_list() {
+  awk '/^mas / { gsub(/[^0-9]/, "", $NF); print $NF }' "$repo/configuration/Brewfile" | tr '\n' ' '
+}
+
 # stdin is /dev/null on purpose: generate_git_config.sh and the Homebrew
 # installer both read from it, and an EOF makes them skip instead of hang.
+# The watchdog is for the hangs that stdin cannot prevent, such as an installer
+# waiting on a window that a headless VM never shows.
 run_target() {
   local target="$1"
   local log="$work_dir/$target.log"
   info "make $target (log: $log)"
 
-  guest "cd ~/dotfiles && make $target" > "$log" 2>&1 < /dev/null
+  guest "cd ~/dotfiles && HOMEBREW_BUNDLE_MAS_SKIP='$(mas_skip_list)' make $target" \
+    > "$log" 2>&1 < /dev/null &
+  local session=$!
+
+  local -i waited=0
+  while (( waited < target_timeout )) && kill -0 "$session" 2> /dev/null; do
+    sleep 10
+    (( waited += 10 ))
+  done
+
+  if kill -0 "$session" 2> /dev/null; then
+    kill "$session" 2> /dev/null
+    fail "make $target made no progress within ${target_timeout}s"
+    tail -n 20 "$log" | sed -e 's/^/    /'
+    return
+  fi
+
+  wait "$session"
   local -i exit_code=$?
 
   if (( exit_code == 0 )); then
@@ -174,6 +207,13 @@ run_target() {
     fail "make $target exited $exit_code"
     tail -n 20 "$log" | sed -e 's/^/    /'
   fi
+}
+
+# -t asks for a terminal, which the phases do not want and a person does. The
+# working tree is already in ~/dotfiles, so make runs here as well.
+open_guest_shell() {
+  info "Opening a login shell in '$vm' as $guest_user. Leave it to end the run."
+  ssh -i "$key" "$ssh_options[@]" -t "$guest_user@$guest_ip" 'cd ~/dotfiles && exec zsh -l'
 }
 
 require_tart
@@ -188,6 +228,8 @@ local target
 for target in "$targets[@]"; do
   run_target "$target"
 done
+
+(( open_shell )) && open_guest_shell
 
 info "Logs: $work_dir"
 exit $(( failures > 0 ))
