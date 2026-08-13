@@ -1,9 +1,9 @@
 ---
-name: create-hexagonal-mermaid-graphs
-description: Create focused Mermaid diagrams of an existing codebase as drivers, inbound adapters, use cases, outbound ports, and outbound adapters. Use when reviewing package or module relationships from source imports, locating ports and adapter implementations, assessing hexagonal architecture, or identifying boundary violations and infrastructure bypasses.
+name: create-hexagonal-graph
+description: "Create one evidence-based Mermaid diagram that maps an existing codebase to drivers, inbound adapters, use cases, outbound ports, and outbound adapters. Use when the user asks for a hexagonal architecture diagram, ports-and-adapters map, adapter review, dependency-boundary review, or infrastructure-bypass analysis."
 ---
 
-# Create Hexagonal Mermaid Graphs
+# Hexagonal Mermaid graph
 
 Derive the diagram from source evidence. Treat directory names and architecture
 documentation as hints.
@@ -105,53 +105,20 @@ direction and operation flow express different relationships. Use imports as
 evidence for classification, then state which relationship the displayed
 arrows represent.
 
-Use this template and replace every example with source-backed names:
+Use this structure with source-backed names:
 
 ```mermaid
 flowchart LR
-  subgraph drivers["Drivers"]
-    client["HTTP client"]
-  end
+  driver --> inboundAdapter --> useCase --> outboundPort
+  outboundPort -. implemented by .-> outboundAdapter
+  inboundAdapter ==>|boundary bypass| outboundAdapter
 
-  subgraph inboundAdapters["Inbound adapters"]
-    httpAdapter["internal/http<br/>direct SQL"]
-  end
-
-  subgraph useCases["Use cases"]
-    resolve["catalog.ResolveMapping"]
-  end
-
-  subgraph outboundPorts["Outbound ports"]
-    repository["catalog.MappingRepository"]
-  end
-
-  subgraph outboundAdapters["Outbound adapters"]
-    postgres["database.PostgresMappingRepository"]
-  end
-
-  client --> httpAdapter
-  httpAdapter -->|catalog.MappingResolver| resolve
-  resolve --> repository
-  repository -. implemented by .-> postgres
-  httpAdapter ==>|direct SQL bypass| postgres
-
-  linkStyle 4 stroke:#b91c1c,stroke-width:3px,color:#7f1d1d
-
-  classDef driver fill:#f3e8ff,stroke:#7e22ce,color:#581c87
-  classDef port fill:#fff7ed,stroke:#c2410c,color:#7c2d12
-  classDef useCase fill:#dcfce7,stroke:#166534,color:#14532d
-  classDef adapter fill:#dbeafe,stroke:#1d4ed8,color:#1e3a8a
   classDef offender fill:#fee2e2,stroke:#b91c1c,color:#7f1d1d
-
-  class client driver
-  class repository port
-  class resolve useCase
-  class postgres adapter
-  class httpAdapter offender
+  class inboundAdapter offender
 ```
 
-Recount `linkStyle` indexes after changing edges. Mermaid numbers links from
-zero in declaration order.
+Add subgraphs for each category. Use distinct styles for drivers, ports, use cases, adapters, and
+offenders. Recount `linkStyle` indexes after changing edges.
 
 ## Report the assessment
 
