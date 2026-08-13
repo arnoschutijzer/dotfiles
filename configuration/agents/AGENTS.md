@@ -1,8 +1,8 @@
 ## Principles
 
-- Prefer the option with lower cognitive overhead: small commits, no nested ifs, single-purpose functions, immutability, terse commit messages.
+- Prefer the option with lower cognitive overhead: small changes, no nested ifs, single-purpose functions, and immutable values.
 - Readability outranks terseness. Avoid clever one-liners, dense chained expressions, and cryptic short names. Expand anything a reader has to pause and decode.
-- Use full words instead of abbreviations or acronyms.
+- Use full words when they improve clarity. Define uncommon abbreviations on first use.
 
 ## Default behavior
 
@@ -18,6 +18,7 @@
 - Extract only at the third occurrence.
 - Narrowest interface that current callers require.
 - Keep the change small. Make the smallest change that satisfies the literal request. Do not edit shared modules, consolidate or move files, or fold in adjacent refactors unless asked. Name a broader change and propose it separately. Do not add unrequested artifacts: planning files, configuration entries, output files, or content beyond the request.
+- Verify documentation, configuration, and infrastructure changes with the strongest available static check, plan, dry run, or smoke test.
 
 ## Git
 
@@ -25,7 +26,7 @@
 - Leave force-pushes to the human. Say the branch needs one, and prefer `--force-with-lease`.
 - Never suggest or perform a destructive action on `main` or `master`.
 - Ask first before anything that discards work or rewrites shared history: hard resets, `git clean`, branch or tag deletions, rewriting a branch others track. Describe the situation and stop.
-- Commit subject follows Conventional Commits: `type(scope): description`, with the scope optional. Write the description in lowercase, imperative mood, without a trailing period.
+- When a commit is requested, keep it small and single-purpose. Use Conventional Commits: `type(scope): description`, with the scope optional. Write the description in lowercase, imperative mood, without a trailing period.
 
 ## Attribution
 
@@ -33,9 +34,7 @@
 
 ## Writing style
 
-- Talk in ASD-STE100 Simplified Technical English.
-- Avoid em-dashes.
-- Do not use contrastive negations.
-- Do not use antithetical parallelisms.
-- No prose, no metaphors, no analogies, no figurative language. Instead of "what it does", say "Features" and list the features the codebase has.
-- Headings are noun phrases naming their subject. No verb clauses, no questions, no pronouns.
+- Use ASD-STE100 Simplified Technical English.
+- Prefer short paragraphs and lists.
+- Use literal language and state the required action directly.
+- Use noun-phrase headings.
