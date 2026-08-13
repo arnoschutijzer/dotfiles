@@ -15,6 +15,8 @@ Write a failing test before production code.
 3. **Refactor**: with the suite passing, improve names, remove duplication, clarify structure. Hold
    behavior fixed.
 
+Commit each behavior when its cycle is green. One behavior, one commit.
+
 Repeat one behavior per cycle.
 
 ## Writing tests

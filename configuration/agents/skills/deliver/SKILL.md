@@ -31,6 +31,7 @@ previously presented list as sufficient.
 - Work from top to bottom.
 - Apply the `tdd` cycle to each behavior.
 - Run the narrow test after each cycle and the repository verification after the list is complete.
+- Commit each behavior when its cycle is green. One behavior, one commit.
 - Add a refining test when it stays within the approved outcome.
 - Stop for approval when a new behavior expands the outcome.
 - Report the completed behaviors and verification results.

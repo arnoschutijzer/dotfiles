@@ -26,7 +26,8 @@
 - Leave force-pushes to the human. Say the branch needs one, and prefer `--force-with-lease`.
 - Never suggest or perform a destructive action on `main` or `master`.
 - Ask first before anything that discards work or rewrites shared history: hard resets, `git clean`, branch or tag deletions, rewriting a branch others track. Describe the situation and stop.
-- When a commit is requested, keep it small and single-purpose. Use Conventional Commits: `type(scope): description`, with the scope optional. Write the description in lowercase, imperative mood, without a trailing period.
+- Commit finished work without waiting for a request. Branch first when the current branch is `main` or `master`.
+- Keep each commit small and single-purpose. Use Conventional Commits: `type(scope): description`, with the scope optional. Write the description in lowercase, imperative mood, without a trailing period.
 
 ## Attribution
 
