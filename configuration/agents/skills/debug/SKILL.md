@@ -1,13 +1,11 @@
 ---
 name: debug
-description: Drive a bug fix from a reported failure to a proven root cause, capture that cause in a failing test, then fix and verify under TDD. Use when behavior is wrong and the cause is not yet known.
-argument-hint: [the failure]
+description: "Find, prove, and fix the root cause of incorrect behavior. Use when a failure, regression, crash, flaky test, or wrong result has an unknown cause. Do not use when the cause and required behavior are already known."
 ---
 
 # Debug a failure
 
-Restate the failure ($ARGUMENTS) in one sentence. If the goal is already known, run `deliver`
-instead.
+Restate the reported failure in one sentence.
 
 ## 1. Reproduce
 
@@ -24,25 +22,23 @@ accepting it as the cause.
 - Blame the environment, the configuration, or a dependency only when the evidence points there.
 - Fix the cause, not the symptom. A null check over a null-pointer exception whose real source is a
   shape mismatch leaves the bug in place.
-- Check reachability first: grep for callers, confirm the feature is still configured, scan recent
+- Check reachability first: search for callers, confirm the feature is still configured, scan recent
   commits. Unreachable code or an abandoned feature makes the change a deletion. If reachability is
   unclear, say so and stop.
-- When logs, a bisect, and a minimal reproduction have not settled the cause, run competing
-  hypotheses in parallel across subagents, then take the one the evidence supports.
 
 ## 3. Capture the cause in a failing test
 
 Write one test that reproduces the cause. Confirm it fails for the reason the hypothesis predicts; a
-failure for another reason means the test or the hypothesis is wrong. Commit that test on its own,
-red.
+failure for another reason means the test or the hypothesis is wrong.
 
 ## 4. Fix and verify
 
 - The reproducing test passes and the full suite passes.
 - Check whether the same cause exists elsewhere; name the instances and propose a separate change.
+- Report the cause, its evidence, the fix, and the verification result.
 
 ## When to stop
 
 - No reproduction after a genuine attempt: gather more evidence (logging, the actual failing input).
 - The evidence does not prove a hypothesis.
-- The fix grows into new behavior: run `triage`, then `deliver`.
+- The fix requires new behavior outside the reported failure.
