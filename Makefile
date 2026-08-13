@@ -30,7 +30,7 @@ configure:
 	. ./install_fonts.sh
 	. ./configure_shell.sh
 	. ./configure_tools.sh
-	. ./configure_agents.sh
+	./configure_agents.sh
 
 ## upgrade: upgrade installed apps
 .PHONY: upgrade
