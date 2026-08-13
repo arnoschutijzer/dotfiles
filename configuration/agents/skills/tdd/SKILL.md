@@ -1,13 +1,11 @@
 ---
 name: tdd
-description: "Test-driven development: red, green, refactor; one behavior per test; the smallest code that passes. Use on every code change in any language, including quick fixes, small changes, bug fixes, and new features."
+description: "Develop a production behavior change with a red, green, refactor cycle, one observable behavior per test, and the smallest passing implementation. Use when adding or changing production behavior or implementing a defect fix after its cause is known. Do not use for bug diagnosis, documentation, formatting, comments, renames, or configuration-only changes."
 ---
 
 # Test-driven development
 
-Write a failing test before any production code, on every change, including small fixes. A change
-with no behavior to assert (a comment, a log level, a rename, a formatting pass, a config value)
-has no test to write; run the suite and commit.
+Write a failing test before production code.
 
 ## The cycle
 
@@ -17,7 +15,7 @@ has no test to write; run the suite and commit.
 3. **Refactor**: with the suite passing, improve names, remove duplication, clarify structure. Hold
    behavior fixed.
 
-Repeat, one behavior per cycle. One commit per passing suite.
+Repeat one behavior per cycle.
 
 ## Writing tests
 
@@ -25,8 +23,6 @@ Repeat, one behavior per cycle. One commit per passing suite.
 - Assert an observable outcome, not an implementation detail.
 - Delete a test that still passes when your production code is deleted. It exercises the framework.
 - Inject the clock, the calendar, randomness, and the locale.
-- Invoke `testing` when the change crosses one of these: a feature end to end, a service boundary,
-  shared test data, an invariant over many inputs.
 
 ## Minimal implementation
 
