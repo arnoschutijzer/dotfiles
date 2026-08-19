@@ -1,6 +1,9 @@
 ---
 name: deliver
 description: "Deliver a non-trivial new behavior by learning the domain, obtaining approval for an ordered test list, and implementing one behavior at a time. Use when a feature or behavior change has multiple testable cases. Do not use for bug diagnosis, refactors, dependency updates, documentation, or configuration-only changes."
+disable-model-invocation: true
+policy:
+  allow_implicit_invocation: false
 ---
 
 # Deliver a change

@@ -1,6 +1,9 @@
 ---
 name: tdd
 description: "Develop a production behavior change with a red, green, refactor cycle, one observable behavior per test, and the smallest passing implementation. Use when adding or changing production behavior or implementing a defect fix after its cause is known. Do not use for bug diagnosis, documentation, formatting, comments, renames, or configuration-only changes."
+disable-model-invocation: true
+policy:
+  allow_implicit_invocation: false
 ---
 
 # Test-driven development
