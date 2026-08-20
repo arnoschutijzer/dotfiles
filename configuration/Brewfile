@@ -28,10 +28,18 @@ brew "gnu-sed"
 brew "gnupg"
 # GNU grep, egrep and fgrep
 brew "grep"
+# Kubernetes package manager
+brew "helm"
 # Client library for huggingface.co hub
 brew "hf"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
+# Little helper to run CNCF's k3s in Docker
+brew "k3d"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# Template-free customization of Kubernetes YAML manifests
+brew "kustomize"
 # LLM inference in C/C++
 brew "llama.cpp"
 # Mac App Store command-line interface
