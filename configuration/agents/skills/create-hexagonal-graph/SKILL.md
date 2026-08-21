@@ -1,6 +1,7 @@
 ---
 name: create-hexagonal-graph
 description: "Create one evidence-based Mermaid diagram that maps an existing codebase to drivers, inbound adapters, use cases, outbound ports, and outbound adapters. Use when the user asks for a hexagonal architecture diagram, ports-and-adapters map, adapter review, dependency-boundary review, or infrastructure-bypass analysis."
+disable-model-invocation: true
 ---
 
 # Hexagonal Mermaid graph
