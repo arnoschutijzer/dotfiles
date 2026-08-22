@@ -1,6 +1,6 @@
 ---
 name: hexagonal-architecture
-description: "Design or assess ports-and-adapters boundaries with a framework-independent domain, domain-owned ports, edge adapters, and inward dependencies. Use when the repository already uses hexagonal architecture or the user asks to introduce it, add a port or adapter, isolate an external dependency, or move business logic out of an adapter."
+description: "Design or implement ports-and-adapters boundaries with a framework-independent domain, domain-owned ports, edge adapters, and inward dependencies. Use when changing a repository that uses hexagonal architecture or when asked to introduce it, add a port or adapter, isolate an external dependency, or move business logic out of an adapter. Do not use for read-only architecture mapping or assessment."
 ---
 
 # Hexagonal architecture
@@ -18,7 +18,7 @@ description: "Design or assess ports-and-adapters boundaries with a framework-in
 
 ## Use cases
 
-- One use case per user-facing operation, between the inbound adapter and the rest of the domain.
+- Keep application orchestration in a use case between the inbound adapter and the domain.
 - A use case imports no web, no CLI, and no logger. It composes the domain packages, applies the
   rules, and returns a structured result.
 - The inbound adapter reads and validates its own input, invokes the use case, and presents the
