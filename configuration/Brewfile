@@ -30,12 +30,16 @@ brew "gnupg"
 brew "grep"
 # Kubernetes package manager
 brew "helm"
+# Deploy Kubernetes Helm Charts
+brew "helmfile"
 # Client library for huggingface.co hub
 brew "hf"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Little helper to run CNCF's k3s in Docker
 brew "k3d"
+# Kubernetes CLI To Manage Your Clusters In Style!
+brew "k9s"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
 # Template-free customization of Kubernetes YAML manifests
