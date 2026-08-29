@@ -68,6 +68,8 @@ brew "proton-pass-cli"
 brew "railway"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Safe, concurrent, practical language
+brew "rust"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Tool to generate documentation from Terraform modules
