@@ -24,10 +24,14 @@ install_link() {
 
   local existing_target="$(readlink "$destination")"
   [[ "$existing_target" == "$target" ]] && return
-  [[ "$existing_target" == "$managed_root"/* ]] || {
+
+  # A link outside managed_root is normally someone else's file. But if it's
+  # also dangling, it can't be user content either — most likely it's ours
+  # from before the repo moved, so heal it instead of leaving it broken.
+  if [[ "$existing_target" != "$managed_root"/* ]] && [[ -e "$existing_target" ]]; then
     print -u2 -- "Skipping unmanaged link: $destination"
     return
-  }
+  fi
 
   unlink "$destination"
   ln -s "$target" "$destination"
@@ -38,8 +42,11 @@ remove_stale_skill_links() {
 
   for destination in "$skills_dir"/*(N@); do
     local target="$(readlink "$destination")"
-    [[ "$target" == "$AGENTS_DIR/skills/"* ]] || continue
-    [[ -d "$target" ]] && continue
+    if [[ "$target" == "$AGENTS_DIR/skills/"* ]]; then
+      [[ -d "$target" ]] && continue
+    elif [[ -e "$target" ]]; then
+      continue
+    fi
     unlink "$destination"
   done
 }
