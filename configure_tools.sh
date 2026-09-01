@@ -44,3 +44,29 @@ if [ -f "$CLAUDE_JSON" ]; then
 else
   echo "~/.claude.json not found, skipping AWS MCP setup (run Claude Code once first)"
 fi
+
+# Claude Code: ensure the Linear MCP server is configured.
+# Official remote server, OAuth. First use in Claude Code prompts a browser login;
+# `claude mcp login linear` also works to authenticate ahead of time.
+if [ -f "$CLAUDE_JSON" ]; then
+  jq '.mcpServers.linear = {
+    "type": "http",
+    "url": "https://mcp.linear.app/mcp"
+  }' "$CLAUDE_JSON" > "$CLAUDE_JSON.tmp" && mv "$CLAUDE_JSON.tmp" "$CLAUDE_JSON"
+  echo "Added Linear MCP server to Claude Code config"
+else
+  echo "~/.claude.json not found, skipping Linear MCP setup (run Claude Code once first)"
+fi
+
+# Codex: ensure the Linear MCP server is configured.
+# Official remote server, OAuth. `codex mcp add` writes config.toml and runs the
+# OAuth handshake itself, so skip it once the entry already exists.
+if command -v codex > /dev/null 2>&1; then
+  if grep -q '^\[mcp_servers\.linear\]' "$HOME/.codex/config.toml" 2>/dev/null; then
+    echo "Linear MCP server already configured for Codex"
+  else
+    codex mcp add linear --url https://mcp.linear.app/mcp
+  fi
+else
+  echo "codex not found, skipping Linear MCP setup for Codex"
+fi
