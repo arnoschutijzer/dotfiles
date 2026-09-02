@@ -33,3 +33,7 @@ casks and App Store downloads.
 1. Import Raycast settings
 1. Install Zed CLI into PATH
 1. Turn off all menu bar items in Settings -> Menu Bar -> Allow in the Menu Bar
+1. Pull a local model for oMLX/Hermes on demand, e.g.
+   `hf download mlx-community/Qwen3.8-27B-4bit`, then `hermes model` to select
+   it. The oMLX provider is registered by `configure_hermes.sh`; the cloud
+   provider stays the Hermes default.

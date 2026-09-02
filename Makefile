@@ -31,6 +31,7 @@ configure:
 	. ./configure_shell.sh
 	. ./configure_tools.sh
 	./configure_agents.sh
+	./configure_hermes.sh
 
 ## upgrade: upgrade installed apps
 .PHONY: upgrade

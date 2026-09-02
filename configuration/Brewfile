@@ -1,3 +1,4 @@
+tap "jundot/omlx", trusted: true
 tap "openai/tools", trusted: true
 tap "pulumi/tap", trusted: true
 tap "snyk/tap", trusted: true
@@ -34,6 +35,8 @@ brew "helm"
 brew "helmfile"
 # Client library for huggingface.co hub
 brew "hf"
+# Self-improving AI agent that creates skills from experience
+brew "hermes-agent"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Little helper to run CNCF's k3s in Docker
@@ -56,6 +59,8 @@ brew "mole"
 brew "moon"
 # Port scanning utility for large networks
 brew "nmap"
+# LLM inference server optimized for Apple Silicon
+brew "omlx"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Object-relational database system
