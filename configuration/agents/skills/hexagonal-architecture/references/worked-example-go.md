@@ -1,14 +1,11 @@
 # Worked example in Go
 
-The slice records a patient vitals reading. Each comment marks a rule that is
-easy to break.
-
-## File layout
+Records a patient vitals reading.
 
 ```
 internal/vitals/
-  reading.go                      # domain entity and domain errors
-  app/record_reading.go           # use case and the ports it owns
+  reading.go                      # entity and domain errors
+  app/record_reading.go           # use case and its ports
   app/record_reading_test.go      # use case test, no database
   adapter/httpin/handler.go       # inbound adapter
   adapter/timescale/appender.go   # outbound adapter
@@ -29,8 +26,7 @@ import (
 
 type PatientID string
 
-// The domain owns these errors. Adapters translate into them. No other error
-// type leaves this package.
+// Adapters translate into these. No other error type leaves this package.
 var (
 	ErrOutOfRange  = errors.New("vitals: reading outside physiological range")
 	ErrDuplicate   = errors.New("vitals: reading already recorded")
@@ -44,7 +40,7 @@ type Reading struct {
 	Diastolic int
 }
 
-// Construction enforces the invariant. You cannot build an invalid Reading.
+// Construction enforces the invariant. An invalid Reading cannot exist.
 func NewReading(id PatientID, takenAt time.Time, systolic, diastolic int) (Reading, error) {
 	if id == "" || systolic < 40 || systolic > 300 || diastolic < 20 || diastolic >= systolic {
 		return Reading{}, ErrOutOfRange
@@ -67,20 +63,18 @@ import (
 	"eno/internal/vitals"
 )
 
-// Outbound port. The caller declares it. The name states the capability, not
-// the technology. It has one method, because the caller uses one method.
+// Outbound port. The caller declares it, names the capability, and lists one
+// method because it uses one method.
 type ReadingAppender interface {
 	Append(ctx context.Context, r vitals.Reading) error
 }
 
-// Time is also an outbound capability. Logging is the same. Inject a port. Do
-// not import a clock or a logger into this package.
+// Time is an outbound capability. So is logging.
 type Clock interface {
 	Now() time.Time
 }
 
-// Inbound port. It states the operation that the application offers. The
-// inbound adapter depends on this interface, not on the struct below.
+// Inbound port. The adapter depends on this, not on the struct below.
 type RecordReading interface {
 	Record(ctx context.Context, cmd RecordCommand) (RecordResult, error)
 }
@@ -105,8 +99,7 @@ func NewRecordReading(appender ReadingAppender, clock Clock) RecordReading {
 	return recordReading{appender: appender, clock: clock}
 }
 
-// Orchestration only. Build the entity, let the entity validate, store it, and
-// report the result. Rules that belong on the entity stay on the entity.
+// Orchestration only. The entity holds the rules.
 func (u recordReading) Record(ctx context.Context, cmd RecordCommand) (RecordResult, error) {
 	reading, err := vitals.NewReading(
 		vitals.PatientID(cmd.PatientID),
@@ -149,7 +142,7 @@ type recordRequest struct {
 	Diastolic int    `json:"diastolic"`
 }
 
-// The handler depends on the inbound port. A stub use case can test it.
+// Depends on the inbound port, so a stub use case can test it.
 func RecordHandler(useCase app.RecordReading) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var body recordRequest
@@ -164,8 +157,7 @@ func RecordHandler(useCase app.RecordReading) http.HandlerFunc {
 			Diastolic: body.Diastolic,
 		})
 
-		// The status code is an adapter concern. Domain errors become HTTP
-		// responses here, and only here.
+		// Domain errors become status codes here, and only here.
 		switch {
 		case errors.Is(err, vitals.ErrOutOfRange):
 			http.Error(w, err.Error(), http.StatusUnprocessableEntity)
@@ -202,8 +194,7 @@ import (
 	"eno/internal/vitals"
 )
 
-// The connection pool, the retries, the backoff, and the circuit breaker all
-// belong in this package.
+// The pool, retries, backoff, and breaker belong in this package.
 type Appender struct {
 	db *sql.DB
 }
@@ -220,7 +211,6 @@ func (a *Appender) Append(ctx context.Context, r vitals.Reading) error {
 		return nil
 	}
 
-	// The adapter translates the infrastructure failure into a domain error.
 	// A *pgconn.PgError must not reach the use case.
 	var pgErr *pgconn.PgError
 	if errors.As(err, &pgErr) {
@@ -257,8 +247,7 @@ import (
 func main() {
 	db := mustOpen(os.Getenv("DATABASE_URL"))
 
-	// Construct the adapters and connect them to the ports. This happens once,
-	// and it happens here.
+	// Adapters are constructed and wired once, here.
 	appender := timescale.NewAppender(db)
 	useCase := app.NewRecordReading(appender, systemClock{})
 
@@ -279,9 +268,8 @@ func (systemClock) Now() time.Time {
 
 `internal/vitals/app/record_reading_test.go`
 
-The use-case test needs no database, no HTTP server, and no clock control other
-than a struct literal. If a use-case test needs more, a boundary is in the wrong
-place.
+The test needs no database, no server, and no clock control beyond a struct
+literal. If it needs more, a boundary is in the wrong place.
 
 ```go
 package app_test
