@@ -29,5 +29,7 @@ else
   hermes config set providers.omlx.api "http://127.0.0.1:8000/v1"
   hermes config set providers.omlx.api_key "not-needed"
   hermes config set providers.omlx.context_length 65536
+  hermes config set providers.omlx.default_model "mlx-community--Qwen3.8-27B-4bit"
+  hermes config set providers.omlx.discover_models true
   echo "Registered oMLX provider with Hermes (select it with: hermes model)"
 fi
