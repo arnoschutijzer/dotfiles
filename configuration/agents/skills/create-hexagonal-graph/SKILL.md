@@ -79,8 +79,6 @@ State the exact reason in the red node label. A clean type that shares a package
 with infrastructure is a package-boundary offender. Do not claim its behavior is
 infrastructure-coupled when only its location is at fault.
 
-A missing architecture test is an enforcement gap, not a dependency violation.
-
 ## Graph
 
 Default to `drivers → inbound adapters → use cases → outbound ports → outbound
