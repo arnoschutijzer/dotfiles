@@ -7,23 +7,22 @@ disable-model-invocation: true
 # Hexagonal Mermaid graph
 
 Derive the diagram from source evidence. Treat directory names and architecture
-documentation as hints.
+documentation as hints. To implement changes, use the `hexagonal-architecture`
+skill instead.
 
-## Inspect the code
+## Inspection
 
-1. Read the repository guidance and establish the requested source scope.
-2. Inventory production packages or modules and their source imports.
+1. Read the repository guidance and establish the source scope.
+2. Inventory production packages and their imports.
 3. Find interface, protocol, abstract class, and callback declarations.
-4. Find constructors and composition roots that connect interfaces to concrete
+4. Find constructors and composition roots that connect interfaces to
    implementations.
-5. Inspect handlers, commands, consumers, schedulers, and workers to find entry
+5. Inspect handlers, commands, consumers, schedulers, and workers for entry
    points.
-6. Inspect SQL, network, filesystem, message-broker, and external-client usage
-   to find infrastructure dependencies.
+6. Inspect SQL, network, filesystem, broker, and external-client usage for
+   infrastructure dependencies.
 7. Use tests to confirm method sets and boundary enforcement. Exclude test-only
-   relationships from the production graph.
-
-Useful searches include:
+   relationships from the graph.
 
 ```sh
 rg --files <scope>
@@ -33,80 +32,64 @@ rg -n 'New[A-Z]|Build|Create|Provide|Inject|Register' <scope>
 rg -n 'database/sql|sql\.DB|net/http|requests|fetch|filesystem|kafka|s3' <scope>
 ```
 
-For Go packages, derive exact import edges with a disposable cache when needed:
+For Go, derive exact import edges with a disposable cache:
 
 ```sh
 GOCACHE=/tmp/hexagonal-graph-go-cache \
   go list -f '{{.ImportPath}}|{{join .Imports ","}}' ./...
 ```
 
-Delete disposable analysis files and caches after recording the findings.
+Delete disposable files and caches after you record the findings.
 
-## Classify each element
+## Classification
 
-- **Driver**: actor or event that starts an operation, such as an HTTP client,
-  command invocation, queue message, process lifecycle event, or timer.
-- **Inbound adapter**: validates and translates driver input, invokes a use
-  case, and presents the result.
-- **Use case**: framework-free application behavior expressed in domain terms.
+- **Driver**: actor or event that starts an operation. An HTTP client, a command
+  invocation, a queue message, a lifecycle event, or a timer.
+- **Inbound adapter**: validates driver input, invokes a use case, presents the
+  result.
 - **Inbound port**: domain-owned operation through which an adapter invokes a
   use case.
-- **Outbound port**: narrow interface owned by the use case that needs an
-  external capability.
-- **Outbound adapter**: concrete database, network, storage, broker, or service
+- **Use case**: framework-free application behavior in domain terms.
+- **Outbound port**: narrow interface owned by the use case that needs a
+  capability.
+- **Outbound adapter**: database, network, storage, broker, or service
   implementation of an outbound port.
 - **Composition root**: code that constructs implementations and wires them to
   consumers.
 
-Verify structural interface implementations from method sets and wiring.
-Interface names alone do not prove a port-to-adapter relationship.
+Confirm each port-to-adapter relationship from method sets and wiring. Interface
+names are not proof.
 
-Treat small interfaces around SQL methods inside an adapter as adapter-local
-test seams unless domain or application code consumes them.
+A small interface around SQL methods inside an adapter is an adapter-local test
+seam, unless domain or application code consumes it.
 
-## Find offenders
+## Offenders
 
-Mark a package, type, or path as an offender when source evidence shows one of
-these conditions:
+Mark a package, type, or path as an offender only on source evidence.
 
-- An inbound adapter imports a concrete repository or executes SQL directly.
+- An inbound adapter imports a concrete repository or runs SQL.
 - A use case imports an HTTP framework, database API, external client,
-  filesystem, logger, telemetry library, or application configuration.
-- An inbound port is declared by the adapter instead of the use case that
-  offers the operation.
-- A use-case package also contains concrete database, network, filesystem, or
-  storage adapters.
-- A driver or inbound adapter calls an outbound adapter without a use-case and
-  outbound-port boundary.
+  filesystem, logger, telemetry library, or configuration.
+- An inbound port is declared by the adapter instead of the use case.
+- A use-case package also holds concrete adapters.
+- A driver or inbound adapter calls an outbound adapter directly.
 - Adapter construction occurs outside the composition root.
 
 State the exact reason in the red node label. A clean type that shares a package
-with infrastructure is a package-boundary offender; do not claim its behavior
-is infrastructure-coupled when only its location is at fault.
+with infrastructure is a package-boundary offender. Do not claim its behavior is
+infrastructure-coupled when only its location is at fault.
 
-Record missing architecture tests as an enforcement gap. Do not present the
-absence of a test as a dependency violation.
+A missing architecture test is an enforcement gap, not a dependency violation.
 
-## Draw one focused graph
+## Graph
 
-Default to this left-to-right flow:
-
-`drivers → inbound adapters → use cases → outbound ports → outbound adapters`
+Default to `drivers → inbound adapters → use cases → outbound ports → outbound
+adapters`.
 
 Keep inbound ports as labels on adapter-to-use-case arrows. Keep outbound ports
-as nodes between use cases and implementations. Use dashed arrows to map ports
-to implementations.
-
-Use red nodes to list offenders. Use red, thick arrows for paths that bypass a
-use-case or outbound-port boundary. Group closely related ports in one node
-when listing each interface would obscure the structure.
-
-Do not add a separate raw import graph unless the user requests it. Import
-direction and operation flow express different relationships. Use imports as
-evidence for classification, then state which relationship the displayed
-arrows represent.
-
-Use this structure with source-backed names:
+as nodes. Use dashed arrows from a port to its implementation. Use red nodes for
+offenders and red thick arrows for boundary bypasses. Group related ports in one
+node when a node for each interface obscures the structure.
 
 ```mermaid
 flowchart LR
@@ -118,34 +101,34 @@ flowchart LR
   class inboundAdapter offender
 ```
 
-Add subgraphs for each category. Use distinct styles for drivers, ports, use cases, adapters, and
-offenders. Recount `linkStyle` indexes after changing edges.
+Add a subgraph for each category. Style drivers, ports, use cases, adapters, and
+offenders differently. Recount `linkStyle` indexes after you change an edge.
 
-## Report the assessment
+Do not add a raw import graph unless the user asks. Imports and operation flow
+are different relationships: use imports as evidence, then state which
+relationship the arrows show.
 
-Follow the graph with one explicit conclusion: aligns, partially aligns, or
-does not align with hexagonal design.
+## Assessment
 
-Support the conclusion with a compact table:
+State one conclusion: aligns, partially aligns, or does not align. Support it
+with this table, and name concrete packages, types, and interfaces.
 
 | Area | Assessment |
 | --- | --- |
-| Domain and use cases | State whether they remain framework-free. |
-| Inbound adapters | State whether they call use cases through inbound ports. |
-| Outbound ports | State whether consumers own narrow interfaces. |
-| Outbound adapters | State whether implementations depend inward. |
-| Composition | State whether wiring stays in a composition root. |
-| Enforcement | Name architecture tests and coverage gaps. |
+| Domain and use cases | Whether they remain framework-free. |
+| Inbound adapters | Whether they call use cases through inbound ports. |
+| Outbound ports | Whether consumers own narrow interfaces. |
+| Outbound adapters | Whether implementations depend inward. |
+| Composition | Whether wiring stays in a composition root. |
+| Enforcement | Architecture tests and coverage gaps. |
 
-Name concrete packages, types, and interfaces. Separate confirmed violations
-from improvement proposals.
+Separate confirmed violations from improvement proposals.
 
-## Verify the artifact
+## Verification
 
 - Compare every node and edge with imports, declarations, method sets, and
-  composition wiring.
-- Confirm each red offender has a concrete source reason.
+  wiring.
+- Confirm each red offender has a source reason.
 - Run `git diff --check` for a repository document.
-- Render Mermaid when a local renderer already exists.
-- Follow repository-specific documentation verification.
-- Do not refactor the code unless the user requests implementation changes.
+- Render Mermaid when a local renderer exists.
+- Do not refactor the code unless the user asks.
