@@ -36,8 +36,6 @@ translation.
 
 ## Anti-patterns
 
-Same criteria as the offender rules in `create-hexagonal-graph`.
-
 - An ORM record, driver error, or transport type in a port signature.
 - A port declared by the adapter instead of the caller.
 - One port for each adapter (`PostgresPort`) instead of one for each capability.
@@ -63,20 +61,3 @@ Do not convert the full repository.
 3. Extract its entity and outbound port.
 4. Add the architecture test, limited to the converted packages.
 5. Leave other slices unchanged until asked.
-
-## Architecture test
-
-Use the repository's checker (`import-linter`, `eslint-plugin-boundaries`,
-ArchUnit). Otherwise assert on the import graph. For Go:
-
-```sh
-go list -deps ./internal/<slice> ./internal/<slice>/app \
-  | grep -xE 'net/http|database/sql|github.com/jackc/.*|github.com/segmentio/kafka-go.*' \
-  && exit 1
-```
-
-List the packages explicitly: a `/...` glob selects the adapter packages, which
-import drivers by design, and the check never passes. `grep -x` prevents a match
-on `vendor/golang.org/x/net/http`.
-
-A missing architecture test is an enforcement gap, not a dependency violation.
