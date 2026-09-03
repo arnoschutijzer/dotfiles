@@ -23,3 +23,9 @@ hermes config set providers.omlx.context_length 65536
 hermes config set providers.omlx.default_model "mlx-community--Qwen3.8-27B-4bit"
 hermes config set providers.omlx.discover_models true
 echo "Registered oMLX provider with Hermes (select it with: hermes model)"
+
+# Silence the "agent is back / was interrupted" pings the gateway posts to
+# home channels on stop/restart — noise on the messaging platforms I use.
+hermes config set platforms.telegram.gateway_restart_notification false
+hermes config set platforms.photon.gateway_restart_notification false
+echo "Disabled gateway restart notifications (telegram, photon)"
