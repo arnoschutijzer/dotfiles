@@ -4,11 +4,11 @@ Records a patient vitals reading.
 
 ```
 internal/vitals/
-  reading.go                      # entity and domain errors
-  app/record_reading.go           # use case and its ports
-  app/record_reading_test.go      # use case test, no database
-  adapter/httpin/handler.go       # inbound adapter
-  adapter/timescale/appender.go   # outbound adapter
+  reading.go                     # entity and domain errors
+  record_reading.go              # use case and its ports
+  record_reading_test.go         # use case test, no database
+  httpin/handler.go              # inbound adapter
+  timescale/appender.go          # outbound adapter
 cmd/api/main.go                   # composition root
 ```
 
@@ -51,22 +51,20 @@ func NewReading(id PatientID, takenAt time.Time, systolic, diastolic int) (Readi
 
 ## Use case and ports
 
-`internal/vitals/app/record_reading.go`
+`internal/vitals/record_reading.go`
 
 ```go
-package app
+package vitals
 
 import (
 	"context"
 	"time"
-
-	"eno/internal/vitals"
 )
 
 // Outbound port. The caller declares it, names the capability, and lists one
 // method because it uses one method.
 type ReadingAppender interface {
-	Append(ctx context.Context, r vitals.Reading) error
+	Append(ctx context.Context, r Reading) error
 }
 
 // Time is an outbound capability. So is logging.
@@ -101,8 +99,8 @@ func NewRecordReading(appender ReadingAppender, clock Clock) RecordReading {
 
 // Orchestration only. The entity holds the rules.
 func (u recordReading) Record(ctx context.Context, cmd RecordCommand) (RecordResult, error) {
-	reading, err := vitals.NewReading(
-		vitals.PatientID(cmd.PatientID),
+	reading, err := NewReading(
+		PatientID(cmd.PatientID),
 		u.clock.Now(),
 		cmd.Systolic,
 		cmd.Diastolic,
@@ -121,7 +119,7 @@ func (u recordReading) Record(ctx context.Context, cmd RecordCommand) (RecordRes
 
 ## Inbound adapter
 
-`internal/vitals/adapter/httpin/handler.go`
+`internal/vitals/httpin/handler.go`
 
 ```go
 package httpin
@@ -132,7 +130,6 @@ import (
 	"net/http"
 
 	"eno/internal/vitals"
-	"eno/internal/vitals/app"
 )
 
 // The adapter owns the wire format. The use case never receives this type.
@@ -143,7 +140,7 @@ type recordRequest struct {
 }
 
 // Depends on the inbound port, so a stub use case can test it.
-func RecordHandler(useCase app.RecordReading) http.HandlerFunc {
+func RecordHandler(useCase vitals.RecordReading) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		var body recordRequest
 		if err := json.NewDecoder(r.Body).Decode(&body); err != nil {
@@ -151,7 +148,7 @@ func RecordHandler(useCase app.RecordReading) http.HandlerFunc {
 			return
 		}
 
-		result, err := useCase.Record(r.Context(), app.RecordCommand{
+		result, err := useCase.Record(r.Context(), vitals.RecordCommand{
 			PatientID: body.PatientID,
 			Systolic:  body.Systolic,
 			Diastolic: body.Diastolic,
@@ -177,7 +174,7 @@ func RecordHandler(useCase app.RecordReading) http.HandlerFunc {
 
 ## Outbound adapter
 
-`internal/vitals/adapter/timescale/appender.go`
+`internal/vitals/timescale/appender.go`
 
 ```go
 package timescale
@@ -239,9 +236,9 @@ import (
 	"os"
 	"time"
 
-	"eno/internal/vitals/adapter/httpin"
-	"eno/internal/vitals/adapter/timescale"
-	"eno/internal/vitals/app"
+	"eno/internal/vitals"
+	"eno/internal/vitals/httpin"
+	"eno/internal/vitals/timescale"
 )
 
 func main() {
@@ -249,7 +246,7 @@ func main() {
 
 	// Adapters are constructed and wired once, here.
 	appender := timescale.NewAppender(db)
-	useCase := app.NewRecordReading(appender, systemClock{})
+	useCase := vitals.NewRecordReading(appender, systemClock{})
 
 	mux := http.NewServeMux()
 	mux.Handle("POST /vitals", httpin.RecordHandler(useCase))
@@ -266,13 +263,13 @@ func (systemClock) Now() time.Time {
 
 ## Test doubles
 
-`internal/vitals/app/record_reading_test.go`
+`internal/vitals/record_reading_test.go`
 
 The test needs no database, no server, and no clock control beyond a struct
 literal. If it needs more, a boundary is in the wrong place.
 
 ```go
-package app_test
+package vitals_test
 
 import (
 	"context"
@@ -281,7 +278,6 @@ import (
 	"time"
 
 	"eno/internal/vitals"
-	"eno/internal/vitals/app"
 )
 
 type fakeAppender struct {
@@ -307,9 +303,9 @@ func (c fixedClock) Now() time.Time {
 
 func TestRecordRejectsImpossibleReading(t *testing.T) {
 	appender := &fakeAppender{}
-	useCase := app.NewRecordReading(appender, fixedClock{now: time.Unix(0, 0).UTC()})
+	useCase := vitals.NewRecordReading(appender, fixedClock{now: time.Unix(0, 0).UTC()})
 
-	_, err := useCase.Record(context.Background(), app.RecordCommand{
+	_, err := useCase.Record(context.Background(), vitals.RecordCommand{
 		PatientID: "p-1",
 		Systolic:  90,
 		Diastolic: 120,
@@ -325,9 +321,9 @@ func TestRecordRejectsImpossibleReading(t *testing.T) {
 
 func TestRecordTranslatesStoreFailure(t *testing.T) {
 	appender := &fakeAppender{err: vitals.ErrUnavailable}
-	useCase := app.NewRecordReading(appender, fixedClock{now: time.Unix(0, 0).UTC()})
+	useCase := vitals.NewRecordReading(appender, fixedClock{now: time.Unix(0, 0).UTC()})
 
-	_, err := useCase.Record(context.Background(), app.RecordCommand{
+	_, err := useCase.Record(context.Background(), vitals.RecordCommand{
 		PatientID: "p-1",
 		Systolic:  120,
 		Diastolic: 80,
