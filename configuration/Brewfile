@@ -1,4 +1,4 @@
-tap "jundot/omlx", trusted: true
+tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
 tap "openai/tools", trusted: true
 tap "pulumi/tap", trusted: true
 tap "snyk/tap", trusted: true
@@ -33,10 +33,14 @@ brew "grep"
 brew "helm"
 # Deploy Kubernetes Helm Charts
 brew "helmfile"
-# Client library for huggingface.co hub
-brew "hf"
+# Open-source, cross-platform JavaScript runtime environment
+brew "node"
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
 # Self-improving AI agent that creates skills from experience
 brew "hermes-agent"
+# Client library for huggingface.co hub
+brew "hf"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Little helper to run CNCF's k3s in Docker
@@ -59,8 +63,6 @@ brew "mole"
 brew "moon"
 # Port scanning utility for large networks
 brew "nmap"
-# LLM inference server optimized for Apple Silicon
-brew "omlx"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Object-relational database system
@@ -71,14 +73,16 @@ brew "proto"
 brew "proton-pass-cli"
 # Develop and deploy code with zero configuration
 brew "railway"
-# Search tool like grep and The Silver Searcher
-brew "ripgrep"
 # Safe, concurrent, practical language
 brew "rust"
+# Easy and Repeatable Kubernetes Development
+brew "skaffold"
 # Cross-shell prompt for astronauts
 brew "starship"
 # Tool to generate documentation from Terraform modules
 brew "terraform-docs"
+# Thin wrapper for Terraform e.g. for locking state
+brew "terragrunt"
 # Static analysis security scanner for your terraform code
 brew "tfsec"
 # Text interface for Git repositories
@@ -89,6 +93,8 @@ brew "uv"
 brew "wget"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
+# LLM inference server optimized for Apple Silicon
+brew "jundot/omlx/omlx"
 # Run macOS and Linux VMs on Apple Hardware
 brew "openai/tools/tart", trusted: true
 # Password manager that keeps all passwords secure behind one password
@@ -114,10 +120,14 @@ cask "drawio"
 # Web browser
 cask "firefox@developer-edition"
 cask "font-caskaydia-cove-nerd-font"
+# Set of tools to manage resources and applications hosted on Google Cloud
+cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
 cask "google-chrome"
+# Open-source desktop AI agent
+cask "hermes-desktop"
 # App to manage software development and track bugs
 cask "linear"
 # Support for Logitech G gear
@@ -161,5 +171,5 @@ mas "The Unarchiver", id: 425424353
 mas "uBlock Origin Lite", id: 6745342698
 mas "WhatsApp", id: 310633997
 mas "Xcode", id: 497799835
+uv "browser-use"
 uv "mlx-lm"
-npm "corepack"
