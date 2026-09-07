@@ -12,11 +12,12 @@ path=("$HOME/bin" /Applications $path)
 export GOPATH="$HOME/.go"
 path=($path "$GOPATH/bin")
 
-# mise-managed runtimes (node, java, maven, terraform, go)
-eval "$(mise activate zsh)"
-
-# uv-installed tools
+# Local tools, including uv and Hermes.
 path=("$HOME/.local/bin" $path)
+
+# Keep mise-managed runtimes ahead of other tools, including inherited paths.
+export MISE_ACTIVATE_AGGRESSIVE=1
+eval "$(mise activate zsh)"
 
 # Snapshot the built PATH so a login shell can restore this order after macOS
 # path_helper reorders it, without re-running the brew/mise setup above (.zprofile).
