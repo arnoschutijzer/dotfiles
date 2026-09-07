@@ -26,12 +26,7 @@ import (
 
 type PatientID string
 
-// Adapters translate into these. No other error type leaves this package.
-var (
-	ErrOutOfRange  = errors.New("vitals: reading outside physiological range")
-	ErrDuplicate   = errors.New("vitals: reading already recorded")
-	ErrUnavailable = errors.New("vitals: store unavailable")
-)
+var ErrOutOfRange = errors.New("vitals: reading outside physiological range")
 
 type Reading struct {
 	PatientID PatientID
@@ -58,7 +53,15 @@ package vitals
 
 import (
 	"context"
+	"errors"
 	"time"
+)
+
+// Adapters translate all store failures into these use-case-owned errors.
+var (
+	ErrDuplicate    = errors.New("vitals: reading already recorded")
+	ErrUnavailable  = errors.New("vitals: store unavailable")
+	ErrStoreFailure = errors.New("vitals: store operation failed")
 )
 
 // Outbound port. The caller declares it, names the capability, and lists one
@@ -128,6 +131,7 @@ import (
 	"encoding/json"
 	"errors"
 	"net/http"
+	"time"
 
 	"eno/internal/vitals"
 )
@@ -137,6 +141,10 @@ type recordRequest struct {
 	PatientID string `json:"patient_id"`
 	Systolic  int    `json:"systolic"`
 	Diastolic int    `json:"diastolic"`
+}
+
+type recordResponse struct {
+	RecordedAt time.Time `json:"recorded_at"`
 }
 
 // Depends on the inbound port, so a stub use case can test it.
@@ -154,7 +162,7 @@ func RecordHandler(useCase vitals.RecordReading) http.HandlerFunc {
 			Diastolic: body.Diastolic,
 		})
 
-		// Domain errors become status codes here, and only here.
+		// Domain and use-case errors become status codes only here.
 		switch {
 		case errors.Is(err, vitals.ErrOutOfRange):
 			http.Error(w, err.Error(), http.StatusUnprocessableEntity)
@@ -166,7 +174,7 @@ func RecordHandler(useCase vitals.RecordReading) http.HandlerFunc {
 			http.Error(w, "internal error", http.StatusInternalServerError)
 		default:
 			w.WriteHeader(http.StatusCreated)
-			_ = json.NewEncoder(w).Encode(map[string]any{"recorded_at": result.RecordedAt})
+			_ = json.NewEncoder(w).Encode(recordResponse{RecordedAt: result.RecordedAt})
 		}
 	}
 }
@@ -183,7 +191,6 @@ import (
 	"context"
 	"database/sql"
 	"errors"
-	"fmt"
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgconn"
@@ -219,7 +226,8 @@ func (a *Appender) Append(ctx context.Context, r vitals.Reading) error {
 		}
 	}
 
-	return fmt.Errorf("append reading: %w", err)
+	// Unexpected failures must not expose infrastructure errors either.
+	return vitals.ErrStoreFailure
 }
 ```
 
@@ -319,7 +327,7 @@ func TestRecordRejectsImpossibleReading(t *testing.T) {
 	}
 }
 
-func TestRecordTranslatesStoreFailure(t *testing.T) {
+func TestRecordReturnsStoreFailure(t *testing.T) {
 	appender := &fakeAppender{err: vitals.ErrUnavailable}
 	useCase := vitals.NewRecordReading(appender, fixedClock{now: time.Unix(0, 0).UTC()})
 
