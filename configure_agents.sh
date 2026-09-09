@@ -93,5 +93,5 @@ for skill_path in "$AGENTS_DIR"/skills/*/; do
 done
 
 install_external_skills mattpocock/skills \
-  prototype research wayfinder grill-me grilling grill-with-docs tdd
+  prototype research wayfinder grill-me grilling grill-with-docs tdd setup-matt-pocock-skills
 install_external_skills vercel-labs/skills find-skills
