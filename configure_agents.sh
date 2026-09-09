@@ -1,6 +1,6 @@
 #!/bin/zsh
 # Link shared agent config (skills + global instructions) into every harness home.
-# One source under configuration/agents/, read by Claude, Codex, and any .agents-aware harness.
+# Local config lives under configuration/agents/; external skills use the skills CLI.
 
 set -eu
 
@@ -51,6 +51,27 @@ remove_stale_skill_links() {
   done
 }
 
+install_external_skills() {
+  local source="$1"
+  shift
+  local skill_name
+  local -a missing_skills=()
+
+  for skill_name in "$@"; do
+    if [[ -e "$HOME/.agents/skills/$skill_name" || -L "$HOME/.agents/skills/$skill_name" ||
+          -e "$HOME/.claude/skills/$skill_name" || -L "$HOME/.claude/skills/$skill_name" ]]; then
+      print -- "Skipping existing skill: $skill_name"
+      continue
+    fi
+    missing_skills+=("$skill_name")
+  done
+
+  (( ${#missing_skills} > 0 )) || return 0
+
+  npx --yes skills add "$source" --global --yes \
+    --agent codex claude-code --skill "${missing_skills[@]}"
+}
+
 mkdir -p ~/.claude/skills ~/.agents/skills ~/.codex
 
 remove_stale_skill_links ~/.claude/skills
@@ -70,3 +91,7 @@ for skill_path in "$AGENTS_DIR"/skills/*/; do
     install_link "${skill_path%/}" "$skills_dir/$skill_name" "$AGENTS_DIR/skills"
   done
 done
+
+install_external_skills mattpocock/skills \
+  prototype research wayfinder grill-me grilling grill-with-docs tdd
+install_external_skills vercel-labs/skills find-skills
