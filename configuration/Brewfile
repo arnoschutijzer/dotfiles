@@ -1,4 +1,5 @@
 tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
+tap "k1low/tap", "https://github.com/k1LoW/homebrew-tap"
 tap "openai/tools", trusted: true
 tap "pulumi/tap", trusted: true
 tap "snyk/tap", trusted: true
@@ -95,6 +96,8 @@ brew "wget"
 brew "zsh-autosuggestions"
 # LLM inference server optimized for Apple Silicon
 brew "jundot/omlx/omlx"
+# A Git subcommand that makes `git worktree` simple
+brew "k1low/tap/git-wt", trusted: true
 # Run macOS and Linux VMs on Apple Hardware
 brew "openai/tools/tart", trusted: true
 # Password manager that keeps all passwords secure behind one password
@@ -120,8 +123,6 @@ cask "drawio"
 # Web browser
 cask "firefox@developer-edition"
 cask "font-caskaydia-cove-nerd-font"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
@@ -173,3 +174,4 @@ mas "WhatsApp", id: 310633997
 mas "Xcode", id: 497799835
 uv "browser-use"
 uv "mlx-lm"
+npm "corepack"

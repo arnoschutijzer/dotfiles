@@ -15,6 +15,9 @@ path=($path "$GOPATH/bin")
 # Local tools, including uv and Hermes.
 path=("$HOME/.local/bin" $path)
 
+# Worktree helper.
+eval "$(git wt --init zsh)"
+
 # Keep mise-managed runtimes ahead of other tools, including inherited paths.
 export MISE_ACTIVATE_AGGRESSIVE=1
 eval "$(mise activate zsh)"
