@@ -14,6 +14,10 @@ plugins=(
 source $ZSH/oh-my-zsh.sh
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh
 
+# worktree: switch shell function plus branch completion. Needs compinit, which
+# oh-my-zsh runs above, so keep this after the source line.
+command -v worktree >/dev/null && eval "$(worktree init zsh)"
+
 # Aliases
 alias clean_mod='find . -name node_modules -type d -exec rm -r {} +'
 alias dka='docker kill $(docker ps -q)'
