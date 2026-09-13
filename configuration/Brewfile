@@ -9,6 +9,8 @@ brew "bat"
 brew "btop"
 # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ccusage"
+# Dependency manager for Cocoa projects
+brew "cocoapods"
 # Modern, maintained replacement for ls
 brew "eza"
 # Play, record, convert, and stream select audio and video codecs
@@ -120,8 +122,6 @@ cask "drawio"
 # Web browser
 cask "firefox@developer-edition"
 cask "font-caskaydia-cove-nerd-font"
-# Set of tools to manage resources and applications hosted on Google Cloud
-cask "gcloud-cli"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
 # Web browser
@@ -173,3 +173,4 @@ mas "WhatsApp", id: 310633997
 mas "Xcode", id: 497799835
 uv "browser-use"
 uv "mlx-lm"
+npm "corepack"
