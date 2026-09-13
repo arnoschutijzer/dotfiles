@@ -33,6 +33,7 @@ alias ga.='ga .'
 alias ls=eza
 alias tf=terraform
 alias ned='zed -n $@'
+alias wt=worktree
 
 function agpg {
   GPG_EMAIL=$(git config user.email)
