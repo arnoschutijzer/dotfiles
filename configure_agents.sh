@@ -95,3 +95,10 @@ done
 install_external_skills mattpocock/skills \
   prototype research wayfinder grill-me grilling grill-with-docs tdd setup-matt-pocock-skills
 install_external_skills vercel-labs/skills find-skills
+
+# Ponytail plugin: same marketplace installed into both harnesses. The
+# marketplace add and plugin install commands are idempotent, so re-running is safe.
+claude plugin marketplace add dietrichgebert/ponytail
+claude plugin install ponytail@ponytail --yes
+codex plugin marketplace add dietrichgebert/ponytail
+codex plugin add ponytail@ponytail
