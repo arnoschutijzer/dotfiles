@@ -15,6 +15,9 @@ defaults write com.apple.dock autohide-time-modifier -float 0.5
 # automatically hide and show dock
 defaults write com.apple.dock autohide -bool true
 
+# disable the opening-application animation in the dock
+defaults write com.apple.dock launchanim -bool false
+
 # make cursor move faster
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
