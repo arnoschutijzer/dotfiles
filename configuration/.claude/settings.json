@@ -49,24 +49,12 @@
     "defaultMode": "auto"
   },
   "model": "claude-opus-4-8",
-  "statusLine": {
-    "type": "command",
-    "command": "bash \"/Users/arno/.claude/plugins/cache/ponytail/ponytail/4.9.0/hooks/ponytail-statusline.sh\""
-  },
   "enabledPlugins": {
     "github@claude-plugins-official": false,
     "context7@claude-plugins-official": true,
     "swift-lsp@claude-plugins-official": true,
     "gopls-lsp@claude-plugins-official": true,
-    "ponytail@ponytail": true
-  },
-  "extraKnownMarketplaces": {
-    "ponytail": {
-      "source": {
-        "source": "github",
-        "repo": "dietrichgebert/ponytail"
-      }
-    }
+    "ponytail@ponytail": false
   },
   "effortLevel": "high",
   "tui": "fullscreen",
