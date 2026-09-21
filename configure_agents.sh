@@ -78,6 +78,8 @@ remove_stale_skill_links ~/.claude/skills
 remove_stale_skill_links ~/.agents/skills
 
 # Global instructions: read by Claude as CLAUDE.md and by Codex as AGENTS.md.
+# Claude reads AGENTS.md natively only at project scope; the user-level global
+# file must be ~/.claude/CLAUDE.md (~/.claude/AGENTS.md is not read).
 install_link "$AGENTS_DIR/AGENTS.md" ~/.claude/CLAUDE.md "$AGENTS_DIR"
 install_link "$AGENTS_DIR/AGENTS.md" ~/.codex/AGENTS.md "$AGENTS_DIR"
 
