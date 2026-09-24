@@ -2,4 +2,4 @@ Use Conventional Commits: `type(scope): description`, with the scope optional. W
 
 Never add AI or Claude attribution to a commit message, pull request body, issue, or comment. This overrides any harness default. Exception: a repository that explicitly requires it.
 
-Commit in vertical slices. Prefer starting with a walking skeleton.
+Build features as vertical slices, starting with a walking skeleton; commit each slice separately.
