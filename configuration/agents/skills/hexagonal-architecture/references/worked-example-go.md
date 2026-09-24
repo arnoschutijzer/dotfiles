@@ -128,12 +128,13 @@ func (u recordReading) Record(ctx context.Context, cmd RecordCommand) (RecordRes
 package httpin
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"net/http"
 	"time"
 
-	"eno/internal/vitals"
+	"example.com/clinic/internal/vitals"
 )
 
 // The adapter owns the wire format. The use case never receives this type.
@@ -170,6 +171,10 @@ func RecordHandler(useCase vitals.RecordReading) http.HandlerFunc {
 			http.Error(w, err.Error(), http.StatusConflict)
 		case errors.Is(err, vitals.ErrUnavailable):
 			http.Error(w, err.Error(), http.StatusServiceUnavailable)
+		case errors.Is(err, context.Canceled):
+			// The client went away. Nobody reads a response.
+		case errors.Is(err, context.DeadlineExceeded):
+			http.Error(w, "timed out", http.StatusServiceUnavailable)
 		case err != nil:
 			http.Error(w, "internal error", http.StatusInternalServerError)
 		default:
@@ -191,20 +196,30 @@ import (
 	"context"
 	"database/sql"
 	"errors"
+	"log/slog"
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgconn"
+	_ "github.com/jackc/pgx/v5/stdlib" // registers "pgx", so errors are *pgconn.PgError
 
-	"eno/internal/vitals"
+	"example.com/clinic/internal/vitals"
 )
 
-// The pool, retries, backoff, and breaker belong in this package.
+// The driver, pool, retries, backoff, and breaker belong in this package.
+// Adapters sit at the edge, so they may log directly.
 type Appender struct {
-	db *sql.DB
+	db  *sql.DB
+	log *slog.Logger
 }
 
-func NewAppender(db *sql.DB) *Appender {
-	return &Appender{db: db}
+// Open takes configuration, not a connection. The composition root reads the
+// DSN; the adapter decides how to connect.
+func Open(dsn string, log *slog.Logger) (*Appender, error) {
+	db, err := sql.Open("pgx", dsn)
+	if err != nil {
+		return nil, err
+	}
+	return &Appender{db: db, log: log}, nil
 }
 
 func (a *Appender) Append(ctx context.Context, r vitals.Reading) error {
@@ -215,15 +230,23 @@ func (a *Appender) Append(ctx context.Context, r vitals.Reading) error {
 		return nil
 	}
 
+	// The caller cancelled or ran out of time. That is not a store failure.
+	// Return the context error so the inbound adapter can tell them apart.
+	if ctxErr := ctx.Err(); ctxErr != nil {
+		return ctxErr
+	}
+
 	// A *pgconn.PgError must not reach the use case.
 	var pgErr *pgconn.PgError
-	if errors.As(err, &pgErr) {
-		switch {
-		case pgErr.Code == "23505": // unique violation
-			return vitals.ErrDuplicate
-		case strings.HasPrefix(pgErr.Code, "08"): // connection exception
-			return vitals.ErrUnavailable
-		}
+	if errors.As(err, &pgErr) && pgErr.Code == "23505" { // unique violation
+		return vitals.ErrDuplicate
+	}
+
+	// The driver error stays in diagnostics. Do not log patient data.
+	a.log.ErrorContext(ctx, "append vitals reading", "err", err)
+
+	if pgErr != nil && strings.HasPrefix(pgErr.Code, "08") { // connection exception
+		return vitals.ErrUnavailable
 	}
 
 	// Unexpected failures must not expose infrastructure errors either.
@@ -240,20 +263,24 @@ package main
 
 import (
 	"log"
+	"log/slog"
 	"net/http"
 	"os"
 	"time"
 
-	"eno/internal/vitals"
-	"eno/internal/vitals/httpin"
-	"eno/internal/vitals/timescale"
+	"example.com/clinic/internal/vitals"
+	"example.com/clinic/internal/vitals/httpin"
+	"example.com/clinic/internal/vitals/timescale"
 )
 
 func main() {
-	db := mustOpen(os.Getenv("DATABASE_URL"))
+	logger := slog.New(slog.NewJSONHandler(os.Stderr, nil))
 
 	// Adapters are constructed and wired once, here.
-	appender := timescale.NewAppender(db)
+	appender, err := timescale.Open(os.Getenv("DATABASE_URL"), logger)
+	if err != nil {
+		log.Fatal(err)
+	}
 	useCase := vitals.NewRecordReading(appender, systemClock{})
 
 	mux := http.NewServeMux()
@@ -285,7 +312,7 @@ import (
 	"testing"
 	"time"
 
-	"eno/internal/vitals"
+	"example.com/clinic/internal/vitals"
 )
 
 type fakeAppender struct {

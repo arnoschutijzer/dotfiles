@@ -41,6 +41,9 @@ translation.
   `%w` does not translate it. Do not expose it through an unwrap chain; keep
   infrastructure details in adapter diagnostics. Wrapping an already translated
   error is allowed. Inbound adapters map these errors to protocol responses.
+- When the caller's context is cancelled or past its deadline, return
+  `ctx.Err()` instead of a store failure. It belongs to the caller, not to the
+  infrastructure.
 - Wire adapters to ports in one composition root.
 - Keep serialization tags and framework types out of boundary structs,
   including nested status and result types. Define request and response DTOs
