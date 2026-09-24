@@ -33,9 +33,7 @@ translation.
   `StatusReader` does not provide a use case if it connects a handler directly
   to a database adapter.
 - Inject time, randomness, identifiers, logging, and telemetry as ports.
-- Use the injected clock for time calculations too. With an injected `now`
-  function, use `deadline.Sub(now())`, not `time.Until(deadline)`, and
-  `now().Sub(start)`, not `time.Since(start)`. This includes lease renewal.
+- Use the injected clock for every time calculation.
 - Translate every database and outbound HTTP failure into a use-case-owned
   error, including unexpected failures. Wrapping an infrastructure error with
   `%w` does not translate it. Do not expose it through an unwrap chain; keep
@@ -75,8 +73,6 @@ translation.
 - Check adapter error paths, including fallback paths. Test that expected and
   unexpected infrastructure failures produce use-case-owned errors and do not
   expose driver or HTTP client errors through `errors.Is` or `errors.As`.
-- Test lease and deadline calculations with a fixed clock far from real time.
-  Advance the injected clock to check renewal and expiry decisions.
 
 ## Introduction
 

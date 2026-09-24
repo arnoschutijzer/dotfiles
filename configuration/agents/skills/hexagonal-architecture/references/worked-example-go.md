@@ -70,7 +70,9 @@ type ReadingAppender interface {
 	Append(ctx context.Context, r Reading) error
 }
 
-// Time is an outbound capability. So is logging.
+// Time is an outbound capability. So is logging. Derive durations from it
+// too: deadline.Sub(clock.Now()), not time.Until(deadline), and
+// clock.Now().Sub(start), not time.Since(start). Both read the real clock.
 type Clock interface {
 	Now() time.Time
 }
@@ -328,6 +330,8 @@ func (f *fakeAppender) Append(_ context.Context, r vitals.Reading) error {
 	return nil
 }
 
+// Tests pin the clock far from real time, so a call that bypasses the port
+// with time.Now, time.Since, or time.Until produces a visibly wrong result.
 type fixedClock struct {
 	now time.Time
 }
