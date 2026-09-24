@@ -82,8 +82,7 @@ translation.
 
 Do not convert the full repository.
 
-1. Run `create-hexagonal-graph` to map the current structure.
+1. Run the `create-hexagonal-graph` skill to map the current structure.
 2. Select one slice that changes often.
 3. Extract its entity and outbound port.
-4. Add the architecture test, limited to the converted packages.
-5. Leave other slices unchanged until asked.
+4. Leave other slices unchanged until asked.
