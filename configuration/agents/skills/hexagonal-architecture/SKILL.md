@@ -67,7 +67,7 @@ idioms.
 3. Declare the outbound port in the use-case package.
 4. Write the use case. Test it against fakes.
 5. Write the adapters last. Test them through the use case, wired to real
-   infrastructure.
+   infrastructure. For Go, read `references/integration-test-go.md`.
 
 ## Verification
 
