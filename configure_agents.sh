@@ -28,7 +28,8 @@ install_link() {
   # A link outside managed_root is normally someone else's file. But if it's
   # also dangling, it can't be user content either — most likely it's ours
   # from before the repo moved, so heal it instead of leaving it broken.
-  if [[ "$existing_target" != "$managed_root"/* ]] && [[ -e "$existing_target" ]]; then
+  # Test the link itself: a relative target resolves from the link's directory.
+  if [[ "$existing_target" != "$managed_root"/* ]] && [[ -e "$destination" ]]; then
     print -u2 -- "Skipping unmanaged link: $destination"
     return
   fi
@@ -40,36 +41,41 @@ install_link() {
 remove_stale_skill_links() {
   local skills_dir="$1"
 
+  # Remove only dangling links. Test the link itself, not its readlink text:
+  # the skills CLI writes relative targets, which resolve from the link's
+  # directory rather than the current one.
   for destination in "$skills_dir"/*(N@); do
-    local target="$(readlink "$destination")"
-    if [[ "$target" == "$AGENTS_DIR/skills/"* ]]; then
-      [[ -d "$target" ]] && continue
-    elif [[ -e "$target" ]]; then
-      continue
-    fi
-    unlink "$destination"
+    [[ -e "$destination" ]] || unlink "$destination"
   done
 }
 
 install_external_skills() {
   local source="$1"
   shift
-  local skill_name
-  local -a missing_skills=()
+  local agent skill_name skill_path
+  local -A agent_skill_dirs=(
+    codex "$HOME/.agents/skills"
+    claude-code "$HOME/.claude/skills"
+  )
 
-  for skill_name in "$@"; do
-    if [[ -e "$HOME/.agents/skills/$skill_name" || -L "$HOME/.agents/skills/$skill_name" ||
-          -e "$HOME/.claude/skills/$skill_name" || -L "$HOME/.claude/skills/$skill_name" ]]; then
-      print -- "Skipping existing skill: $skill_name"
-      continue
-    fi
-    missing_skills+=("$skill_name")
+  # Check each agent's skill dir on its own, so a skill present for one agent
+  # still gets installed for the other.
+  for agent in ${(k)agent_skill_dirs}; do
+    local -a missing_skills=()
+    for skill_name in "$@"; do
+      skill_path="${agent_skill_dirs[$agent]}/$skill_name"
+      if [[ -e "$skill_path" || -L "$skill_path" ]]; then
+        print -- "Skipping existing skill for $agent: $skill_name"
+        continue
+      fi
+      missing_skills+=("$skill_name")
+    done
+
+    (( ${#missing_skills} > 0 )) || continue
+
+    npx --yes skills add "$source" --global --yes \
+      --agent "$agent" --skill "${missing_skills[@]}"
   done
-
-  (( ${#missing_skills} > 0 )) || return 0
-
-  npx --yes skills add "$source" --global --yes \
-    --agent codex claude-code --skill "${missing_skills[@]}"
 }
 
 mkdir -p ~/.claude/skills ~/.agents/skills ~/.codex
