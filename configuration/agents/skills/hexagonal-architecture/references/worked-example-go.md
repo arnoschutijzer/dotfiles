@@ -78,6 +78,8 @@ type Clock interface {
 }
 
 // Inbound port. The adapter depends on this, not on the struct below.
+// NewRecordReading returns the interface on purpose, against the usual Go
+// habit of returning concrete types: the port is the only way in.
 type RecordReading interface {
 	Record(ctx context.Context, cmd RecordCommand) (RecordResult, error)
 }
@@ -197,8 +199,10 @@ package timescale
 import (
 	"context"
 	"database/sql"
+	"database/sql/driver"
 	"errors"
 	"log/slog"
+	"net"
 	"strings"
 
 	"github.com/jackc/pgx/v5/pgconn"
@@ -224,6 +228,10 @@ func Open(dsn string, log *slog.Logger) (*Appender, error) {
 	return &Appender{db: db, log: log}, nil
 }
 
+func (a *Appender) Close() error {
+	return a.db.Close()
+}
+
 func (a *Appender) Append(ctx context.Context, r vitals.Reading) error {
 	const query = `INSERT INTO vitals (patient_id, taken_at, systolic, diastolic) VALUES ($1,$2,$3,$4)`
 
@@ -247,12 +255,24 @@ func (a *Appender) Append(ctx context.Context, r vitals.Reading) error {
 	// The driver error stays in diagnostics. Do not log patient data.
 	a.log.ErrorContext(ctx, "append vitals reading", "err", err)
 
-	if pgErr != nil && strings.HasPrefix(pgErr.Code, "08") { // connection exception
+	if unavailable(err) {
 		return vitals.ErrUnavailable
 	}
 
 	// Unexpected failures must not expose infrastructure errors either.
 	return vitals.ErrStoreFailure
+}
+
+// Most outages never reach the server, so they arrive as dial or network
+// errors, not as a *pgconn.PgError with a connection-exception code.
+func unavailable(err error) bool {
+	var pgErr *pgconn.PgError
+	if errors.As(err, &pgErr) {
+		return strings.HasPrefix(pgErr.Code, "08") // connection exception
+	}
+	var connectErr *pgconn.ConnectError
+	var netErr net.Error
+	return errors.As(err, &connectErr) || errors.As(err, &netErr) || errors.Is(err, driver.ErrBadConn)
 }
 ```
 
@@ -276,19 +296,28 @@ import (
 )
 
 func main() {
+	if err := run(); err != nil {
+		log.Fatal(err)
+	}
+}
+
+// run returns instead of exiting, so the deferred Close runs.
+func run() error {
 	logger := slog.New(slog.NewJSONHandler(os.Stderr, nil))
 
 	// Adapters are constructed and wired once, here.
 	appender, err := timescale.Open(os.Getenv("DATABASE_URL"), logger)
 	if err != nil {
-		log.Fatal(err)
+		return err
 	}
+	defer appender.Close()
+
 	useCase := vitals.NewRecordReading(appender, systemClock{})
 
 	mux := http.NewServeMux()
 	mux.Handle("POST /vitals", httpin.RecordHandler(useCase))
 
-	log.Fatal(http.ListenAndServe(":8080", mux))
+	return http.ListenAndServe(":8080", mux)
 }
 
 type systemClock struct{}
@@ -338,6 +367,28 @@ type fixedClock struct {
 
 func (c fixedClock) Now() time.Time {
 	return c.now
+}
+
+func TestRecordStampsReadingWithInjectedClock(t *testing.T) {
+	now := time.Unix(0, 0).UTC()
+	appender := &fakeAppender{}
+	useCase := vitals.NewRecordReading(appender, fixedClock{now: now})
+
+	result, err := useCase.Record(context.Background(), vitals.RecordCommand{
+		PatientID: "p-1",
+		Systolic:  120,
+		Diastolic: 80,
+	})
+
+	if err != nil {
+		t.Fatalf("want no error, got %v", err)
+	}
+	if !result.RecordedAt.Equal(now) {
+		t.Fatalf("want RecordedAt %v from the injected clock, got %v", now, result.RecordedAt)
+	}
+	if len(appender.appended) != 1 || !appender.appended[0].TakenAt.Equal(now) {
+		t.Fatalf("want one reading taken at %v, got %v", now, appender.appended)
+	}
 }
 
 func TestRecordRejectsImpossibleReading(t *testing.T) {
