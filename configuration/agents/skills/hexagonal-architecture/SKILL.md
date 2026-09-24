@@ -66,7 +66,8 @@ idioms.
 2. Write the entity and its error values.
 3. Declare the outbound port in the use-case package.
 4. Write the use case. Test it against fakes.
-5. Write the adapters last.
+5. Write the adapters last. Test them through the use case, wired to real
+   infrastructure.
 
 ## Verification
 
