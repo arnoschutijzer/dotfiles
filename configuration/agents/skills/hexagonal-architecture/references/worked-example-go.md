@@ -9,6 +9,7 @@ internal/vitals/
   record_reading_test.go         # use case test, no database
   httpin/handler.go              # inbound adapter
   timescale/appender.go          # outbound adapter
+  timescale/appender_test.go     # adapter integration test, real database
 cmd/api/main.go                   # composition root
 ```
 
@@ -422,5 +423,156 @@ func TestRecordReturnsStoreFailure(t *testing.T) {
 	if !errors.Is(err, vitals.ErrUnavailable) {
 		t.Fatalf("want ErrUnavailable, got %v", err)
 	}
+}
+```
+
+## Integration test
+
+`internal/vitals/timescale/appender_test.go`
+
+The use-case test fakes the port, so only this test proves that the adapter
+honors it. It runs the adapter against a real TimescaleDB through
+testcontainers and checks what the use case relies on: the row lands, a
+unique violation becomes `ErrDuplicate` without exposing the driver error, and
+a cancellation stays the caller's. The build tag keeps it out of the default
+run, because it needs Docker: `go test -tags integration ./...`.
+
+```go
+//go:build integration
+
+package timescale_test
+
+import (
+	"context"
+	"database/sql"
+	"errors"
+	"log/slog"
+	"testing"
+	"time"
+
+	"github.com/jackc/pgx/v5/pgconn"
+	"github.com/testcontainers/testcontainers-go"
+	"github.com/testcontainers/testcontainers-go/modules/postgres"
+
+	"example.com/clinic/internal/vitals"
+	"example.com/clinic/internal/vitals/timescale"
+)
+
+// The migrations own this schema. The test applies it to a fresh database.
+const schema = `
+CREATE TABLE vitals (
+	patient_id text        NOT NULL,
+	taken_at   timestamptz NOT NULL,
+	systolic   int         NOT NULL,
+	diastolic  int         NOT NULL,
+	PRIMARY KEY (patient_id, taken_at)
+);
+SELECT create_hypertable('vitals', by_range('taken_at'));`
+
+// One container serves every subtest. Each subtest uses its own patient, so
+// the subtests do not share rows.
+func TestAppender(t *testing.T) {
+	ctx := context.Background()
+
+	container, err := postgres.Run(ctx, "timescale/timescaledb:2.22.1-pg17", postgres.BasicWaitStrategies())
+	testcontainers.CleanupContainer(t, container)
+	if err != nil {
+		t.Fatal(err)
+	}
+	dsn, err := container.ConnectionString(ctx, "sslmode=disable")
+	if err != nil {
+		t.Fatal(err)
+	}
+
+	db, err := sql.Open("pgx", dsn)
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { db.Close() })
+	if _, err := db.ExecContext(ctx, schema); err != nil {
+		t.Fatal(err)
+	}
+
+	appender, err := timescale.Open(dsn, slog.New(slog.DiscardHandler))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { appender.Close() })
+
+	takenAt := time.Date(2026, 1, 2, 3, 4, 5, 0, time.UTC)
+
+	t.Run("stores the reading", func(t *testing.T) {
+		reading := mustReading(t, "p-stored", takenAt)
+
+		if err := appender.Append(ctx, reading); err != nil {
+			t.Fatalf("want no error, got %v", err)
+		}
+
+		var got vitals.Reading
+		err := db.QueryRowContext(ctx,
+			`SELECT patient_id, taken_at, systolic, diastolic FROM vitals WHERE patient_id = $1`,
+			string(reading.PatientID),
+		).Scan(&got.PatientID, &got.TakenAt, &got.Systolic, &got.Diastolic)
+		if err != nil {
+			t.Fatal(err)
+		}
+		if got.PatientID != reading.PatientID || !got.TakenAt.Equal(reading.TakenAt) ||
+			got.Systolic != reading.Systolic || got.Diastolic != reading.Diastolic {
+			t.Fatalf("want %+v, got %+v", reading, got)
+		}
+	})
+
+	t.Run("translates a unique violation into ErrDuplicate", func(t *testing.T) {
+		reading := mustReading(t, "p-duplicate", takenAt)
+		if err := appender.Append(ctx, reading); err != nil {
+			t.Fatal(err)
+		}
+
+		err := appender.Append(ctx, reading)
+
+		if !errors.Is(err, vitals.ErrDuplicate) {
+			t.Fatalf("want ErrDuplicate, got %v", err)
+		}
+		// The driver error must not reach the use case through the chain.
+		var pgErr *pgconn.PgError
+		if errors.As(err, &pgErr) {
+			t.Fatalf("driver error exposed: %v", pgErr)
+		}
+	})
+
+	t.Run("returns the caller's cancellation", func(t *testing.T) {
+		cancelled, cancel := context.WithCancel(ctx)
+		cancel()
+
+		err := appender.Append(cancelled, mustReading(t, "p-cancelled", takenAt))
+
+		if !errors.Is(err, context.Canceled) {
+			t.Fatalf("want context.Canceled, got %v", err)
+		}
+	})
+}
+
+// Needs no container: nothing listens on port 1.
+func TestAppenderReportsUnreachableStoreAsUnavailable(t *testing.T) {
+	appender, err := timescale.Open("postgres://user:pass@127.0.0.1:1/vitals?connect_timeout=2", slog.New(slog.DiscardHandler))
+	if err != nil {
+		t.Fatal(err)
+	}
+	t.Cleanup(func() { appender.Close() })
+
+	err = appender.Append(context.Background(), mustReading(t, "p-unreachable", time.Unix(0, 0).UTC()))
+
+	if !errors.Is(err, vitals.ErrUnavailable) {
+		t.Fatalf("want ErrUnavailable, got %v", err)
+	}
+}
+
+func mustReading(t *testing.T, id vitals.PatientID, takenAt time.Time) vitals.Reading {
+	t.Helper()
+	reading, err := vitals.NewReading(id, takenAt, 120, 80)
+	if err != nil {
+		t.Fatal(err)
+	}
+	return reading
 }
 ```
