@@ -1,6 +1,6 @@
 ---
 name: hexagonal-architecture
-description: "Design or implement ports-and-adapters boundaries with a framework-independent domain, domain-owned ports, edge adapters, and inward dependencies. Use when changing a repository that uses hexagonal architecture or when asked to introduce it, add a port or adapter, isolate an external dependency, or move business logic out of an adapter. Do not use for read-only architecture mapping or assessment."
+description: "Design or implement ports-and-adapters boundaries with a framework-independent domain, domain-owned ports, edge adapters, and inward dependencies. Use when adding or changing a domain entity, use case, port, or adapter in a repository that uses hexagonal architecture, or when asked to introduce it, isolate an external dependency, or move business logic out of an adapter. Do not use for read-only architecture mapping or assessment."
 ---
 
 # Hexagonal architecture
@@ -8,8 +8,10 @@ description: "Design or implement ports-and-adapters boundaries with a framework
 Dependencies point inward. The domain owns the interfaces it needs. Frameworks
 and drivers stay at the edges.
 
-Read `references/worked-example-go.md` and copy its layout, names, and error
-translation.
+Follow the layout and names of the existing slices. When the repository has
+none, read `references/worked-example-go.md` and copy its layout, names, and
+error translation. Outside Go, keep its structure and use the language's
+idioms.
 
 ## Layers
 
@@ -59,7 +61,8 @@ translation.
 
 ## Feature slice
 
-1. Read an adjacent slice. Copy its layout and names.
+1. Read an adjacent slice. Copy its layout and names. If none exists, use the
+   worked example.
 2. Write the entity and its error values.
 3. Declare the outbound port in the use-case package.
 4. Write the use case. Test it against fakes.
