@@ -3,12 +3,16 @@ tap "openai/tools", trusted: true
 tap "pulumi/tap", trusted: true
 tap "snyk/tap", trusted: true
 tap "terraform-linters/tap", trusted: true
+# Official Amazon AWS command-line interface
+brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
 # Resource monitor. C++ version and continuation of bashtop and bpytop
 brew "btop"
 # CLI tool for analyzing Claude Code usage from local JSONL files
 brew "ccusage"
+# Cloudflare Tunnel client (formerly Argo Tunnel)
+brew "cloudflared"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
 # Modern, maintained replacement for ls
@@ -65,6 +69,10 @@ brew "mole"
 brew "moon"
 # Port scanning utility for large networks
 brew "nmap"
+# Drop-in replacement for Terraform. Infrastructure as Code Tool
+brew "opentofu"
+# OCI Registry As Storage
+brew "oras"
 # Fast, disk space efficient package manager
 brew "pnpm"
 # Object-relational database system
@@ -108,7 +116,7 @@ cask "chatgpt"
 # Anthropic's official Claude AI desktop app
 cask "claude"
 # Terminal-based AI coding assistant
-cask "claude-code"
+cask "claude-code@latest"
 # OpenAI's coding agent that runs in your terminal
 cask "codex"
 # Universal database tool and SQL client
