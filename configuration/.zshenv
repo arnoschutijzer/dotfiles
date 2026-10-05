@@ -22,3 +22,5 @@ eval "$(mise activate zsh)"
 # Snapshot the built PATH so a login shell can restore this order after macOS
 # path_helper reorders it, without re-running the brew/mise setup above (.zprofile).
 DOTFILES_PATH=$PATH
+
+export ANDROID_HOME="$(brew --prefix)/share/android-commandlinetools"
