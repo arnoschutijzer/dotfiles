@@ -107,10 +107,10 @@ brew "zsh-autosuggestions"
 brew "jundot/omlx/omlx"
 # Run macOS and Linux VMs on Apple Hardware
 brew "openai/tools/tart", trusted: true
-# Password manager that keeps all passwords secure behind one password
-cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
+# Command-line tools for building and debugging Android apps
+cask "android-commandlinetools"
 # OpenAI's official ChatGPT desktop app
 cask "chatgpt"
 # Anthropic's official Claude AI desktop app
@@ -162,6 +162,8 @@ cask "slack"
 cask "spotify"
 # Messaging app with a focus on speed and security
 cask "telegram"
+# JDK from the Eclipse Foundation (Adoptium)
+cask "temurin"
 # Pluggable Terraform linter
 cask "terraform-linters/tap/tflint", trusted: true
 # Multimedia player
