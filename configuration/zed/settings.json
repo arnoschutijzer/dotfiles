@@ -22,7 +22,7 @@
   "agent_servers": {
     "codex-acp": {
       "default_config_options": {
-        "reasoning_effort": "medium"
+        "reasoning_effort": "high"
       },
       "type": "registry"
     },
