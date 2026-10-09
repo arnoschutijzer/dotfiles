@@ -34,6 +34,14 @@ independently guards. A test that would break under behavior-preserving
 refactoring is asserting implementation, not behavior; rewrite it at the
 owning boundary before landing it.
 
+Apply the value bar to each assertion. Assert desired current behavior or a
+specific forbidden outcome. A negative assertion needs an independent invariant,
+such as preventing unauthorized access, duplicate submission, or data loss.
+Removing or renaming UI alone does not justify asserting that its former button,
+label, or screen is absent. For example, after removing a redundant Done button,
+exercise Back and verify the destination and retained state. Remove obsolete
+absence checks when existing behavioral coverage already protects the outcome.
+
 Bug regression tests must fail on the pre-fix code for the intended reason and
 pass after the owner-boundary repair. A regression test that never demonstrably
 failed proves the mock, not the fix. One regression at the owner boundary
