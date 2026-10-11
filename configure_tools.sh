@@ -1,7 +1,4 @@
 #!/bin/zsh
-ln -sf "$(pwd)"/configuration/.tflint.hcl ~/.tflint.hcl
-tflint --init
-
 mkdir -p ~/.config/zed/
 ln -sf "$(pwd)"/configuration/zed/settings.json ~/.config/zed/settings.json
 

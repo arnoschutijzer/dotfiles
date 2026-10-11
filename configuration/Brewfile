@@ -2,7 +2,6 @@ tap "jundot/omlx", "https://github.com/jundot/omlx", trusted: true
 tap "openai/tools", trusted: true
 tap "pulumi/tap", trusted: true
 tap "snyk/tap", trusted: true
-tap "terraform-linters/tap", trusted: true
 # Official Amazon AWS command-line interface
 brew "awscli"
 # Clone of cat(1) with syntax highlighting and Git integration
@@ -164,8 +163,6 @@ cask "spotify"
 cask "telegram"
 # JDK from the Eclipse Foundation (Adoptium)
 cask "temurin"
-# Pluggable Terraform linter
-cask "terraform-linters/tap/tflint", trusted: true
 # Multimedia player
 cask "vlc"
 # Multiplayer code editor
