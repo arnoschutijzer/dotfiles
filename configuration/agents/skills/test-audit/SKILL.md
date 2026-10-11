@@ -15,7 +15,7 @@ before starting one, read [CAMPAIGN.md](CAMPAIGN.md).
 
 ## Authoring gate
 
-Before adding any test, answer four questions; a missing answer means do not
+Before adding any test, answer five questions; a missing answer means do not
 add it yet:
 
 1. What observable behavior, invariant, or independent contract does it protect?
@@ -27,6 +27,16 @@ add it yet:
    near-duplicate test; consolidate duplicated setup in the same change.
 4. Does it need a production seam (export, flag, wrapper, injection hook) that no
    production caller needs? If yes, move the test to the real boundary instead.
+5. Why is retaining this test worth its maintenance and runtime cost, given the
+   failure's impact and cheaper available evidence? Reproducing a bug alone does
+   not establish that a permanent test is worthwhile.
+
+For ordinary copy, translations, and presentation edits, prefer catalog/format
+validation and recorded visual review over tests that duplicate exact wording.
+Keep exact-text assertions when wording itself is an independent requirement,
+such as a protocol or approved legal text. Exercise locale propagation or
+plural selection when those behaviors carry a distinct regression risk; do not
+assert every translated phrase to prove translation quality.
 
 Then check the test against every [junk pattern](#junk-patterns); a match fails
 the gate unless the [retention bar](#retention-bar) names the contract it
@@ -42,8 +52,8 @@ label, or screen is absent. For example, after removing a redundant Done button,
 exercise Back and verify the destination and retained state. Remove obsolete
 absence checks when existing behavioral coverage already protects the outcome.
 
-Bug regression tests must fail on the pre-fix code for the intended reason and
-pass after the owner-boundary repair. A regression test that never demonstrably
+Retained automated bug regression tests must fail on the pre-fix code for the
+intended reason and pass after the owner-boundary repair. A regression test that never demonstrably
 failed proves the mock, not the fix. One regression at the owner boundary
 covers the bug; do not replay the same scenario at every layer it crosses.
 
@@ -148,10 +158,10 @@ For example, in an Eno Health checkout use the narrowest relevant Moon task.
 Do not edit files while a test runner is reading them in the same checkout.
 
 Run the owner-boundary tests affected by the change, then any consumer or sibling
-tests needed for a distinct regression risk. For a bug fix, demonstrate that
-the regression test fails on the pre-fix behavior for the intended reason and
-passes with the repair. Use an isolated checkout when a control run would
-disturb other work.
+tests needed for a distinct regression risk. When retaining an automated bug
+regression, demonstrate that it fails on the pre-fix behavior for the intended
+reason and passes with the repair. Use an isolated checkout when a control run
+would disturb other work.
 
 Run relevant formatting and `git diff --check`. Stop after the selected checks
 pass unless a new change, failure, or unresolved risk justifies another run.
