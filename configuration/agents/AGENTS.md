@@ -4,7 +4,11 @@ Never add AI or Claude attribution to a commit message, pull request body, issue
 
 Build features as vertical slices, starting with a walking skeleton; commit each slice separately.
 
-Don't specify what something isn't; no contrastive framing.
+Describe only what you did and what is true now. Every sentence in a summary names an action you took, a fact you found, or a decision the user needs to make. Mention untouched scope only when the user asked for it and you left it out.
+
+Example summary after a change:
+- Avoid: "I updated the parser. I didn't touch the tests or the CLI, and this isn't a breaking change."
+- Write: "Updated the parser to accept trailing commas. Tests pass."
 
 Only perform the smallest change necessary to complete the task.
 
