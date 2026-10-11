@@ -1,6 +1,6 @@
 ---
 name: test-audit
-description: "Invoke whenever writing, changing, reviewing, or sweeping tests. Authoring gate for new tests plus audit workflow for low-value, implementation-coupled, or duplicative tests and the test-only production seams they demand."
+description: "Design or review tests for observable behavior, credible regressions, duplication, and test-only production seams."
 ---
 
 # Test Audit
@@ -80,7 +80,7 @@ regression, or an independently meaningful contract. In an audit, an existing
 test that must change for behavior-preserving source reorganization is suspect,
 not automatically deletable; the authoring gate still rejects new ones.
 
-Before judging a candidate, read the complete test and production owner, its
+When auditing an existing test, read the complete test and production owner, its
 entry point, callers, callees, sibling implementations, overlapping tests, CI
 routing, and relevant history. Read root and scoped `AGENTS.md` files first.
 When the test claims dependency-backed behavior, inspect the dependency source
@@ -142,27 +142,28 @@ to increase deletion counts.
 
 ## Validation
 
-Never edit source or tests while Vitest is running in the checkout. Follow
-`$openclaw-testing`; route heavy proof through its `$crabbox` rules.
+Use the owning repository's test commands and guidance. Inspect its package,
+project, or task configuration rather than assuming a runner or script exists.
+For example, in an Eno Health checkout use the narrowest relevant Moon task.
+Do not edit files while a test runner is reading them in the same checkout.
 
-1. Run the smallest owner and sibling tests with
-   `node scripts/run-vitest.mjs <path-or-filter>`.
-2. For removed source greps or plan assertions, run the executable script or
-   dry-run that owns the real contract.
-3. Run targeted formatting, then `git diff --check`.
-4. Classify with
-   `node scripts/check-changed.mjs --dry-run -- <changed-paths>`, then run the
-   actual changed gate required by repository policy.
-5. Inspect `git diff --numstat`; report production/tooling separately from
-   tests and test support.
-6. After final audit edits, run mandatory `$autoreview`.
+Run the owner-boundary tests affected by the change, then any consumer or sibling
+tests needed for a distinct regression risk. For a bug fix, demonstrate that
+the regression test fails on the pre-fix behavior for the intended reason and
+passes with the repair. Use an isolated checkout when a control run would
+disturb other work.
+
+Run relevant formatting and `git diff --check`. Stop after the selected checks
+pass unless a new change, failure, or unresolved risk justifies another run.
+Keep unrelated baseline or tooling failures separate from change failures.
+An ordinary test edit does not start a broad test audit or campaign.
 
 ## Landing and continuation
 
-Commit, push, open a PR, or land only when authorized. Use
-`$openclaw-pr-maintainer` and the repository `scripts/pr` flow. Land one
-coherent PR at a time; after landing, refresh from current `main` and rerun
-read-only discovery for the next high-confidence batch.
+Follow the owning repository's commit and review workflow within the user's
+authorized scope. Keep one coherent behavioral slice per commit. Run an
+independent review when the requested audit warrants it; do not require
+unavailable skills, repository-specific scripts, or review services.
 
 ## Handoff
 
