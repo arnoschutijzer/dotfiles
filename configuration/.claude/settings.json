@@ -1,6 +1,12 @@
 {
+  "attribution": {
+    "commit": "",
+    "pr": ""
+  },
   "permissions": {
     "allow": [
+      "mcp__linear__save_issue",
+      "mcp__linear__save_comment",
       "mcp__serena__onboarding",
       "mcp__serena__list_memories",
       "mcp__serena__read_memory",
@@ -27,6 +33,7 @@
       "Bash(gh repo view:*)",
       "Bash(gh run list:*)",
       "Bash(gh run view:*)",
+      "Edit(.env.example)",
       "WebFetch(domain:github.com)",
       "WebFetch(domain:raw.githubusercontent.com)"
     ],
@@ -51,9 +58,5 @@
   "tui": "fullscreen",
   "theme": "dark-ansi",
   "agentPushNotifEnabled": true,
-  "skipAutoPermissionPrompt": true,
-  "attribution": {
-    "commit": "",
-    "pr": ""
-  }
+  "skipAutoPermissionPrompt": true
 }
