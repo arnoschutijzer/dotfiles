@@ -17,7 +17,7 @@ Prefer readability over conciseness.
 Test behavior through application interfaces. 
 Use real databases where needed, but restrict test SQL to fixture setup and cleanup. Never assert SQL text, schema details, or raw database rows.
 
-Use worktrees when dealing with branches. You can use the commandline utility `worktree` to switch to a create and directly move to that worktree with this command:
+Use worktrees when dealing with branches. Use the `worktree` command-line utility to create or switch to a worktree, rather than calling `git worktree add` directly. Run subsequent commands from the selected worktree:
 ```
 worktree s <name>
 ```
