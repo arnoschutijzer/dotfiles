@@ -41,8 +41,6 @@ install_link() {
 mkdir -p ~/.claude ~/.codex
 
 # Global instructions: read by Claude as CLAUDE.md and by Codex as AGENTS.md.
-# Claude does not read AGENTS.md at any scope, so a project needs a CLAUDE.md
-# that imports it with @AGENTS.md.
 install_link "$AGENTS_DIR/AGENTS.md" ~/.claude/CLAUDE.md "$AGENTS_DIR"
 install_link "$AGENTS_DIR/AGENTS.md" ~/.codex/AGENTS.md "$AGENTS_DIR"
 
