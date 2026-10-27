@@ -37,3 +37,39 @@ casks and App Store downloads.
    `hf download mlx-community/Qwen3.8-27B-4bit`, then `hermes model` to select
    it. The oMLX provider is registered by `configure_hermes.sh`; the cloud
    provider stays the Hermes default.
+
+## rex beta
+
+Download the macOS beta from the [Rex tester portal](https://www.superlogical.com/rex/docs/installation).
+The CLI is available inside Rex terminals.
+
+`make configure` runs `./configure_rex.sh`. To configure only Rex, run that
+script directly. It symlinks `configuration/rex/` to
+`${XDG_CONFIG_HOME:-$HOME/.config}/rex`, preserving any existing file,
+directory, or different symlink. If it skips your existing configuration,
+merge your settings into the tracked files and move the old path aside before
+rerunning. Run the script from a checkout you intend to keep: the symlink
+points to that checkout.
+
+`configuration/rex/init.lua` binds Cmd+D to split the focused pane to the right.
+After editing it, validate and apply it from a local Rex terminal:
+
+```sh
+rex config check
+rex config reload
+```
+
+Rex requires an explicit reload. If the server uses `REX_CONFIG`, it reads that
+file instead of the default path managed by this script. See the
+[configuration documentation](https://www.superlogical.com/rex/docs/customize/config).
+
+From a Rex terminal in your project directory, open a Development tab containing
+two side-by-side shells in that directory:
+
+```sh
+rex do "${XDG_CONFIG_HOME:-$HOME/.config}/rex/workspaces/development.lua" cwd="$PWD"
+```
+
+Each invocation creates a new tab in the current session. For another session,
+pass `-s SESSION` to `rex do`; `cwd` must be an absolute path on that session's
+server. See the [Lua scripting documentation](https://www.superlogical.com/rex/docs/automate/lua-scripts).
