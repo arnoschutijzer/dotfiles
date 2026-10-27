@@ -63,6 +63,15 @@ Rex requires an explicit reload. If the server uses `REX_CONFIG`, it reads that
 file instead of the default path managed by this script. See the
 [configuration documentation](https://www.superlogical.com/rex/docs/customize/config).
 
+Apply the font-size preset (two steps above default) from a focused Rex terminal:
+
+```sh
+rex do "${XDG_CONFIG_HOME:-$HOME/.config}/rex/appearance.lua"
+```
+
+The preset resets the font size before increasing it twice, so repeated runs
+keep the same size. Run it explicitly; reloading `init.lua` does not apply it.
+
 From a Rex terminal in your project directory, open a Development tab containing
 two side-by-side shells in that directory:
 
