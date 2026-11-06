@@ -46,3 +46,9 @@ install_link "$AGENTS_DIR/AGENTS.md" ~/.codex/AGENTS.md "$AGENTS_DIR"
 
 # Claude-specific settings.
 install_link "$REPO/configuration/.claude/settings.json" ~/.claude/settings.json "$REPO/configuration/.claude"
+
+# Install the shared, explicitly invoked codebase refactoring skill.
+mkdir -p ~/.claude/skills ~/.codex/skills
+for harness in ~/.claude ~/.codex; do
+  install_link "$AGENTS_DIR/skills/untangle-codebase" "$harness/skills/untangle-codebase" "$AGENTS_DIR"
+done

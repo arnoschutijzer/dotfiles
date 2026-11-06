@@ -21,3 +21,4 @@ Use worktrees when dealing with branches. Use the `worktree` command-line utilit
 ```
 worktree s <name>
 ```
+In agent shells this prints the worktree path but does not change directory, because the `cd` lives in a shell function that only interactive shells load. Switch into the printed path yourself: in Claude Code, call the `EnterWorktree` tool with `path` set to it; elsewhere, `cd` into it.
