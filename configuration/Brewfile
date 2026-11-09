@@ -100,12 +100,16 @@ brew "tig"
 brew "uv"
 # Internet file retriever
 brew "wget"
+# Feature-rich command-line audio/video downloader
+brew "yt-dlp"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # LLM inference server optimized for Apple Silicon
 brew "jundot/omlx/omlx"
 # Run macOS and Linux VMs on Apple Hardware
 brew "openai/tools/tart", trusted: true
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 # Command-line interface for 1Password
 cask "1password-cli"
 # Command-line tools for building and debugging Android apps
@@ -128,6 +132,8 @@ cask "docker-desktop"
 cask "drawio"
 # Web browser
 cask "firefox@developer-edition"
+# UI toolkit for building applications for mobile, web and desktop
+cask "flutter"
 cask "font-caskaydia-cove-nerd-font"
 # Terminal emulator that uses platform-native UI and GPU acceleration
 cask "ghostty"
