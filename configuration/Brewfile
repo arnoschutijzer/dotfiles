@@ -102,6 +102,8 @@ brew "uv"
 brew "wget"
 # Feature-rich command-line audio/video downloader
 brew "yt-dlp"
+# Find security issues in GitHub Actions setups
+brew "zizmor"
 # Fish-like fast/unobtrusive autosuggestions for zsh
 brew "zsh-autosuggestions"
 # LLM inference server optimized for Apple Silicon
