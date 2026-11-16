@@ -3,6 +3,6 @@ auto_install = true
 idiomatic_version_file_enable_tools = ["node", "terraform", "java"]
 
 [tools]
-go = "1.27.3"
+go = "1.27.4"
 node = "24.19.0"
 terraform = "1.15.3"
