@@ -3,8 +3,8 @@
 # go comes from mise, whose shims are not on PATH until the shell config is linked.
 export PATH="$HOME/.local/share/mise/shims:$PATH"
 
-go install golang.org/x/tools/gopls@v0.23.0
+go install golang.org/x/tools/gopls@v0.24.0
 go install github.com/go-delve/delve/cmd/dlv@v1.26.1
 go install github.com/projectdiscovery/nuclei/v3/cmd/nuclei@v3.7.1
-go install honnef.co/go/tools/cmd/staticcheck@2026.2.1
+go install honnef.co/go/tools/cmd/staticcheck@2026.2.2
 go install github.com/ekkert-works/worktree/cmd/worktree@latest
