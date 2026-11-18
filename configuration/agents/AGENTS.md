@@ -16,6 +16,8 @@ Prefer readability over conciseness.
 
 ## Writing style
 
+Lead with the result. Use everyday words and short sentences. Give only the details I need to understand the finding or make a decision. Keep test names, implementation details, and supporting evidence out of the summary unless they explain a failure or I ask for them. Default to the shortest complete answer.
+
 - State facts, conclusions, and required actions directly.
 - Use affirmative sentences where possible. Use negation when it conveys a necessary fact or constraint.
 - Avoid rhetorical contrasts such as “not X, but Y” and “this isn't X; it's Y.”
