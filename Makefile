@@ -27,7 +27,6 @@ configure:
 	. ./configure_mac.sh
 	. ./generate_git_config.sh
 	. ./configure_git.sh
-	. ./install_fonts.sh
 	. ./configure_shell.sh
 	. ./configure_tools.sh
 	./configure_agents.sh
