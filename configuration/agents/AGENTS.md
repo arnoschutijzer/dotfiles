@@ -14,6 +14,20 @@ Only perform the smallest change necessary to complete the task.
 
 Prefer readability over conciseness.
 
+## Writing style
+
+- State facts, conclusions, and required actions directly.
+- Use affirmative sentences where possible. Use negation when it conveys a necessary fact or constraint.
+- Avoid rhetorical contrasts such as “not X, but Y” and “this isn't X; it's Y.”
+- Avoid paired clauses built around opposing ideas for emphasis.
+- Use literal, concrete language.
+- Use acronyms only when they are widely understood by the intended audience. Otherwise, write the term in full.
+- Prefer short paragraphs, each covering one idea.
+- Use lists for steps, requirements, or parallel points.
+- Before responding, remove rhetorical contrasts and expand unfamiliar acronyms.
+
+## Testing and worktrees
+
 Test behavior through application interfaces. 
 Use real databases where needed, but restrict test SQL to fixture setup and cleanup. Never assert SQL text, schema details, or raw database rows.
 
