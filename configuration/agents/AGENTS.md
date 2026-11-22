@@ -20,7 +20,8 @@ Lead with the result. Use everyday words and short sentences. Give only the deta
 
 - State facts, conclusions, and required actions directly.
 - Use affirmative sentences where possible. Use negation when it conveys a necessary fact or constraint.
-- Avoid rhetorical contrasts such as “not X, but Y” and “this isn't X; it's Y.”
+- State the point directly. Before sending any update or reply, rewrite phrases like “X, not Y,” “not X, but Y,” and “X rather than Y.” Keep a contrast only when the user asks for a comparison or the distinction changes what they should do.
+  For example, rewrite “The job is queued, not running” as “The job is waiting for a worker.”
 - Avoid paired clauses built around opposing ideas for emphasis.
 - Use literal, concrete language.
 - Use acronyms only when they are widely understood by the intended audience. Otherwise, write the term in full.
