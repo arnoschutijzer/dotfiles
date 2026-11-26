@@ -21,3 +21,6 @@ defaults write com.apple.dock launchanim -bool false
 # make cursor move faster
 defaults write NSGlobalDomain KeyRepeat -int 1
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
+
+# turn off the display after 10 idle minutes on all power sources
+sudo pmset -a displaysleep 10
