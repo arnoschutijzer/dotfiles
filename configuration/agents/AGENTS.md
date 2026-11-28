@@ -27,6 +27,7 @@ Lead with the result. Use everyday words and short sentences. Give only the deta
 - Use acronyms only when they are widely understood by the intended audience. Otherwise, write the term in full.
 - Prefer short paragraphs, each covering one idea.
 - Use lists for steps, requirements, or parallel points.
+- When sharing local videos, put each absolute file path on its own line in a plain-text code block so I can copy it without opening the terminal preview.
 - Before responding, remove rhetorical contrasts and expand unfamiliar acronyms.
 
 ## Testing and worktrees
